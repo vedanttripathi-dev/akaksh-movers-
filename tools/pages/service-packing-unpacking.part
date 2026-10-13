@@ -1,0 +1,140 @@
+SLUG: services/packing-unpacking.html
+TITLE: Packing & Unpacking Services in Kanpur
+DESC: Professional packing in Kanpur with multi-layer wrapping, room-labelled cartons and bagged furniture hardware — plus unpacking and removal of packing waste.
+HEADING: Packing &amp; unpacking
+LEAD: The part of a move that decides whether anything breaks. Done properly it is unremarkable, which is the point.
+CRUMBS: Home|/ ; Services|/services.html ; Packing &amp; unpacking|
+---
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="split is-wide-left">
+        <div>
+          <h2>Why things break</h2>
+          <p class="lead">
+            Almost never from a dropped carton. Breakages come from movement
+            inside the box — items touching each other, or sliding into empty
+            space, for hours.
+          </p>
+          <p>
+            That is why a well-packed carton is a full carton. Fragile items
+            are wrapped individually so nothing touches, then packed with fill
+            so nothing shifts, then boxed to a weight a person can carry
+            properly. A half-empty carton is more dangerous than a heavy one.
+          </p>
+          <p>
+            Every carton is labelled with its room and its contents before it
+            leaves the floor. It costs a few seconds and it is the difference
+            between unpacking and excavating.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg></span>
+          <h3>Materials, matched to the item</h3>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Bubble wrap</strong> for glass, crockery and screens</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Corrugated sheets</strong> around furniture edges and table tops</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Stretch film</strong> over upholstery and drawers</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Double-wall cartons</strong> for books and anything dense</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Wardrobe cartons</strong> so hanging clothes travel on the rail</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Labelled bags</strong> for furniture hardware, taped to the item</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-sunk">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Saving money</span>
+        <h2>How to bring the packing cost down</h2>
+        <p class="lead">
+          Packing is usually the largest single line on a full-service quote,
+          and it is also the easiest one to reduce without taking on risk.
+        </p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <h3>Pack the safe things yourself</h3>
+          <p>
+            Clothes, books, linen and shoes are hard to damage and slow to
+            pack. Doing these yourself removes a large share of the labour and
+            material while leaving the fragile work to us.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Declutter before the survey</h3>
+          <p>
+            You pay to move volume. Anything you are not going to unpack at the
+            other end is worth dealing with before we count it, not after.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Skip unpacking if you are not in a hurry</h3>
+          <p>
+            Many people want the kitchen and beds unpacked on day one and are
+            happy to work through the rest themselves. We can do a partial
+            unpack and collect the empty cartons later.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="wrap-narrow">
+        <h2>Questions we get asked</h2>
+        <div class="faq mt-6" data-faq>
+          <details>
+            <summary>Can you pack only the kitchen and breakables?</summary>
+            <div class="faq__body"><p>
+              Yes, and it is the most common arrangement we scope. Tell us
+              which rooms you want to handle yourself and the quote is built
+              around that split.
+            </p></div>
+          </details>
+          <details>
+            <summary>If I pack my own boxes, are they covered?</summary>
+            <div class="faq__body"><p>
+              Owner-packed cartons are normally excluded from transit cover,
+              because nobody can verify what went in or how. That is true of
+              movers generally, not just us — so pack the hard-to-damage things
+              yourself and leave the fragile items to be professionally packed.
+            </p></div>
+          </details>
+          <details>
+            <summary>Do you take the empty cartons away?</summary>
+            <div class="faq__body"><p>
+              Yes, if you want. We can unpack and remove the waste on the same
+              visit, or come back once you have unpacked at your own pace.
+            </p></div>
+          </details>
+          <details>
+            <summary>How many days before the move do you pack?</summary>
+            <div class="faq__body"><p>
+              For most homes, the day before, or the same morning for smaller
+              flats. Larger houses with full packing may need two days. We
+              agree the schedule at survey so you know which rooms become
+              unusable and when.
+            </p></div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-tight cta-band">
+    <div class="wrap">
+      <div class="wrap-narrow text-centre">
+        <h2>Want a quote with packing itemised separately?</h2>
+        <p class="lead">So you can see exactly what doing some of it yourself would save.</p>
+        <div class="btn-row mt-6 btn-row--centre">
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+          <a class="btn btn--ghost btn--lg" href="/guides/moving-checklist.html">Moving checklist</a>
+        </div>
+      </div>
+    </div>
+  </section>

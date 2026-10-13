@@ -1,0 +1,130 @@
+SLUG: terms.html
+TITLE: Terms of Service | Akash Movers, Kanpur
+DESC: The terms covering quotes, bookings, your responsibilities, items we cannot carry, liability and claims, storage and payment for moving services.
+HEADING: Terms of service
+LEAD: The terms that apply to quotes and bookings. Several sections need the business's own figures before this page is published — they are marked.
+CRUMBS: Home|/ ; Terms|
+---
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="wrap-narrow flow">
+
+        <div class="demo-banner">
+          <svg class="ic" aria-hidden="true"><use href="#i-alert"/></svg>
+          <div>
+            <strong>Template — not ready to publish.</strong>
+            Every section marked <em>[TO BE SUPPLIED]</em> needs the business's
+            real policy, and the whole page needs a legal review before it goes
+            live. Numbers have deliberately been left blank rather than filled
+            with plausible-looking defaults: a cancellation fee or a liability
+            cap invented by a website is unenforceable at best and misleading
+            at worst. Remove this notice once the page is complete and checked.
+          </div>
+        </div>
+
+        <h2>1. Who these terms are between</h2>
+        <p>
+          These terms apply between
+          <strong data-config="business.name">the company</strong> and the
+          customer requesting or booking moving services. Submitting an
+          enquiry does not create a booking; a booking exists once we have
+          confirmed it in writing.
+        </p>
+
+        <h2>2. Quotes and estimates</h2>
+        <p>
+          A quote is based on the inventory and access described during the
+          survey. It is valid for the period stated on the quote itself.
+        </p>
+        <p>
+          If, on the day, the goods or the access differ materially from what
+          was described — significantly more items, a floor or lift situation
+          not disclosed, or a carry distance substantially longer than agreed
+          — we will set out the revised cost and obtain your approval before
+          continuing. We will not complete the work and present a different
+          figure afterwards.
+        </p>
+
+        <h2>3. Booking, rescheduling and cancellation</h2>
+        <p><em>[TO BE SUPPLIED]</em> — the business must state:</p>
+        <ul>
+          <li>What, if anything, is payable to confirm a booking</li>
+          <li>How much notice is needed to reschedule without a charge</li>
+          <li>The cancellation terms, and at what point a charge applies</li>
+          <li>What happens if we have to reschedule, and what you are entitled to</li>
+        </ul>
+
+        <h2>4. What we need from you</h2>
+        <p>To do the job properly we need you to:</p>
+        <ul>
+          <li>Describe the inventory and the access accurately at survey</li>
+          <li>Obtain any building or society permission needed for the move</li>
+          <li>Be present, or have an authorised adult present, at both addresses</li>
+          <li>Carry jewellery, cash, documents and other high-value small items yourself</li>
+          <li>Empty and disconnect gas cylinders, and defrost and drain appliances, before the day</li>
+          <li>Check the inventory against the goods at delivery and note anything wrong on the sheet before the crew leaves</li>
+        </ul>
+
+        <h2>5. Items we cannot carry</h2>
+        <p>
+          We do not transport cash, jewellery, government documents,
+          firearms, hazardous or flammable goods, loaded gas cylinders,
+          perishable food, illegal items, or live animals. Pets should travel
+          with you. Plants can be carried on local moves but travel poorly
+          over long distances, and we will tell you so rather than take the
+          booking.
+        </p>
+
+        <h2>6. Liability and claims</h2>
+        <p><em>[TO BE SUPPLIED]</em> — the business must state:</p>
+        <ul>
+          <li>The transit cover options actually offered, and what each covers</li>
+          <li>Any limit of liability, and how it is calculated</li>
+          <li>The window for reporting damage or loss after delivery</li>
+          <li>The documents required to make a claim, and the timeline for a decision</li>
+          <li>What is excluded — for example goods packed by the customer, or pre-existing damage</li>
+        </ul>
+        <p>
+          Until those are supplied, nothing on this website should be read as
+          a promise of insurance or compensation. Ask for the cover terms in
+          writing with your quote.
+        </p>
+
+        <h2>7. Storage</h2>
+        <p>
+          Where goods are held in storage, they are inventoried in and out and
+          charged by duration, separately from the move. The applicable rate
+          and billing period are confirmed in writing before anything enters
+          the facility. <em>[TO BE SUPPLIED]</em> — notice required to release
+          goods, and what happens if storage charges fall into arrears.
+        </p>
+
+        <h2>8. Payment</h2>
+        <p><em>[TO BE SUPPLIED]</em> — accepted payment methods, when payment is
+        due relative to loading and delivery, whether any part is payable in
+        advance, and what applies to late payment.</p>
+
+        <h2>9. Complaints</h2>
+        <p>
+          Raise any problem with your coordinator first — most things are
+          fixed fastest while the crew is still on site. If it is not
+          resolved, contact us through the
+          <a href="/contact.html">contact page</a>.
+          <em>[TO BE SUPPLIED]</em> — escalation contact and the time within
+          which complaints are acknowledged.
+        </p>
+
+        <h2>10. Governing law</h2>
+        <p>
+          These terms are governed by the laws of India, and the courts at
+          <em>[TO BE SUPPLIED — city]</em> have jurisdiction.
+        </p>
+
+        <p class="form-note mt-7">
+          Last updated <time data-updated-date>11 October 2026</time>.
+        </p>
+
+      </div>
+    </div>
+  </section>

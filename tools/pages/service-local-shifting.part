@@ -1,0 +1,159 @@
+SLUG: services/local-shifting.html
+TITLE: Local Shifting in Kanpur — same-city moves
+DESC: Same-city shifting within Kanpur, usually finished in a single day. One crew end to end, a vehicle sized to your inventory, early starts to suit society timings.
+HEADING: Local shifting
+LEAD: A move within the same city, usually done inside a day — with one crew from start to finish rather than a handover halfway through.
+CRUMBS: Home|/ ; Services|/services.html ; Local shifting|
+---
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="split is-wide-left">
+        <div>
+          <h2>Short distance, same care</h2>
+          <p class="lead">
+            A local move is tempting to treat casually — it is only across
+            town, so why wrap anything? That is precisely why local moves
+            produce most of the breakages we hear about.
+          </p>
+          <p>
+            Distance is not what damages goods. Handling is: the lift, the
+            stairs, the carry to the vehicle, and the loading. All of those
+            happen in full on a two-kilometre move, so we pack and load a
+            local shift the same way we would an intercity one.
+          </p>
+          <p>
+            What does change is the schedule. Most local moves are completed
+            in a single day, which means one crew sees the job through from
+            the first carton to the last piece of furniture rebuilt.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></span>
+          <h3>Included as standard</h3>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Same-day completion for most flats up to 3 BHK</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>One crew from start to finish</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Vehicle sized to the inventory, so you are not paying for empty space</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Early starts to fit society shifting hours</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Furniture dismantled and rebuilt in place</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-sunk">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Local specifics</span>
+        <h2>The things that actually delay a local move</h2>
+        <p class="lead">None of them are the drive.</p>
+      </div>
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Society timing restrictions</h3>
+          <p>
+            Many buildings only permit shifting between fixed hours, and some
+            bar it entirely at weekends. We check this at survey, because a
+            crew that cannot start until 10am and must stop at 6pm changes the
+            whole plan.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Lift size and availability</h3>
+          <p>
+            A lift that will not take a mattress or a tall wardrobe turns part
+            of the load into a stair carry. Knowing that in advance means
+            sending the right number of people rather than discovering it at
+            8am.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Where the vehicle can stop</h3>
+          <p>
+            In older areas the truck often cannot reach the door. A fifty-metre
+            carry each way adds real time, and it is better priced into the
+            quote than argued about on the day.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Gate passes and security</h3>
+          <p>
+            Gated societies often need a pass arranged in advance for the
+            vehicle and the crew. We will tell you what to request; getting it
+            after the truck has arrived wastes an hour.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <h2>What changes the price</h2>
+          <ol class="steps mt-6">
+            <li class="step"><div>
+              <h3>Volume</h3>
+              <p>It decides the vehicle and the crew size — the two biggest lines on a local quote.</p>
+            </div></li>
+            <li class="step"><div>
+              <h3>Floor and lift</h3>
+              <p>Ground floor to ground floor with lift access at both ends is the cheapest local move there is.</p>
+            </div></li>
+            <li class="step"><div>
+              <h3>How much we pack</h3>
+              <p>On a short route, packing only the kitchen and breakables is often the sensible middle ground.</p>
+            </div></li>
+          </ol>
+        </div>
+
+        <div>
+          <h2>Questions we get asked</h2>
+          <div class="faq mt-6" data-faq>
+            <details>
+              <summary>Can you do it in one day?</summary>
+              <div class="faq__body"><p>
+                For most flats up to 3 BHK, yes — provided we can start early
+                and the building allows it. Larger homes, or a fourth floor
+                without a lift at either end, are more comfortable across two
+                days. We will tell you honestly at survey which one yours is.
+              </p></div>
+            </details>
+            <details>
+              <summary>Do I need to pack anything myself?</summary>
+              <div class="faq__body"><p>
+                No, but packing your own clothes, books and linen is the
+                easiest way to reduce a local quote, and those are the items
+                least likely to be damaged in the process.
+              </p></div>
+            </details>
+            <details>
+              <summary>Can you move at short notice?</summary>
+              <div class="faq__body"><p>
+                Often yes for local work, since no long-distance vehicle has to
+                be committed. Ask — if a crew is free we will say so, and if
+                not we will tell you rather than overbooking the day.
+              </p></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-tight cta-band">
+    <div class="wrap">
+      <div class="wrap-narrow text-centre">
+        <h2>Moving across town?</h2>
+        <p class="lead">Send both addresses and the floor numbers and we will quote it.</p>
+        <div class="btn-row mt-6 btn-row--centre">
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+          <a class="btn btn--ghost btn--lg" href="/services.html">All services</a>
+        </div>
+      </div>
+    </div>
+  </section>

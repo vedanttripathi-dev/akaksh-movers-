@@ -1,0 +1,85 @@
+# ============================================================================
+# robots.txt
+# ============================================================================
+# Replace the Sitemap domain below with the real one when the domain is live.
+# ============================================================================
+
+# --- Search engines --------------------------------------------------------
+User-agent: *
+Allow: /
+
+# The lead endpoint is not content. There is nothing there to index and a
+# crawler hitting it just burns rate limit.
+Disallow: /api/
+
+# Development files that ship in the same folder as the site: the authoring
+# tools, the local dev server and the internal handover README. None of them
+# is content, and the README is an internal document.
+#
+# Remember what this does and does not do: Disallow stops a well-behaved
+# crawler FETCHING these, it does not stop anyone opening the URL directly.
+# _redirects and _headers cover that; see README.md.
+Disallow: /tools/
+Disallow: /README.md
+Disallow: /serve.ps1
+Disallow: /.env.example
+
+# --- AI and answer-engine crawlers -----------------------------------------
+# These are allowed ON PURPOSE.
+#
+# Being quoted in ChatGPT, Perplexity, Claude and Google's AI answers is now a
+# genuine source of enquiries, and it only happens if these crawlers are
+# permitted to read the site. Blocking them is the single most common way a
+# business accidentally makes itself invisible to AI search.
+#
+# They are listed individually rather than relying on the wildcard above so
+# that the intent is explicit and nobody "tidies it up" later by mistake.
+#
+# If the business ever decides it does NOT want its content used this way,
+# change Allow to Disallow for the relevant agent — but understand that it
+# also removes the citations.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# --- Sitemap ---------------------------------------------------------------
+Sitemap: https://movers.pages.dev/sitemap.xml

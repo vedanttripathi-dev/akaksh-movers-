@@ -1,0 +1,163 @@
+SLUG: faq.html
+TITLE: Packers & Movers FAQ — Kanpur shifting questions answered
+DESC: Straight answers on booking notice, how moving costs are worked out in Kanpur, packing, damage and claims, car transport, storage, and buildings with no lift.
+HEADING: Frequently asked questions
+LEAD: The questions we are actually asked, answered properly. If yours is not here, ask us — we will add it.
+CRUMBS: Home|/ ; FAQ|
+---
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="faq" data-faq>
+
+        <details open>
+          <summary>How far in advance should I book a move?</summary>
+          <div class="faq__body"><p>
+            For a local move, one to two weeks is comfortable. For an intercity
+            move, two to three weeks gives time to survey, confirm a vehicle
+            and schedule a crew. We do take shorter-notice work when a vehicle
+            is free, so it is always worth asking — but the last few days of
+            the month book out first.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>How is the cost of a move calculated?</summary>
+          <div class="faq__body"><p>
+            Four things drive it: how much there is to move, how far it is
+            going, how much packing you want us to do, and how hard the access
+            is at each end — floor, lift and how far the vehicle can park from
+            the door. We survey first and quote in writing with those parts
+            itemised, so you can see which one is costing you money.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>Do you pack everything, or should I pack some of it myself?</summary>
+          <div class="faq__body"><p>
+            Either works. The most common arrangement is that we pack the
+            kitchen, glassware and electronics, and you handle clothes, books
+            and linen yourself. That brings both the material and the labour
+            cost down without putting the breakable things at risk. Tell us
+            which rooms you want to do and we will scope around it.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>What happens if something is damaged during the move?</summary>
+          <div class="faq__body"><p>
+            Raise it with your coordinator at delivery, while the crew is still
+            on site, and note it on the delivery sheet. That is what makes a
+            claim straightforward later. The cover itself depends on the
+            transit-insurance option you choose, which we confirm in writing
+            with your quote before the move — ask for that detail rather than
+            assuming goods are automatically insured, with us or with anyone.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>Can you move my car or bike as well?</summary>
+          <div class="faq__body"><p>
+            Yes. Vehicles travel in a covered carrier rather than being driven,
+            so no distance is added to the odometer. We need the registration
+            papers and the tank at roughly a quarter full. It can run on the
+            same booking as your household goods, and the vehicle's condition
+            is photographed at both ends.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>What if my new home is not ready on the delivery date?</summary>
+          <div class="faq__body"><p>
+            Tell us as early as you can and we will hold the consignment in
+            storage and deliver when you are ready. Storage is charged
+            separately from the move, by duration, and we confirm that rate
+            before anything goes into the facility. Arranging it in advance
+            always costs less than arranging it on the day.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>My building has no lift and narrow stairs. Is that a problem?</summary>
+          <div class="faq__body"><p>
+            Not if we know in advance. What causes delays and extra cost is
+            finding out on the day. During the survey we check the floor, the
+            lift size, the stair width and how far the vehicle can park from
+            the door, then plan the crew size and equipment around it. A fourth
+            floor without a lift needs more people, not more hours.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>Do you work on Sundays and public holidays?</summary>
+          <div class="faq__body"><p>
+            Yes. For office relocations a weekend is usually the better choice,
+            because it gives two clear days to move and reconnect everything
+            before staff return. Weekend slots fill earlier, so book ahead.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>Can you move plants, pets, or a gas cylinder?</summary>
+          <div class="faq__body"><p>
+            Plants travel badly in a sealed vehicle over long distances and we
+            will say so rather than take the money; for a local move they are
+            usually fine. Pets should travel with you, not in the goods
+            vehicle. Gas cylinders cannot be carried loaded — have the cylinder
+            emptied and the connection removed by the supplier before the day.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>Do I need to be there on the day?</summary>
+          <div class="faq__body"><p>
+            Someone should be, at both ends, to sign the inventory and to say
+            where things go. It does not have to be you — but it should be
+            somebody who can make decisions, because "leave it, they will
+            know" is how boxes end up in the wrong room.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>How much notice do you need to cancel or reschedule?</summary>
+          <div class="faq__body"><p>
+            Tell us as soon as you know. A date moved with several days'
+            notice is usually straightforward. Cancellation terms, including
+            any charge once a vehicle and crew have been committed, are set
+            out with your written quote — read that section before you accept,
+            with us or with any mover.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>Will one vehicle be enough for my things?</summary>
+          <div class="faq__body"><p>
+            That is exactly what the survey settles. Under-sizing the vehicle
+            is the classic way a cheap quote becomes an expensive day, because
+            a second trip is charged on top. We size the vehicle against the
+            inventory and tell you which one we are sending.
+          </p></div>
+        </details>
+
+      </div>
+
+      <p class="mt-7">
+        <a class="link-cta" href="/contact.html">
+          Still have a question? Ask us
+          <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section is-tight cta-band">
+    <div class="wrap">
+      <div class="wrap-narrow text-centre">
+        <h2>Get a straight answer and a written quote</h2>
+        <p class="lead">Two minutes of detail is usually enough for us to scope the job.</p>
+        <div class="btn-row mt-6 btn-row--centre">
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+        </div>
+      </div>
+    </div>
+  </section>

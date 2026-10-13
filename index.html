@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- =========================================================================
+     SEO METADATA
+     The title, description and canonical URL are page-specific. The domain
+     appears here as well as in js/config.js so that crawlers and visitors
+     without JavaScript still see it. If you change the domain, run the
+     find-and-replace documented in README.md.
+     ====================================================================== -->
+<title>Packers &amp; Movers in Kanpur | Akash Movers</title>
+<meta name="description" content="Home shifting, office relocation, packing and car transport in Kanpur. Based in Arya Nagar — surveyed first, quoted in writing, moved by our own crew.">
+<link rel="canonical" href="https://movers.pages.dev/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Akash Movers">
+<meta property="og:title" content="Packers &amp; Movers in Kanpur | Akash Movers">
+<meta property="og:description" content="Home shifting, office relocation, packing and car transport in Kanpur. Based in Arya Nagar — surveyed first, quoted in writing, moved by our own crew.">
+<meta property="og:url" content="https://movers.pages.dev/">
+<meta property="og:image" content="https://movers.pages.dev/assets/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Packers &amp; Movers in Kanpur | Akash Movers">
+<meta name="twitter:description" content="Home shifting, office relocation, packing and car transport in Kanpur. Based in Arya Nagar — surveyed first, quoted in writing, moved by our own crew.">
+<meta name="twitter:image" content="https://movers.pages.dev/assets/images/og-image.png">
+
+<meta name="theme-color" content="#05101f">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml">
+<link rel="manifest" href="/site.webmanifest">
+<!-- Still to add before launch, once the logo exists: /favicon.ico,
+     /assets/icons/apple-touch-icon.png (180×180) and the og:image above.
+     They are listed in README.md § Assets still required. Links to them are
+     deliberately absent until the files exist, so nothing 404s. -->
+
+<!-- The two faces used above the fold. Preloaded so the headline and body
+     paint in the real typefaces rather than flashing a fallback first.
+     `crossorigin` is required on font preloads even for same-origin files —
+     without it the browser fetches the file twice. -->
+<link rel="preload" href="/assets/fonts/playfair-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="/css/style.css">
+
+<!-- Marks that JavaScript is available, so the stylesheet can safely hide
+     elements it will later reveal. Without this, a failed script would leave
+     content permanently invisible.
+     NOTE: _headers allows this script by SHA-256 hash. If you edit even one
+     character, recompute the hash (see README.md § Content Security Policy). -->
+<script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- =========================================================================
+     ICON SPRITE
+     One inline SVG sprite, so icons cost no extra network requests and can
+     inherit colour from their parent. Referenced as <use href="#i-name">.
+     ====================================================================== -->
+<svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16"/><path d="M15 9h3a2 2 0 0 1 2 2v10"/><path d="M8 7h3M8 11h3M8 15h3M2 21h20"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="5.5" r="2.5"/><path d="M8 18.5h5a4 4 0 0 0 0-8H9a4 4 0 0 1 0-8h2.5"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16v-3.2L5.8 8A2 2 0 0 1 7.7 6.6h8.6A2 2 0 0 1 18.2 8L20 12.8V16"/><path d="M3 16h18v3h-3.5M3 19h4.5"/><circle cx="7.5" cy="19" r="1.6"/><circle cx="16.5" cy="19" r="1.6"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M3.5 7.5 12 3.5l8.5 4v9L12 20.5l-8.5-4Z"/><path d="M3.5 7.5 12 11.6l8.5-4.1M12 11.6v8.9"/></symbol>
+    <symbol id="i-lift" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M12 3v18M8 9l-1.2 1.4M8 9l1.2 1.4M16 15l-1.2-1.4M16 15l1.2-1.4"/></symbol>
+    <symbol id="i-warehouse" viewBox="0 0 24 24"><path d="M3 21V9l9-5 9 5v12"/><path d="M7 21v-7h10v7"/><path d="M7 17.5h10"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 7.5h11v9H2z"/><path d="M13 10.5h4.2L21 14v2.5h-8"/><circle cx="6" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3l1.6 4-2 1.4a11 11 0 0 0 5.5 5.5l1.4-2 4 1.6v3A1.9 1.9 0 0 1 16.6 19 14 14 0 0 1 5 7.4 1.9 1.9 0 0 1 5 3.5Z"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M12 3.2a8.7 8.7 0 0 0-7.4 13.3L3.4 20.8l4.4-1.2A8.7 8.7 0 1 0 12 3.2Z"/><path d="M8.9 8.3c.3-.6.6-.6.9-.6h.6l.9 2-.8.9a6 6 0 0 0 2.9 2.9l.9-.8 2 .9v.6c0 .3 0 .6-.6.9a2.4 2.4 0 0 1-2.2.2 9.3 9.3 0 0 1-4.8-4.8 2.4 2.4 0 0 1 .2-2.2Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.6 6.5 8.4 6 8.4-6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.2 2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></symbol>
+    <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12.4 2.6 2.6L16 9.5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 5.8v5.4c0 4.4 3 8.1 7 9.8 4-1.7 7-5.4 7-9.8V5.8Z"/><path d="m9 12.2 2.1 2.1L15.2 10"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4.5 12h15M14 6.5 19.5 12 14 17.5"/></symbol>
+    <!-- One star shape for both states. A filled star is the same outline
+         with `fill: currentColor`, applied by `.stars__star.is-on` in the
+         stylesheet — two symbols would be two chances to draw them slightly
+         differently. -->
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.2l2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.9-5.4 2.9 1-6-4.4-4.3 6.1-.9Z"/></symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 4.5v15M6.5 14 12 19.5 17.5 14"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4 2.8 20h18.4Z"/><path d="M12 10v4.2M12 17.2v.1"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.2 20a5.8 5.8 0 0 1 11.6 0"/><path d="M16.5 5.2a3.2 3.2 0 0 1 0 5.6M18 20a5.6 5.6 0 0 0-2.3-4.5"/></symbol>
+    <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-1.6-3 1.6-3-1.6L6 21Z"/><path d="M9.5 8h5M9.5 12h5"/></symbol>
+    <symbol id="i-wrap" viewBox="0 0 24 24"><rect x="3.5" y="6" width="17" height="12" rx="2"/><path d="M3.5 10h17M8 6v12M16 6v12"/></symbol>
+    <symbol id="i-headset" viewBox="0 0 24 24"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><rect x="2.5" y="13" width="4" height="6" rx="1.6"/><rect x="17.5" y="13" width="4" height="6" rx="1.6"/><path d="M19.5 19v.5a2.5 2.5 0 0 1-2.5 2.5h-3"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3.5v11M7.5 10.5 12 15l4.5-4.5"/><path d="M4.5 19h15"/></symbol>
+  </defs>
+</svg>
+
+<!-- =========================================================================
+     HEADER
+     ====================================================================== -->
+<header class="header" id="header">
+  <div class="wrap">
+    <div class="header__bar">
+      <a class="brand" href="/">
+        <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+          <rect x="1" y="1" width="38" height="38" rx="9" fill="#f5a524"/>
+          <path d="M8 24.5V14h12v4h4.6L30 22.2v2.3h-3" stroke="#1a1203" stroke-width="2" fill="none" stroke-linejoin="round"/>
+          <circle cx="13" cy="26.5" r="2.2" fill="#1a1203"/>
+          <circle cx="25" cy="26.5" r="2.2" fill="#1a1203"/>
+        </svg>
+        <!-- The real name is written in here as well as being injected from
+             config, so a crawler or a visitor with JavaScript off still sees
+             it. js/main.js overwrites it from business.name, so the two can
+             only differ if config is changed without updating this fallback. -->
+        <span class="brand__name">
+          <span data-config="business.name">Akash Movers</span>
+          <span class="brand__sub">Kanpur</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="/services.html">Services</a>
+        <a href="/locations.html">Service areas</a>
+        <a href="/#how-it-works">How it works</a>
+        <a href="/about.html">About</a>
+        <a href="/faq.html">FAQ</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--ghost-dark btn--sm" data-tel-link hidden>
+          <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
+          <span data-config="contact.phoneDisplay">Call</span>
+        </a>
+        <a class="btn btn--primary btn--sm" href="/contact.html" data-open-quote>Get free estimate</a>
+        <button class="nav-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="navDrawer" aria-label="Open menu">
+          <svg class="ic ic--lg" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div class="nav-drawer" id="navDrawer">
+    <div class="wrap">
+      <div class="nav-drawer__inner">
+        <nav aria-label="Mobile">
+          <a href="/services.html">Services</a>
+          <a href="/locations.html">Service areas</a>
+          <a href="/#how-it-works">How it works</a>
+          <a href="/about.html">About</a>
+          <a href="/faq.html">FAQ</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+        <a class="btn btn--primary btn--block" href="/contact.html" data-open-quote>Get free estimate</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- =======================================================================
+       HERO
+       The <h1> and the CTAs sit in their own grid column, so the 3D canvas
+       beside them can never overlap or obscure them. The canvas container
+       has a reserved aspect ratio, so loading it shifts nothing.
+       ==================================================================== -->
+  <!-- `on-dark` is not decoration. It is the class that flips the text, lead,
+     eyebrow, link and ghost-button colours to their dark-background values.
+     This section sets its own background and text colour, but without the
+     class none of its CHILDREN were flipped — the WhatsApp ghost button was
+     rendering near-black text on near-black at 1.06:1, and the eyebrow used
+     the light-background amber at 3.52:1. Do not remove it. -->
+<section class="hero on-dark" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero__inner">
+
+        <div class="hero__copy">
+          <span class="eyebrow">Kanpur · Packing · Transport · Unpacking</span>
+          <h1 id="hero-title">Akash Movers</h1>
+
+          <!-- The business's own tagline, sitting directly under the name.
+               It is filled from `business.tagline` in js/config.js rather than
+               being typed here, so the hero, the Organization schema and
+               anywhere else it appears can never drift apart. The text below
+               is the fallback a crawler or a visitor without JavaScript sees,
+               so it must stay identical to the configured value. -->
+          <p class="hero__tagline" data-config="business.tagline">Excellence through service.</p>
+
+          <p class="hero__lead">
+            Shifting homes and offices in Kanpur since 1983 — from careful packing
+            to safe delivery, anywhere in the city or out of it. Trained crews, an
+            itemised written quote, and one coordinator who stays with you from
+            survey to final carton.
+          </p>
+
+          <div class="btn-row">
+            <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>
+              Get free moving estimate
+            </a>
+            <a class="btn btn--ghost btn--lg" data-wa-link hidden>
+              <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              Chat on WhatsApp
+            </a>
+          </div>
+
+          <!-- Service commitments, not guarantees. Each one describes how the
+               company works rather than promising an outcome it cannot
+               control. Do not add insurance, timing or compensation claims
+               here unless the business can actually honour them. -->
+          <ul class="hero__points">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-receipt"/></svg> Itemised written quote</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-wrap"/></svg> Multi-layer packing</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-headset"/></svg> One named coordinator</li>
+          </ul>
+        </div>
+
+        <!-- The 3D stage. js/truck3d.js replaces the poster with a live
+             WebGL scene only when the device can comfortably run it. -->
+        <div class="hero__stage" id="heroStage">
+          <img class="hero__fallback" src="/assets/images/hero-truck.svg"
+               alt="A packing-and-moving truck loaded and ready to depart."
+               width="800" height="600" fetchpriority="high" decoding="async">
+          <p class="stage-loading" aria-hidden="true">Preparing 3D view</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="hero__cue" aria-hidden="true">
+      Scroll
+      <svg class="ic ic--cue"><use href="#i-arrow-down"/></svg>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       TRUST STRIP
+       ==================================================================== -->
+  <section class="trust" aria-labelledby="trust-title">
+    <div class="wrap">
+      <!-- A real heading rather than an aria-label, so the document outline
+           runs h1 → h2 → h3 without a skipped level. Visually hidden because
+           the four items below speak for themselves on screen. -->
+      <h2 class="sr-only" id="trust-title">Why customers choose us</h2>
+      <div class="trust__grid">
+        <div class="trust__item">
+          <svg class="ic" aria-hidden="true"><use href="#i-receipt"/></svg>
+          <div>
+            <h3>Transparent estimates</h3>
+            <p>A written, itemised quote before any work begins — so the final bill holds no surprises.</p>
+          </div>
+        </div>
+        <div class="trust__item">
+          <svg class="ic" aria-hidden="true"><use href="#i-wrap"/></svg>
+          <div>
+            <h3>Careful handling</h3>
+            <p>Fragile items wrapped in layers, furniture dismantled properly and rebuilt on arrival.</p>
+          </div>
+        </div>
+        <div class="trust__item">
+          <svg class="ic" aria-hidden="true"><use href="#i-headset"/></svg>
+          <div>
+            <h3>Dedicated support</h3>
+            <p>One coordinator for your move, reachable on call and WhatsApp through the day.</p>
+          </div>
+        </div>
+        <div class="trust__item">
+          <svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>
+          <div>
+            <h3>Trained crews</h3>
+            <p>The same in-house teams on every job, briefed on your inventory before they arrive.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       SCROLL JOURNEY — the signature feature
+       Six stages. On desktop the visual column is pinned by GSAP while this
+       text scrolls; on phones pinning is disabled and the stages simply
+       reveal in order. The markup is complete and readable either way, so
+       the story survives with JavaScript switched off.
+       ==================================================================== -->
+  <!-- `on-dark` for the same reason as the hero above: this section's own lead
+       paragraph was using the light-background grey at 2.52:1, and its inline
+       `.link-cta` links the light-background amber at 3.52:1. -->
+  <section class="journey on-dark" id="how-it-works" aria-labelledby="journey-title" data-journey>
+    <div class="wrap">
+      <div class="journey__head">
+        <div class="section-head">
+          <span class="eyebrow">How your move works</span>
+          <h2 id="journey-title">Six stages, one truck, nothing left to chance</h2>
+          <p class="lead">
+            Every move we run follows the same sequence. Here is exactly what happens,
+            in the order it happens, so you know what to expect on the day.
+          </p>
+        </div>
+      </div>
+
+      <div class="journey__layout">
+
+        <!-- The pinned visual: road, progress and the travelling truck. -->
+        <div class="journey__visual" aria-hidden="true">
+
+          <!-- Two slow-drifting pools of warm light, so the panel is never a
+               flat black rectangle. Pure CSS, composited, no JS. -->
+          <span class="journey__glow journey__glow--a"></span>
+          <span class="journey__glow journey__glow--b"></span>
+
+          <svg class="journey__road" viewBox="0 0 400 400" preserveAspectRatio="none" data-road>
+            <defs>
+              <!-- The travelled road runs from deep bronze up to near-white,
+                   so the freshest part of the trail is the brightest. -->
+              <linearGradient id="roadGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#9a5b06"/>
+                <stop offset="0.55" stop-color="#ffc15e"/>
+                <stop offset="1" stop-color="#fff1d4"/>
+              </linearGradient>
+            </defs>
+
+            <!-- The road still to travel. -->
+            <path class="road-line" data-road-path
+                  d="M58 34 C 58 96, 342 104, 342 158 S 58 206, 58 252 S 236 296, 334 286"/>
+
+            <!-- Bloom under the trail. A fat, faint stroke rather than an SVG
+                 blur filter: it reads almost identically and costs a fraction
+                 as much on a phone GPU. -->
+            <path class="road-bloom" data-road-bloom
+                  d="M58 34 C 58 96, 342 104, 342 158 S 58 206, 58 252 S 236 296, 334 286"/>
+
+            <!-- The travelled road. -->
+            <path class="road-done" data-road-progress
+                  d="M58 34 C 58 96, 342 104, 342 158 S 58 206, 58 252 S 236 296, 334 286"/>
+          </svg>
+
+          <!-- One pin per stage, placed along the road by journey.js and lit
+               as the truck passes each one. -->
+          <div class="journey__pins" data-journey-pins></div>
+
+          <svg class="journey__truck" viewBox="0 0 92 46" width="92" height="46" data-journey-truck>
+            <!-- Dust kicked up behind the rear wheels while moving. -->
+            <g class="jt-dust">
+              <circle class="jt-dust__p jt-dust__p--1" cx="6" cy="38" r="3"/>
+              <circle class="jt-dust__p jt-dust__p--2" cx="6" cy="38" r="2.4"/>
+              <circle class="jt-dust__p jt-dust__p--3" cx="6" cy="38" r="1.8"/>
+            </g>
+
+            <!-- Headlight beam, ahead of the cab. -->
+            <path class="jt-beam" d="M74 30 L92 22 L92 38 Z"/>
+
+            <!-- Cargo body. -->
+            <rect x="4" y="10" width="46" height="24" rx="3" fill="#12263c"/>
+            <rect x="4" y="10" width="46" height="24" rx="3" fill="none" stroke="#3d5873" stroke-width="1"/>
+            <path class="jt-ribs" d="M12 13v18M20 13v18M28 13v18M36 13v18M44 13v18"/>
+            <rect x="4" y="31" width="46" height="2.4" rx="1" fill="#f5a524"/>
+
+            <!-- Cab. -->
+            <rect x="50" y="16" width="21" height="18" rx="3" fill="#f5a524"/>
+            <rect x="54" y="19" width="11" height="8" rx="2" fill="#1a1203" opacity="0.85"/>
+            <rect x="69" y="27" width="4" height="4" rx="1" fill="#fff4e0"/>
+
+            <!-- Wheels. Rotated by journey.js in proportion to distance
+                 travelled, so they only turn when the page actually moves. -->
+            <g class="jt-wheel" data-wheel>
+              <circle cx="17" cy="37" r="5.6" fill="#040d19"/>
+              <circle cx="17" cy="37" r="2.1" fill="#a3b6ca"/>
+              <path d="M17 32.4v9.2M12.4 37h9.2" stroke="#3d5873" stroke-width="1.1"/>
+            </g>
+            <g class="jt-wheel" data-wheel>
+              <circle cx="41" cy="37" r="5.6" fill="#040d19"/>
+              <circle cx="41" cy="37" r="2.1" fill="#a3b6ca"/>
+              <path d="M41 32.4v9.2M36.4 37h9.2" stroke="#3d5873" stroke-width="1.1"/>
+            </g>
+            <g class="jt-wheel" data-wheel>
+              <circle cx="62" cy="37" r="5.6" fill="#040d19"/>
+              <circle cx="62" cy="37" r="2.1" fill="#a3b6ca"/>
+              <path d="M62 32.4v9.2M57.4 37h9.2" stroke="#3d5873" stroke-width="1.1"/>
+            </g>
+          </svg>
+
+          <div class="journey__meter">
+            <span data-journey-label>Plan</span>
+            <span class="journey__meter-track"><span class="journey__meter-fill" data-journey-fill></span></span>
+            <span class="num" data-journey-pct>0%</span>
+          </div>
+        </div>
+
+        <!-- The six stages. -->
+        <ol class="journey__stages" data-journey-stages>
+          <li class="stage" data-stage="Plan">
+            <span class="stage__num" aria-hidden="true">01</span>
+            <div>
+              <h3>Plan your move</h3>
+              <p>
+                We survey your home — in person or over a video call — and list every
+                item that is going. That list becomes your quote, so nothing is
+                priced on guesswork.
+              </p>
+              <ul class="stage__list">
+                <li>Room-by-room inventory</li>
+                <li>Access, lift and parking checked in advance</li>
+                <li>Written quote, itemised</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="stage" data-stage="Pack">
+            <span class="stage__num" aria-hidden="true">02</span>
+            <div>
+              <h3>Professional packing</h3>
+              <p>
+                Crockery, glass and electronics are wrapped in layers and boxed by
+                room. Every carton is labelled with its room and contents before it
+                leaves the floor.
+              </p>
+              <ul class="stage__list">
+                <li>Bubble wrap, corrugated sheets and stretch film</li>
+                <li>Furniture dismantled and hardware bagged to its own item</li>
+                <li>Cartons labelled by room and contents</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="stage" data-stage="Load">
+            <span class="stage__num" aria-hidden="true">03</span>
+            <div>
+              <h3>Loading</h3>
+              <p>
+                Heavy items go in first and low, fragile cartons ride on top, and the
+                load is strapped so nothing shifts in transit. Stairs and buildings
+                without a lift are planned for, not improvised.
+              </p>
+              <ul class="stage__list">
+                <li>Weight distributed low and strapped</li>
+                <li>Trolleys and lifting straps for heavy furniture</li>
+                <li>Loading sheet signed off with you</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="stage" data-stage="Transit">
+            <span class="stage__num" aria-hidden="true">04</span>
+            <div>
+              <h3>Transportation</h3>
+              <p>
+                Your consignment travels in a dedicated vehicle sized to your
+                inventory. You get the driver's number and your coordinator stays
+                reachable for the whole journey.
+              </p>
+              <ul class="stage__list">
+                <li>Dedicated vehicle, not a shared part-load unless you choose it</li>
+                <li>Driver contact shared with you on dispatch</li>
+                <li>Progress updates on WhatsApp</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="stage" data-stage="Deliver">
+            <span class="stage__num" aria-hidden="true">05</span>
+            <div>
+              <h3>Safe delivery</h3>
+              <p>
+                We unload by room against the same inventory list, rebuild the
+                furniture we dismantled, and take the empty cartons and packing
+                material away with us.
+              </p>
+              <ul class="stage__list">
+                <li>Checked back against the original inventory</li>
+                <li>Furniture reassembled and placed where you want it</li>
+                <li>Packing waste removed</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="stage" data-stage="Quote">
+            <span class="stage__num" aria-hidden="true">06</span>
+            <div>
+              <h3>Get your estimate</h3>
+              <p>
+                Tell us what is moving and where it is going. You will get a written
+                quote with the work itemised, and no obligation to book.
+              </p>
+              <div class="btn-row mt-5">
+                <a class="btn btn--primary" href="/contact.html" data-open-quote>Get free estimate</a>
+                <a class="link-cta" href="/faq.html">
+                  How pricing works
+                  <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+                </a>
+              </div>
+            </div>
+          </li>
+        </ol>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       SERVICES
+       ==================================================================== -->
+  <section class="section on-paper" id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What we do</span>
+        <h2 id="services-title">Services built around how people actually move</h2>
+        <p class="lead">
+          Whether it is a one-room flat across town or an office that has to be
+          running again on Monday, the work is scoped to the job rather than sold
+          as a package.
+        </p>
+      </div>
+
+      <div class="grid grid-3 reveal-group" data-services-grid>
+        <!-- Rendered from SITE_CONFIG.services by js/main.js so this list can
+             never drift from the services used in the structured data.
+             The no-JavaScript fallback below is replaced on load. -->
+        <noscript>
+          <ul>
+            <li>Home shifting</li>
+            <li>Office and commercial relocation</li>
+            <li>Local shifting</li>
+            <li>Intercity and long-distance moving</li>
+            <li>Car and bike transportation</li>
+            <li>Packing and unpacking</li>
+            <li>Loading and unloading</li>
+            <li>Storage and warehousing</li>
+          </ul>
+        </noscript>
+      </div>
+
+      <div class="btn-row mt-7">
+        <a class="btn btn--ghost" href="/services.html">
+          All services in detail
+          <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       WHY CHOOSE US
+       ==================================================================== -->
+  <section class="section on-paper" aria-labelledby="why-title">
+    <div class="wrap">
+      <div class="split is-wide-left">
+        <div>
+          <span class="eyebrow">Why choose us</span>
+          <h2 id="why-title">The boring parts, done properly</h2>
+          <p class="lead">
+            Most moving complaints are not about the truck. They are about a quote
+            that changed, a crew that arrived without the right material, or nobody
+            answering the phone on the day. That is what we organise around.
+          </p>
+          <div class="btn-row mt-6">
+            <a class="btn btn--primary" href="/contact.html" data-open-quote>Get free estimate</a>
+            <a class="btn btn--ghost" href="/about.html">About us</a>
+          </div>
+        </div>
+
+        <div class="grid reveal-group gap-6">
+          <div class="feature">
+            <svg class="ic" aria-hidden="true"><use href="#i-receipt"/></svg>
+            <div>
+              <h3>The quote is the quote</h3>
+              <p>Priced off a real inventory, itemised in writing. If the scope changes on the day, you approve it before we proceed.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <svg class="ic" aria-hidden="true"><use href="#i-box"/></svg>
+            <div>
+              <h3>Material arrives with the crew</h3>
+              <p>Cartons, wrap and tools are loaded against your inventory the night before, so the team is never short on site.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <svg class="ic" aria-hidden="true"><use href="#i-headset"/></svg>
+            <div>
+              <h3>Somebody answers</h3>
+              <p>One coordinator owns your move end to end. You are not re-explaining your job to whoever picks up.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg>
+            <div>
+              <h3>Checked both ends</h3>
+              <p>The same inventory list is signed at pickup and at delivery, so anything missing is obvious immediately.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       TESTIMONIALS
+       The demo entries carry a visible notice and are excluded from all
+       structured data. See SITE_CONFIG.testimonials.
+       ==================================================================== -->
+  <section class="section on-sunk" id="reviews" aria-labelledby="reviews-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Customer feedback</span>
+        <h2 id="reviews-title">What customers say</h2>
+      </div>
+      <div data-testimonials></div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       SERVICE AREAS
+       Rendered from SITE_CONFIG.serviceAreas. Hidden entirely while that
+       list is empty, rather than printing invented city names.
+       ==================================================================== -->
+  <section class="section on-paper" id="areas" aria-labelledby="areas-title" data-areas-section hidden>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Where we work</span>
+        <h2 id="areas-title">Service areas</h2>
+        <p class="lead">Cities we cover with our own crews. Moving somewhere not listed? Ask us — we may still be able to help.</p>
+      </div>
+      <div class="grid grid-4 reveal-group" data-areas-grid></div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       FAQ
+       Built on <details> so every answer is in the HTML and crawlable, and
+       the section still works without JavaScript. Keep the wording here
+       identical to the FAQPage structured data — Google requires that the
+       answer it shows is visible on the page.
+       ==================================================================== -->
+  <section class="section on-sunk" id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Questions</span>
+        <h2 id="faq-title">Frequently asked questions</h2>
+      </div>
+
+      <div class="faq" data-faq>
+        <details>
+          <summary>How far in advance should I book a move?</summary>
+          <div class="faq__body"><p>
+            For a local move, about one to two weeks is comfortable. For an intercity
+            move, two to three weeks gives us time to survey, confirm a vehicle and
+            schedule the crew. We do take shorter-notice jobs when a vehicle is free,
+            so it is always worth asking.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>How is the cost of a move calculated?</summary>
+          <div class="faq__body"><p>
+            Four things drive the figure: how much there is to move, how far it is
+            going, how much packing you want us to do, and how hard the access is at
+            each end — floor, lift and parking distance. We survey first and give you
+            an itemised written quote, so you can see which part of the job costs what.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>Do you pack everything, or should I pack some of it myself?</summary>
+          <div class="faq__body"><p>
+            Either works. Most customers have us pack the kitchen, glass and
+            electronics and handle their own clothes and books, which brings the
+            material and labour cost down. Tell us which rooms you want to do
+            yourself and we will scope around it.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>What happens if something is damaged during the move?</summary>
+          <div class="faq__body"><p>
+            Raise it with your coordinator at delivery, while the crew is still on
+            site, and note it on the delivery sheet — that is what makes a claim
+            straightforward later. The exact cover and claims process depends on the
+            transit-insurance option you choose, which we confirm in writing with
+            your quote before the move.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>Can you move my car or bike as well?</summary>
+          <div class="faq__body"><p>
+            Yes. Vehicles travel in a covered carrier rather than being driven across,
+            so no distance is added to the odometer. We need the registration papers
+            and the vehicle to be at roughly a quarter tank. It can run on the same
+            booking as your household goods.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>What if my new home is not ready on the delivery date?</summary>
+          <div class="faq__body"><p>
+            Tell us as early as you can and we will hold the consignment in storage
+            and deliver when you are ready. Storage is charged separately from the
+            move, by duration, and we confirm that rate before anything goes into
+            the facility.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>Which buildings are a problem — no lift, narrow stairs, tight parking?</summary>
+          <div class="faq__body"><p>
+            None of them are a problem if we know in advance. What causes delays is
+            finding out on the day. During the survey we check the floor, the lift
+            size, stair width and how far the truck can park from the door, and we
+            plan the crew size and equipment around it.
+          </p></div>
+        </details>
+
+        <details>
+          <summary>Do you work on Sundays and public holidays?</summary>
+          <div class="faq__body"><p>
+            Yes, and for office relocations a weekend is usually the better choice,
+            because it gives us two clear days to move and reconnect everything
+            before staff return. Weekend slots fill earlier, so book ahead.
+          </p></div>
+        </details>
+      </div>
+
+      <p class="mt-6"><a class="link-cta" href="/faq.html">
+        More questions answered
+        <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+      </a></p>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       FINAL CTA
+       ==================================================================== -->
+  <section class="section is-tight cta-band" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="wrap-narrow text-centre">
+        <h2 id="cta-title">Tell us what is moving</h2>
+        <p class="lead">
+          Share a few details and you will get a written, itemised quote with no
+          obligation. It takes about two minutes.
+        </p>
+        <div class="btn-row mt-6 btn-row--centre">
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+          <a class="btn btn--ghost btn--lg" data-wa-link hidden>
+            <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+            Chat on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- =========================================================================
+     FOOTER
+     ====================================================================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+
+      <div class="footer__about">
+        <a class="brand mb-4" href="/">
+          <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+            <rect x="1" y="1" width="38" height="38" rx="9" fill="#f5a524"/>
+            <path d="M8 24.5V14h12v4h4.6L30 22.2v2.3h-3" stroke="#1a1203" stroke-width="2" fill="none" stroke-linejoin="round"/>
+            <circle cx="13" cy="26.5" r="2.2" fill="#1a1203"/>
+            <circle cx="25" cy="26.5" r="2.2" fill="#1a1203"/>
+          </svg>
+          <span class="brand__name" data-config="business.name">Akash Movers</span>
+        </a>
+        <p>Packing, loading, transport and unpacking for homes and offices in Kanpur and across India. Surveyed first, quoted in writing, moved by our own crews.</p>
+        <div class="socials" data-socials hidden></div>
+      </div>
+
+      <div>
+        <h3>Services</h3>
+        <ul data-footer-services></ul>
+      </div>
+
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="/about.html">About us</a></li>
+          <li><a href="/locations.html">Service areas</a></li>
+          <li><a href="/#how-it-works">How it works</a></li>
+          <li><a href="/faq.html">FAQ</a></li>
+          <li><a href="/guides/moving-checklist.html">Moving checklist</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Get in touch</h3>
+        <ul>
+          <li data-footer-phone hidden><a data-tel-link><span data-config="contact.phoneDisplay"></span></a></li>
+          <li data-footer-wa hidden><a data-wa-link>WhatsApp</a></li>
+          <li data-footer-email hidden><a data-mail-link><span data-config="contact.email"></span></a></li>
+          <li data-footer-gbp hidden><a data-gbp-link rel="noopener noreferrer" target="_blank">Google Business Profile</a></li>
+        </ul>
+        <p class="mt-5 footer__note" data-footer-address hidden></p>
+      </div>
+
+    </div>
+
+    <div class="footer__legal">
+      <span>&copy; <span data-year>2026</span> <span data-config="business.name">Akash Movers</span>. All rights reserved.</span>
+      <nav aria-label="Legal">
+        <a href="/privacy.html">Privacy policy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp (desktop) and the sticky call/WhatsApp bar (mobile).
+     Both are injected by main.js only when a number is configured. -->
+
+<!-- =========================================================================
+     SCRIPTS
+     GSAP loads first as a classic script (it defines the globals the journey
+     module expects). Everything written for this site is an ES module, so it
+     is deferred automatically and never blocks rendering. Three.js is NOT
+     loaded here — truck3d.js imports it dynamically, and only on devices
+     that can run it, so phones never download 670 KB they cannot use.
+     ====================================================================== -->
+<script src="/vendor/gsap.min.js" defer></script>
+<script src="/vendor/ScrollTrigger.min.js" defer></script>
+<script type="module" src="/js/main.js"></script>
+</body>
+</html>

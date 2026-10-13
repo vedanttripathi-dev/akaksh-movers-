@@ -1,0 +1,245 @@
+SLUG: services.html
+TITLE: Moving Services in Kanpur — home, office, packing & storage
+DESC: Home shifting, office relocation, local and intercity moving, car transport, packing, loading and storage in Kanpur. What each service includes and what drives its cost.
+HEADING: Services built around how people actually move
+LEAD: Every move is scoped to the job rather than sold as a package. Below is what each service actually covers, and the things that change what it costs — so you can tell in advance which parts you need.
+CRUMBS: Home|/ ; Services|
+---
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="grid grid-3 reveal-group" data-services-grid>
+        <noscript>
+          <ul>
+            <li>Home shifting</li>
+            <li>Office and commercial relocation</li>
+            <li>Local shifting</li>
+            <li>Intercity and long-distance moving</li>
+            <li>Car and bike transportation</li>
+            <li>Packing and unpacking</li>
+            <li>Loading and unloading</li>
+            <li>Storage and warehousing</li>
+          </ul>
+        </noscript>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-sunk" id="detail">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">In detail</span>
+        <h2>What each service covers</h2>
+        <p class="lead">
+          Most quotes are a combination of two or three of these rather than
+          one. You are not obliged to take the whole list.
+        </p>
+      </div>
+
+      <div class="grid grid-2">
+
+        <article class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg></span>
+          <h3>Home shifting</h3>
+          <p>
+            A full household move, run room by room. We inventory what is
+            going, pack it, dismantle the furniture that needs it, load, move,
+            and rebuild at the other end against the same list.
+          </p>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Room-by-room inventory that becomes your quote</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Beds, wardrobes and modular units dismantled and reassembled</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Cartons labelled by room so unpacking is not a treasure hunt</span></li>
+          </ul>
+          <p class="form-note mt-5">
+            <strong>What changes the price:</strong> the number of rooms, how
+            much of the packing you want us to do, and the access at both ends.
+          </p>
+          <a class="link-cta" href="/services/home-shifting.html">
+            Home shifting in detail
+            <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-building"/></svg></span>
+          <h3>Office &amp; commercial relocation</h3>
+          <p>
+            Planned around your downtime rather than ours. Workstations,
+            server racks, records and furniture are moved in a sequence agreed
+            in advance so the business can open on schedule.
+          </p>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Weekend and overnight slots, so staff return to a working office</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Desks numbered and mapped to the new floor plan before the move</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Documents moved in sealed, numbered crates</span></li>
+          </ul>
+          <p class="form-note mt-5">
+            <strong>What changes the price:</strong> headcount, how much IT has
+            to be disconnected and reconnected, and lift access in both buildings.
+          </p>
+          <a class="link-cta" href="/services/office-relocation.html">
+            Office relocation in detail
+            <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></span>
+          <h3>Local shifting</h3>
+          <p>
+            A move within the same city, usually finished inside a single day.
+            The vehicle is sized to your inventory so you are not paying for
+            empty space, and the crew stays with the job from start to finish.
+          </p>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Same-day completion for most flats up to 3 BHK</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Early starts to work around society timing restrictions</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>One crew end to end, not a handover halfway</span></li>
+          </ul>
+          <p class="form-note mt-5">
+            <strong>What changes the price:</strong> floor and lift access,
+            how far the truck can park from the door, and the volume.
+          </p>
+          <a class="link-cta" href="/services/local-shifting.html">
+            Local shifting in detail
+            <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-route"/></svg></span>
+          <h3>Intercity &amp; long-distance moving</h3>
+          <p>
+            City-to-city relocation in a dedicated vehicle. Your consignment
+            is not consolidated with other households unless you choose a
+            shared load to bring the cost down.
+          </p>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Dedicated vehicle by default; shared part-load offered if you want it</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Driver's contact shared with you at dispatch</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Delivery window agreed before the vehicle leaves</span></li>
+          </ul>
+          <p class="form-note mt-5">
+            <strong>What changes the price:</strong> distance, the size of the
+            vehicle your inventory needs, and whether you share the load.
+          </p>
+          <a class="link-cta" href="/services/intercity-relocation.html">
+            Intercity moving in detail
+            <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-car"/></svg></span>
+          <h3>Car &amp; bike transportation</h3>
+          <p>
+            Vehicles travel in a covered carrier rather than being driven
+            across, so nothing is added to the odometer and the paint is not
+            exposed to the road for a thousand kilometres.
+          </p>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Covered carrier, loaded and strapped at the wheels</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Condition noted and photographed at both ends</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Can run on the same booking as your household goods</span></li>
+          </ul>
+          <p class="form-note mt-5">
+            <strong>What you need:</strong> the registration papers, and the
+            tank at roughly a quarter full.
+          </p>
+          <a class="link-cta" href="/services/vehicle-transport.html">
+            Vehicle transport in detail
+            <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg></span>
+          <h3>Packing &amp; unpacking</h3>
+          <p>
+            The part of a move that decides whether anything breaks. Fragile
+            items are wrapped in layers and boxed by room, and every carton is
+            labelled with its room and contents before it leaves the floor.
+          </p>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Bubble wrap, corrugated sheets and stretch film as the item needs</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Furniture hardware bagged and taped to the item it came off</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Unpacking and packing waste removed if you want it</span></li>
+          </ul>
+          <p class="form-note mt-5">
+            <strong>Tip:</strong> having us pack only the kitchen, glass and
+            electronics — and doing clothes and books yourself — is the
+            single easiest way to bring a quote down.
+          </p>
+          <a class="link-cta" href="/services/packing-unpacking.html">
+            Packing in detail
+            <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-lift"/></svg></span>
+          <h3>Loading &amp; unloading</h3>
+          <p>
+            Labour only, for when you have your own vehicle or have packed
+            yourself. Heavy items go in first and low, fragile cartons ride on
+            top, and the load is strapped so nothing shifts in transit.
+          </p>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Trolleys and lifting straps for heavy furniture</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Stairs and buildings without a lift planned for, not improvised</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Loading sheet signed off with you before the vehicle moves</span></li>
+          </ul>
+          <p class="form-note mt-5">
+            <strong>What changes the price:</strong> the floor, the lift, and
+            the carry distance from door to vehicle.
+          </p>
+          <a class="link-cta" href="/services/loading-unloading.html">
+            Loading and unloading in detail
+            <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-warehouse"/></svg></span>
+          <h3>Storage &amp; warehousing</h3>
+          <p>
+            For when possession dates do not line up. Goods are inventoried
+            in, wrapped and held off the floor, then delivered out when you are
+            ready — charged by duration and separately from the move.
+          </p>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Short and long-term, from a few days upwards</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Inventoried in and out, so you know exactly what is held</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Rate confirmed in writing before anything goes in</span></li>
+          </ul>
+          <p class="form-note mt-5">
+            <strong>Worth knowing:</strong> tell us as early as you can if your
+            new home may not be ready. Arranging storage in advance costs less
+            than arranging it on the day.
+          </p>
+          <a class="link-cta" href="/services/storage-warehousing.html">
+            Storage in detail
+            <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-tight cta-band">
+    <div class="wrap">
+      <div class="wrap-narrow text-centre">
+        <h2>Not sure which of these you need?</h2>
+        <p class="lead">
+          Describe the move and we will tell you which parts are worth paying
+          for and which you can do yourself.
+        </p>
+        <div class="btn-row mt-6 btn-row--centre">
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+          <a class="btn btn--ghost btn--lg" href="/contact.html">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </section>

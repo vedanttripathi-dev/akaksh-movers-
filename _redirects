@@ -1,0 +1,56 @@
+# ============================================================================
+# Cloudflare Pages redirects
+# ============================================================================
+# Format:  /from  /to  [status]
+# 301 = permanent, 302 = temporary. Default is 302, so always state 301 for
+# a permanent move or you will leak link equity.
+#
+# Order matters: the first match wins.
+# ============================================================================
+
+# --- Tidy URLs -------------------------------------------------------------
+# Visitors and old links often guess these. Point them at the real page
+# rather than letting them hit the 404.
+/services/            /services.html          301
+/service              /services.html          301
+/locations/           /locations.html         301
+/areas                /locations.html         301
+/contact              /contact.html           301
+/about                /about.html             301
+/faq                  /faq.html               301
+/quote                /contact.html           301
+/estimate             /contact.html           301
+/checklist            /guides/moving-checklist.html   301
+
+# --- Index variants --------------------------------------------------------
+/index                /                       301
+/index.html           /                       301
+/home                 /                       301
+
+# --- Legal -----------------------------------------------------------------
+/privacy              /privacy.html           301
+/privacy-policy       /privacy.html           301
+/terms                /terms.html             301
+/terms-and-conditions /terms.html             301
+
+# --- Development files, kept out of public view ----------------------------
+# Everything in this folder is uploaded to Cloudflare Pages, including the
+# authoring tools, the local dev server and the README. The README in
+# particular is an internal handover document: it discusses which business
+# claims are unverified and which copy still needs the owner's sign-off, and
+# that is not something to leave on a public URL for a competitor to read.
+#
+# These rules send those paths to the 404 page. NOTE: on Cloudflare Pages a
+# matching static asset can take precedence over a _redirects rule, so treat
+# this as a guard rather than a guarantee — the definitive fix is to move the
+# published site into its own subfolder and point the Pages "Root directory"
+# at that. See README.md § Keeping development files off the public site.
+/tools/*              /404.html               404
+/README.md            /404.html               404
+/serve.ps1            /404.html               404
+/.env.example         /404.html               404
+
+# --- Add a line here whenever you rename or remove a page. ----------------
+# A removed page that returns 404 loses whatever ranking it had. A 301 to the
+# closest equivalent keeps it. For example, after renaming a city page:
+#   /locations/old-city.html   /locations/new-city.html   301

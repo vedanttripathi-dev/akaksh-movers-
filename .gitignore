@@ -1,0 +1,40 @@
+# ============================================================================
+# .gitignore
+# ============================================================================
+# This project has no build step and no package manager, so this file is
+# short on purpose. Its job is to keep secrets and machine-local clutter out
+# of the repository — not to exclude build output, because there is none.
+#
+# IMPORTANT: everything that IS committed here is also uploaded to Cloudflare
+# Pages and served at a public URL. Committing a file and publishing it are
+# the same act in this project. Think twice before adding anything that is
+# not meant to be read by a stranger.
+# ============================================================================
+
+# --- Secrets ----------------------------------------------------------------
+# The real values live in Cloudflare's environment variables, never on disk.
+# .env.example is committed deliberately; it holds variable NAMES only.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- Editor and OS ----------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*~
+
+# --- Local tooling ----------------------------------------------------------
+# Cloudflare Wrangler's local state, if anyone runs it from this folder.
+.wrangler/
+.dev.vars
+
+# --- Scratch ----------------------------------------------------------------
+# Somewhere to put a throwaway script without it ending up on the live site.
+scratch/
+*.local.*

@@ -1,0 +1,160 @@
+SLUG: services/home-shifting.html
+TITLE: Home Shifting in Kanpur — full household moves
+DESC: Full household shifting in Kanpur: room-by-room inventory, professional packing, furniture dismantled and reassembled, loaded, moved and placed in the new home.
+HEADING: Home shifting
+LEAD: A full household move, run room by room against a written inventory — packed, dismantled, loaded, moved, rebuilt and placed where you want it.
+CRUMBS: Home|/ ; Services|/services.html ; Home shifting|
+---
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="split is-wide-left">
+        <div>
+          <h2>What a home shift actually involves</h2>
+          <p class="lead">
+            The work starts well before the truck. A household move is mostly
+            a counting and sequencing problem: knowing exactly what is going,
+            packing it so it survives the journey, and loading it in an order
+            that lets it come off in the right rooms.
+          </p>
+          <p>
+            We survey first — in person or over a video call — and produce a
+            room-by-room inventory. That inventory decides the vehicle size,
+            the crew size, how much packing material is loaded the night
+            before, and the quote. It is also what gets signed at both ends,
+            so anything missing is obvious on the day rather than a week later.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg></span>
+          <h3>Included as standard</h3>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Room-by-room inventory, written and shared with you</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Multi-layer packing for glass, crockery and electronics</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Beds, wardrobes and modular units dismantled and reassembled</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Hardware bagged and taped to the item it came off</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Cartons labelled by room and contents</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Placement in the right room at the new home, not dumped in the hall</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-sunk">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">How it runs</span>
+        <h2>The day, in order</h2>
+      </div>
+      <ol class="steps grid grid-2">
+        <li class="step"><div>
+          <h3>Crew briefing and protection</h3>
+          <p>The team arrives with your inventory already in hand. Floors and door frames on the route out are protected before anything moves.</p>
+        </div></li>
+        <li class="step"><div>
+          <h3>Packing, kitchen first</h3>
+          <p>The kitchen takes the longest and is packed first. Fragile items are wrapped individually, then boxed with fill so nothing shifts inside the carton.</p>
+        </div></li>
+        <li class="step"><div>
+          <h3>Dismantling</h3>
+          <p>Beds, wardrobes and tables come apart. Screws and fittings go into a labelled bag taped to the frame they belong to.</p>
+        </div></li>
+        <li class="step"><div>
+          <h3>Loading</h3>
+          <p>Heavy and flat items go in first and low. Fragile cartons ride on top. The load is strapped in sections so nothing shifts in transit.</p>
+        </div></li>
+        <li class="step"><div>
+          <h3>Transport</h3>
+          <p>A vehicle sized to your inventory. You get the driver's number, and your coordinator stays reachable for the whole journey.</p>
+        </div></li>
+        <li class="step"><div>
+          <h3>Unload, rebuild, check</h3>
+          <p>Unloaded by room against the same inventory, furniture reassembled, and the list signed off with you before the crew leaves.</p>
+        </div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <h2>What changes the price</h2>
+          <p class="lead">Four things, in roughly this order of impact.</p>
+          <ol class="steps mt-6">
+            <li class="step"><div>
+              <h3>How much there is</h3>
+              <p>Volume decides the vehicle and the crew. A 3 BHK that has been lived in for ten years is a different job from one occupied for two.</p>
+            </div></li>
+            <li class="step"><div>
+              <h3>How much packing you want</h3>
+              <p>Full packing is the single largest line on most quotes. Packing your own clothes, books and linen typically takes a meaningful amount off it.</p>
+            </div></li>
+            <li class="step"><div>
+              <h3>Access at both ends</h3>
+              <p>A fourth floor without a lift needs more people, not more hours. So does a long carry from the gate to the door.</p>
+            </div></li>
+            <li class="step"><div>
+              <h3>The date</h3>
+              <p>Month-end is when everyone moves. Mid-month dates are easier to staff and usually cheaper.</p>
+            </div></li>
+          </ol>
+        </div>
+
+        <div>
+          <h2>Questions we get asked</h2>
+          <div class="faq mt-6" data-faq>
+            <details>
+              <summary>How long does a 2 BHK take?</summary>
+              <div class="faq__body"><p>
+                With full packing, usually a day to pack and load and a second
+                for delivery and reassembly on a local route — or the same day
+                end to end if you have packed most of it yourself. The survey
+                gives you a real answer for your flat rather than an average.
+              </p></div>
+            </details>
+            <details>
+              <summary>Can you move just a few rooms?</summary>
+              <div class="faq__body"><p>
+                Yes. Part-household moves are common — one bedroom's worth of
+                furniture going to a different city, for example. It is priced
+                on the inventory, not on the size of the flat it came from.
+              </p></div>
+            </details>
+            <details>
+              <summary>Will you take the packing material away?</summary>
+              <div class="faq__body"><p>
+                Yes, if you want it gone. We can unpack and remove the empty
+                cartons and wrap on the same visit, or come back for them once
+                you have unpacked at your own pace.
+              </p></div>
+            </details>
+            <details>
+              <summary>What about the fridge and washing machine?</summary>
+              <div class="faq__body"><p>
+                Defrost and drain the fridge the night before, and drain the
+                washing machine's hoses. We move them wrapped and upright.
+                Appliances that need a technician to disconnect or install —
+                a split AC, for example — are a separate job we can arrange.
+              </p></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-tight cta-band">
+    <div class="wrap">
+      <div class="wrap-narrow text-centre">
+        <h2>Get a quote for your home shift</h2>
+        <p class="lead">Surveyed first, itemised in writing, no obligation.</p>
+        <div class="btn-row mt-6 btn-row--centre">
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+          <a class="btn btn--ghost btn--lg" href="/services.html">All services</a>
+        </div>
+      </div>
+    </div>
+  </section>

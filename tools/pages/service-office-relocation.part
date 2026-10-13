@@ -1,0 +1,158 @@
+SLUG: services/office-relocation.html
+TITLE: Office Relocation in Kanpur — commercial moving
+DESC: Office and commercial relocation in Kanpur planned around your downtime: desks numbered to a new floor plan, IT reconnected, records in sealed crates, weekend slots.
+HEADING: Office &amp; commercial relocation
+LEAD: Planned around your downtime rather than ours. The goal is simple: staff come back to a working office, not a room full of boxes.
+CRUMBS: Home|/ ; Services|/services.html ; Office relocation|
+---
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="split is-wide-left">
+        <div>
+          <h2>An office move is a scheduling job</h2>
+          <p class="lead">
+            Moving a house is about care. Moving an office is about sequence.
+            The furniture is the easy part — what decides whether Monday goes
+            well is whether every desk, cable and file ends up where the floor
+            plan says it should.
+          </p>
+          <p>
+            We start from your new floor plan. Every desk and cabinet is
+            numbered and mapped to its destination position before anything is
+            lifted, so the crew is placing items, not guessing. Records move in
+            sealed, numbered crates rather than open cartons, and IT is handled
+            as its own sequence with its own checklist.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-building"/></svg></span>
+          <h3>Included as standard</h3>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Pre-move survey of both floors, with a written sequence plan</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Desks and cabinets numbered against the new floor plan</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Workstations dismantled and rebuilt in position</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Documents in sealed, numbered crates with a chain-of-custody list</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Monitors, CPUs and peripherals bagged per desk, not pooled</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Weekend, evening and overnight slots</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-sunk">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Planning</span>
+        <h2>What we need from you, and when</h2>
+        <p class="lead">
+          Office moves go wrong in the planning, not on the day. These are the
+          decisions that need to be made before the date is fixed.
+        </p>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card">
+          <h3>Three weeks out</h3>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Confirm the new floor plan and desk numbering</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Book building access and service lifts at both ends</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Name one decision-maker for move day</span></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>One week out</h3>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Staff clear personal items and label their own crate</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>IT confirms what is being disconnected, and by whom</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Confidential files identified and crated separately</span></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Move day</h3>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Your decision-maker on site at both addresses</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Crate list checked and signed at both ends</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Priority desks rebuilt first so key staff can start</span></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <h2>What changes the price</h2>
+          <ol class="steps mt-6">
+            <li class="step"><div>
+              <h3>Headcount and workstation count</h3>
+              <p>The practical unit of an office move is the desk, not the square foot.</p>
+            </div></li>
+            <li class="step"><div>
+              <h3>How much IT we handle</h3>
+              <p>Bagging and moving equipment is routine. Disconnecting and recommissioning servers and network hardware is specialist work and is priced separately.</p>
+            </div></li>
+            <li class="step"><div>
+              <h3>Lift and loading access</h3>
+              <p>A service lift booked for exclusive use transforms the timeline. Sharing a passenger lift with a working building does the opposite.</p>
+            </div></li>
+            <li class="step"><div>
+              <h3>The window</h3>
+              <p>A full weekend is the cheapest way to do it. Compressing the same work into one night costs more because it needs a larger crew.</p>
+            </div></li>
+          </ol>
+        </div>
+
+        <div>
+          <h2>Questions we get asked</h2>
+          <div class="faq mt-6" data-faq>
+            <details>
+              <summary>Can you move us over a weekend so we do not lose a working day?</summary>
+              <div class="faq__body"><p>
+                Yes, and for most offices that is the right choice. Two clear
+                days lets us move, rebuild and have IT reconnected before staff
+                return. Weekend slots book out earliest, so fix the date well
+                in advance.
+              </p></div>
+            </details>
+            <details>
+              <summary>Do you handle the servers and network equipment?</summary>
+              <div class="faq__body"><p>
+                We move the hardware safely, and we coordinate around your IT
+                team's schedule. We do not present ourselves as network
+                engineers: disconnection, racking and recommissioning should be
+                done by whoever supports your infrastructure, and we plan the
+                move sequence around them.
+              </p></div>
+            </details>
+            <details>
+              <summary>How do you protect confidential files?</summary>
+              <div class="faq__body"><p>
+                They go into sealed, numbered crates listed on their own
+                manifest, signed out at the old office and signed in at the
+                new one. If you need a specific chain-of-custody procedure,
+                tell us at survey and we will work to it.
+              </p></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-tight cta-band">
+    <div class="wrap">
+      <div class="wrap-narrow text-centre">
+        <h2>Planning an office move?</h2>
+        <p class="lead">Send us the headcount and both addresses and we will come back with a sequence plan and a quote.</p>
+        <div class="btn-row mt-6 btn-row--centre">
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+          <a class="btn btn--ghost btn--lg" href="/services.html">All services</a>
+        </div>
+      </div>
+    </div>
+  </section>

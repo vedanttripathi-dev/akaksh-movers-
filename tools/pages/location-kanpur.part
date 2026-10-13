@@ -1,0 +1,288 @@
+SLUG: locations/kanpur.html
+TITLE: Packers & Movers in Kanpur — home & office shifting
+DESC: Shifting within Kanpur and out of it, run from our own office in Arya Nagar. The localities we cover, what Kanpur buildings and lanes actually require, and how a move here is priced.
+HEADING: Packers &amp; movers in Kanpur
+LEAD: This is the city we are based in, not one we cover from somewhere else. The survey, the crew and the coordinator are all local.
+CRUMBS: Home|/ ; Areas we cover|/locations.html ; Kanpur|
+---
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="split is-wide-left">
+        <div>
+          <h2>A Kanpur move, run by people who live here</h2>
+
+          <!-- Written once, in js/config.js, so the city page and the card on
+               /locations.html can never disagree about what we claim to cover. -->
+          <p class="lead" data-area-intro="kanpur" hidden></p>
+
+          <p>
+            That matters more in Kanpur than it does in a newer city. The
+            difference between a flat in Civil Lines and a house off Birhana
+            Road is not the distance between them — it is whether a goods
+            vehicle can get within fifty metres of the door, whether there is a
+            lift, and what hour the building will let a crew start. Those three
+            answers decide the vehicle, the crew size and the price, and they
+            are the first things we establish at survey.
+          </p>
+          <p>
+            We would rather tell you at the survey that your staircase turns a
+            wardrobe into a two-person forty-minute job than discover it on the
+            morning and ask you for more money.
+          </p>
+
+          <div class="btn-row mt-6">
+            <a class="btn btn--primary" href="/contact.html" data-open-quote>Get a Kanpur quote</a>
+            <a class="btn btn--ghost" href="/services.html">All services</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></span>
+          <h3>Localities we cover</h3>
+          <p>
+            Across the city, north and south of the Ganga canal. If your area
+            is not on this list, ask — it almost certainly still works.
+          </p>
+          <!-- Filled from serviceAreas[].localities in js/config.js. -->
+          <ul class="ticks" data-localities="kanpur" hidden></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-sunk">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Local knowledge</span>
+        <h2>What a Kanpur move actually involves</h2>
+        <p class="lead">
+          None of this is about the driving. It is about the hundred metres at
+          each end.
+        </p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>The old city lanes</h3>
+          <p>
+            Around Birhana Road, Naya Ganj, Sisamau and the older Gumti lanes,
+            a full-size truck often simply cannot turn in. The answer is a
+            smaller vehicle doing two runs, or a shuttle from a larger vehicle
+            parked on the main road. Either way it is a decision made at survey
+            and written into the quote, not improvised on the day.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Society timing rules</h3>
+          <p>
+            Many of the newer apartment blocks in Swaroop Nagar, Vikas Nagar
+            and along the Kalyanpur side restrict shifting to fixed hours and
+            require a gate pass arranged in advance. A crew that cannot begin
+            before ten and must stop by six has roughly seven usable hours,
+            which changes what can honestly be promised for a single day.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Lifts, and the lack of them</h3>
+          <p>
+            A great deal of Kanpur's housing stock is three and four storeys
+            with no lift, and plenty of the lifts that do exist will not take a
+            mattress or a tall almirah standing up. We ask for the floor number
+            and whether there is a lift at both ends, because the stair carry
+            is the single biggest variable in the labour on a Kanpur job.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Traffic windows and road work</h3>
+          <p>
+            Crossing between the two halves of the city in the late afternoon
+            is slow, and wherever metro or drainage work is active the approach
+            roads narrow further. We plan loading for early in the day for this
+            reason, which is also when the heat is survivable for a crew
+            carrying furniture down stairs.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Industrial and commercial moves</h3>
+          <p>
+            Kanpur still has a great deal of small manufacturing and trade, and
+            an office or workshop move here often means machinery, stock and
+            paper records rather than desks alone. Those need weighing up
+            individually — tell us what the heaviest single item is and whether
+            it can leave through the door it came in by.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Monsoon and summer</h3>
+          <p>
+            Between July and September, cartons and mattresses need covering
+            and loading has to happen in breaks in the rain, which makes the
+            day less predictable. May and June are the opposite problem: we
+            start at first light and the crew works shorter stretches. Neither
+            stops a move; both change the schedule, so we say so in advance.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <h2>Moving out of Kanpur</h2>
+          <p class="lead">
+            Intercity work goes on a dedicated vehicle by default, with a
+            shared part-load as the cheaper option when you can accept a wider
+            delivery window.
+          </p>
+          <p>
+            These are the routes we are asked for most often. Road distances
+            are approximate and given only to show the scale of the journey —
+            the delivery window for your move is agreed in writing before the
+            vehicle leaves, and we do not quote an arrival hour we cannot keep.
+          </p>
+
+          <div class="table-wrap mt-6">
+            <table class="table">
+              <caption class="sr-only">Common intercity routes from Kanpur with approximate road distances</caption>
+              <thead>
+                <tr><th scope="col">From Kanpur to</th><th scope="col">Approx. road distance</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Lucknow</td><td>90 km</td></tr>
+                <tr><td>Prayagraj</td><td>200 km</td></tr>
+                <tr><td>Jhansi</td><td>220 km</td></tr>
+                <tr><td>Agra</td><td>290 km</td></tr>
+                <tr><td>Varanasi</td><td>330 km</td></tr>
+                <tr><td>Delhi &amp; NCR</td><td>480 km</td></tr>
+                <tr><td>Jaipur</td><td>630 km</td></tr>
+                <tr><td>Kolkata</td><td>1,000 km</td></tr>
+                <tr><td>Mumbai</td><td>1,350 km</td></tr>
+                <tr><td>Bengaluru</td><td>1,800 km</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-sm mt-4">
+            Not listed is not the same as not possible. Send both addresses and
+            we will say plainly whether it is a job we can do well.
+          </p>
+        </div>
+
+        <div>
+          <h2>Questions about moving in Kanpur</h2>
+          <div class="faq mt-6" data-faq>
+            <details>
+              <summary>Do you cover the whole of Kanpur?</summary>
+              <div class="faq__body"><p>
+                Yes — the city and its immediate outskirts, on both sides of
+                the canal. Our office is in Arya Nagar, so nothing in Kanpur is
+                far enough away to need a different crew. The areas listed
+                above are the ones we work in most; if yours is not named, ask
+                rather than assuming.
+              </p></div>
+            </details>
+            <details>
+              <summary>Can a truck reach my lane?</summary>
+              <div class="faq__body"><p>
+                In much of the older city, not a full-size one. That is a
+                normal situation here and it has a normal answer: a smaller
+                vehicle, more than one run, or a shuttle from a larger vehicle
+                on the main road. What we will not do is turn up with the wrong
+                vehicle and treat the extra work as your problem.
+              </p></div>
+            </details>
+            <details>
+              <summary>How much notice do you need?</summary>
+              <div class="faq__body"><p>
+                For a local move within Kanpur, often only a few days, because
+                no long-distance vehicle has to be committed. Intercity moves
+                are easier with a week or more, especially at month end when
+                tenancies change over. Ask for your date — if a crew is free we
+                will say so, and if not we will tell you instead of overbooking.
+              </p></div>
+            </details>
+            <details>
+              <summary>How is a Kanpur move priced?</summary>
+              <div class="faq__body"><p>
+                Four things: the volume being moved, the distance, how much
+                packing you want us to do, and the access at each address —
+                floor, lift and how far the vehicle can park from the door. We
+                survey first, in person or by video call, and the quote is
+                issued in writing with those parts itemised. We do not publish
+                a fixed rate card, because a moving price given without seeing
+                the inventory is not a price anyone can be held to.
+              </p></div>
+            </details>
+            <details>
+              <summary>Can you move a car or a two-wheeler as well?</summary>
+              <div class="faq__body"><p>
+                Yes, in a covered carrier rather than driven, with the condition
+                photographed at both ends. It is usually arranged alongside a
+                household move out of Kanpur.
+                <a href="/services/vehicle-transport.html">More on vehicle transport</a>.
+              </p></div>
+            </details>
+            <details>
+              <summary>Where exactly is your office?</summary>
+              <div class="faq__body"><p>
+                8/102, Allenganj, Arya Nagar, near Khalasi Line, Kanpur
+                208002. You are welcome to come and talk it through in person
+                before booking anything.
+                <a href="/contact.html">Contact details and hours</a>.
+              </p></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Same map component as the contact page — built by renderMap() in
+       js/main.js from the configured address or coordinates. -->
+  <section class="section is-tight on-sunk" data-map-section hidden>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Find us</span>
+        <h2>Our office in Kanpur</h2>
+        <p class="lead">
+          8/102, Allenganj, Arya Nagar, near Khalasi Line, Kanpur 208002.
+          Come in and talk a move through — it is usually a more useful twenty
+          minutes than any amount of reading a website.
+        </p>
+      </div>
+      <div class="map" data-map>
+        <p class="map__empty">Map loads once the office address is configured.</p>
+      </div>
+      <p class="map__note text-sm mt-4" data-map-note hidden></p>
+      <div class="btn-row mt-5">
+        <a class="btn btn--ghost" data-map-directions hidden>
+          <svg class="ic" aria-hidden="true"><use href="#i-route"/></svg>
+          Get directions
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-tight cta-band">
+    <div class="wrap">
+      <div class="wrap-narrow text-centre">
+        <h2>Shifting somewhere in Kanpur?</h2>
+        <p class="lead">
+          Send us both addresses and the floor numbers. We will survey it and
+          come back with an itemised written quote.
+        </p>
+        <div class="btn-row mt-6 btn-row--centre">
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+          <a class="btn btn--ghost btn--lg" href="/faq.html">Read the FAQ</a>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,1877 @@
+/* ============================================================================
+   PREMIUM PACKERS & MOVERS — STYLESHEET
+   ============================================================================
+   One file, no build step. Design tokens live in :root (section 1); change a
+   value there and it propagates everywhere.
+
+   CONTENTS
+     1.  Design tokens
+     2.  Reset and base
+     3.  Typography
+     4.  Layout: container, section, grid
+     5.  Buttons
+     6.  Header and navigation
+     7.  Hero (and the 3D canvas layer)
+     8.  Trust strip
+     9.  Scroll journey (the truck storytelling)
+    10.  Cards: services, features, comparison
+    11.  Testimonials
+    12.  FAQ accordion
+    13.  Forms and the multi-step modal
+    14.  Contact and map
+    15.  Footer
+    16.  Sticky mobile contact bar
+    17.  Breadcrumbs, pagination, misc
+    18.  Utilities and scroll reveals
+    19.  Reduced motion and print
+
+   MOTION POLICY
+     Only `transform` and `opacity` are animated, so nothing triggers layout.
+     Every animation is switched off under `prefers-reduced-motion` in §19.
+
+   ACCESSIBILITY
+     Body text meets WCAG AA against its background. Focus is always visible
+     via a single `:focus-visible` rule in §2 — do not remove it.
+   ========================================================================== */
+
+
+/* ===========================================================================
+   0. TYPEFACES
+   ---------------------------------------------------------------------------
+   Self-hosted, latin subset, ~116 KB total for five files.
+
+   Why not system fonts: they are free and instant, but every site using them
+   looks the same, and that sameness is most of what reads as "cheap" on a
+   premium brand. A real typeface pairing is the single highest-impact change
+   available here.
+
+   Why self-hosted rather than Google Fonts: no third-party connection on the
+   critical path, no extra DNS and TLS handshake, nothing to add to the CSP,
+   and no requests leaving for another company's server.
+
+   `font-display: swap` means text paints immediately in the fallback and
+   re-renders when the font arrives — so a slow font can never leave the page
+   blank. The fallback metrics are deliberately close to avoid a big reflow.
+   =========================================================================== */
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/inter-400.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/inter-500.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/inter-600.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('/assets/fonts/playfair-500.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('/assets/fonts/playfair-600.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+/* A real italic, not a synthesised one. Browsers fake italics by slanting
+   the upright, which on a high-contrast serif destroys the stroke modelling
+   and looks obviously wrong. The genuine italic has different letterforms. */
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('/assets/fonts/playfair-500-italic.woff2') format('woff2');
+  font-weight: 500; font-style: italic; font-display: swap;
+}
+
+
+/* ===========================================================================
+   1. DESIGN TOKENS
+   =========================================================================== */
+:root {
+  /* --- Brand surfaces: deep navy through slate --------------------------
+     The international relocation palette. Allied, Atlas, Crown, Santa Fe,
+     Graebel, AGS — almost every cross-border mover sits on deep blue, and
+     it is not fashion: blue is the colour the freight and logistics trade
+     has used for trust and distance for fifty years, and customers read it
+     that way without being told.
+
+     The important part is the DEPTH. A saturated mid-blue is what makes a
+     logistics site look like a free template; this is a near-black navy
+     that happens to be blue, so it still behaves like the premium dark
+     surface the layout was designed against. */
+  --ink-900: #05101f;   /* deepest, page background behind the hero        */
+  --ink-800: #0b1b2e;   /* hero / dark section background                  */
+  --ink-700: #12263c;   /* raised dark card                                */
+  --ink-600: #1d3550;   /* dark card hover, hairline on dark               */
+  --ink-500: #2c4762;   /* lightest ink, for hairlines and dividers        */
+
+  /* --- Light surfaces ---------------------------------------------------
+     Cool, clean paper to match. Kept a long way off pure grey so sections
+     still separate from each other without a border. */
+  --paper:      #ffffff;
+  --paper-sunk: #f3f7fb;  /* page background for light sections            */
+  --paper-card: #ffffff;
+  --paper-line: #dce5ee;  /* cool hairline on light                        */
+
+  /* --- Text ------------------------------------------------------------- */
+  --text-on-dark:        #eef4fa;
+  --text-on-dark-soft:   #a3b6ca;
+  --text-on-dark-faint:  #71869c;
+  --text-on-light:       #0a1726;
+  --text-on-light-soft:  #42566a;
+  /* Darkened to clear WCAG AA. The lighter grey this replaced measured
+     4.19:1 on white and 3.89:1 on the sunk paper — under the 4.5:1 that
+     normal-size body text needs, everywhere this token is used (map notes,
+     footer notes, form hints). It now measures 5.05:1 and 4.69:1. */
+  --text-on-light-faint: #5c7187;
+
+  /* --- Accent: signal amber ---------------------------------------------
+     The second half of the relocation palette. Navy alone is cold and
+     every call to action disappears into it; the trade pairs it with a
+     warm amber or orange — the colour of a hazard vest, a strap, a
+     container seal — which is why it reads as "this is the thing to press"
+     before anyone has read the label.
+
+     --accent is the surface amber, used on fills and on dark backgrounds.
+     --accent-deep is the TEXT amber: darkened specifically so amber-on-white
+     body copy and links clear WCAG AA (4.5:1 — this one measures 5.4:1).
+     Never set link text to --accent on a light background; at 2.1:1 it
+     fails badly. */
+  --accent:        #f5a524;
+  --accent-bright: #ffc15e;
+  --accent-deep:   #9a5b06;
+  --accent-wash:   #fef4e3;   /* pale tint for light backgrounds           */
+  --accent-glow:   rgba(245, 165, 36, 0.32);
+  --on-accent:     #1a1203;   /* text that sits ON an amber fill (9.1:1)   */
+
+  /* --- Semantic --------------------------------------------------------- */
+  --ok:     #15803d;
+  --ok-bg:  #e9f7ee;
+  --warn:   #a35a06;
+  --warn-bg:#fdf3e4;
+  --err:    #c0272d;
+  --err-bg: #fdeced;
+
+  /* --- Type -------------------------------------------------------------
+     Inter for everything functional: it was drawn for screen UI and stays
+     legible at 13px on a phone. Playfair Display only for display-size
+     headings, where its high stroke contrast reads as editorial and
+     expensive. Playfair is never used below about 20px — at small sizes the
+     thin strokes disappear and it just looks blurry. */
+  --font: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-num: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+
+  /* Fluid sizes: min at 360px viewport, max at 1280px. */
+  --fs-display: clamp(2.35rem, 1.2rem + 5.2vw, 4.75rem);
+  --fs-h1:      clamp(2rem,   1.2rem + 3.6vw, 3.4rem);
+  --fs-h2:      clamp(1.6rem, 1.1rem + 2.1vw, 2.5rem);
+  --fs-h3:      clamp(1.2rem, 1rem + 0.8vw,  1.5rem);
+  --fs-lead:    clamp(1.02rem, 0.96rem + 0.5vw, 1.24rem);
+  --fs-body:    1rem;
+  --fs-sm:      0.9rem;
+  --fs-xs:      0.8rem;
+  --fs-micro:   0.72rem;
+
+  --lh-tight: 1.08;
+  --lh-head:  1.18;
+  --lh-body:  1.65;
+
+  --track-tight: -0.022em;
+  --track-caps:  0.14em;
+
+  /* --- Space: a 4px-based scale ---------------------------------------- */
+  --s-1: 0.25rem;  --s-2: 0.5rem;   --s-3: 0.75rem;  --s-4: 1rem;
+  --s-5: 1.5rem;   --s-6: 2rem;     --s-7: 2.75rem;  --s-8: 3.5rem;
+  --s-9: 5rem;     --s-10: 7rem;    --s-11: 9rem;
+
+  /* Section rhythm, tighter on phones. */
+  --section-y: clamp(3.5rem, 2rem + 7vw, 7.5rem);
+
+  /* --- Shape ------------------------------------------------------------ */
+  --r-sm: 6px;  --r-md: 10px;  --r-lg: 16px;  --r-xl: 24px;  --r-pill: 999px;
+
+  /* --- Elevation: layered, low-contrast, never a single heavy blur ------ */
+  --sh-1: 0 1px 2px rgba(10, 20, 40, 0.05), 0 1px 3px rgba(10, 20, 40, 0.04);
+  --sh-2: 0 2px 4px rgba(10, 20, 40, 0.05), 0 6px 14px rgba(10, 20, 40, 0.06);
+  --sh-3: 0 4px 8px rgba(10, 20, 40, 0.06), 0 14px 34px rgba(10, 20, 40, 0.09);
+  --sh-4: 0 8px 18px rgba(10, 20, 40, 0.09), 0 30px 64px rgba(10, 20, 40, 0.14);
+  --sh-dark: 0 20px 50px rgba(0, 0, 0, 0.5);
+
+  /* --- Motion ----------------------------------------------------------- */
+  --dur-fast: 140ms;
+  --dur:      240ms;
+  --dur-slow: 520ms;
+  /* Reveal duration. Kept under ~650ms on purpose: at 900ms a visitor who
+     scrolls quickly outruns the fade and sees an apparently empty section. */
+  --dur-cine: 620ms;
+  --ease:      cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-out:  cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in:   cubic-bezier(0.55, 0, 0.6, 0.2);
+
+  /* --- Layout ----------------------------------------------------------- */
+  --wrap:        1180px;
+  --wrap-narrow: 760px;
+  --header-h:    68px;
+  --rail-w:      36px;   /* the side scroll-truck rail (§17b) */
+}
+
+
+/* ===========================================================================
+   2. RESET AND BASE
+   =========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+
+  /* NO `scroll-behavior: smooth` here. It is incompatible with GSAP
+     ScrollTrigger and the failure is silent and confusing.
+     ------------------------------------------------------------------
+     ScrollTrigger measures a section by jumping the page to scroll 0,
+     reading the element's position, then restoring the scroll — all
+     synchronously. `scroll-behavior: smooth` turns that instant jump into
+     an animation, so the measurement is taken while the page is still at
+     the old position. The recorded start/end then come out wrong by exactly
+     however far the page was scrolled, and they drift further on every
+     refresh. In this project it made the journey truck finish its run while
+     the visitor was still reading stage one.
+
+     Anchor links therefore jump instantly. That is also what visitors who
+     ask for reduced motion want, so nothing is lost. */
+
+  /* Anchor targets still clear the sticky header. */
+  scroll-padding-top: calc(var(--header-h) + var(--s-4));
+}
+
+body {
+  margin: 0;
+  background: var(--paper-sunk);
+  color: var(--text-on-light);
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* NOTE: there is deliberately NO `overflow-x` on body.
+     ------------------------------------------------------------------
+     It is tempting to add `overflow-x: hidden` (or `clip`) here as a
+     catch-all against sideways scrolling. Both break things badly in this
+     project, and each failure is silent:
+
+       `hidden` makes body a scroll container, which stops every
+       `position: sticky` descendant from sticking — the journey road
+       scrolls away instead of pinning.
+
+       `clip` fixes that, but makes body a clip container, and GSAP
+       ScrollTrigger then measures element offsets without adding the
+       scroll position. Its start/end come out shifted by however far the
+       page happens to be scrolled, so the truck's progress runs far ahead
+       of the stages. (Observed: start computed as -219 instead of 1181,
+       and drifting further on every refresh.)
+
+     Horizontal overflow is prevented at source instead: see the narrow-phone
+     header rules in §6 and the rail gutter in §17b. If a sideways scrollbar
+     ever appears, find the element that is too wide — do not reach for
+     overflow here. */
+}
+
+/* Locked while the quote modal is open. */
+body.is-locked { overflow: hidden; }
+
+img, svg, video, canvas { display: block; max-width: 100%; }
+img { height: auto; }
+
+/* The `hidden` attribute must actually hide.
+   The browser's own rule is `[hidden] { display: none }`, which ANY author
+   rule setting `display` silently beats — `.btn { display: inline-flex }`
+   being the obvious one here. Several elements in this project start hidden
+   and are only revealed once their configuration exists (phone links,
+   WhatsApp links, the service-areas section). Without this rule they would
+   all show up empty, and visitors would get dead `tel:` links.
+   This is the one justified `!important` in the file. */
+[hidden] { display: none !important; }
+
+a { color: var(--accent-deep); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a:hover { color: var(--accent-deep); }
+
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+
+/* One focus rule for the whole site. Visible on every interactive element,
+   on both light and dark backgrounds. */
+/* Gold at full strength, which stays visible on both the ivory and the
+   near-black surfaces. The pale --accent-bright would vanish on white. */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+/* Skip link: off-screen until focused. */
+.skip {
+  position: absolute; left: var(--s-4); top: -4rem; z-index: 200;
+  background: var(--paper); color: var(--text-on-light);
+  padding: var(--s-3) var(--s-4); border-radius: var(--r-md);
+  box-shadow: var(--sh-3); font-weight: 500;
+  transition: top var(--dur) var(--ease);
+}
+.skip:focus { top: var(--s-4); }
+
+hr { border: 0; border-top: 1px solid var(--paper-line); margin: var(--s-7) 0; }
+
+::selection { background: var(--accent); color: #fff; }
+
+
+/* ===========================================================================
+   3. TYPOGRAPHY
+   =========================================================================== */
+h1, h2, h3, h4 {
+  margin: 0 0 var(--s-4);
+  font-weight: 600;
+  line-height: var(--lh-head);
+  letter-spacing: var(--track-tight);
+  text-wrap: balance;
+}
+
+/* Display sizes take the serif. h3 and h4 stay in Inter: they are often
+   14–16px, where Playfair's thin strokes break up. */
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.012em;   /* the serif needs far less negative tracking
+                                 than a grotesque; -0.022em closes it up */
+  line-height: 1.14;
+}
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); font-weight: 600; }
+h4 { font-size: var(--fs-body); font-weight: 600; }
+
+p { margin: 0 0 var(--s-4); }
+p:last-child { margin-bottom: 0; }
+
+/* Opening paragraph of a section. */
+.lead {
+  font-size: var(--fs-lead);
+  color: var(--text-on-light-soft);
+  line-height: 1.6;
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+
+/* Small uppercase label above a heading.
+   Uses the DARK gold: at 11-12px, uppercase and letterspaced, the surface
+   gold (--accent) measures about 2:1 against ivory and is genuinely hard to
+   read. Small text is exactly where a gold palette most often fails
+   accessibility, so it takes the darkened token. */
+.eyebrow {
+  display: block;
+  margin: 0 0 var(--s-3);
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+  color: var(--accent-deep);
+}
+.on-dark .eyebrow { color: var(--accent-bright); }
+
+/* Section intro block. */
+.section-head { max-width: var(--wrap-narrow); margin-bottom: var(--s-7); }
+
+/* Numerals in stats and prices: tabular so columns line up. */
+.num { font-variant-numeric: tabular-nums; }
+
+
+/* ===========================================================================
+   4. LAYOUT
+   =========================================================================== */
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--s-4);
+}
+@media (min-width: 640px) { .wrap { padding-inline: var(--s-6); } }
+
+.wrap-narrow { max-width: var(--wrap-narrow); margin-inline: auto; }
+
+.section { padding-block: var(--section-y); }
+.section.is-tight { padding-block: clamp(2.5rem, 1.5rem + 4vw, 4.5rem); }
+
+/* Light and dark section skins. */
+.on-paper { background: var(--paper); color: var(--text-on-light); }
+.on-sunk  { background: var(--paper-sunk); color: var(--text-on-light); }
+.on-dark  { background: var(--ink-800); color: var(--text-on-dark); }
+.on-dark h1, .on-dark h2, .on-dark h3, .on-dark h4 { color: var(--text-on-dark); }
+.on-dark .lead { color: var(--text-on-dark-soft); }
+/* `:not(.btn)` matters. A button is an <a> too, and without this exclusion
+   the rule overrides `--btn-fg` and paints accent-bright text onto the
+   accent-filled primary button — amber on amber, 1.27:1. Buttons carry their
+   own foreground; this rule is for prose links only. */
+.on-dark a:not(.btn) { color: var(--accent-bright); }
+
+/* Auto-fitting grid. Children decide nothing about width. */
+.grid { display: grid; gap: var(--s-5); }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.grid-4 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); }
+
+/* Split layout: content beside a visual. Stacks under 900px. */
+.split { display: grid; gap: var(--s-7); align-items: center; }
+
+/* A grid item's `min-width` defaults to `auto`, which means "never shrink
+   below my content's minimum width". One wide, un-wrappable child — a table
+   with `white-space: nowrap` headers, a long unbroken URL — therefore forces
+   the whole column wider than the viewport, and the page gains a horizontal
+   scrollbar that no amount of `max-width` on the child will remove.
+   `min-width: 0` opts out, so the column tracks the viewport and the child
+   with `overflow-x: auto` scrolls inside itself instead. */
+.split > * { min-width: 0; }
+@media (min-width: 900px) {
+  .split { grid-template-columns: 1fr 1fr; gap: var(--s-8); }
+  .split.is-wide-left  { grid-template-columns: 1.15fr 0.85fr; }
+}
+
+
+/* ===========================================================================
+   5. BUTTONS
+   =========================================================================== */
+.btn {
+  --btn-bg: var(--accent);
+  /* Near-black on gold, not white. White on a mid-gold fails contrast and is
+     the detail that makes a gold palette look cheap rather than expensive. */
+  --btn-fg: var(--on-accent);
+  --btn-bd: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  min-height: 48px;                 /* comfortable touch target */
+  padding: 0 var(--s-5);
+  border: 1px solid var(--btn-bd);
+  border-radius: var(--r-md);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform var(--dur-fast) var(--ease),
+              background-color var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease),
+              border-color var(--dur) var(--ease);
+}
+.btn:hover { background: var(--accent-bright); color: var(--on-accent); }
+.btn:active { transform: translateY(1px); }
+
+.btn--primary { box-shadow: 0 2px 10px var(--accent-glow); }
+.btn--primary:hover { box-shadow: 0 4px 18px var(--accent-glow); }
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--text-on-light);
+  --btn-bd: var(--paper-line);
+}
+.btn--ghost:hover { --btn-bg: var(--paper-sunk); color: var(--text-on-light); background: var(--paper-sunk); border-color: #cfd8e4; }
+
+.on-dark .btn--ghost, .btn--ghost-dark {
+  /* `--btn-bg: transparent` is load-bearing. Without it this rule sets only
+     the foreground and border, and the button keeps the base `.btn` accent
+     FILL — which put near-white text on an amber background in the header at
+     1.84:1. `.btn--ghost` above declares it; this one used to inherit the
+     fill and quietly fail contrast on every page. */
+  --btn-bg: transparent;
+  --btn-fg: var(--text-on-dark);
+  --btn-bd: rgba(255, 255, 255, 0.22);
+}
+.on-dark .btn--ghost:hover, .btn--ghost-dark:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-on-dark);
+  border-color: rgba(255, 255, 255, 0.38);
+}
+
+/* WhatsApp green, used only on genuine WhatsApp actions. */
+.btn--wa { --btn-bg: #1faa54; }
+.btn--wa:hover { background: #189347; }
+
+.btn--lg { min-height: 56px; padding-inline: var(--s-6); font-size: var(--fs-body); }
+.btn--sm { min-height: 40px; padding-inline: var(--s-4); font-size: var(--fs-xs); }
+.btn--block { width: 100%; }
+
+.btn[disabled], .btn[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; }
+.btn[disabled]:active { transform: none; }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+
+/* On a 320px phone the narrow grid columns leave a button about 126px of
+   room, while `white-space: nowrap` above demands ~172px for its label —
+   which no amount of flex-wrap can solve, because it is one unbreakable
+   item. The result was a horizontal scrollbar on the whole page. Below
+   360px the label is allowed to run onto a second line instead; it is less
+   tidy than a single line and far tidier than a sideways-scrolling page. */
+@media (max-width: 360px) {
+  .btn { white-space: normal; }
+  .btn-row > .btn { flex: 1 1 100%; }
+}
+
+/* A text link that behaves like a secondary CTA. */
+.link-cta {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  font-size: var(--fs-sm); font-weight: 600; text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid currentColor;
+}
+.link-cta .ic { transition: transform var(--dur) var(--ease); }
+.link-cta:hover .ic { transform: translateX(3px); }
+
+/* Inline icons, sized from the text. */
+.ic { width: 1.15em; height: 1.15em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+
+
+/* ===========================================================================
+   6. HEADER AND NAVIGATION
+   =========================================================================== */
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10, 15, 26, 0.72);
+  /* The one place glass is used. Degrades to the solid colour above. */
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  backdrop-filter: saturate(160%) blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+/* Firms up once the page scrolls. Toggled by main.js. */
+.header.is-stuck { background: rgba(5, 8, 15, 0.92); border-bottom-color: rgba(255, 255, 255, 0.12); }
+
+.header__bar {
+  display: flex; align-items: center; gap: var(--s-4);
+  min-height: var(--header-h);
+}
+
+.brand {
+  display: inline-flex; align-items: center; gap: var(--s-3);
+  color: var(--text-on-dark); text-decoration: none; font-weight: 600;
+  letter-spacing: -0.015em; margin-right: auto;
+}
+.brand__mark { width: 34px; height: 34px; flex: none; }
+.brand__name { font-size: 1.02rem; line-height: 1.1; }
+.brand__sub {
+  display: block; font-size: var(--fs-micro); font-weight: 500;
+  letter-spacing: var(--track-caps); text-transform: uppercase;
+  color: var(--text-on-dark-faint);
+}
+
+.nav { display: none; }
+@media (min-width: 1000px) {
+  .nav { display: flex; align-items: center; gap: var(--s-5); }
+  .nav a {
+    position: relative; color: var(--text-on-dark-soft); text-decoration: none;
+    font-size: var(--fs-sm); font-weight: 500; padding-block: var(--s-2);
+    transition: color var(--dur) var(--ease);
+  }
+  .nav a:hover, .nav a[aria-current="page"] { color: var(--text-on-dark); }
+  /* Underline grows from the centre on hover. */
+  .nav a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+    background: var(--accent-bright); border-radius: 2px;
+    transform: scaleX(0); transition: transform var(--dur) var(--ease);
+  }
+  .nav a:hover::after, .nav a[aria-current="page"]::after { transform: scaleX(1); }
+}
+
+.header__actions { display: flex; align-items: center; gap: var(--s-3); flex: none; }
+.header__actions .btn--ghost-dark { display: none; }
+@media (min-width: 560px) { .header__actions .btn--ghost-dark { display: inline-flex; } }
+
+/* Very narrow phones (360px and below is still common in India).
+   At that width the brand, the quote button and the menu toggle together
+   are wider than the viewport, which pushes the page sideways. The quote
+   button is the one to drop: it is the first item in the mobile drawer and
+   it is also in the sticky call/WhatsApp bar, so nothing is lost. */
+@media (max-width: 430px) {
+  .header__actions .btn--primary { display: none; }
+  .brand__sub { display: none; }
+  .brand__name { font-size: 0.95rem; }
+}
+
+/* Lets the brand shrink instead of forcing the row wider than the screen. */
+.brand { min-width: 0; }
+.brand__name { min-width: 0; overflow-wrap: anywhere; }
+
+/* Hamburger. */
+.nav-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; flex: none;
+  background: transparent; border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--r-md); color: var(--text-on-dark);
+}
+@media (min-width: 1000px) { .nav-toggle { display: none; } }
+
+/* Mobile drawer. Height animates via max-height so nothing jumps. */
+.nav-drawer {
+  display: grid; overflow: hidden;
+  max-height: 0;
+  transition: max-height var(--dur-slow) var(--ease);
+  border-top: 1px solid transparent;
+}
+.nav-drawer.is-open { max-height: 70vh; overflow-y: auto; border-top-color: rgba(255, 255, 255, 0.1); }
+.nav-drawer__inner { padding: var(--s-4) 0 var(--s-6); }
+.nav-drawer a {
+  display: block; padding: var(--s-3) 0; color: var(--text-on-dark-soft);
+  text-decoration: none; font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.nav-drawer a:hover { color: var(--text-on-dark); }
+.nav-drawer .btn { margin-top: var(--s-4); }
+@media (min-width: 1000px) { .nav-drawer { display: none; } }
+
+
+/* ===========================================================================
+   7. HERO
+   =========================================================================== */
+.hero {
+  position: relative;
+  isolation: isolate;
+  background: var(--ink-900);
+  color: var(--text-on-dark);
+  overflow: hidden;
+}
+
+/* Depth behind the content: a single soft pool of light, no banding. */
+.hero::before {
+  content: "";
+  position: absolute; inset: 0; z-index: -2;
+  background:
+    radial-gradient(110% 80% at 72% 12%, #143050 0%, #0a1c30 52%, #05101f 100%);
+}
+/* A very faint grid, for structure rather than decoration. */
+.hero::after {
+  content: "";
+  position: absolute; inset: 0; z-index: -2; opacity: 0.4;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.028) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.028) 1px, transparent 1px);
+  background-size: 76px 76px;
+  mask-image: radial-gradient(70% 60% at 50% 40%, #000 0%, transparent 78%);
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 40%, #000 0%, transparent 78%);
+}
+
+.hero__inner {
+  position: relative; z-index: 2;
+  display: grid; gap: var(--s-6);
+  padding-block: clamp(2.5rem, 1.5rem + 6vw, 5.5rem) clamp(2rem, 1rem + 4vw, 3.5rem);
+}
+@media (min-width: 980px) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: var(--s-7);
+    min-height: min(84vh, 760px);
+  }
+}
+
+.hero__copy { max-width: 36rem; }
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-display);
+  line-height: 1.06;
+  letter-spacing: -0.014em;
+  /* The tagline sits immediately beneath, so the gap here is small and the
+     larger breathing space comes after the pair. */
+  margin-bottom: var(--s-3);
+}
+/* A secondary clause in the headline, set in italic gold. One typographic
+   gesture, not three — the restraint is what makes it read as expensive. */
+.hero h1 .soft {
+  font-style: italic;
+  color: var(--accent-bright);
+}
+
+/* The tagline, directly under the business name. It borrows the headline's
+   display face and the same italic gold as `.soft`, so the name and the line
+   beneath it read as one typographic unit rather than two unrelated pieces
+   of text. Sized well below the display scale: it supports the name, it does
+   not compete with it. */
+.hero__tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.25rem, 1rem + 1.1vw, 1.85rem);
+  line-height: 1.25;
+  color: var(--accent-bright);
+  margin: 0 0 var(--s-5);
+  max-width: 34rem;
+  /* Playfair's italic descenders clip against a tight line-height at the
+     largest clamp value without this. */
+  padding-bottom: 0.08em;
+}
+
+.hero__lead {
+  font-size: var(--fs-lead);
+  color: var(--text-on-dark-soft);
+  max-width: 34rem;
+  margin-bottom: var(--s-6);
+}
+
+.hero .btn-row { margin-bottom: var(--s-6); }
+
+/* Small commitments under the CTAs. Wording is service commitment only. */
+.hero__points { display: flex; flex-wrap: wrap; gap: var(--s-3) var(--s-5); padding: 0; margin: 0; list-style: none; }
+.hero__points li {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  font-size: var(--fs-sm); color: var(--text-on-dark-soft);
+}
+.hero__points .ic { color: var(--accent-bright); }
+
+/* --- The 3D stage ----------------------------------------------------------
+   The canvas sits in its own grid cell on desktop, so it can never overlap
+   the headline or the CTAs. On phones it sits above the copy at a fixed
+   aspect ratio. Height is reserved up front, so adding the canvas causes
+   no layout shift (CLS). */
+.hero__stage {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  width: 100%;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  /* Visible while WebGL boots, and the permanent backdrop behind the model. */
+  /* A touch lighter at the centre than the hero behind it, so the stage
+     reads as a lit space and the dark vehicle has something to sit against. */
+  background: radial-gradient(85% 75% at 50% 52%, #17354f 0%, #0b1d31 62%, #061320 100%);
+}
+@media (min-width: 980px) {
+  .hero__stage { aspect-ratio: 4 / 3; }
+}
+
+.hero__stage canvas { width: 100% !important; height: 100% !important; }
+
+/* The still image shown instead of 3D on low-power devices, when WebGL is
+   unavailable, or when the visitor asks for reduced motion. */
+.hero__fallback {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+/* Hidden once the 3D scene reports it is running. */
+.hero__stage.is-3d .hero__fallback { opacity: 0; pointer-events: none; transition: opacity var(--dur-cine) var(--ease); }
+
+/* Floor reflection under the truck, drawn in CSS so the GPU does less. */
+.hero__stage::after {
+  content: "";
+  position: absolute; left: 8%; right: 8%; bottom: 8%; height: 14%;
+  background: radial-gradient(60% 100% at 50% 0%, rgba(245,165,36,0.20), transparent 72%);
+  pointer-events: none;
+}
+
+/* Loading shimmer while the 3D module streams in. */
+.stage-loading {
+  position: absolute; inset: auto 0 var(--s-4) 0;
+  display: flex; align-items: center; justify-content: center; gap: var(--s-2);
+  font-size: var(--fs-micro); letter-spacing: var(--track-caps);
+  text-transform: uppercase; color: var(--text-on-dark-faint);
+}
+.hero__stage.is-3d .stage-loading, .hero__stage.is-static .stage-loading { display: none; }
+
+/* Scroll cue. */
+.hero__cue {
+  display: none;
+  position: absolute; left: 50%; bottom: var(--s-5); z-index: 3;
+  transform: translateX(-50%);
+  font-size: var(--fs-micro); letter-spacing: var(--track-caps);
+  text-transform: uppercase; color: var(--text-on-dark-faint);
+}
+@media (min-width: 980px) { .hero__cue { display: block; } }
+.hero__cue .ic { margin-inline: auto; animation: cue 2.4s var(--ease) infinite; }
+@keyframes cue {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50%      { transform: translateY(5px); opacity: 1; }
+}
+
+
+/* ===========================================================================
+   8. TRUST STRIP
+   =========================================================================== */
+.trust {
+  background: var(--ink-800);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.trust__grid {
+  display: grid; gap: var(--s-5);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  padding-block: var(--s-6);
+}
+.trust__item { display: flex; gap: var(--s-3); align-items: flex-start; }
+.trust__item .ic { width: 1.5rem; height: 1.5rem; color: var(--accent-bright); margin-top: 2px; }
+.trust__item h3 { font-size: var(--fs-sm); margin: 0 0 2px; color: var(--text-on-dark); }
+.trust__item p { font-size: var(--fs-xs); color: var(--text-on-dark-faint); margin: 0; line-height: 1.5; }
+
+/* ===========================================================================
+   9. SCROLL JOURNEY
+   ---------------------------------------------------------------------------
+   Six stages. On desktop the visual column is pinned by GSAP while the text
+   column scrolls past it. On phones pinning is switched off entirely and the
+   stages simply reveal in sequence — same story, far less work for the GPU.
+   =========================================================================== */
+/* No `overflow: hidden` here — see the note on body in §2. It would turn
+   this section into a scroll container and stop .journey__visual sticking,
+   so the truck would scroll away instead of travelling the whole road. */
+.journey { position: relative; background: var(--ink-900); color: var(--text-on-dark); }
+
+.journey__head { padding-top: var(--section-y); }
+
+.journey__layout { display: grid; gap: var(--s-6); padding-bottom: var(--section-y); }
+/* Same `min-width: auto` trap as `.split`: a grid item refuses to shrink
+   below its content's minimum width, so the sticky road panel and the stage
+   list together held the layout viewport at ~353px and produced a horizontal
+   scrollbar on a 320px phone. */
+.journey__layout > *, .journey__stages > *, .stage > * { min-width: 0; }
+@media (min-width: 980px) {
+  .journey__layout { grid-template-columns: 0.95fr 1.05fr; gap: var(--s-8); align-items: start; }
+}
+
+/* --- The pinned visual --- */
+/* Sticky on EVERY screen size, phones included.
+   This used to be sticky only from 980px up, which meant that on a phone the
+   road panel scrolled away almost immediately and the truck was gone before
+   it had travelled anywhere. The truck following the visitor is the whole
+   point of this section, and most visitors are on a phone.
+
+   `overflow: hidden` HERE is fine — sticky is only broken by an overflow on
+   an ANCESTOR, not on the sticky element itself. */
+.journey__visual {
+  position: sticky;
+  top: calc(var(--header-h) + var(--s-3));
+  /* Above the stages. On phones the stages sit BELOW this panel in the DOM,
+     so without a z-index they paint over the top of it as they scroll past
+     — the stage text ends up printed across the road. The panel is opaque,
+     so with this they correctly pass behind it instead. */
+  z-index: 2;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  background: linear-gradient(180deg, #122b44 0%, #050f1c 100%);
+  aspect-ratio: 4 / 3;
+  /* Capped so the stage text below it still has room on a short phone
+     screen. The road SVG uses preserveAspectRatio="none" and journey.js
+     scales each axis separately, so a non-4:3 box is handled correctly. */
+  max-height: 42vh;
+}
+@media (min-width: 980px) {
+  .journey__visual {
+    top: calc(var(--header-h) + var(--s-5));
+    aspect-ratio: 1 / 1;
+    max-height: none;
+  }
+}
+
+/* --- Ambient light ---------------------------------------------------------
+   Two soft pools drifting on long, offset cycles so the panel always has
+   some life in it even when the visitor has stopped scrolling. Pure CSS and
+   composited — no JavaScript and no per-frame work. */
+.journey__glow {
+  position: absolute;
+  width: 62%; aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(42px);
+  opacity: 0.5;
+}
+.journey__glow--a {
+  top: -12%; left: -10%;
+  background: radial-gradient(circle, rgba(245,165,36,0.55), transparent 68%);
+  animation: glowDriftA 17s ease-in-out infinite;
+}
+.journey__glow--b {
+  bottom: -14%; right: -12%;
+  background: radial-gradient(circle, rgba(255,193,94,0.38), transparent 68%);
+  animation: glowDriftB 21s ease-in-out infinite;
+}
+@keyframes glowDriftA {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(14%, 10%, 0) scale(1.14); }
+}
+@keyframes glowDriftB {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.08); }
+  50%      { transform: translate3d(-12%, -9%, 0) scale(1); }
+}
+
+/* --- The road ------------------------------------------------------------- */
+.journey__road {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+}
+
+/* Road still to come: a dashed hint that slowly crawls forward. */
+.journey__road .road-line {
+  fill: none;
+  stroke: rgba(245, 241, 234, 0.16);
+  stroke-width: 2;
+  stroke-dasharray: 7 7;
+  animation: roadCrawl 2.4s linear infinite;
+}
+@keyframes roadCrawl { to { stroke-dashoffset: -14; } }
+
+/* Bloom under the travelled road. */
+.journey__road .road-bloom {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 11;
+  stroke-linecap: round;
+  opacity: 0.22;
+}
+
+/* The travelled road itself, in a gradient so the newest part is brightest. */
+.journey__road .road-done {
+  fill: none;
+  stroke: url(#roadGrad);
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  /* `stroke-dashoffset` on both of these is driven by journey.js. */
+}
+
+/* --- Milestone pins -------------------------------------------------------
+   One per stage, placed along the road by journey.js (it sets left/top from
+   the path, which is a CSSOM write and so unaffected by the CSP). */
+.journey__pins { position: absolute; inset: 0; pointer-events: none; }
+.journey__pin {
+  position: absolute;
+  width: 11px; height: 11px;
+  margin: -5.5px 0 0 -5.5px;
+  border-radius: 50%;
+  background: #1d3550;
+  border: 1.5px solid rgba(245, 241, 234, 0.28);
+  transition: background-color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              transform var(--dur) var(--ease-out),
+              box-shadow var(--dur) var(--ease);
+}
+.journey__pin.is-lit {
+  background: var(--accent-bright);
+  border-color: #fff1d4;
+  transform: scale(1.5);
+  box-shadow: 0 0 0 4px rgba(245, 165, 36, 0.22), 0 0 14px 2px rgba(255, 193, 94, 0.6);
+}
+
+/* --- The travelling truck ------------------------------------------------- */
+.journey__truck {
+  position: absolute; top: 0; left: 0;
+  width: 92px;
+  will-change: transform;
+  /* The whole sprite is positioned and rotated to the path by journey.js;
+     this adds a small suspension bounce on top of that, which is why it is
+     applied to a filter rather than a transform (a transform here would be
+     overwritten every frame). */
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.55));
+}
+
+.jt-ribs { stroke: #3d5873; stroke-width: 1; opacity: 0.6; }
+
+/* Wheels. journey.js rotates these in proportion to distance travelled, so
+   they turn only while the page is actually moving. */
+.jt-wheel { transform-box: fill-box; transform-origin: 50% 50%; }
+
+/* Headlight beam and dust, both only visible while the truck is moving. */
+.jt-beam {
+  fill: rgba(255, 246, 226, 0.16);
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+}
+.journey__truck.is-moving .jt-beam { opacity: 1; }
+
+.jt-dust__p { fill: rgba(200, 186, 160, 0.55); opacity: 0; }
+.journey__truck.is-moving .jt-dust__p { animation: dustPuff 0.85s ease-out infinite; }
+.journey__truck.is-moving .jt-dust__p--2 { animation-delay: 0.28s; }
+.journey__truck.is-moving .jt-dust__p--3 { animation-delay: 0.55s; }
+@keyframes dustPuff {
+  0%   { opacity: 0.55; transform: translate(0, 0) scale(0.5); }
+  100% { opacity: 0;    transform: translate(-16px, -5px) scale(1.7); }
+}
+
+/* Per-stage artwork layers, cross-faded by journey.js. */
+
+/* Progress readout.
+   A scrim sits behind it so the label stays legible even if the truck or the
+   road passes close by — on a short phone screen the panel is compressed and
+   there is not much clearance. */
+.journey__meter::before {
+  content: "";
+  position: absolute; left: calc(var(--s-4) * -1); right: calc(var(--s-4) * -1);
+  bottom: calc(var(--s-4) * -1); top: calc(var(--s-3) * -1);
+  background: linear-gradient(to top, rgba(5, 16, 31, 0.92), rgba(5, 16, 31, 0));
+  pointer-events: none;
+  z-index: -1;
+}
+.journey__meter {
+  position: absolute; left: var(--s-4); right: var(--s-4); bottom: var(--s-4);
+  z-index: 2;
+  display: flex; align-items: center; gap: var(--s-3);
+  font-size: var(--fs-micro); letter-spacing: var(--track-caps);
+  text-transform: uppercase; color: var(--text-on-dark-faint);
+}
+.journey__meter-track { flex: 1; height: 3px; border-radius: 2px; background: rgba(255,255,255,0.12); overflow: hidden; }
+.journey__meter-fill { height: 100%; width: 0%; background: var(--accent); border-radius: 2px; }
+
+/* --- The stage text --- */
+.journey__stages { display: grid; gap: var(--s-5); }
+@media (min-width: 980px) { .journey__stages { gap: var(--s-9); padding-block: var(--s-8); } }
+
+.stage {
+  position: relative;
+  display: grid; grid-template-columns: auto 1fr; gap: var(--s-4);
+  padding: var(--s-4) var(--s-4) var(--s-4) var(--s-5);
+  border-radius: var(--r-lg);
+  opacity: 0.42;
+  background: transparent;
+  transition: opacity var(--dur-slow) var(--ease),
+              background-color var(--dur-slow) var(--ease),
+              transform var(--dur-slow) var(--ease-out);
+}
+
+/* The gold rail down the left of the active stage. Always present so there
+   is nothing to lay out when it appears — only a scale to animate. */
+.stage::before {
+  content: "";
+  position: absolute; left: 0; top: 10%; bottom: 10%;
+  width: 3px; border-radius: 3px;
+  background: linear-gradient(to bottom, var(--accent-bright), var(--accent));
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.stage.is-active {
+  opacity: 1;
+  background: rgba(245, 165, 36, 0.055);
+  transform: translateX(4px);
+}
+.stage.is-active::before { transform: scaleY(1); }
+
+/* On phones the body text stays at full opacity — dimming paragraphs to 40%
+   would fail contrast and make the section hard to read on exactly the
+   devices most people use. The active stage is still signalled, by the gold
+   rail, the tinted panel and the badge. */
+@media (max-width: 979px) {
+  .stage { opacity: 1; padding-block: var(--s-3); }
+  .stage:not(.is-active) { background: transparent; }
+}
+
+.stage__num {
+  display: flex; align-items: center; justify-content: center;
+  width: 42px; height: 42px; flex: none;
+  border: 1px solid rgba(245, 241, 234, 0.18);
+  border-radius: var(--r-pill);
+  font-size: var(--fs-sm); font-weight: 600; font-variant-numeric: tabular-nums;
+  color: var(--text-on-dark-soft);
+  transition: background-color var(--dur) var(--ease),
+              color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              transform var(--dur) var(--ease-out),
+              box-shadow var(--dur) var(--ease);
+}
+.stage.is-active .stage__num {
+  background: var(--accent);
+  border-color: var(--accent-bright);
+  color: var(--on-accent);
+  transform: scale(1.12);
+  box-shadow: 0 0 0 5px rgba(245, 165, 36, 0.16), 0 6px 18px rgba(245, 165, 36, 0.3);
+  animation: badgePulse 2.6s var(--ease) infinite;
+}
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 0 0 5px rgba(245,165,36,0.16), 0 6px 18px rgba(245,165,36,0.30); }
+  50%      { box-shadow: 0 0 0 9px rgba(245,165,36,0.05), 0 6px 22px rgba(245,165,36,0.42); }
+}
+
+.stage h3 { margin-bottom: var(--s-2); transition: color var(--dur) var(--ease); }
+.stage.is-active h3 { color: var(--accent-bright); }
+.stage p { color: var(--text-on-dark-soft); margin: 0; }
+
+.stage__list { margin: var(--s-3) 0 0; padding-left: 1.1rem; color: var(--text-on-dark-faint); font-size: var(--fs-sm); }
+.stage__list li {
+  margin-bottom: var(--s-1);
+  opacity: 0.55;
+  transform: translateX(-4px);
+  transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
+}
+.stage__list li::marker { color: var(--accent); }
+/* The detail points fade in one after another once the stage is reached. */
+.stage.is-active .stage__list li { opacity: 1; transform: none; }
+.stage.is-active .stage__list li:nth-child(2) { transition-delay: 90ms; }
+.stage.is-active .stage__list li:nth-child(3) { transition-delay: 180ms; }
+
+
+/* ===========================================================================
+   10. CARDS
+   =========================================================================== */
+.card {
+  display: flex; flex-direction: column;
+  background: var(--paper-card);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--r-lg);
+  padding: var(--s-5);
+  box-shadow: var(--sh-1);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+/* Lift only on devices that actually have a pointer. */
+@media (hover: hover) {
+  .card:hover { transform: translateY(-3px); box-shadow: var(--sh-3); border-color: #d4dde9; }
+}
+
+.card__icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 46px; height: 46px; margin-bottom: var(--s-4);
+  border-radius: var(--r-md);
+  background: var(--accent-wash); color: var(--accent-deep);
+}
+.card__icon .ic { width: 1.4rem; height: 1.4rem; }
+
+.card h3 { margin-bottom: var(--s-2); }
+.card p { color: var(--text-on-light-soft); font-size: var(--fs-sm); margin-bottom: var(--s-4); }
+.card .link-cta { margin-top: auto; align-self: flex-start; color: var(--accent-deep); }
+
+/* Whole-card link: the anchor covers the card without nesting interactives. */
+.card--linked { position: relative; }
+.card--linked .card__hit { position: absolute; inset: 0; border-radius: inherit; }
+
+/* Feature row: icon beside text, no card chrome. */
+.feature { display: grid; grid-template-columns: auto 1fr; gap: var(--s-4); }
+.feature .ic { width: 1.6rem; height: 1.6rem; color: var(--accent-deep); }
+.feature h3 { font-size: var(--fs-body); margin-bottom: var(--s-1); }
+.feature p { font-size: var(--fs-sm); color: var(--text-on-light-soft); margin: 0; }
+
+/* Numbered process steps. */
+.steps { counter-reset: step; display: grid; gap: var(--s-5); }
+.step { counter-increment: step; display: grid; grid-template-columns: auto 1fr; gap: var(--s-4); }
+.step::before {
+  content: counter(step, decimal-leading-zero);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--fs-sm); font-weight: 600; color: var(--accent-deep);
+  padding-top: 2px;
+}
+
+/* Checklist. */
+.ticks { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s-3); }
+.ticks li { display: grid; grid-template-columns: auto 1fr; gap: var(--s-3); font-size: var(--fs-sm); }
+.ticks .ic { color: var(--ok); margin-top: 3px; }
+
+/* ===========================================================================
+   11. TESTIMONIALS
+   =========================================================================== */
+.quote {
+  display: flex; flex-direction: column; gap: var(--s-4);
+  background: var(--paper-card);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--r-lg);
+  padding: var(--s-5);
+}
+.quote blockquote { margin: 0; font-size: var(--fs-sm); line-height: 1.65; color: var(--text-on-light); }
+.quote__who { display: flex; align-items: center; gap: var(--s-3); margin-top: auto; }
+.quote__avatar {
+  display: grid; place-items: center;
+  width: 38px; height: 38px; flex: none; border-radius: var(--r-pill);
+  background: var(--accent-wash); color: var(--accent-deep);
+  font-size: var(--fs-xs); font-weight: 600;
+}
+/* Both are spans inside one wrapper, so they must be made block-level or
+   they run together on a single line. */
+.quote__name { display: block; font-size: var(--fs-sm); font-weight: 600; line-height: 1.35; }
+.quote__move { display: block; font-size: var(--fs-xs); color: var(--text-on-light-faint); line-height: 1.35; }
+
+/* --- Star ratings ----------------------------------------------------------
+   One star shape, filled or not. The row carries `role="img"` and an
+   aria-label in reviews.js, so the stars themselves are decorative and a
+   screen reader hears "Rated 5 out of 5" rather than five separate images. */
+.stars { display: inline-flex; gap: 2px; }
+.stars__star {
+  width: 1em; height: 1em;
+  stroke: var(--accent);
+  stroke-width: 1.4;
+  fill: none;
+}
+.stars__star.is-on { fill: var(--accent); }
+
+/* --- A review card ---------------------------------------------------------
+   The same `.quote` card as a first-party testimonial, plus a star row and a
+   link back to the source. */
+.quote--review { gap: var(--s-3); }
+.quote--review .stars { font-size: 1rem; margin-bottom: var(--s-1); }
+
+.quote__source {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  margin-top: var(--s-2);
+  font-size: var(--fs-xs); font-weight: 600;
+  color: var(--accent-deep);
+  text-decoration: none;
+}
+.quote__source:hover { text-decoration: underline; }
+.quote__source .ic { width: 1em; height: 1em; }
+
+/* --- The overall rating, above the cards -----------------------------------
+   This shows the profile's REAL figure across every review, and says so. It
+   is never computed from the cards below, which are a selection of the good
+   ones — see the note in js/reviews.js. */
+.rating-summary {
+  display: grid; justify-items: center; gap: var(--s-3);
+  text-align: center;
+  margin-bottom: var(--s-7);
+}
+.rating-summary__head {
+  display: flex; align-items: center; flex-wrap: wrap;
+  justify-content: center; gap: var(--s-2) var(--s-3);
+}
+.rating-summary__score {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  line-height: 1;
+  color: var(--text-on-light);
+}
+.rating-summary__head .stars { font-size: 1.25rem; }
+.rating-summary__count { font-size: var(--fs-sm); color: var(--text-on-light-soft); }
+.rating-summary__note {
+  max-width: 44ch;
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--text-on-light-faint);
+}
+
+.demo-banner {
+  display: flex; align-items: flex-start; gap: var(--s-3);
+  background: var(--warn-bg); border: 1px solid #f4ddb0;
+  border-radius: var(--r-md); padding: var(--s-4);
+  font-size: var(--fs-sm); color: var(--warn);
+  margin-bottom: var(--s-5);
+}
+.demo-banner .ic { flex: none; margin-top: 2px; }
+
+
+/* ===========================================================================
+   12. FAQ ACCORDION
+   ---------------------------------------------------------------------------
+   Built on <details>, so every answer is in the DOM and crawlable, and it
+   still works with JavaScript disabled.
+   =========================================================================== */
+.faq { display: grid; gap: var(--s-3); max-width: var(--wrap-narrow); }
+.faq details {
+  background: var(--paper-card);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.faq summary {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s-4);
+  padding: var(--s-4) var(--s-5);
+  font-weight: 600; font-size: var(--fs-sm);
+  cursor: pointer; list-style: none;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: ""; flex: none;
+  width: 10px; height: 10px;
+  border-right: 2px solid var(--text-on-light-faint);
+  border-bottom: 2px solid var(--text-on-light-faint);
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform var(--dur) var(--ease);
+}
+.faq details[open] summary::after { transform: rotate(-135deg) translateY(-2px); }
+.faq summary:hover { background: var(--paper-sunk); }
+.faq__body { padding: 0 var(--s-5) var(--s-5); }
+.faq__body p { font-size: var(--fs-sm); color: var(--text-on-light-soft); }
+.faq__body p:first-child { margin-top: 0; }
+
+
+/* ===========================================================================
+   13. FORMS AND THE MULTI-STEP MODAL
+   =========================================================================== */
+.field { display: grid; gap: var(--s-2); }
+.field > label, .field__label {
+  font-size: var(--fs-sm); font-weight: 600; color: var(--text-on-light);
+}
+.field__hint { font-size: var(--fs-xs); color: var(--text-on-light-faint); }
+
+.input, .select, .textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--s-3) var(--s-4);
+  background: var(--paper);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--r-md);
+  font-size: var(--fs-body);   /* 16px: stops iOS zooming on focus */
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.textarea { min-height: 104px; resize: vertical; padding-top: var(--s-3); }
+.input:hover, .select:hover, .textarea:hover { border-color: #c4d0e0; }
+.input:focus, .select:focus, .textarea:focus {
+  outline: none; border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(245, 165, 36, 0.22);
+}
+.input::placeholder, .textarea::placeholder { color: var(--text-on-light-faint); }
+
+.select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-on-light-soft) 50%),
+                    linear-gradient(135deg, var(--text-on-light-soft) 50%, transparent 50%);
+  background-position: calc(100% - 19px) 21px, calc(100% - 14px) 21px;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: var(--s-8);
+}
+
+/* Phone field with a fixed +91 prefix. */
+.phone-field { display: flex; }
+.phone-field__cc {
+  display: inline-flex; align-items: center;
+  padding: 0 var(--s-3);
+  border: 1px solid var(--paper-line); border-right: 0;
+  border-radius: var(--r-md) 0 0 var(--r-md);
+  background: var(--paper-sunk);
+  font-size: var(--fs-sm); font-weight: 600; color: var(--text-on-light-soft);
+}
+.phone-field .input { border-radius: 0 var(--r-md) var(--r-md) 0; }
+
+/* Checkbox and radio rows. */
+.check { display: grid; grid-template-columns: auto 1fr; gap: var(--s-3); align-items: start; cursor: pointer; }
+.check input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--accent); flex: none; }
+.check span { font-size: var(--fs-sm); line-height: 1.5; }
+
+/* Multi-select service tiles. */
+.choices { display: grid; gap: var(--s-2); grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); }
+.choice { position: relative; }
+.choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.choice label {
+  display: flex; align-items: center; gap: var(--s-3);
+  min-height: 48px; padding: var(--s-3) var(--s-4);
+  border: 1px solid var(--paper-line); border-radius: var(--r-md);
+  background: var(--paper); font-size: var(--fs-sm); cursor: pointer;
+  transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+.choice label::before {
+  content: ""; flex: none; width: 18px; height: 18px;
+  border: 1.5px solid #c4d0e0; border-radius: 4px;
+  transition: all var(--dur) var(--ease);
+}
+.choice input:checked + label { border-color: var(--accent); background: var(--accent-wash); }
+.choice input:checked + label::before {
+  background: var(--accent); border-color: var(--accent);
+  /* A tick, drawn with a clip so no image is needed. */
+  box-shadow: inset 0 0 0 2px var(--accent-wash), inset 0 0 0 9px var(--accent);
+}
+.choice input:focus-visible + label { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* Validation. */
+.field.has-error .input,
+.field.has-error .select,
+.field.has-error .textarea { border-color: var(--err); box-shadow: 0 0 0 3px rgba(192, 39, 45, 0.12); }
+.field__error {
+  display: none;
+  font-size: var(--fs-xs); font-weight: 500; color: var(--err);
+}
+.field.has-error .field__error { display: flex; align-items: center; gap: var(--s-2); }
+
+.form-note { font-size: var(--fs-xs); color: var(--text-on-light-faint); line-height: 1.55; }
+
+/* --- Modal --- */
+.modal {
+  position: fixed; inset: 0; z-index: 300;
+  display: grid; place-items: end center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.modal[hidden] { display: none; }
+@media (min-width: 720px) { .modal { place-items: center; padding: var(--s-5); } }
+
+.modal__backdrop {
+  position: fixed; inset: 0;
+  background: rgba(5, 8, 15, 0.62);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.modal__panel {
+  position: relative;
+  display: flex; flex-direction: column;
+  width: 100%; max-width: 640px;
+  max-height: 92vh;
+  background: var(--paper);
+  border-radius: var(--r-xl) var(--r-xl) 0 0;
+  box-shadow: var(--sh-4);
+  overflow: hidden;
+}
+@media (min-width: 720px) { .modal__panel { border-radius: var(--r-xl); max-height: 88vh; } }
+
+.modal__head {
+  display: grid; gap: var(--s-3);
+  padding: var(--s-5) var(--s-5) var(--s-4);
+  border-bottom: 1px solid var(--paper-line);
+}
+.modal__title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s-4); }
+.modal__head h2 { font-size: var(--fs-h3); margin: 0; }
+.modal__head p { font-size: var(--fs-xs); color: var(--text-on-light-faint); margin: 0; }
+
+.modal__close {
+  display: grid; place-items: center;
+  width: 40px; height: 40px; flex: none;
+  background: var(--paper-sunk); border: 1px solid var(--paper-line);
+  border-radius: var(--r-md); color: var(--text-on-light-soft);
+}
+.modal__close:hover { background: #eef2f7; color: var(--text-on-light); }
+
+/* Step meter. */
+.steps-meter { display: flex; align-items: center; gap: var(--s-2); }
+.steps-meter__seg { flex: 1; height: 4px; border-radius: 2px; background: var(--paper-line); overflow: hidden; }
+.steps-meter__seg.is-done, .steps-meter__seg.is-current { background: var(--accent); }
+.steps-meter__label { font-size: var(--fs-micro); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-on-light-faint); white-space: nowrap; }
+
+.modal__body { padding: var(--s-5); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.modal__foot {
+  display: flex; align-items: center; gap: var(--s-3);
+  padding: var(--s-4) var(--s-5);
+  border-top: 1px solid var(--paper-line);
+  background: var(--paper-sunk);
+}
+.modal__foot .btn:last-child { margin-left: auto; }
+
+.fstep { display: grid; gap: var(--s-5); }
+.fstep[hidden] { display: none; }
+.fstep__pair { display: grid; gap: var(--s-4); }
+@media (min-width: 560px) { .fstep__pair { grid-template-columns: 1fr 1fr; } }
+
+/* Review table on the last step. */
+.review { display: grid; gap: 0; font-size: var(--fs-sm); }
+.review__row { display: grid; grid-template-columns: 11rem 1fr; gap: var(--s-4); padding-block: var(--s-3); border-bottom: 1px solid var(--paper-line); }
+.review__row dt { color: var(--text-on-light-faint); margin: 0; }
+.review__row dd { margin: 0; font-weight: 500; }
+@media (max-width: 520px) { .review__row { grid-template-columns: 1fr; gap: 2px; } }
+
+/* Submission states. */
+.form-state { display: grid; gap: var(--s-4); place-items: center; text-align: center; padding-block: var(--s-6); }
+.form-state__icon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: var(--r-pill); }
+.form-state--ok .form-state__icon { background: var(--ok-bg); color: var(--ok); }
+.form-state--err .form-state__icon { background: var(--err-bg); color: var(--err); }
+.form-state .ic { width: 1.8rem; height: 1.8rem; }
+
+/* Spinner inside the submit button. */
+.spinner {
+  width: 1.05em; height: 1.05em; flex: none;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Honeypot: a real field, visually removed. Bots fill it, humans never see
+   it. Not `display:none`, which some bots skip. */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+
+/* ===========================================================================
+   14. CONTACT AND MAP
+   =========================================================================== */
+.contact-grid { display: grid; gap: var(--s-6); }
+@media (min-width: 900px) { .contact-grid { grid-template-columns: 0.9fr 1.1fr; gap: var(--s-8); } }
+
+.contact-list { display: grid; gap: var(--s-5); list-style: none; padding: 0; margin: 0; }
+.contact-list li { display: grid; grid-template-columns: auto 1fr; gap: var(--s-4); }
+.contact-list .ic { width: 1.4rem; height: 1.4rem; color: var(--accent-deep); margin-top: 3px; }
+.contact-list dt, .contact-list .label {
+  font-size: var(--fs-micro); letter-spacing: var(--track-caps);
+  text-transform: uppercase; color: var(--text-on-light-faint); margin-bottom: 2px;
+}
+.contact-list a { font-weight: 600; text-decoration: none; }
+
+/* Map frame. Height reserved so the iframe cannot shift the layout.
+   4:3 on a phone is a tall letterbox that pushes everything below it off the
+   screen, so the ratio widens out as there is room to spare. */
+.map {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--paper-sunk);
+  border: 1px solid var(--paper-line);
+}
+@media (min-width: 560px) { .map { aspect-ratio: 4 / 3; } }
+@media (min-width: 900px) { .map { aspect-ratio: 21 / 9; } }
+
+.map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+/* Shown when no coordinates are configured yet. */
+.map__empty { display: grid; place-items: center; height: 100%; padding: var(--s-5); text-align: center; font-size: var(--fs-sm); color: var(--text-on-light-faint); }
+
+/* The honesty note under an address-derived pin. */
+.map__note {
+  max-width: var(--wrap-narrow);
+  color: var(--text-on-light-faint);
+}
+
+
+/* ===========================================================================
+   15. FOOTER
+   =========================================================================== */
+.footer { background: var(--ink-900); color: var(--text-on-dark-soft); }
+.footer__top { display: grid; gap: var(--s-7); padding-block: var(--s-8); }
+@media (min-width: 760px) { .footer__top { grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: var(--s-6); } }
+
+.footer h3 {
+  font-size: var(--fs-micro); letter-spacing: var(--track-caps);
+  text-transform: uppercase; color: var(--text-on-dark-faint);
+  margin-bottom: var(--s-4);
+}
+.footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s-3); }
+.footer a { color: var(--text-on-dark-soft); text-decoration: none; font-size: var(--fs-sm); }
+.footer a:hover { color: var(--text-on-dark); text-decoration: underline; }
+.footer__about p { font-size: var(--fs-sm); color: var(--text-on-dark-faint); max-width: 34ch; }
+
+.footer__legal {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3) var(--s-5);
+  padding-block: var(--s-5);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: var(--fs-xs); color: var(--text-on-dark-faint);
+}
+.footer__legal nav { display: flex; flex-wrap: wrap; gap: var(--s-4); margin-left: auto; }
+
+.socials { display: flex; gap: var(--s-3); margin-top: var(--s-4); }
+.socials a {
+  display: grid; place-items: center;
+  width: 40px; height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.14); border-radius: var(--r-md);
+  transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+.socials a:hover { background: rgba(255, 255, 255, 0.07); border-color: rgba(255, 255, 255, 0.3); }
+
+
+/* ===========================================================================
+   16. STICKY MOBILE CONTACT BAR
+   =========================================================================== */
+.contact-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--paper-line);
+  border-top: 1px solid var(--paper-line);
+  box-shadow: 0 -4px 20px rgba(10, 20, 40, 0.1);
+  /* Clears the iOS home indicator. */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.contact-bar a {
+  display: flex; align-items: center; justify-content: center; gap: var(--s-2);
+  min-height: 54px; background: var(--paper);
+  font-size: var(--fs-sm); font-weight: 600; text-decoration: none;
+  color: var(--text-on-light);
+}
+.contact-bar a:first-child { color: var(--accent-deep); }
+.contact-bar a:last-child { color: #15803d; }
+@media (min-width: 860px) { .contact-bar { display: none; } }
+/* Keeps the bar from covering the end of the page. */
+@media (max-width: 859px) { body.has-contact-bar { padding-bottom: 54px; } }
+
+/* Floating WhatsApp button, desktop only (mobile uses the bar above). */
+.wa-float {
+  position: fixed; right: var(--s-5); bottom: var(--s-5); z-index: 90;
+  display: none;
+  align-items: center; gap: var(--s-3);
+  min-height: 52px; padding: 0 var(--s-5);
+  background: #1faa54; color: #fff;
+  border-radius: var(--r-pill);
+  box-shadow: 0 6px 20px rgba(31, 170, 84, 0.34);
+  font-size: var(--fs-sm); font-weight: 600; text-decoration: none;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+@media (min-width: 860px) { .wa-float { display: inline-flex; } }
+.wa-float:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(31, 170, 84, 0.42); color: #fff; }
+
+
+/* ===========================================================================
+   17b. SIDE SCROLL TRUCK
+   ---------------------------------------------------------------------------
+   A fixed rail down the left edge. The truck travels top to bottom as the
+   visitor scrolls the page, with the road filling in behind it. Built by
+   js/scroll-truck.js, which runs on every page.
+
+   Two things this has to survive:
+
+   1. It is fixed over sections that are sometimes near-black and sometimes
+      ivory. So the unfilled track is a mid-tone that holds up against both
+      rather than a light or dark colour that disappears on one of them.
+
+   2. It must never sit on top of the text. Below 1280px the layout is not
+      wide enough to have spare margin, so .wrap gains matching left padding
+      and the rail occupies that reserved strip. Above 1280px the centred
+      container already leaves more than enough room, so no shift is needed.
+   =========================================================================== */
+.scroll-rail {
+  position: fixed;
+  left: 0;
+  top: calc(var(--header-h) + var(--s-4));
+  bottom: var(--s-5);
+  width: var(--rail-w);
+  z-index: 70;              /* under the header (100) and contact bar (90) */
+  pointer-events: none;     /* never intercepts a tap or a text selection  */
+  transition: opacity var(--dur) var(--ease);
+}
+/* Hidden when the page is too short to have a journey worth showing. */
+.scroll-rail.is-hidden { opacity: 0; }
+
+.scroll-rail__track,
+.scroll-rail__fill {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  border-radius: 2px;
+}
+/* Mid-tone: readable on the near-black hero AND on the ivory sections. */
+.scroll-rail__track { background: rgba(138, 130, 113, 0.34); }
+
+.scroll-rail__fill {
+  background: var(--accent);
+  transform-origin: top center;
+  transform: scaleY(0);     /* scaleY rather than height: no layout per frame */
+}
+
+.scroll-rail__truck {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -14px;
+  width: 28px;
+  height: 46px;
+  /* Lifts the truck off whichever background is behind it. */
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
+}
+
+/* Keep clear of the sticky call/WhatsApp bar on phones. */
+body.has-contact-bar .scroll-rail { bottom: calc(54px + var(--s-4)); }
+
+/* Reserve the strip so the rail never covers content. */
+@media (max-width: 1279px) {
+  .wrap { padding-left: calc(var(--rail-w) + var(--s-3)); }
+}
+/* A slimmer rail on small phones, where every pixel of text width counts. */
+@media (max-width: 480px) {
+  :root { --rail-w: 28px; }
+  .scroll-rail__truck { width: 24px; height: 39px; margin-left: -12px; }
+}
+
+/* The rail is a restatement of the scrollbar; it is not worth printing. */
+@media print { .scroll-rail { display: none !important; } }
+
+
+/* ===========================================================================
+   17. BREADCRUMBS AND MISC
+   =========================================================================== */
+.crumbs { padding-block: var(--s-4); font-size: var(--fs-xs); color: var(--text-on-light-faint); }
+.crumbs ol { display: flex; flex-wrap: wrap; gap: var(--s-2); list-style: none; padding: 0; margin: 0; }
+.crumbs li:not(:last-child)::after { content: "/"; margin-left: var(--s-2); color: #c0cad8; }
+.crumbs a { color: var(--text-on-light-soft); text-decoration: none; }
+.crumbs a:hover { color: var(--accent-deep); text-decoration: underline; }
+.crumbs [aria-current="page"] { color: var(--text-on-light); font-weight: 500; }
+
+/* Page banner on inner pages. */
+.page-head { background: var(--ink-800); color: var(--text-on-dark); padding-block: clamp(2.5rem, 1.5rem + 4vw, 4.5rem); }
+.page-head h1 { margin-bottom: var(--s-4); }
+.page-head .lead { color: var(--text-on-dark-soft); }
+.page-head .crumbs { color: var(--text-on-dark-faint); padding-top: 0; }
+.page-head .crumbs a { color: var(--text-on-dark-soft); }
+.page-head .crumbs [aria-current="page"] { color: var(--text-on-dark); }
+
+/* Final call-to-action band. */
+/* A dark band with a single pool of warm light, rather than a saturated
+   colour sweep. A full-width gradient in the brand colour is the loudest
+   thing a page can do and it cheapens everything around it. */
+.cta-band {
+  position: relative;
+  isolation: isolate;
+  background: var(--ink-900);
+  color: var(--text-on-dark);
+  border-top: 1px solid rgba(245, 165, 36, 0.22);
+  border-bottom: 1px solid rgba(245, 165, 36, 0.22);
+  overflow: hidden;
+}
+.cta-band::before {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  background: radial-gradient(60% 120% at 50% 0%, rgba(245, 165, 36, 0.16), transparent 70%);
+}
+.cta-band h2 { color: var(--text-on-dark); }
+.cta-band .lead, .cta-band p { color: var(--text-on-dark-soft); }
+.cta-band .btn--primary { --btn-bg: var(--accent); --btn-fg: var(--on-accent); }
+.cta-band .btn--primary:hover { background: var(--accent-bright); color: var(--on-accent); }
+.cta-band .btn--ghost { --btn-fg: var(--text-on-dark); --btn-bd: rgba(255,255,255,0.26); }
+.cta-band .btn--ghost:hover { background: rgba(255,255,255,0.08); color: var(--text-on-dark); border-color: rgba(255,255,255,0.45); }
+
+/* 404. */
+.notfound { display: grid; place-items: center; min-height: 68vh; text-align: center; }
+.notfound__code { font-size: clamp(4rem, 2rem + 12vw, 8rem); font-weight: 600; line-height: 1; letter-spacing: -0.04em; color: var(--accent-deep); }
+
+
+/* ===========================================================================
+   18. UTILITIES AND SCROLL REVEALS
+   =========================================================================== */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+.text-centre { text-align: center; }
+.text-sm { font-size: var(--fs-sm); }
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+.mt-2 { margin-top: var(--s-2); }
+.mt-4 { margin-top: var(--s-4); }
+.mt-5 { margin-top: var(--s-5); }
+.mt-6 { margin-top: var(--s-6); }
+.mt-7 { margin-top: var(--s-7); }
+.mt-8 { margin-top: var(--s-8); }
+.mb-3 { margin-bottom: var(--s-3); }
+.mb-4 { margin-bottom: var(--s-4); }
+.gap-6 { gap: var(--s-6); }
+.flow > * + * { margin-top: var(--s-4); }
+
+/* Centred button row, used in the CTA band and the form states. */
+.btn-row--centre { justify-content: center; }
+
+/* ---------------------------------------------------------------------------
+   Data table — the intercity route list on the city pages.
+
+   The wrapper scrolls rather than the page: a table is the one element that
+   genuinely cannot reflow below about 320px, and letting it push the document
+   wider would reintroduce the horizontal overflow this build works to avoid.
+   `overflow-x: auto` on a wrapper div is safe here because, unlike on <body>,
+   it creates no clip container that `position: sticky` or ScrollTrigger has
+   to measure through.
+   --------------------------------------------------------------------------- */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--r-md);
+  background: var(--paper);
+}
+
+.table {
+  width: 100%;
+  min-width: 18rem;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.table th,
+.table td {
+  padding: var(--s-3) var(--s-4);
+  text-align: left;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.table thead th {
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  background: var(--paper-sunk);
+  white-space: nowrap;
+}
+
+/* The figure column reads better right-aligned against the border. */
+.table td + td { text-align: right; white-space: nowrap; color: var(--ink-600); }
+.table tbody tr:last-child th,
+.table tbody tr:last-child td { border-bottom: 0; }
+/* NOT `color-mix(... , transparent)`. Mixing with `transparent` in srgb mixes
+   its CHANNELS too, and `transparent` is rgba(0,0,0,0) — so the result is
+   pulled towards black, not towards "less of this colour". It rendered as
+   mid-grey rgb(115,115,115) and dropped the row text to 2.65:1. The stripe is
+   just the sunk paper tone; the table sits on white, so that is all it
+   needs. */
+.table tbody tr:nth-child(even) { background: var(--paper-sunk); }
+
+/* A horizontal list of links, e.g. the suggestions on the 404 page. */
+.link-row {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: var(--s-3) var(--s-5);
+  list-style: none; padding: 0; margin: 0;
+  font-size: var(--fs-sm);
+}
+.link-row a { color: var(--accent-deep); text-decoration: none; font-weight: 500; }
+.link-row a:hover { text-decoration: underline; }
+
+/* The off-screen SVG sprite holder. */
+.sprite { position: absolute; }
+
+/* Icon size overrides, so no element needs an inline width. */
+.ic--lg { width: 1.4rem; height: 1.4rem; }
+.ic--cue { width: 1rem; height: 1rem; margin-top: 4px; }
+
+/* A hint sitting directly under a legend, pulled up against it. */
+.hint-tight { margin-top: calc(var(--s-4) * -1); }
+
+/* "(optional)" inside a field label: same size, normal weight. */
+.label-optional { font-weight: 400; }
+
+/* Small faint note in the footer, e.g. the postal address. */
+.footer__note { font-size: var(--fs-xs); color: var(--text-on-dark-faint); }
+
+/* --- Reveal on scroll ------------------------------------------------------
+   Elements start hidden ONLY when JavaScript is available (the `js` class is
+   set by a tiny inline script in <head>). Without JS everything is visible,
+   so content is never lost to a failed script. */
+.js .reveal { opacity: 0; transform: translateY(18px); }
+.js .reveal.is-in {
+  opacity: 1; transform: none;
+  transition: opacity var(--dur-cine) var(--ease-out), transform var(--dur-cine) var(--ease-out);
+}
+/* Stagger children of a revealed group. */
+.js .reveal-group > * { opacity: 0; transform: translateY(18px); }
+.js .reveal-group.is-in > * {
+  opacity: 1; transform: none;
+  transition: opacity var(--dur-cine) var(--ease-out), transform var(--dur-cine) var(--ease-out);
+}
+.js .reveal-group.is-in > *:nth-child(2) { transition-delay: 70ms; }
+.js .reveal-group.is-in > *:nth-child(3) { transition-delay: 140ms; }
+.js .reveal-group.is-in > *:nth-child(4) { transition-delay: 210ms; }
+.js .reveal-group.is-in > *:nth-child(5) { transition-delay: 280ms; }
+.js .reveal-group.is-in > *:nth-child(6) { transition-delay: 350ms; }
+.js .reveal-group.is-in > *:nth-child(7) { transition-delay: 420ms; }
+.js .reveal-group.is-in > *:nth-child(8) { transition-delay: 490ms; }
+
+/* ===========================================================================
+   19. REDUCED MOTION AND PRINT
+   =========================================================================== */
+/* Honour the operating-system setting. Content is never hidden by this —
+   reveals resolve to their final state rather than being skipped. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .js .reveal, .js .reveal-group > * { opacity: 1 !important; transform: none !important; }
+  .stage { opacity: 1 !important; }
+  .hero__cue .ic { animation: none; }
+  @media (hover: hover) { .card:hover { transform: none; } }
+}
+
+@media print {
+  .header, .nav-drawer, .contact-bar, .wa-float, .modal, .hero__stage,
+  .journey__visual, .hero__cue { display: none !important; }
+  body { background: #fff; color: #000; }
+  .on-dark, .hero, .journey, .footer, .cta-band { background: #fff !important; color: #000 !important; }
+  .on-dark h1, .on-dark h2, .on-dark h3, .footer a { color: #000 !important; }
+  a { text-decoration: underline; }
+  /* Print the destination of a link, since the reader cannot click it. */
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; }
+  .section { padding-block: 1.2rem; }
+}

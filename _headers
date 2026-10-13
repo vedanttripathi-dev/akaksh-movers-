@@ -1,0 +1,104 @@
+# ============================================================================
+# Cloudflare Pages response headers
+# ============================================================================
+# Read automatically by Cloudflare Pages. Do not move or rename this file.
+# It must sit at the root of the deployed directory (see README.md § Deployment).
+#
+# Rate limiting, WAF rules and bot protection are dashboard settings, not
+# files — see README.md § Security checklist.
+# ============================================================================
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Cross-Origin-Opener-Policy: same-origin
+
+  # --------------------------------------------------------------------------
+  # Content Security Policy
+  # --------------------------------------------------------------------------
+  # script-src
+  #   'self' covers /js/* and /vendor/* — Three.js and GSAP are served from
+  #   this origin, not a CDN, so no third-party script host is trusted.
+  #   The sha256 allows exactly one inline script: the single line in <head>
+  #   of every page that adds the "js" class.
+  #
+  #   >>> IF YOU EDIT THAT INLINE SCRIPT, RECOMPUTE THIS HASH <<<
+  #   The current hash is for:  document.documentElement.classList.add('js');
+  #   PowerShell one-liner to regenerate it is in README.md § Content Security Policy.
+  #
+  # style-src
+  #   'self' only, with NO 'unsafe-inline'. That is deliberate and it is why
+  #   there is not a single style="..." attribute in any HTML file here.
+  #   Styles set from JavaScript (element.style.x = ...) are CSSOM writes and
+  #   are not affected by this. If you add an inline style attribute to the
+  #   markup it will be silently ignored by the browser — put it in a class
+  #   in css/style.css instead.
+  #
+  # connect-src
+  #   'self' is enough: the quote form posts to /api/lead on this origin, and
+  #   the WhatsApp Cloud API is called from the server, never the browser.
+  #
+  # frame-src
+  #   Allows the Google Maps embed on the contact page. If you are not
+  #   embedding a map, delete the frame-src directive entirely.
+  #
+  # If you later add a Draco- or Meshopt-compressed .glb model, its decoder
+  # runs in a worker from a blob URL, so you will also need:
+  #   worker-src 'self' blob:
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw='; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; media-src 'self'; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+
+# Development files that are uploaded along with the site. The _redirects
+# file tries to 404 them; this is the second line of defence, so that even if
+# a path is reachable it never reaches a search index.
+/tools/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+
+/README.md
+  X-Robots-Tag: noindex, nofollow
+
+/serve.ps1
+  X-Robots-Tag: noindex, nofollow
+
+/.env.example
+  X-Robots-Tag: noindex, nofollow
+
+# The lead endpoint must never be cached anywhere.
+# The function sets these too; this is belt and braces.
+/api/*
+  Cache-Control: no-store, max-age=0
+  X-Robots-Tag: noindex
+
+# ...except the reviews endpoint, which must be cached.
+# This rule comes AFTER /api/* on purpose: later rules win, so this restores
+# caching for the one endpoint that benefits from it. Everything it returns is
+# already public on the Business Profile, there is nothing per-visitor in it,
+# and every uncached hit is a billable Places API call. The lead endpoint
+# above keeps no-store because its responses are about one person's enquiry.
+/api/reviews
+  Cache-Control: public, max-age=21600
+  X-Robots-Tag: noindex
+
+# Vendored libraries are pinned to an exact version and never edited in place,
+# so they are safe to cache hard. Bump the filename if you ever upgrade.
+/vendor/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images and icons change rarely.
+/assets/*
+  Cache-Control: public, max-age=2592000
+
+# CSS: one hour.
+/css/*
+  Cache-Control: public, max-age=3600
+
+# JS: five minutes. config.js carries the phone number, the WhatsApp number
+# and the address, and main.js writes them into the page. A long cache here
+# means a stale config.js can put OLD contact details back onto a page that
+# is otherwise correct — which is the one caching bug that actually costs
+# the business money. Keep this short.
+/js/*
+  Cache-Control: public, max-age=300

@@ -1,0 +1,128 @@
+SLUG: services/loading-unloading.html
+TITLE: Loading & Unloading in Kanpur — labour only
+DESC: Trained crews in Kanpur for loading and unloading when you have your own vehicle or have packed yourself. Trolleys and straps, stairs and no-lift buildings planned for.
+HEADING: Loading &amp; unloading
+LEAD: Labour only, for when you have your own vehicle or have already packed. The lifting is the part most people underestimate.
+CRUMBS: Home|/ ; Services|/services.html ; Loading &amp; unloading|
+---
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="split is-wide-left">
+        <div>
+          <h2>Loading is a skill, not just strength</h2>
+          <p class="lead">
+            A badly loaded vehicle damages goods even on a smooth road,
+            because everything inside is free to move. A well-loaded one holds
+            itself still.
+          </p>
+          <p>
+            Heavy and flat items go in first and low, against the walls.
+            Fragile cartons ride on top, never underneath. Gaps are filled so
+            nothing can slide, and the load is strapped in sections rather
+            than as one mass — so if one strap loosens, the whole load does
+            not shift.
+          </p>
+          <p>
+            We sign off a loading sheet with you before the vehicle moves, so
+            both sides know exactly what went on.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-lift"/></svg></span>
+          <h3>What the crew brings</h3>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Trolleys and sack barrows for cartons and appliances</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Lifting straps for wardrobes, sofas and double-door fridges</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Floor and door-frame protection on the carry route</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Ratchet straps and blankets for securing the load</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Basic tools for beds and table legs that must come off to fit</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-sunk">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Planning</span>
+        <h2>Tell us these three things and the quote will be right</h2>
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <h3>The floor, and whether the lift works</h3>
+          <p>
+            A fourth floor without a lift is not "a bit harder" — it needs
+            more people to do safely in the same time. This is the single
+            biggest factor in a labour-only quote.
+          </p>
+        </article>
+        <article class="card">
+          <h3>How far the vehicle can park</h3>
+          <p>
+            Carry distance is invisible on a phone call and obvious at 8am.
+            Fifty metres each way, repeated for every item, is an hour of
+            work nobody priced.
+          </p>
+        </article>
+        <article class="card">
+          <h3>The awkward items</h3>
+          <p>
+            A double-door fridge, a three-seater that will not turn on the
+            landing, a glass table top, a treadmill. Each may need extra
+            hands or a different route out.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="wrap-narrow">
+        <h2>Questions we get asked</h2>
+        <div class="faq mt-6" data-faq>
+          <details>
+            <summary>Can I hire just the crew, with my own vehicle?</summary>
+            <div class="faq__body"><p>
+              Yes. That is exactly what this service is. We will still advise
+              on whether your vehicle is the right size, because a second trip
+              costs more than the right truck would have.
+            </p></div>
+          </details>
+          <details>
+            <summary>Will you move things I packed myself?</summary>
+            <div class="faq__body"><p>
+              Yes. Note that owner-packed cartons are normally outside transit
+              cover, since nobody can verify the contents or the packing — so
+              pack sturdy items yourself and consider having the fragile ones
+              professionally packed.
+            </p></div>
+          </details>
+          <details>
+            <summary>How many people will come?</summary>
+            <div class="faq__body"><p>
+              It depends on the volume, the floor and the lift. We state the
+              crew size in the quote rather than sending "a team" and deciding
+              on the day.
+            </p></div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-tight cta-band">
+    <div class="wrap">
+      <div class="wrap-narrow text-centre">
+        <h2>Need hands, not a whole move?</h2>
+        <p class="lead">Tell us the floor, the lift and the awkward items, and we will quote the labour.</p>
+        <div class="btn-row mt-6 btn-row--centre">
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+          <a class="btn btn--ghost btn--lg" href="/services.html">All services</a>
+        </div>
+      </div>
+    </div>
+  </section>

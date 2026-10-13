@@ -1,0 +1,187 @@
+SLUG: contact.html
+TITLE: Contact Akash Movers, Kanpur — free moving quote
+DESC: Call or WhatsApp +91 98391 00644 for a free, itemised moving quote in Kanpur. Our office is at 8/102 Allenganj, Arya Nagar, Kanpur 208002.
+HEADING: Talk to us about your move
+LEAD: Tell us what is moving and where it is going. You will get a written, itemised quote with no obligation — and a straight answer about what we can and cannot do on your date.
+CRUMBS: Home|/ ; Contact|
+---
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="contact-grid">
+
+        <div>
+          <h2>How to reach us</h2>
+          <p class="lead">
+            The quickest route is WhatsApp — you can send photos of the rooms
+            and we can scope most moves from those without a visit.
+          </p>
+
+          <ul class="contact-list mt-6">
+            <li data-contact-phone hidden>
+              <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
+              <div>
+                <span class="label">Phone</span>
+                <a data-tel-link><span data-config="contact.phoneDisplay"></span></a>
+              </div>
+            </li>
+
+            <li data-contact-wa hidden>
+              <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              <div>
+                <span class="label">WhatsApp</span>
+                <a data-wa-link><span data-config="contact.whatsappDisplay">Message us</span></a>
+              </div>
+            </li>
+
+            <li data-contact-email hidden>
+              <svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>
+              <div>
+                <span class="label">Email</span>
+                <a data-mail-link><span data-config="contact.email"></span></a>
+              </div>
+            </li>
+
+            <li data-contact-address hidden>
+              <svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>
+              <div>
+                <span class="label">Office</span>
+                <span data-footer-address></span>
+              </div>
+            </li>
+
+            <li>
+              <svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>
+              <div>
+                <span class="label">Hours</span>
+                <span data-opening-hours>Monday to Saturday, 9am – 7pm. Sunday, 10am – 4pm.</span>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Shown only while no contact details have been configured, so
+               the page never looks broken during setup. Removed by main.js
+               as soon as a real phone number or email exists. -->
+          <div class="demo-banner mt-6" data-contact-unset hidden>
+            <svg class="ic" aria-hidden="true"><use href="#i-alert"/></svg>
+            <div>
+              <strong>Contact details not configured yet.</strong>
+              Add the phone number, WhatsApp number and email in
+              <code>js/config.js</code> and they will appear here, in the footer
+              and in the structured data automatically.
+            </div>
+          </div>
+
+          <div class="btn-row mt-7">
+            <a class="btn btn--primary btn--lg" href="#quote" data-open-quote>Get a free estimate</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-receipt"/></svg></span>
+            <h3>What to have ready</h3>
+            <p>
+              You do not need any of this to get started — but having it to hand
+              makes the quote accurate the first time, rather than after two
+              phone calls.
+            </p>
+            <ul class="ticks">
+              <li>
+                <svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>
+                <span>Both addresses, with the floor number and whether there is a working lift</span>
+              </li>
+              <li>
+                <svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>
+                <span>A rough idea of how far the truck can park from the door</span>
+              </li>
+              <li>
+                <svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>
+                <span>Anything oversized or fragile: double-door fridge, piano, glass tabletop, aquarium</span>
+              </li>
+              <li>
+                <svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>
+                <span>Whether you want us to pack everything, or only the kitchen and breakables</span>
+              </li>
+              <li>
+                <svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>
+                <span>Your preferred date, and whether it can move by a day or two</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card mt-5">
+            <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></span>
+            <h3>What happens next</h3>
+            <ol class="steps mt-0">
+              <li class="step"><div>
+                <h4>We reply the same working day</h4>
+                <p>Usually within a couple of hours during office hours.</p>
+              </div></li>
+              <li class="step"><div>
+                <h4>We survey, in person or over video</h4>
+                <p>Ten minutes on a video call is enough for most flats.</p>
+              </div></li>
+              <li class="step"><div>
+                <h4>You get an itemised written quote</h4>
+                <p>Packing, labour, transport and any extras listed separately, so you can see what drives the price.</p>
+              </div></li>
+              <li class="step"><div>
+                <h4>You decide</h4>
+                <p>No deposit is taken to hold a quote, and the quote does not expire the same week.</p>
+              </div></li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Map. Hidden until real coordinates exist in js/config.js, because an
+       approximate pin on a moving company is worse than no pin at all. -->
+  <!-- The map is built by renderMap() in js/main.js. It is centred on the
+       configured coordinates when they exist, and on the written address when
+       they do not — never on an invented approximation. The section stays
+       hidden if neither is available. -->
+  <section class="section is-tight on-sunk" data-map-section hidden>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Find us</span>
+        <h2>Where we are based</h2>
+        <p class="lead">
+          Our office is in Arya Nagar, near Khalasi Line. You are welcome to
+          come and talk a move through in person before booking anything.
+        </p>
+      </div>
+      <div class="map" data-map>
+        <p class="map__empty">Map loads once the office address is configured.</p>
+      </div>
+      <p class="map__note text-sm mt-4" data-map-note hidden></p>
+      <div class="btn-row mt-5">
+        <a class="btn btn--ghost" data-map-directions hidden>
+          <svg class="ic" aria-hidden="true"><use href="#i-route"/></svg>
+          Get directions
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-tight cta-band">
+    <div class="wrap">
+      <div class="wrap-narrow text-centre">
+        <h2 id="quote">Ready when you are</h2>
+        <p class="lead">
+          Share a few details and you will get a written, itemised quote.
+          It takes about two minutes.
+        </p>
+        <div class="btn-row mt-6 btn-row--centre">
+          <a class="btn btn--primary btn--lg" href="#quote" data-open-quote>Get free moving estimate</a>
+          <a class="btn btn--ghost btn--lg" data-wa-link hidden>
+            <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+            Chat on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>

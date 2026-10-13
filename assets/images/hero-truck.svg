@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="A packing-and-moving truck loaded and ready to depart.">
+  <title>Moving truck, loaded and ready to depart</title>
+  <!--
+    The hero poster, and the homepage's LCP element. It is an SVG rather than
+    a photograph on purpose: it is 3 KB, it is sharp at any size, and it ships
+    no claim about a vehicle the business may not own.
+
+    Palette note: the vehicle is navy with a single amber band, matching the
+    site tokens. The CARTONS are deliberately left brown — cardboard is brown,
+    and recolouring them to match the brand is the kind of detail that makes
+    an illustration read as fake.
+
+    This file is loaded with <img>, which means it is a separate document and
+    CANNOT use the page's webfonts. That is why the brand plate on the side of
+    the truck is an empty panel rather than lettering: text here would fall
+    back to a system font and look pasted on.
+  -->
+  <defs>
+    <radialGradient id="stage" cx="50%" cy="54%" r="72%">
+      <stop offset="0" stop-color="#17354f"/>
+      <stop offset="0.68" stop-color="#0b1d31"/>
+      <stop offset="1" stop-color="#061320"/>
+    </radialGradient>
+    <linearGradient id="cargo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2f4763"/>
+      <stop offset="0.48" stop-color="#213a52"/>
+      <stop offset="1" stop-color="#152b3f"/>
+    </linearGradient>
+    <linearGradient id="cargoTop" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3a5573"/>
+      <stop offset="1" stop-color="#2a435e"/>
+    </linearGradient>
+    <linearGradient id="cab" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0b154"/>
+      <stop offset="1" stop-color="#b4791a"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eaf2fa"/>
+      <stop offset="0.55" stop-color="#9db3c8"/>
+      <stop offset="1" stop-color="#44586c"/>
+    </linearGradient>
+    <!-- Light pooled on the floor under the vehicle. Radial, not linear: a
+         linear gradient in a rect gives a hard left and right edge, which
+         over a navy backdrop reads as a brown rug rather than as light.
+         Kept faint — amber at any real opacity over navy turns muddy. -->
+    <radialGradient id="floorGlow" cx="50%" cy="0%" r="72%">
+      <stop offset="0" stop-color="#f5a524" stop-opacity="0.22"/>
+      <stop offset="0.55" stop-color="#f5a524" stop-opacity="0.07"/>
+      <stop offset="1" stop-color="#f5a524" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.07"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#stage)"/>
+
+  <!-- faint structural grid, masked to the centre -->
+  <g opacity="0.22">
+    <path d="M0 160h800M0 240h800M0 320h800M0 400h800M120 0v600M260 0v600M400 0v600M540 0v600M680 0v600"
+          stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+  </g>
+
+  <!-- floor light pool -->
+  <ellipse cx="400" cy="452" rx="300" ry="30" fill="#000000" opacity="0.45"/>
+  <ellipse cx="400" cy="436" rx="320" ry="74" fill="url(#floorGlow)"/>
+
+  <!-- ===== truck, side three-quarter ===== -->
+  <g>
+    <!-- cargo body -->
+    <rect x="132" y="196" width="330" height="192" rx="10" fill="url(#cargo)"/>
+    <rect x="132" y="196" width="330" height="192" rx="10" fill="none" stroke="#44617f" stroke-width="2"/>
+    <rect x="132" y="196" width="330" height="26" rx="10" fill="url(#cargoTop)"/>
+    <rect x="132" y="240" width="330" height="100" fill="url(#panel)"/>
+
+    <!-- roller-shutter ribs -->
+    <g stroke="#2a4360" stroke-width="2" opacity="0.8">
+      <path d="M152 236h290M152 262h290M152 288h290M152 314h290M152 340h290M152 366h290"/>
+    </g>
+
+    <!-- brand plate (intentionally blank: see the note at the top) -->
+    <rect x="186" y="256" width="222" height="76" rx="6" fill="#0b1d31" opacity="0.55"/>
+    <rect x="186" y="256" width="222" height="76" rx="6" fill="none" stroke="#f5a524" stroke-opacity="0.45" stroke-width="1.5"/>
+
+    <!-- cab -->
+    <path d="M462 388V236a10 10 0 0 1 10-10h58a12 12 0 0 1 9.8 5.2l38 54a20 20 0 0 1 3.6 11.4V388Z" fill="url(#cab)"/>
+    <path d="M462 388V236a10 10 0 0 1 10-10h58a12 12 0 0 1 9.8 5.2l38 54a20 20 0 0 1 3.6 11.4V388Z" fill="none" stroke="#b4791a" stroke-width="2"/>
+    <!-- windscreen -->
+    <path d="M478 244h46a8 8 0 0 1 6.6 3.5l26 37.5c2.2 3.2 0 7-3.9 7H478a5 5 0 0 1-5-5v-38a5 5 0 0 1 5-5Z" fill="url(#glass)"/>
+    <path d="M478 244h46a8 8 0 0 1 6.6 3.5l26 37.5c2.2 3.2 0 7-3.9 7H478a5 5 0 0 1-5-5v-38a5 5 0 0 1 5-5Z" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1.5"/>
+    <!-- reflection streak on the glass -->
+    <path d="M492 246l16 50M514 246l13 50" stroke="#ffffff" stroke-opacity="0.22" stroke-width="3"/>
+    <!-- door line and handle -->
+    <path d="M476 300v84" stroke="#b4791a" stroke-width="2" opacity="0.8"/>
+    <rect x="486" y="318" width="18" height="5" rx="2.5" fill="#0d1626" opacity="0.6"/>
+    <!-- headlight -->
+    <rect x="566" y="330" width="16" height="22" rx="4" fill="#f2f7ff"/>
+    <rect x="566" y="330" width="16" height="22" rx="4" fill="none" stroke="#ffc15e" stroke-width="1.5"/>
+    <!-- bumper / chassis -->
+    <rect x="132" y="388" width="450" height="14" fill="#0a1626"/>
+    <rect x="556" y="356" width="28" height="34" rx="4" fill="#16293c"/>
+
+    <!-- wheels -->
+    <g>
+      <circle cx="214" cy="402" r="38" fill="#05101f"/>
+      <circle cx="214" cy="402" r="38" fill="none" stroke="#2a4360" stroke-width="3"/>
+      <circle cx="214" cy="402" r="16" fill="#44617f"/>
+      <circle cx="214" cy="402" r="6" fill="#a9b8c9"/>
+      <circle cx="378" cy="402" r="38" fill="#05101f"/>
+      <circle cx="378" cy="402" r="38" fill="none" stroke="#2a4360" stroke-width="3"/>
+      <circle cx="378" cy="402" r="16" fill="#44617f"/>
+      <circle cx="378" cy="402" r="6" fill="#a9b8c9"/>
+      <circle cx="528" cy="402" r="38" fill="#05101f"/>
+      <circle cx="528" cy="402" r="38" fill="none" stroke="#2a4360" stroke-width="3"/>
+      <circle cx="528" cy="402" r="16" fill="#44617f"/>
+      <circle cx="528" cy="402" r="6" fill="#a9b8c9"/>
+    </g>
+  </g>
+
+  <!-- ===== cartons beside the truck =====
+       Left brown on purpose. Cardboard is brown. -->
+  <g>
+    <rect x="612" y="332" width="74" height="70" rx="5" fill="#b08b57"/>
+    <rect x="612" y="332" width="74" height="70" rx="5" fill="none" stroke="#8d6d3f" stroke-width="2"/>
+    <path d="M612 362h74M649 332v70" stroke="#8d6d3f" stroke-width="2"/>
+    <rect x="628" y="352" width="42" height="12" rx="2" fill="#e8dcc4" opacity="0.75"/>
+
+    <rect x="624" y="276" width="58" height="56" rx="5" fill="#c09b64"/>
+    <rect x="624" y="276" width="58" height="56" rx="5" fill="none" stroke="#8d6d3f" stroke-width="2"/>
+    <path d="M624 300h58M653 276v56" stroke="#8d6d3f" stroke-width="2"/>
+  </g>
+</svg>

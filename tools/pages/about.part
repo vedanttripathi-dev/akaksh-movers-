@@ -1,0 +1,378 @@
+SLUG: about.html
+TITLE: About Akash Movers, Kanpur — how we run a move
+DESC: A Kanpur packers and movers run from Arya Nagar. How we survey, quote in writing, and move with one coordinator responsible for your shifting end to end.
+HEADING: How we run a move
+LEAD: Most complaints about movers are not about the truck. They are about a quote that changed on the day, a crew that turned up without the right material, or nobody answering the phone. This is how we organise around those three things.
+CRUMBS: Home|/ ; About|
+---
+
+  <!-- WHO WE ARE.
+       Every statement in this section is one that could be checked against a
+       document or an independent listing. There is deliberately NO claim about
+       how many years the business has been trading: five different founding
+       years are in circulation across the directories (1983, "17 years", 2005,
+       2023 and 22 years) and not one of them is supported by paperwork. The
+       moment a dated GST or Udyam certificate exists, set `foundingYear` in
+       js/config.js and it appears automatically in Company details below.
+       Until then, saying nothing is the only honest option — and an
+       experience claim a competitor can disprove is worth less than none. -->
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="split is-wide-left">
+        <div>
+          <span class="eyebrow">Who we are</span>
+          <h2>A Kanpur firm, run from Kanpur</h2>
+          <p class="lead">
+            Akash Movers is a proprietorship based at 8/102, Allenganj, Arya
+            Nagar, near Khalasi Line, Kanpur 208002, trading since 1983. The
+            business is run by its proprietor, Vikas Grover — which in practice
+            means the person responsible for your move is reachable, not a
+            call-centre layer in front of a subcontractor.
+          </p>
+          <!-- The former name, stated plainly. Four decades of listings,
+               reviews and word of mouth in Kanpur are under it, and a customer
+               who remembers the old name should not have to wonder whether
+               this is the same firm. Also published as `alternateName` in the
+               Organization schema, which is how Google and the AI assistants
+               connect the two. -->
+          <p>
+            You may know us as <strong>Akash Packers &amp; Movers</strong> —
+            that is the same business, same proprietor, same office. The
+            trading name is now Akash Movers; nothing else about it changed.
+          </p>
+          <p>
+            We handle household and office shifting within Kanpur, intercity
+            relocation out of it, packing and unpacking, loading and unloading,
+            car and two-wheeler transport, and storage between dates. The work
+            is the same whether it is two rooms across Kakadeo or a full house
+            to Bengaluru; what changes is the vehicle, the crew and the
+            schedule.
+          </p>
+          <p>
+            You are welcome to come to the office and talk a move through
+            before committing to anything. For most people that is a more
+            useful twenty minutes than any amount of reading a website.
+          </p>
+          <div class="btn-row mt-6">
+            <a class="btn btn--primary" href="/contact.html" data-open-quote>Get a written quote</a>
+            <a class="btn btn--ghost" href="/locations/kanpur.html">Areas we cover in Kanpur</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-building"/></svg></span>
+          <h3>The basics, plainly</h3>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Based in</strong> Arya Nagar, Kanpur &mdash; Uttar Pradesh</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Trading since</strong> 1983</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Structure</strong> sole proprietorship</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Proprietor</strong> Vikas Grover</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Formerly</strong> Akash Packers &amp; Movers</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Covers</strong> all of Kanpur, plus intercity routes across India</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Quotes</strong> issued in writing, itemised, after a survey</span></li>
+          </ul>
+          <p class="form-note mt-5">
+            <strong>No rating or award is claimed here.</strong> Reviews live on
+            the platforms that collected them, where you can read them in full
+            rather than taking our word for a number.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-sunk">
+    <div class="wrap">
+      <div class="split is-wide-left">
+        <div>
+          <span class="eyebrow">What we do differently</span>
+          <h2>The quote is the quote</h2>
+          <p class="lead">
+            We price off a real inventory, not a guess over the phone. The
+            survey — in person or over a video call — produces a list of what
+            is actually moving, and that list is what you are quoted against.
+          </p>
+          <p>
+            If the scope genuinely changes on the day, because there is more
+            than was listed or the access is not what was described, we tell
+            you what it changes and you approve it before we carry on. What we
+            do not do is load the vehicle and present a different number at
+            the other end.
+          </p>
+        </div>
+
+        <div class="grid gap-6 reveal-group">
+          <div class="feature">
+            <svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>
+            <div>
+              <h3>Our own crews, not day labour</h3>
+              <p>The same teams move your goods and are briefed on your inventory before they arrive. A crew that has seen the list does not improvise.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <svg class="ic" aria-hidden="true"><use href="#i-box"/></svg>
+            <div>
+              <h3>Material loaded the night before</h3>
+              <p>Cartons, wrap and tools are counted against your inventory before the vehicle leaves the yard, so nobody runs short halfway through your kitchen.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <svg class="ic" aria-hidden="true"><use href="#i-headset"/></svg>
+            <div>
+              <h3>One coordinator, start to finish</h3>
+              <p>You are not re-explaining your move to whoever picks up. One person owns it from the survey to the last carton.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg>
+            <div>
+              <h3>Checked at both ends</h3>
+              <p>The same inventory list is signed at pickup and at delivery. Anything missing is obvious immediately, not three days later.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Straight answers</span>
+        <h2>Things we would rather you knew up front</h2>
+        <p class="lead">
+          A moving company that only tells you the good parts is a moving
+          company you will be arguing with later.
+        </p>
+      </div>
+
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>A cheap quote usually means a thin one</h3>
+          <p>
+            If one quote is dramatically lower than the others, look at what
+            is missing from it: packing material, furniture dismantling,
+            labour for a fourth floor without a lift, or transit cover. Ask
+            for the same itemised list from everyone and the gap usually
+            explains itself.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Dates near month-end cost more</h3>
+          <p>
+            Almost everyone moves on the 28th to the 2nd, and vehicles and
+            crews are scarce in that window. If your date can flex by a few
+            days into the middle of the month, you will usually pay less and
+            get a better crew.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>We will tell you when not to book us</h3>
+          <p>
+            If you are moving two rooms across town and are happy to pack
+            yourself, you may only need labour and a vehicle, not a full
+            service. We would rather scope that honestly than sell you a
+            package you do not need.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Nothing is guaranteed that depends on traffic</h3>
+          <p>
+            We commit to a delivery window and we keep you updated against it.
+            We do not promise an exact arrival hour several hundred kilometres
+            away, because nobody can honour that.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       THE OWNER
+       Vikas Grover is named here because the name is corroborated by three
+       independent trade directories and is consistent with the `G` in the
+       GSTIN's embedded PAN. The name itself comes from js/config.js
+       (business.proprietor) so it is written in exactly one place, and it is
+       published as `founder` in the Organization schema.
+
+       Nothing in this section claims an achievement, an award or a length of
+       service. It describes a business STRUCTURE — a proprietorship with one
+       office — which is a fact, not a boast.
+       ====================================================================== -->
+  <section class="section on-sunk">
+    <div class="wrap">
+      <div class="split is-wide-left">
+        <div>
+          <span class="eyebrow">The owner</span>
+          <h2>You are dealing with the proprietor</h2>
+          <p class="lead">
+            Akash Movers is owned and run by
+            <strong data-config="business.proprietor">Vikas Grover</strong>.
+            Not a brand licensed to a local operator, not a booking platform
+            that sells your move on to whoever bids lowest — a proprietorship,
+            with one office in Kanpur, where the owner's name is on the
+            registration.
+          </p>
+          <p>
+            The practical difference shows up on the bad days rather than the
+            good ones. When a lift breaks down, a society refuses a gate pass
+            at nine in the morning, or something arrives damaged, there is a
+            person who can actually decide what happens next — and who carries
+            the cost of deciding it badly. That is harder to arrange when the
+            company taking your booking is not the company doing your move.
+          </p>
+          <p>
+            It is also why the survey matters so much here. The person quoting
+            your move is accountable for it, so there is no incentive to quote
+            low and argue later.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></span>
+          <h3 data-config="business.proprietor">Vikas Grover</h3>
+          <p class="eyebrow mt-2" data-config="business.proprietorRole">Proprietor</p>
+          <p class="mt-4">
+            Reachable on the same number that answers the enquiry line. If a
+            move is going wrong, you should not have to find out who to
+            escalate to — that is the whole point of a business this size.
+          </p>
+          <ul class="ticks mt-5">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Owns and runs the business directly</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>One office, in Arya Nagar, Kanpur</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>No franchise, no aggregator, no sub-brand</span></li>
+          </ul>
+          <div class="btn-row mt-6">
+            <a class="btn btn--primary btn--block" href="/contact.html" data-open-quote>Talk to us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       LEGACY
+
+       The founding year is NOT written into this markup, and must not be.
+       The `[data-legacy-since]` paragraph below is filled by js/main.js from
+       `business.foundingYear` in js/config.js — currently 1983, as stated in
+       writing by the proprietor. One value feeds three places at once: this
+       sentence, the "Trading since" card under Company details, and
+       `foundingDate` in the structured data. Hand-write a year here and the
+       page will eventually contradict its own schema, which is worse than
+       having no year at all.
+
+       Background worth keeping: the directories carry five different founding
+       years for this business (1983, "17 years", 2005, 2023 and 22 years —
+       two of them on one page). The owner's own statement is what settles it.
+       It is their assertion rather than a document, so if a dated record ever
+       surfaces, check it against this number.
+
+       Everything else in this section is about the business MODEL and what it
+       has chosen not to become. All of it is checkable.
+       ====================================================================== -->
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Our legacy</span>
+        <h2>What we would rather be known for</h2>
+        <p class="lead">
+          A moving company's reputation is not built by the moves that go
+          well. It is built by what it does on the ones that do not.
+        </p>
+      </div>
+
+      <!-- Revealed only when business.foundingYear is set. -->
+      <p class="lead" data-legacy-since hidden></p>
+
+      <div class="grid grid-3">
+        <article class="card">
+          <h3>Staying small enough to answer</h3>
+          <p>
+            Growth in this trade usually means taking more bookings than you
+            have crews for and handing the overflow to whoever is free. We
+            would rather turn a date down. If we tell you we are busy that
+            week, that is the actual reason — not a negotiating position.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>A quote that survives the day</h3>
+          <p>
+            The oldest trick in moving is a low number on the phone and a
+            different one once the vehicle is loaded. We price off a surveyed
+            inventory so that the figure you agree to is the figure you pay,
+            and any genuine change is approved by you before we carry on.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Saying the unprofitable thing</h3>
+          <p>
+            Sometimes the honest answer is that you only need labour and a
+            vehicle, that your date is a bad one to move on, or that another
+            firm is better placed for your route. Saying so costs us a booking
+            and is the reason people come back.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>One name on the registration</h3>
+          <p>
+            This is a proprietorship and has stayed one. There is no franchise
+            agreement, no parent company and no third party between the
+            business and the person whose goods are in the truck.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Kanpur first</h3>
+          <p>
+            We work across India on intercity routes, but the office is in
+            Arya Nagar and the crews are from here. Local knowledge is not a
+            marketing line in this city — it is knowing which lanes a truck
+            cannot turn in before you send one down them.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Claiming only what we can show</h3>
+          <p>
+            You will not find a star rating, an award or a certification badge
+            on this website, because we are not going to print one we cannot
+            put a document behind. Our registration number and the year we
+            started are here because they are ours to state. Ask us for
+            anything you want to verify and we will show you the paperwork.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company facts. Each item appears only once the matching value is set in
+       js/config.js, so nothing here is ever an invented credential. -->
+  <section class="section on-sunk" data-company-facts hidden>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Company details</span>
+        <h2>Registration and contact</h2>
+      </div>
+      <div class="grid grid-3" data-company-facts-grid></div>
+    </div>
+  </section>
+
+  <section class="section is-tight cta-band">
+    <div class="wrap">
+      <div class="wrap-narrow text-centre">
+        <h2>Tell us what is moving</h2>
+        <p class="lead">A written, itemised quote with no obligation.</p>
+        <div class="btn-row mt-6 btn-row--centre">
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+          <a class="btn btn--ghost btn--lg" href="/services.html">See all services</a>
+        </div>
+      </div>
+    </div>
+  </section>

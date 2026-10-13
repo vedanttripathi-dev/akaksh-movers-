@@ -1,0 +1,78 @@
+SLUG: locations.html
+TITLE: Areas We Cover — packers & movers across Kanpur
+DESC: The localities we move within across Kanpur, from Arya Nagar and Civil Lines to Barra, Panki and Naubasta, plus intercity routes out of Kanpur.
+HEADING: Where we work
+LEAD: Cities we cover with our own crews, each with its own page covering local routes, building access and what a move there usually involves.
+CRUMBS: Home|/ ; Service areas|
+---
+
+  <section class="section on-paper">
+    <div class="wrap">
+
+      <div class="grid grid-4 reveal-group" data-areas-grid></div>
+
+      <!-- Shown while SITE_CONFIG.serviceAreas is still empty. Deliberately
+           explicit: inventing city names here would be the fastest way to
+           turn this into the kind of doorway-page network Google acts
+           against, and to promise coverage the business does not have. -->
+      <div class="demo-banner" data-areas-unset hidden>
+        <svg class="ic" aria-hidden="true"><use href="#i-alert"/></svg>
+        <div>
+          <strong>No service areas configured yet.</strong>
+          Add each city the business genuinely covers to
+          <code>serviceAreas</code> in <code>js/config.js</code>, and create a
+          matching page under <code>locations/</code>. Only list cities you
+          actually serve — a network of near-identical city pages for places
+          you do not cover is the doorway-page pattern search engines
+          penalise, and it will cost you the rankings it was meant to win.
+        </div>
+      </div>
+
+      <div class="split is-wide-left mt-8">
+        <div>
+          <h2>Not seeing your city?</h2>
+          <p class="lead">
+            The list above is where we have our own crews. Intercity work
+            reaches well beyond it — if you are moving from a city we cover to
+            one we do not, that is usually still a job we can take.
+          </p>
+          <p>
+            Tell us both addresses and we will say plainly whether we can do
+            it well. If we cannot, we will say that too, rather than taking a
+            booking and subcontracting it to whoever is available.
+          </p>
+          <div class="btn-row mt-6">
+            <a class="btn btn--primary" href="/contact.html" data-open-quote>Ask about your route</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-route"/></svg></span>
+          <h3>What differs between cities</h3>
+          <p>
+            A move is not the same job everywhere, and these are the things
+            that change what it costs and how long it takes.
+          </p>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Society timing rules.</strong> Many buildings only allow shifting between fixed hours, which decides when a crew can start.</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Lift size.</strong> A lift that will not take a mattress or a tall wardrobe turns a two-hour load into a stair carry.</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Parking distance.</strong> Older areas often mean a long carry from the vehicle to the door.</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Entry restrictions.</strong> Some roads bar larger goods vehicles during the day, which changes the vehicle or the hour.</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section is-tight cta-band">
+    <div class="wrap">
+      <div class="wrap-narrow text-centre">
+        <h2>Tell us where you are moving</h2>
+        <p class="lead">We will confirm whether we cover the route, and what it involves.</p>
+        <div class="btn-row mt-6 btn-row--centre">
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+        </div>
+      </div>
+    </div>
+  </section>

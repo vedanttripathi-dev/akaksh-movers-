@@ -1,0 +1,20 @@
+{
+  "name": "Akash Movers, Kanpur",
+  "short_name": "Akash Movers",
+  "description": "Home and office shifting, packing, transport and storage in Kanpur.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#05101f",
+  "theme_color": "#05101f",
+  "orientation": "portrait-primary",
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "/assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

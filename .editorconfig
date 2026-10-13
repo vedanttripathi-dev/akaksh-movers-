@@ -1,0 +1,49 @@
+# ============================================================================
+# EditorConfig  —  https://editorconfig.org
+# ============================================================================
+# This is the formatter for this project, and it is a deliberate choice.
+#
+# Prettier and ESLint would be the usual answer, but both need Node and a
+# package.json, and this site has neither by design: it is plain static files
+# that deploy with no build step. Adding a toolchain purely to format two
+# thousand lines would be the single biggest change to the architecture, in
+# exchange for very little.
+#
+# EditorConfig needs nothing installed. VS Code, JetBrains, Sublime, Vim and
+# Visual Studio all read this file natively, so every editor that touches the
+# project agrees on indentation, line endings and final newlines.
+#
+# If the project ever grows a build step, add Prettier then — and set its
+# config to match the values below so the two cannot disagree.
+# ============================================================================
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+max_line_length = 100
+
+# PowerShell reads a BOM-less .ps1 as ANSI on Windows PowerShell 5.1, which
+# silently corrupts every non-ASCII character in the file. These must keep
+# their byte-order mark. See README.md § PowerShell 5.1 and the byte-order mark.
+[*.ps1]
+charset = utf-8-bom
+indent_size = 4
+
+# Markdown uses two trailing spaces for a hard line break.
+[*.md]
+trim_trailing_whitespace = false
+
+# Vendored libraries are never edited in place — leave them exactly as shipped.
+[vendor/**]
+charset = unset
+end_of_line = unset
+insert_final_newline = unset
+trim_trailing_whitespace = false
+indent_style = unset
+indent_size = unset

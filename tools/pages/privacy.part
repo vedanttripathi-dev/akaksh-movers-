@@ -1,0 +1,128 @@
+SLUG: privacy.html
+TITLE: Privacy Policy | Akash Movers, Kanpur
+DESC: What this website collects when you request a moving quote, why, who it is shared with, how long it is kept, and how to have it deleted.
+HEADING: Privacy policy
+LEAD: What this website collects, why, and how to get it removed. Written to describe what the site actually does rather than to cover every eventuality.
+CRUMBS: Home|/ ; Privacy|
+---
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="wrap-narrow flow">
+
+        <div class="demo-banner">
+          <svg class="ic" aria-hidden="true"><use href="#i-alert"/></svg>
+          <div>
+            <strong>Template — have this reviewed before you publish it.</strong>
+            The technical description below is accurate for this website as
+            built. The legal framing is not a substitute for advice: the
+            business name, the identity of the data controller, the grievance
+            officer required under India's data protection rules, and any
+            sector-specific obligations must be filled in and checked by
+            someone qualified. Replace this notice once that is done.
+          </div>
+        </div>
+
+        <h2>What we collect</h2>
+        <p>
+          We collect personal information in one place only: the moving
+          estimate form. Nothing on this site tracks you around the web, and
+          there are no advertising cookies.
+        </p>
+        <p>When you submit the form, we receive the fields you filled in:</p>
+        <ul>
+          <li>Your name, mobile number, and WhatsApp number</li>
+          <li>Your email address, if you chose to give one</li>
+          <li>The cities, localities and PIN codes you are moving between</li>
+          <li>Your property type, approximate move date, and the services you need</li>
+          <li>Access details — floor numbers, lift availability, large or fragile items</li>
+          <li>Any notes you wrote, and your preferred way to be contacted</li>
+          <li>Whether you consented to being contacted, and separately, to marketing</li>
+        </ul>
+
+        <h2>What we deliberately do not collect</h2>
+        <p>
+          We do not store your IP address with your enquiry. An IP address is
+          used only in memory, as a one-way hash, to limit how many
+          submissions can come from one connection in an hour; that hash
+          expires within the hour and is never attached to your record.
+        </p>
+        <p>
+          We do not use analytics by default. If analytics is ever switched
+          on, this page will be updated to name the provider before it goes
+          live.
+        </p>
+
+        <h2>Why we collect it</h2>
+        <p>
+          To prepare and discuss your moving quote, and to carry out the move
+          if you book one. That is the only purpose. We ask for your consent
+          on the form before you submit it, and you can withdraw that consent
+          at any time using the contact details below.
+        </p>
+        <p>
+          Marketing consent is separate, optional, and never pre-ticked. If
+          you did not tick it, you will not be added to any promotional list.
+        </p>
+
+        <h2>Who it is shared with</h2>
+        <p>
+          Your enquiry is sent to our own team so somebody can respond to it.
+          If you are booking a move, the crew assigned to it will see the
+          details they need to do the job.
+        </p>
+        <p>
+          The technical services that carry the enquiry on our behalf are
+          Cloudflare, which hosts this website and processes the form, and the
+          WhatsApp Business Platform, operated by Meta, which delivers the
+          notification to our team. We do not sell your information, and we do
+          not pass it to other moving companies, lead brokers or advertisers.
+        </p>
+
+        <h2>How long we keep it</h2>
+        <p>
+          Enquiry records are kept for <strong data-retention-days>365</strong>
+          days and then deleted. If you book a move, records relating to the
+          job itself may be kept longer where we are required to retain them,
+          for example for tax purposes.
+        </p>
+
+        <h2>Your choices</h2>
+        <p>You can ask us to:</p>
+        <ul>
+          <li>Tell you what we hold about you</li>
+          <li>Correct anything that is wrong</li>
+          <li>Delete your enquiry entirely</li>
+          <li>Stop contacting you, for marketing or at all</li>
+        </ul>
+        <p>
+          Use the contact details on our <a href="/contact.html">contact page</a>.
+          Quote the reference number from your enquiry confirmation if you
+          have it, as it makes the record easy to find. We will action
+          deletion requests promptly.
+        </p>
+
+        <h2>Security</h2>
+        <p>
+          The site is served only over HTTPS. The form is processed on the
+          server, not in your browser, and the credentials used to deliver the
+          notification are held as encrypted environment variables that are
+          never sent to your device. We do not store your enquiry in your
+          browser's local storage.
+        </p>
+        <p>
+          No website can promise it is impossible to attack. What we can say
+          is that this one holds the minimum information needed to quote your
+          move, for a limited time, behind standard protections.
+        </p>
+
+        <h2>Changes to this policy</h2>
+        <p>
+          If this policy changes materially, the date below will change with
+          it. This version was last updated on
+          <time data-updated-date>11 October 2026</time>.
+        </p>
+
+      </div>
+    </div>
+  </section>

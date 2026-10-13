@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Moving truck icon">
+  <title>Moving truck</title>
+  <rect width="64" height="64" rx="14" fill="#05101f"/>
+  <rect x="4" y="4" width="56" height="56" rx="11" fill="#f5a524"/>
+  <g fill="none" stroke="#1a1203" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M13 40V22h20v7h7.6L50 35.6V40h-4"/>
+    <path d="M33 29v11"/>
+  </g>
+  <circle cx="21" cy="43" r="3.6" fill="#1a1203"/>
+  <circle cx="42" cy="43" r="3.6" fill="#1a1203"/>
+</svg>

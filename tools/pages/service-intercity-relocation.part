@@ -1,0 +1,177 @@
+SLUG: services/intercity-relocation.html
+TITLE: Intercity Relocation from Kanpur — long-distance moving
+DESC: City-to-city household relocation from Kanpur in a dedicated vehicle, with the driver's contact shared at dispatch and a delivery window agreed before departure.
+HEADING: Intercity &amp; long-distance moving
+LEAD: City-to-city relocation in a dedicated vehicle, with a delivery window agreed before it leaves and updates along the way.
+CRUMBS: Home|/ ; Services|/services.html ; Intercity relocation|
+---
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="split is-wide-left">
+        <div>
+          <h2>Dedicated vehicle or shared load</h2>
+          <p class="lead">
+            This is the single biggest choice on an intercity move, and it is
+            worth understanding before you compare quotes — because two quotes
+            that look different are often quoting different things.
+          </p>
+          <p>
+            A <strong>dedicated vehicle</strong> carries only your goods. It
+            leaves when you are ready and drives to your destination, so the
+            timeline is predictable and nothing is handled in between. This is
+            our default.
+          </p>
+          <p>
+            A <strong>shared part-load</strong> puts your goods on a vehicle
+            with other consignments going the same way. It costs less, and it
+            is a perfectly sensible choice for a small inventory on a flexible
+            date — but delivery depends on the other consignments, so the
+            window is wider and your goods are handled more.
+          </p>
+          <p>
+            We will quote whichever suits you, and we will say which one we
+            would choose for your inventory.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-route"/></svg></span>
+          <h3>Included as standard</h3>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Dedicated vehicle unless you choose a shared load</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Packing rated for long-distance vibration, not just handling</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Load strapped in sections and checked before departure</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Driver's contact shared with you at dispatch</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Delivery window agreed in writing before the vehicle leaves</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Progress updates on WhatsApp</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-sunk">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Being straight about it</span>
+        <h2>What we will and will not promise</h2>
+      </div>
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>We commit to a delivery window</h3>
+          <p>
+            Agreed before the vehicle leaves and kept updated as it travels.
+            If it slips, you hear it from us before you have to ask.
+          </p>
+        </article>
+        <article class="card">
+          <h3>We will not promise an exact hour</h3>
+          <p>
+            Several hundred kilometres out, nobody can honour that. Any mover
+            who gives you a precise arrival time for a long route is guessing,
+            and the guess is what you will argue about later.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Packing matters more over distance</h3>
+          <p>
+            A carton that survives a cross-town trip can still fail over eight
+            hundred kilometres of road vibration. Long-distance loads are
+            packed with more fill and fewer part-empty cartons.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Ask every mover about transit cover</h3>
+          <p>
+            Goods are not automatically insured in transit, with us or anyone
+            else. Ask what cover is included, what it excludes, and get it in
+            writing with the quote.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <h2>What changes the price</h2>
+          <ol class="steps mt-6">
+            <li class="step"><div>
+              <h3>Distance</h3>
+              <p>The obvious one, though it is not linear — a return leg with no load back affects the rate.</p>
+            </div></li>
+            <li class="step"><div>
+              <h3>Vehicle size</h3>
+              <p>Set by your inventory. Under-sizing to win a quote is how a second trip appears later.</p>
+            </div></li>
+            <li class="step"><div>
+              <h3>Dedicated or shared</h3>
+              <p>A shared part-load costs less and delivers in a wider window.</p>
+            </div></li>
+            <li class="step"><div>
+              <h3>Access at both ends</h3>
+              <p>Still applies. A long carry in a new city costs the same as one at home.</p>
+            </div></li>
+          </ol>
+        </div>
+
+        <div>
+          <h2>Questions we get asked</h2>
+          <div class="faq mt-6" data-faq>
+            <details>
+              <summary>How long will it take to arrive?</summary>
+              <div class="faq__body"><p>
+                It depends on the route and whether the load is dedicated or
+                shared. We give you a window in writing before the vehicle
+                leaves, based on that specific route, rather than a generic
+                figure.
+              </p></div>
+            </details>
+            <details>
+              <summary>Can I track the vehicle?</summary>
+              <div class="faq__body"><p>
+                You get the driver's number at dispatch and progress updates
+                from your coordinator on WhatsApp. If live GPS tracking is
+                available on the vehicle assigned to you, we will tell you at
+                booking rather than implying every vehicle has it.
+              </p></div>
+            </details>
+            <details>
+              <summary>Can my car go on the same booking?</summary>
+              <div class="faq__body"><p>
+                Yes. Vehicle transport runs in a covered carrier and can be
+                coordinated with your household goods so both arrive around
+                the same time. See
+                <a href="/services/vehicle-transport.html">car and bike transport</a>.
+              </p></div>
+            </details>
+            <details>
+              <summary>What if my new home is not ready when it arrives?</summary>
+              <div class="faq__body"><p>
+                Tell us as early as you can and we will hold the consignment in
+                <a href="/services/storage-warehousing.html">storage</a> and
+                deliver when you are ready. Arranged in advance it costs
+                noticeably less than arranging it on the day.
+              </p></div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-tight cta-band">
+    <div class="wrap">
+      <div class="wrap-narrow text-centre">
+        <h2>Moving to another city?</h2>
+        <p class="lead">Tell us both cities and roughly what is coming, and we will quote dedicated and shared options.</p>
+        <div class="btn-row mt-6 btn-row--centre">
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+          <a class="btn btn--ghost btn--lg" href="/services.html">All services</a>
+        </div>
+      </div>
+    </div>
+  </section>

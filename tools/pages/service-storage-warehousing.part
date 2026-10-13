@@ -1,0 +1,145 @@
+SLUG: services/storage-warehousing.html
+TITLE: Storage & Warehousing in Kanpur for household goods
+DESC: Short and long-term storage for household and office goods in Kanpur, inventoried in and out, charged by duration, with the rate confirmed in writing first.
+HEADING: Storage &amp; warehousing
+LEAD: For when the dates do not line up. Goods inventoried in, held for as long as you need, and delivered out when you are ready.
+CRUMBS: Home|/ ; Services|/services.html ; Storage|
+---
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="split is-wide-left">
+        <div>
+          <h2>When storage is the sensible answer</h2>
+          <p class="lead">
+            Possession dates rarely line up neatly. The gap between leaving one
+            home and getting keys to the next is the most common reason people
+            need storage — and planning for it is far cheaper than improvising.
+          </p>
+          <p>
+            It also comes up when you are moving abroad for a fixed period,
+            renovating, downsizing temporarily, or moving into a furnished
+            place and needing somewhere for your own furniture to wait.
+          </p>
+          <p>
+            Goods are inventoried as they go in, so you have a written record
+            of exactly what is held, and inventoried again as they come out.
+            Storage is billed separately from the move, by duration, and the
+            rate is confirmed in writing before anything enters the facility.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-warehouse"/></svg></span>
+          <h3>How goods are held</h3>
+          <ul class="ticks">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Inventoried in and out, with a copy of the list for you</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Stored off the floor and wrapped, not stacked loose</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Short term, from a few days — or long term by the month</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Rate and billing period agreed in writing beforehand</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Delivered out on notice, when your new place is ready</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-sunk">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Worth knowing</span>
+        <h2>Before you put things into storage</h2>
+      </div>
+      <div class="grid grid-2">
+        <article class="card">
+          <h3>Do not store food, liquids or batteries</h3>
+          <p>
+            Anything perishable, anything that can leak, and loose batteries
+            should not go in. They are the usual cause of damage to everything
+            stored around them.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Appliances must be fully dry</h3>
+          <p>
+            A washing machine or fridge with water still in it will develop
+            mould in a closed space. Drain and dry both thoroughly before the
+            move, not on the day.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Keep documents with you</h3>
+          <p>
+            Passports, deeds, certificates and anything you may suddenly need
+            should never go into storage. Carry them yourself.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Decide early, not on the day</h3>
+          <p>
+            Storage arranged in advance is planned into the route and the
+            inventory. Arranged on the day, it means a vehicle and crew
+            waiting while space is found, and that is charged.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section on-paper">
+    <div class="wrap">
+      <div class="wrap-narrow">
+        <h2>Questions we get asked</h2>
+        <div class="faq mt-6" data-faq>
+          <details>
+            <summary>How is storage priced?</summary>
+            <div class="faq__body"><p>
+              By the volume held and the duration, separately from the move
+              itself. You get the rate and the billing period in writing before
+              anything goes in, so there is no open-ended charge running in the
+              background.
+            </p></div>
+          </details>
+          <details>
+            <summary>Can I access my goods while they are stored?</summary>
+            <div class="faq__body"><p>
+              This is warehouse storage rather than a self-storage unit you
+              hold a key to, so access is arranged on notice rather than on
+              demand. If you expect to need regular access, tell us at
+              booking — a self-storage unit may suit you better and we will
+              say so.
+            </p></div>
+          </details>
+          <details>
+            <summary>Is there a minimum period?</summary>
+            <div class="faq__body"><p>
+              There is usually a minimum billing period, which we confirm with
+              your quote. Ask for it explicitly — a daily rate with a hidden
+              monthly minimum is a common surprise in this industry.
+            </p></div>
+          </details>
+          <details>
+            <summary>Are stored goods insured?</summary>
+            <div class="faq__body"><p>
+              Storage cover is separate from transit cover and is not automatic.
+              Ask what is included, what it excludes and what the limit is, and
+              get it in writing before goods go in.
+            </p></div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-tight cta-band">
+    <div class="wrap">
+      <div class="wrap-narrow text-centre">
+        <h2>Need somewhere for your things to wait?</h2>
+        <p class="lead">Tell us roughly how much and for how long, and we will quote the storage separately from the move.</p>
+        <div class="btn-row mt-6 btn-row--centre">
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+          <a class="btn btn--ghost btn--lg" href="/services.html">All services</a>
+        </div>
+      </div>
+    </div>
+  </section>
