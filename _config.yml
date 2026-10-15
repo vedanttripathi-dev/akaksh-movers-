@@ -1,0 +1,46 @@
+# ============================================================================
+# Jekyll configuration — GitHub Pages only
+# ============================================================================
+# This file exists for ONE reason: to stop GitHub Pages publishing files that
+# are not part of the website.
+#
+# The site was built for Cloudflare Pages, where `_redirects` and `_headers`
+# keep the development files out of public view. GitHub Pages ignores both of
+# those files completely, so on this host the internal README, the authoring
+# tools and the local dev server were all being served at public URLs —
+# akashmovers.com/README.md returned 30 KB of internal handover notes to
+# anyone who asked for it.
+#
+# GitHub Pages runs Jekyll by default, and Jekyll will not copy anything
+# listed under `exclude`. That is the only mechanism this host offers.
+#
+# IF THE SITE MOVES TO CLOUDFLARE PAGES, this file does nothing and is
+# harmless — Cloudflare ignores it, and `_redirects` takes over the same job.
+# Leave it in place so that a future deploy back to GitHub Pages is still safe.
+#
+# DO NOT add `.nojekyll`. It would disable Jekyll, and then every file here
+# would be published, including `_headers` and `_redirects` themselves.
+# ============================================================================
+
+# Nothing in this list reaches the public site.
+exclude:
+  - README.md          # internal handover: unverified claims, copy awaiting sign-off
+  - tools/             # authoring scripts and the page fragments they build from
+  - serve.ps1          # local development server
+  - migrations/        # D1 schema, only meaningful on Cloudflare
+  - functions/         # Pages Functions; GitHub Pages cannot run them anyway
+  - .editorconfig
+  - .gitignore
+  - .env.example       # placeholder names only, but still not site content
+
+# Jekyll would otherwise skip the vendored libraries and the fonts, because
+# their folders are fine but some filenames look like Jekyll internals.
+# Being explicit costs nothing and prevents a silent 404 on three.module.min.js.
+include:
+  - vendor
+  - assets
+
+# No Liquid templating is used anywhere in this site — it is plain static
+# HTML. Keeping the default processing on is still necessary, because turning
+# Jekyll off is what would expose `_headers` and `_redirects`.
+plugins: []
