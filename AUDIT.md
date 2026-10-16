@@ -67,9 +67,11 @@ the phone, WhatsApp and contact links still work.
 | M3 | Broken internal links | **Zero**, across 19 distinct targets. |
 | M4 | Incorrect `noindex` | **None found.** The only `noindex` is on `404.html`, which is correct. |
 | M5 | Redirect chains and loops | **None.** `http://` → `https://` is a single 301. There are no other redirects: nothing has been deleted that had a URL. |
-| M6 | Structured data | Present and valid. `MovingCompany`, `WebSite`, `WebPage`, `BreadcrumbList`, `Service` ×8, `FAQPage`. |
+| M6 | Structured data | Present and valid. `MovingCompany`, `WebSite`, `BreadcrumbList`, `Service` ×8, `FAQPage`, and the correct `WebPage` subtype per URL — `AboutPage` on About, `ContactPage` on Contact, `CollectionPage` on the gallery. The FAQ page deliberately does **not** get `FAQPage` on its WebPage node, because a separate `FAQPage` node already carries the questions; two would be duplicate, conflicting markup. Verified: exactly one `FAQPage` node on `/faq.html`. |
 | M7 | Development files were publicly served (`/README.md`, `/tools/*`) | **Fixed earlier**; re-verified 404 on the live site. |
 | M8 | Thin content on the new gallery page (290 words) | **Fixed** — real copy explaining what is visible in the photographs. |
+| M9 | **`terms.html` carried six `[TO BE SUPPLIED]` blanks and a banner reading "Template — not ready to publish"**, live, linked from every footer. | **Fixed.** The banner was written for the developer and was being shown to customers. The blanks were **not** filled with invented policy — each now states what this site says everywhere else, that the figures for a job are confirmed in writing with the quotation. The real deposit, notice, cancellation scale, cover, claim window, payment terms and complaint acknowledgement time **still need the owner and a legal review**. |
+| M10 | No photographs on any page except the homepage hero | **Fixed** — photo strips on the services hub, seven service pages, About, the Kanpur page, the locations hub and the homepage. `vehicle-transport` deliberately has none: not one of the 44 photographs shows a vehicle being carried. |
 
 ---
 

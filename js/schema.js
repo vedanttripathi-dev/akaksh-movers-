@@ -242,9 +242,36 @@ function websiteNode() {
   });
 }
 
+/**
+ * The more specific WebPage subtype for this URL, or plain WebPage.
+ *
+ * Schema.org has subtypes for exactly the pages a service site has, and
+ * using them costs nothing: an `AboutPage` tells a parser that this is the
+ * page describing the organisation, which is useful to an answer engine
+ * trying to summarise the business from the site.
+ *
+ * Matched on the path rather than on anything in the markup, so a page
+ * cannot accidentally claim to be the contact page. Anything unrecognised
+ * stays `WebPage` — a wrong subtype is worse than a general one.
+ */
+function pageType(path) {
+  const p = String(path || '/').toLowerCase();
+  if (p === '/about.html') return 'AboutPage';
+  if (p === '/contact.html') return 'ContactPage';
+  if (p === '/gallery.html') return 'CollectionPage';
+
+  /* NOT FAQPage for /faq.html, deliberately. faqNode() below already emits
+     a separate FAQPage node, built from the questions visible in the page.
+     Typing the WebPage node as FAQPage too would put two FAQPage nodes with
+     different @ids in one graph, which is exactly the duplicate, conflicting
+     markup that gets a site a structured-data warning. One of them is
+     enough, and the one with the questions in it is the useful one. */
+  return 'WebPage';
+}
+
 function webPageNode({ path, title, description }) {
   return compact({
-    '@type': 'WebPage',
+    '@type': pageType(path),
     '@id': ID.page(path),
     url: absoluteUrl(path),
     name: title || document.title,

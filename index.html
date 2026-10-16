@@ -409,6 +409,88 @@
   </section>
 
   <!-- =======================================================================
+       OUR WORK, PHOTOGRAPHED
+       Six frames from the gallery. Static markup, so the alt text and the
+       filenames are in the served HTML where an image search engine can
+       read them. The full set is on /gallery.html.
+       ==================================================================== -->
+  <section class="section on-paper" id="our-photos" aria-labelledby="our-photos-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Our work</span>
+        <h2 id="our-photos-title">This is what we hand over to the vehicle</h2>
+        <p class="lead">
+          Photographs from real jobs in Kanpur. Corrugated sheet on the edges,
+          stretch film over the top, and a label on every piece before it
+          leaves the floor.
+        </p>
+      </div>
+      <div class="workshots">
+        <figure class="workshot">
+          <img class="workshot__img"
+               src="/assets/images/gallery/crew-wrapping-furniture-400.jpg"
+               srcset="/assets/images/gallery/crew-wrapping-furniture-400.jpg 400w, /assets/images/gallery/crew-wrapping-furniture-1000.jpg 1000w"
+               sizes="(min-width: 60rem) 22rem, (min-width: 40rem) 45vw, 92vw"
+               alt="A crew member drawing stretch film around a large piece of furniture indoors."
+               width="301" height="400" loading="lazy" decoding="async">
+          <figcaption class="workshot__cap">Stretch film goes on by hand, layer by layer</figcaption>
+        </figure>
+        <figure class="workshot">
+          <img class="workshot__img"
+               src="/assets/images/gallery/packed-consignment-in-room-400.jpg"
+               srcset="/assets/images/gallery/packed-consignment-in-room-400.jpg 400w, /assets/images/gallery/packed-consignment-in-room-1000.jpg 1000w"
+               sizes="(min-width: 60rem) 22rem, (min-width: 40rem) 45vw, 92vw"
+               alt="Wrapped furniture and taped cartons stacked together in a room, ready for loading."
+               width="301" height="400" loading="lazy" decoding="async">
+          <figcaption class="workshot__cap">A room packed and ready</figcaption>
+        </figure>
+        <figure class="workshot">
+          <img class="workshot__img"
+               src="/assets/images/gallery/wrapped-items-ready-outdoors-400.jpg"
+               srcset="/assets/images/gallery/wrapped-items-ready-outdoors-400.jpg 400w, /assets/images/gallery/wrapped-items-ready-outdoors-1000.jpg 1000w"
+               sizes="(min-width: 60rem) 22rem, (min-width: 40rem) 45vw, 92vw"
+               alt="Four tall wrapped items standing on paving outside a building, waiting to be loaded."
+               width="301" height="400" loading="lazy" decoding="async">
+          <figcaption class="workshot__cap">Staged outside, waiting for the vehicle</figcaption>
+        </figure>
+        <figure class="workshot">
+          <img class="workshot__img"
+               src="/assets/images/gallery/strapped-cartons-on-trolley-400.jpg"
+               srcset="/assets/images/gallery/strapped-cartons-on-trolley-400.jpg 400w, /assets/images/gallery/strapped-cartons-on-trolley-1000.jpg 1000w"
+               sizes="(min-width: 60rem) 22rem, (min-width: 40rem) 45vw, 92vw"
+               alt="Cartons strapped in stacks on a flat trolley outside a building."
+               width="400" height="301" loading="lazy" decoding="async">
+          <figcaption class="workshot__cap">Strapped in stacks, moved on a trolley</figcaption>
+        </figure>
+        <figure class="workshot">
+          <img class="workshot__img"
+               src="/assets/images/gallery/panel-with-edge-protection-400.jpg"
+               srcset="/assets/images/gallery/panel-with-edge-protection-400.jpg 400w, /assets/images/gallery/panel-with-edge-protection-1000.jpg 1000w"
+               sizes="(min-width: 60rem) 22rem, (min-width: 40rem) 45vw, 92vw"
+               alt="A wrapped panel with reinforced edging taped along its length, standing in a room."
+               width="301" height="400" loading="lazy" decoding="async">
+          <figcaption class="workshot__cap">Edges take the knocks, so edges get the protection</figcaption>
+        </figure>
+        <figure class="workshot">
+          <img class="workshot__img"
+               src="/assets/images/gallery/packed-items-beside-vehicle-400.jpg"
+               srcset="/assets/images/gallery/packed-items-beside-vehicle-400.jpg 400w, /assets/images/gallery/packed-items-beside-vehicle-1000.jpg 1000w"
+               sizes="(min-width: 60rem) 22rem, (min-width: 40rem) 45vw, 92vw"
+               alt="Two tall wrapped items standing beside the open tailgate of a transport vehicle."
+               width="301" height="400" loading="lazy" decoding="async">
+          <figcaption class="workshot__cap">At the tailgate, ready to load</figcaption>
+        </figure>
+      </div>
+      <div class="btn-row mt-7">
+        <a class="btn btn--ghost" href="/gallery.html">
+          See all 44 photographs
+          <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
        GOOGLE REVIEWS
        Filled by js/reviews.js from /api/reviews, or from review text pasted
        into SITE_CONFIG.testimonials.verified. Nothing is ever invented to
