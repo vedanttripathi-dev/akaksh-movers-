@@ -397,8 +397,11 @@ export const SITE_CONFIG = {
        a far better trust signal. Nothing switches it back on; the module and
        the vendored library were deleted. */
 
-    /** The scroll-linked truck journey through the six stages. */
-    scrollJourney: true,
+    /* The scroll-linked truck journey is GONE, along with the "How it works"
+       anchor that pointed at it. It was never a separate page, so nothing
+       was redirected and nothing 404s. Removing it also removed GSAP and
+       ScrollTrigger, which loaded on every page of the site for that one
+       section: 114 KB. */
     /** A single, dismissible prompt offering the callback form. Never repeats
         in the same session once dismissed. Set false to remove entirely. */
     timedQuotePrompt: false,

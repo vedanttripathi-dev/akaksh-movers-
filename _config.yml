@@ -25,6 +25,7 @@
 # Nothing in this list reaches the public site.
 exclude:
   - README.md          # internal handover: unverified claims, copy awaiting sign-off
+  - AUDIT.md           # audit and implementation report; internal, same reasons
   - tools/             # authoring scripts and the page fragments they build from
   - serve.ps1          # local development server
   - migrations/        # D1 schema, only meaningful on Cloudflare

@@ -92,71 +92,79 @@
    1. DESIGN TOKENS
    =========================================================================== */
 :root {
-  /* --- Brand surfaces: warm charcoal ------------------------------------
-     The dark surface is charcoal rather than black, and warm rather than
-     neutral, so it sits with the beige below instead of fighting it. A
-     pure black next to a cream beige reads as two unrelated palettes.
+  /* =====================================================================
+     THE PALETTE IS THE CLIENT'S, NOT A CHOICE MADE HERE
+     =====================================================================
+     Two colours were supplied and they are the source of truth:
 
-     The important part is still the DEPTH. These are near-black values
-     that happen to be warm, so the layout keeps the premium dark surface
-     it was designed against. */
-  --ink-900: #140f0c;   /* deepest, page background behind the hero        */
-  --ink-800: #1f1915;   /* hero / dark section background                  */
-  --ink-700: #2b2420;   /* raised dark card                                */
-  --ink-600: #3c332c;   /* dark card hover, hairline on dark               */
-  --ink-500: #544940;   /* lightest ink, for hairlines and dividers        */
+       Wine Red    #7F011F   rgb(127, 1, 31)    hsl(346, 98%, 25%)
+       Light Sand  #F5EBD0   rgb(245, 235, 208) hsl(44, 64%, 89%)
+
+     Everything below is either one of those two, a neutral, or a tint
+     derived from them. No third hue is introduced.
+
+     An earlier version of this file used #7f011f, measured off a
+     photograph of the company's signboard. That was the best available
+     evidence at the time; a supplied palette beats a sampled one, so the
+     measured value is gone. ===================================== */
+
+  /* --- Dark surfaces: wine-black ----------------------------------------
+     The dark surface is the wine red taken almost to black rather than a
+     neutral charcoal, so the footer and the dark bands read as the same
+     palette as the buttons instead of as a separate grey theme. */
+  --ink-900: #1a060d;   /* deepest, the footer                             */
+  --ink-800: #260d14;   /* dark section background                         */
+  --ink-700: #37161e;   /* raised dark card                                */
+  --ink-600: #4a242c;   /* dark card hover, hairline on dark               */
+  --ink-500: #5f3139;   /* lightest ink, for hairlines and dividers        */
 
   /* --- Light surfaces ---------------------------------------------------
-     White for cards, beige for the page beneath them. The beige is what
-     stops the site reading as a white template: it is the cheapest single
-     change that makes a layout look considered. Kept pale enough that
-     black body text still clears AAA on it. */
+     White for cards, Light Sand for the page beneath them. The sand is
+     what stops the site reading as a white template, and it is the
+     client's own second colour rather than a beige picked to taste.
+     Black body text measures 15.2:1 on it — comfortably past AAA. */
   --paper:      #ffffff;
-  --paper-sunk: #f6f1ea;  /* beige page background for light sections      */
+  --paper-sunk: #f5ebd0;  /* Light Sand — section backgrounds              */
   --paper-card: #ffffff;
-  --paper-line: #e6dcd0;  /* warm hairline on light                        */
+  --paper-line: #e3d5b4;  /* sand hairline, one step down                  */
 
   /* --- Text ------------------------------------------------------------- */
-  --text-on-dark:        #f7f2ec;
-  --text-on-dark-soft:   #c9bdb2;
-  --text-on-dark-faint:  #9c8f84;
+  --text-on-dark:        #fbf6ea;
+  --text-on-dark-soft:   #dcc9c2;
+  --text-on-dark-faint:  #b39a94;
   --text-on-light:       #1a1512;
   --text-on-light-soft:  #4c423b;
-  /* Measured, not guessed: 6.28:1 on white and 5.59:1 on the beige. Both
+  /* Measured, not guessed: 6.28:1 on white and 5.33:1 on the sand. Both
      clear the 4.5:1 that normal-size body text needs. This token is used
      for map notes, footer notes and form hints — all of them real copy, so
      it cannot be treated as decorative. */
   --text-on-light-faint: #6a5e55;
 
-  /* --- Accent: the company's own red -------------------------------------
-     Sampled from the client's own signage rather than chosen. The close-up
-     photograph of the board, which is the one shot in direct light, has a
-     median red of #af0215 across 31,692 sampled pixels; the logo plaque in
-     shade reads #97131e and the sun-washed shopfront #c6595f. #b00020 is
-     the cleaned-up value of the first, and it is what the buttons, rules
-     and icons use.
+  /* --- Accent: Wine Red --------------------------------------------------
+     #7F011F is dark for a brand colour, which is a gift in one direction
+     and a trap in the other:
 
-     The three jobs the red has to do need three different values, and this
-     is the part that bites when a palette moves from a light accent to a
-     dark one:
-
-     --accent        the fill. White on it measures 7.33:1.
-     --accent-hover  the DARKER fill for hover. Red cannot go lighter on
-                     hover the way amber could — a lighter red takes white
-                     text down to 2.8:1 — so it goes deeper instead.
-     --accent-bright the tint for DARK backgrounds. A saturated red on
-                     charcoal measures 2.4:1 and is unreadable, so this is
-                     lifted to a warm coral that holds 6.3:1 there. Use it
-                     only on dark; on white it is far too pale.
-     --accent-deep   the text red for LIGHT backgrounds: 9.7:1 on white.
-                     Never set link text to --accent on white — it fails.  */
-  --accent:        #b00020;
-  --accent-hover:  #8e0018;
-  --accent-bright: #f4756b;
-  --accent-deep:   #8e0018;
-  --accent-wash:   #fbefef;   /* pale blush tint for light backgrounds     */
-  --accent-glow:   rgba(176, 0, 32, 0.30);
-  --on-accent:     #ffffff;   /* text that sits ON a red fill (7.33:1)     */
+     --accent        the fill. White on it measures 10.9:1, so the buttons
+                     are the most readable thing on the page.
+     --accent-hover  a deeper step for hover. A LIGHTER wine goes pink and
+                     drops white text below 4.5:1, so hover goes down.
+     --accent-deep   the text wine for LIGHT backgrounds. Same value as
+                     --accent, because at 10.9:1 on white it needs no
+                     darkening — the two tokens are kept separate so the
+                     distinction survives if the palette ever changes.
+     --accent-bright the accent for DARK backgrounds, and it is NOT a red.
+                     Every light tint of this wine turns pink, which is off
+                     the supplied palette. The brand's own second colour
+                     does the job instead: Light Sand on wine-black measures
+                     16.8:1 and stays inside the two colours supplied.
+     --accent-wash   the palest wine, for tinted chips on white.           */
+  --accent:        #7f011f;
+  --accent-hover:  #5e0116;
+  --accent-bright: #f5ebd0;   /* Light Sand — the on-dark accent           */
+  --accent-deep:   #7f011f;
+  --accent-wash:   #f9edf0;   /* pale wine tint for light backgrounds      */
+  --accent-glow:   rgba(127, 1, 31, 0.30);
+  --on-accent:     #ffffff;   /* text that sits ON a wine fill (10.9:1)    */
 
   /* --- Semantic ---------------------------------------------------------
      The error red deliberately stays its own colour. It sits next to the
@@ -217,10 +225,10 @@
   --r-sm: 6px;  --r-md: 10px;  --r-lg: 16px;  --r-xl: 24px;  --r-pill: 999px;
 
   /* --- Elevation: layered, low-contrast, never a single heavy blur ------ */
-  --sh-1: 0 1px 2px rgba(40, 28, 22, 0.06), 0 1px 3px rgba(40, 28, 22, 0.05);
-  --sh-2: 0 2px 4px rgba(40, 28, 22, 0.06), 0 6px 14px rgba(40, 28, 22, 0.07);
-  --sh-3: 0 4px 8px rgba(40, 28, 22, 0.07), 0 14px 34px rgba(40, 28, 22, 0.10);
-  --sh-4: 0 8px 18px rgba(40, 28, 22, 0.10), 0 30px 64px rgba(40, 28, 22, 0.15);
+  --sh-1: 0 1px 2px rgba(42, 14, 22, 0.06), 0 1px 3px rgba(42, 14, 22, 0.05);
+  --sh-2: 0 2px 4px rgba(42, 14, 22, 0.06), 0 6px 14px rgba(42, 14, 22, 0.07);
+  --sh-3: 0 4px 8px rgba(42, 14, 22, 0.07), 0 14px 34px rgba(42, 14, 22, 0.10);
+  --sh-4: 0 8px 18px rgba(42, 14, 22, 0.10), 0 30px 64px rgba(42, 14, 22, 0.15);
   --sh-dark: 0 20px 50px rgba(0, 0, 0, 0.5);
 
   /* --- Motion ----------------------------------------------------------- */
@@ -238,7 +246,6 @@
   --wrap:        1180px;
   --wrap-narrow: 760px;
   --header-h:    68px;
-  --rail-w:      36px;   /* the side scroll-truck rail (§17b) */
 }
 
 
@@ -503,7 +510,7 @@ p:last-child { margin-bottom: 0; }
   --btn-fg: var(--text-on-light);
   --btn-bd: var(--paper-line);
 }
-.btn--ghost:hover { --btn-bg: var(--paper-sunk); color: var(--text-on-light); background: var(--paper-sunk); border-color: #d7c9b8; }
+.btn--ghost:hover { --btn-bg: var(--paper-sunk); color: var(--text-on-light); background: var(--paper-sunk); border-color: #ddc9a6; }
 
 .on-dark .btn--ghost, .btn--ghost-dark {
   /* `--btn-bg: transparent` is load-bearing. Without it this rule sets only
@@ -725,28 +732,39 @@ p:last-child { margin-bottom: 0; }
 /* ===========================================================================
    7. HERO
    =========================================================================== */
+/* THE HERO IS LIGHT, and that follows from the palette rather than taste.
+   Wine Red is a dark colour. On the near-black hero this used to be, the
+   wine CTA was a dark shape on a dark field: the white label on it still
+   measured 10.9:1, so it was readable, but the BUTTON did not read as a
+   button until you looked for it, and the first call to action on the site
+   is the last thing that should need looking for.
+
+   On Light Sand the same button is the darkest thing on the screen. The
+   supplied palette is a dark accent and a pale ground; using it the other
+   way round fights it. */
 .hero {
   position: relative;
   isolation: isolate;
-  background: var(--ink-900);
-  color: var(--text-on-dark);
+  background: var(--paper-sunk);
+  color: var(--text-on-light);
   overflow: hidden;
+  border-bottom: 1px solid var(--paper-line);
 }
 
-/* Depth behind the content: a single soft pool of light, no banding. */
+/* Depth behind the content: a single soft warm wash, no banding. */
 .hero::before {
   content: "";
   position: absolute; inset: 0; z-index: -2;
   background:
-    radial-gradient(110% 80% at 72% 12%, #4a2f28 0%, #281f1a 52%, #140f0c 100%);
+    radial-gradient(120% 90% at 78% 8%, #fffaf0 0%, #f8f0da 46%, #f0e3c2 100%);
 }
 /* A very faint grid, for structure rather than decoration. */
 .hero::after {
   content: "";
-  position: absolute; inset: 0; z-index: -2; opacity: 0.4;
+  position: absolute; inset: 0; z-index: -2; opacity: 0.5;
   background-image:
-    linear-gradient(to right, rgba(255,255,255,0.028) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.028) 1px, transparent 1px);
+    linear-gradient(to right, rgba(127, 1, 31, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(127, 1, 31, 0.045) 1px, transparent 1px);
   background-size: 76px 76px;
   mask-image: radial-gradient(70% 60% at 50% 40%, #000 0%, transparent 78%);
   -webkit-mask-image: radial-gradient(70% 60% at 50% 40%, #000 0%, transparent 78%);
@@ -778,24 +796,27 @@ p:last-child { margin-bottom: 0; }
      larger breathing space comes after the pair. */
   margin-bottom: var(--s-3);
 }
-/* A secondary clause in the headline, set in italic gold. One typographic
+/* A secondary clause in the headline, set in italic wine. One typographic
    gesture, not three — the restraint is what makes it read as expensive. */
 .hero h1 .soft {
   font-style: italic;
-  color: var(--accent-bright);
+  color: var(--accent-deep);
 }
 
 /* The tagline, directly under the business name. It borrows the headline's
-   display face and the same italic gold as `.soft`, so the name and the line
+   display face and the same italic wine as `.soft`, so the name and the line
    beneath it read as one typographic unit rather than two unrelated pieces
    of text. Sized well below the display scale: it supports the name, it does
-   not compete with it. */
+   not compete with it.
+
+   Wine on Light Sand measures 9.17:1 — this is a colour that can carry real
+   text, which the pale coral it replaced could not. */
 .hero__tagline {
   font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(1.25rem, 1rem + 1.1vw, 1.85rem);
   line-height: 1.25;
-  color: var(--accent-bright);
+  color: var(--accent-deep);
   margin: 0 0 var(--s-5);
   max-width: 34rem;
   /* Playfair's italic descenders clip against a tight line-height at the
@@ -805,7 +826,7 @@ p:last-child { margin-bottom: 0; }
 
 .hero__lead {
   font-size: var(--fs-lead);
-  color: var(--text-on-dark-soft);
+  color: var(--text-on-light-soft);
   max-width: 34rem;
   margin-bottom: var(--s-6);
 }
@@ -816,13 +837,13 @@ p:last-child { margin-bottom: 0; }
 .hero__points { display: flex; flex-wrap: wrap; gap: var(--s-3) var(--s-5); padding: 0; margin: 0; list-style: none; }
 .hero__points li {
   display: inline-flex; align-items: center; gap: var(--s-2);
-  font-size: var(--fs-sm); color: var(--text-on-dark-soft);
+  font-size: var(--fs-sm); color: var(--text-on-light-soft);
 }
-.hero__points .ic { color: var(--accent-bright); }
+.hero__points .ic { color: var(--accent-deep); }
 
 /* The same row of commitments, for a LIGHT section. `.hero__points` sets
    its colours for the dark hero; dropping that class onto a white panel put
-   #c9bdb2 text on white at 1.64:1, which is invisible rather than subtle. */
+   #dcc9c2 text on white at 1.64:1, which is invisible rather than subtle. */
 .point-list {
   display: flex; flex-wrap: wrap; gap: var(--s-3) var(--s-5);
   padding: 0; margin: 0; list-style: none;
@@ -886,7 +907,7 @@ p:last-child { margin-bottom: 0; }
   position: absolute; left: 50%; bottom: var(--s-5); z-index: 3;
   transform: translateX(-50%);
   font-size: var(--fs-micro); letter-spacing: var(--track-caps);
-  text-transform: uppercase; color: var(--text-on-dark-faint);
+  text-transform: uppercase; color: var(--text-on-light-faint);
 }
 @media (min-width: 980px) { .hero__cue { display: block; } }
 .hero__cue .ic { margin-inline: auto; animation: cue 2.4s var(--ease) infinite; }
@@ -899,10 +920,12 @@ p:last-child { margin-bottom: 0; }
 /* ===========================================================================
    8. TRUST STRIP
    =========================================================================== */
+/* White, directly under the sand hero. The strip used to be a dark band,
+   which worked when the hero above it was dark too; between a sand hero and
+   white services it would now be a stripe of near-black for no reason. */
 .trust {
-  background: var(--ink-800);
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--paper);
+  border-bottom: 1px solid var(--paper-line);
 }
 .trust__grid {
   display: grid; gap: var(--s-5);
@@ -910,314 +933,15 @@ p:last-child { margin-bottom: 0; }
   padding-block: var(--s-6);
 }
 .trust__item { display: flex; gap: var(--s-3); align-items: flex-start; }
-.trust__item .ic { width: 1.5rem; height: 1.5rem; color: var(--accent-bright); margin-top: 2px; }
-.trust__item h3 { font-size: var(--fs-sm); margin: 0 0 2px; color: var(--text-on-dark); }
-.trust__item p { font-size: var(--fs-xs); color: var(--text-on-dark-faint); margin: 0; line-height: 1.5; }
+.trust__item .ic { width: 1.5rem; height: 1.5rem; color: var(--accent-deep); margin-top: 2px; }
+.trust__item h3 { font-size: var(--fs-sm); margin: 0 0 2px; color: var(--text-on-light); }
+.trust__item p { font-size: var(--fs-xs); color: var(--text-on-light-soft); margin: 0; line-height: 1.5; }
 
-/* ===========================================================================
-   9. SCROLL JOURNEY
-   ---------------------------------------------------------------------------
-   Six stages. On desktop the visual column is pinned by GSAP while the text
-   column scrolls past it. On phones pinning is switched off entirely and the
-   stages simply reveal in sequence — same story, far less work for the GPU.
-   =========================================================================== */
-/* No `overflow: hidden` here — see the note on body in §2. It would turn
-   this section into a scroll container and stop .journey__visual sticking,
-   so the truck would scroll away instead of travelling the whole road. */
-.journey { position: relative; background: var(--ink-900); color: var(--text-on-dark); }
-
-.journey__head { padding-top: var(--section-y); }
-
-.journey__layout { display: grid; gap: var(--s-6); padding-bottom: var(--section-y); }
-/* Same `min-width: auto` trap as `.split`: a grid item refuses to shrink
-   below its content's minimum width, so the sticky road panel and the stage
-   list together held the layout viewport at ~353px and produced a horizontal
-   scrollbar on a 320px phone. */
-.journey__layout > *, .journey__stages > *, .stage > * { min-width: 0; }
-@media (min-width: 980px) {
-  .journey__layout { grid-template-columns: 0.95fr 1.05fr; gap: var(--s-8); align-items: start; }
-}
-
-/* --- The pinned visual --- */
-/* Sticky on EVERY screen size, phones included.
-   This used to be sticky only from 980px up, which meant that on a phone the
-   road panel scrolled away almost immediately and the truck was gone before
-   it had travelled anywhere. The truck following the visitor is the whole
-   point of this section, and most visitors are on a phone.
-
-   `overflow: hidden` HERE is fine — sticky is only broken by an overflow on
-   an ANCESTOR, not on the sticky element itself. */
-.journey__visual {
-  position: sticky;
-  top: calc(var(--header-h) + var(--s-3));
-  /* Above the stages. On phones the stages sit BELOW this panel in the DOM,
-     so without a z-index they paint over the top of it as they scroll past
-     — the stage text ends up printed across the road. The panel is opaque,
-     so with this they correctly pass behind it instead. */
-  z-index: 2;
-  border-radius: var(--r-xl);
-  overflow: hidden;
-  /* Warm charcoal, not navy. This panel was missed when the palette moved
-     from blue to the company's red, and a cold blue rectangle in the middle
-     of a warm charcoal page is the kind of thing that reads as "unfinished"
-     without anyone being able to say why. */
-  background: linear-gradient(180deg, #33231e 0%, #140f0c 100%);
-  aspect-ratio: 4 / 3;
-  /* Capped so the stage text below it still has room on a short phone
-     screen. The road SVG uses preserveAspectRatio="none" and journey.js
-     scales each axis separately, so a non-4:3 box is handled correctly.
-
-     32vh, down from 42vh. This panel is sticky, so whatever it occupies it
-     occupies for the whole section — the visitor reads six stages through
-     the remaining slot. At 42vh that slot was barely half a phone screen. */
-  max-height: 32vh;
-}
-@media (min-width: 980px) {
-  .journey__visual {
-    top: calc(var(--header-h) + var(--s-5));
-    aspect-ratio: 1 / 1;
-    max-height: none;
-  }
-}
-
-/* --- Ambient light ---------------------------------------------------------
-   Two soft pools drifting on long, offset cycles so the panel always has
-   some life in it even when the visitor has stopped scrolling. Pure CSS and
-   composited — no JavaScript and no per-frame work. */
-.journey__glow {
-  position: absolute;
-  width: 62%; aspect-ratio: 1;
-  border-radius: 50%;
-  pointer-events: none;
-  filter: blur(42px);
-  opacity: 0.5;
-}
-.journey__glow--a {
-  top: -12%; left: -10%;
-  background: radial-gradient(circle, rgba(176, 0, 32, 0.60), transparent 68%);
-  animation: glowDriftA 17s ease-in-out infinite;
-}
-.journey__glow--b {
-  bottom: -14%; right: -12%;
-  background: radial-gradient(circle, rgba(244, 117, 107, 0.34), transparent 68%);
-  animation: glowDriftB 21s ease-in-out infinite;
-}
-@keyframes glowDriftA {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-  50%      { transform: translate3d(14%, 10%, 0) scale(1.14); }
-}
-@keyframes glowDriftB {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1.08); }
-  50%      { transform: translate3d(-12%, -9%, 0) scale(1); }
-}
-
-/* --- The road ------------------------------------------------------------- */
-.journey__road {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-}
-
-/* Road still to come: a dashed hint that slowly crawls forward. */
-.journey__road .road-line {
-  fill: none;
-  stroke: rgba(245, 241, 234, 0.16);
-  stroke-width: 2;
-  stroke-dasharray: 7 7;
-  animation: roadCrawl 2.4s linear infinite;
-}
-@keyframes roadCrawl { to { stroke-dashoffset: -14; } }
-
-/* Bloom under the travelled road. */
-.journey__road .road-bloom {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 11;
-  stroke-linecap: round;
-  opacity: 0.22;
-}
-
-/* The travelled road itself, in a gradient so the newest part is brightest. */
-.journey__road .road-done {
-  fill: none;
-  stroke: url(#roadGrad);
-  stroke-width: 3.4;
-  stroke-linecap: round;
-  /* `stroke-dashoffset` on both of these is driven by journey.js. */
-}
-
-/* --- Milestone pins -------------------------------------------------------
-   One per stage, placed along the road by journey.js (it sets left/top from
-   the path, which is a CSSOM write and so unaffected by the CSP). */
-.journey__pins { position: absolute; inset: 0; pointer-events: none; }
-.journey__pin {
-  position: absolute;
-  width: 11px; height: 11px;
-  margin: -5.5px 0 0 -5.5px;
-  border-radius: 50%;
-  /* The unlit pin, in the charcoal scale. It was `#1d3550`, the old navy,
-     which left a row of blue dots down a red road. */
-  background: #3c332c;
-  border: 1.5px solid rgba(245, 241, 234, 0.28);
-  transition: background-color var(--dur) var(--ease),
-              border-color var(--dur) var(--ease),
-              transform var(--dur) var(--ease-out),
-              box-shadow var(--dur) var(--ease);
-}
-.journey__pin.is-lit {
-  background: var(--accent-bright);
-  border-color: #ffe9e5;
-  transform: scale(1.5);
-  box-shadow: 0 0 0 4px rgba(176, 0, 32, 0.30), 0 0 14px 2px rgba(244, 117, 107, 0.6);
-}
-
-/* --- The travelling truck ------------------------------------------------- */
-.journey__truck {
-  position: absolute; top: 0; left: 0;
-  width: 92px;
-  will-change: transform;
-  /* The whole sprite is positioned and rotated to the path by journey.js;
-     this adds a small suspension bounce on top of that, which is why it is
-     applied to a filter rather than a transform (a transform here would be
-     overwritten every frame). */
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.55));
-}
-
-.jt-ribs { stroke: #544940; stroke-width: 1; opacity: 0.6; }
-
-/* Wheels. journey.js rotates these in proportion to distance travelled, so
-   they turn only while the page is actually moving. */
-.jt-wheel { transform-box: fill-box; transform-origin: 50% 50%; }
-
-/* Headlight beam and dust, both only visible while the truck is moving. */
-.jt-beam {
-  fill: rgba(255, 246, 226, 0.16);
-  opacity: 0;
-  transition: opacity var(--dur) var(--ease);
-}
-.journey__truck.is-moving .jt-beam { opacity: 1; }
-
-.jt-dust__p { fill: rgba(200, 186, 160, 0.55); opacity: 0; }
-.journey__truck.is-moving .jt-dust__p { animation: dustPuff 0.85s ease-out infinite; }
-.journey__truck.is-moving .jt-dust__p--2 { animation-delay: 0.28s; }
-.journey__truck.is-moving .jt-dust__p--3 { animation-delay: 0.55s; }
-@keyframes dustPuff {
-  0%   { opacity: 0.55; transform: translate(0, 0) scale(0.5); }
-  100% { opacity: 0;    transform: translate(-16px, -5px) scale(1.7); }
-}
-
-/* Per-stage artwork layers, cross-faded by journey.js. */
-
-/* Progress readout.
-   A scrim sits behind it so the label stays legible even if the truck or the
-   road passes close by — on a short phone screen the panel is compressed and
-   there is not much clearance. */
-.journey__meter::before {
-  content: "";
-  position: absolute; left: calc(var(--s-4) * -1); right: calc(var(--s-4) * -1);
-  bottom: calc(var(--s-4) * -1); top: calc(var(--s-3) * -1);
-  background: linear-gradient(to top, rgba(20, 15, 12, 0.92), rgba(20, 15, 12, 0));
-  pointer-events: none;
-  z-index: -1;
-}
-.journey__meter {
-  position: absolute; left: var(--s-4); right: var(--s-4); bottom: var(--s-4);
-  z-index: 2;
-  display: flex; align-items: center; gap: var(--s-3);
-  font-size: var(--fs-micro); letter-spacing: var(--track-caps);
-  text-transform: uppercase; color: var(--text-on-dark-faint);
-}
-.journey__meter-track { flex: 1; height: 3px; border-radius: 2px; background: rgba(255,255,255,0.12); overflow: hidden; }
-.journey__meter-fill { height: 100%; width: 0%; background: var(--accent); border-radius: 2px; }
-
-/* --- The stage text --- */
-.journey__stages { display: grid; gap: var(--s-5); }
-@media (min-width: 980px) { .journey__stages { gap: var(--s-9); padding-block: var(--s-8); } }
-
-.stage {
-  position: relative;
-  display: grid; grid-template-columns: auto 1fr; gap: var(--s-4);
-  padding: var(--s-4) var(--s-4) var(--s-4) var(--s-5);
-  border-radius: var(--r-lg);
-  opacity: 0.42;
-  background: transparent;
-  transition: opacity var(--dur-slow) var(--ease),
-              background-color var(--dur-slow) var(--ease),
-              transform var(--dur-slow) var(--ease-out);
-}
-
-/* The gold rail down the left of the active stage. Always present so there
-   is nothing to lay out when it appears — only a scale to animate. */
-.stage::before {
-  content: "";
-  position: absolute; left: 0; top: 10%; bottom: 10%;
-  width: 3px; border-radius: 3px;
-  background: linear-gradient(to bottom, var(--accent-bright), var(--accent));
-  transform: scaleY(0);
-  transform-origin: top center;
-  transition: transform var(--dur-slow) var(--ease-out);
-}
-
-.stage.is-active {
-  opacity: 1;
-  background: rgba(176, 0, 32, 0.05);
-  transform: translateX(4px);
-}
-.stage.is-active::before { transform: scaleY(1); }
-
-/* On phones the body text stays at full opacity — dimming paragraphs to 40%
-   would fail contrast and make the section hard to read on exactly the
-   devices most people use. The active stage is still signalled, by the gold
-   rail, the tinted panel and the badge. */
-@media (max-width: 979px) {
-  .stage { opacity: 1; padding-block: var(--s-3); }
-  .stage:not(.is-active) { background: transparent; }
-}
-
-.stage__num {
-  display: flex; align-items: center; justify-content: center;
-  width: 42px; height: 42px; flex: none;
-  border: 1px solid rgba(245, 241, 234, 0.18);
-  border-radius: var(--r-pill);
-  font-size: var(--fs-sm); font-weight: 600; font-variant-numeric: tabular-nums;
-  color: var(--text-on-dark-soft);
-  transition: background-color var(--dur) var(--ease),
-              color var(--dur) var(--ease),
-              border-color var(--dur) var(--ease),
-              transform var(--dur) var(--ease-out),
-              box-shadow var(--dur) var(--ease);
-}
-.stage.is-active .stage__num {
-  background: var(--accent);
-  border-color: var(--accent-bright);
-  color: var(--on-accent);
-  transform: scale(1.12);
-  box-shadow: 0 0 0 5px rgba(176, 0, 32, 0.22), 0 6px 18px rgba(176, 0, 32, 0.38);
-  animation: badgePulse 2.6s var(--ease) infinite;
-}
-@keyframes badgePulse {
-  0%, 100% { box-shadow: 0 0 0 5px rgba(176, 0, 32, 0.22), 0 6px 18px rgba(176, 0, 32, 0.38); }
-  50%      { box-shadow: 0 0 0 9px rgba(176, 0, 32, 0.07), 0 6px 22px rgba(176, 0, 32, 0.50); }
-}
-
-.stage h3 { margin-bottom: var(--s-2); transition: color var(--dur) var(--ease); }
-.stage.is-active h3 { color: var(--accent-bright); }
-.stage p { color: var(--text-on-dark-soft); margin: 0; }
-
-.stage__list { margin: var(--s-3) 0 0; padding-left: 1.1rem; color: var(--text-on-dark-faint); font-size: var(--fs-sm); }
-.stage__list li {
-  margin-bottom: var(--s-1);
-  opacity: 0.55;
-  transform: translateX(-4px);
-  transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
-}
-/* --accent-bright, not --accent: these markers sit on the dark journey
-   panel, where the solid brand red measures 2.4:1 and disappears. */
-.stage__list li::marker { color: var(--accent-bright); }
-/* The detail points fade in one after another once the stage is reached. */
-.stage.is-active .stage__list li { opacity: 1; transform: none; }
-.stage.is-active .stage__list li:nth-child(2) { transition-delay: 90ms; }
-.stage.is-active .stage__list li:nth-child(3) { transition-delay: 180ms; }
-
+/* Section 9 held the scroll-journey: a pinned road panel, a travelling
+   truck, six milestone pins and the six stage cards beside them. It was
+   the "How it works" section, and it went on 17 Oct 2026 at the client's
+   request. ~300 lines of CSS, one JavaScript module, and the GSAP +
+   ScrollTrigger pair that loaded on every page of the site to drive it. */
 
 /* ===========================================================================
    10. CARDS
@@ -1420,6 +1144,127 @@ p:last-child { margin-bottom: 0; }
 
 
 /* ===========================================================================
+   11e. PHOTO GALLERY
+   ---------------------------------------------------------------------------
+   CSS COLUMNS, not a grid, and that is the whole design decision.
+
+   The photographs are a mix of portrait (963x1280) and landscape (1280x963).
+   A grid of equal tiles would have to crop them to fit, and cropping a
+   photograph of packed goods throws away the part that shows the work — the
+   taped edge, the label, the corner protection. Columns let every picture
+   keep its own shape at its own height.
+
+   The cost is that reading order runs down each column rather than across
+   the page. For a set of photographs with no narrative order, that is a fair
+   trade; for anything sequential it would not be.
+   =========================================================================== */
+.gallery { columns: 1; column-gap: var(--s-4); }
+@media (min-width: 560px) { .gallery { columns: 2; } }
+@media (min-width: 900px) { .gallery { columns: 3; } }
+
+.shot {
+  /* Without this a tile can be split across two columns, which puts half a
+     photograph at the foot of one column and half at the head of the next. */
+  break-inside: avoid;
+  margin: 0 0 var(--s-4);
+  background: var(--paper-card);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--sh-1);
+  transition: box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+@media (hover: hover) {
+  .shot:hover { box-shadow: var(--sh-3); transform: translateY(-2px); }
+}
+
+.shot__link { display: block; }
+/* The focus ring belongs on the tile, not on the inline link box. */
+.shot__link:focus-visible { outline: none; }
+.shot:focus-within { box-shadow: 0 0 0 3px var(--accent); }
+
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--paper-sunk);
+}
+.shot figcaption {
+  padding: var(--s-3) var(--s-4);
+  font-size: var(--fs-sm);
+  color: var(--text-on-light-soft);
+}
+
+
+/* --- Lightbox --------------------------------------------------------------
+   Progressive enhancement only. Each thumbnail is already a plain link to
+   the full-size photograph, so with JavaScript off, or before this module
+   loads, clicking one simply opens the image. js/lightbox.js intercepts. */
+.lightbox {
+  position: fixed; inset: 0; z-index: 200;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  place-items: center;
+  gap: var(--s-4);
+  padding: var(--s-6) var(--s-4) var(--s-5);
+  background: rgba(26, 6, 13, 0.94);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.lightbox[hidden] { display: none; }
+
+.lightbox__img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto; height: auto;
+  border-radius: var(--r-md);
+  box-shadow: var(--sh-dark);
+}
+.lightbox__cap {
+  margin: 0;
+  max-width: 60ch;
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--text-on-dark-soft);
+}
+.lightbox__count {
+  display: block;
+  margin-top: var(--s-2);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+  color: var(--text-on-dark-faint);
+}
+
+.lightbox__btn {
+  position: absolute;
+  display: grid; place-items: center;
+  width: 48px; height: 48px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--r-pill);
+  color: var(--text-on-dark);
+  cursor: pointer;
+}
+.lightbox__btn:hover { background: rgba(255, 255, 255, 0.22); }
+.lightbox__btn .ic { width: 1.4rem; height: 1.4rem; }
+.lightbox__btn--close { top: var(--s-4); right: var(--s-4); }
+/* `scaleX(-1)` turns the single arrow glyph around for "previous", so the
+   sprite carries one arrow rather than two mirror images of it. */
+.lightbox__btn--prev  { left: var(--s-3);  top: 50%; transform: translateY(-50%) scaleX(-1); }
+.lightbox__btn--next  { right: var(--s-3); top: 50%; transform: translateY(-50%); }
+
+/* On a phone the side buttons would sit on top of the photograph, so they
+   move to the bottom corners where the caption already is. The flip has to
+   be restated here, because `transform` replaces rather than merges. */
+@media (max-width: 600px) {
+  .lightbox__btn--prev { left: var(--s-4); top: auto; bottom: var(--s-4); transform: scaleX(-1); }
+  .lightbox__btn--next { right: var(--s-4); top: auto; bottom: var(--s-4); transform: none; }
+  .lightbox__cap { padding-inline: 56px; }
+}
+
+
+/* ===========================================================================
    11c. REVIEW POPUP
    ---------------------------------------------------------------------------
    One genuine review, bottom LEFT. The side matters: the floating WhatsApp
@@ -1580,7 +1425,7 @@ p:last-child { margin-bottom: 0; }
 .input:hover, .select:hover, .textarea:hover { border-color: #c4d0e0; }
 .input:focus, .select:focus, .textarea:focus {
   outline: none; border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(176, 0, 32, 0.22);
+  box-shadow: 0 0 0 3px rgba(127, 1, 31, 0.22);
 }
 .input::placeholder, .textarea::placeholder { color: var(--text-on-light-faint); }
 
@@ -1660,7 +1505,7 @@ p:last-child { margin-bottom: 0; }
 
 .modal__backdrop {
   position: fixed; inset: 0;
-  background: rgba(16, 11, 9, 0.62);
+  background: rgba(20, 6, 11, 0.62);
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
 }
@@ -1839,7 +1684,7 @@ p:last-child { margin-bottom: 0; }
   gap: 1px;
   background: var(--paper-line);
   border-top: 1px solid var(--paper-line);
-  box-shadow: 0 -4px 20px rgba(40, 28, 22, 0.12);
+  box-shadow: 0 -4px 20px rgba(42, 14, 22, 0.12);
   /* Clears the iOS home indicator. */
   padding-bottom: env(safe-area-inset-bottom);
 }
@@ -1873,108 +1718,17 @@ p:last-child { margin-bottom: 0; }
 .wa-float:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(23, 128, 63, 0.42); color: #fff; }
 
 
-/* ===========================================================================
-   17b. SIDE SCROLL TRUCK
-   ---------------------------------------------------------------------------
-   A fixed rail down the left edge. The truck travels top to bottom as the
-   visitor scrolls the page, with the road filling in behind it. Built by
-   js/scroll-truck.js, which runs on every page.
-
-   Two things this has to survive:
-
-   1. It is fixed over sections that are sometimes near-black and sometimes
-      ivory. So the unfilled track is a mid-tone that holds up against both
-      rather than a light or dark colour that disappears on one of them.
-
-   2. It must never sit on top of the text. Below 1280px the layout is not
-      wide enough to have spare margin, so .wrap gains matching left padding
-      and the rail occupies that reserved strip. Above 1280px the centred
-      container already leaves more than enough room, so no shift is needed.
-   =========================================================================== */
-.scroll-rail {
-  position: fixed;
-  left: 0;
-  top: calc(var(--header-h) + var(--s-4));
-  bottom: var(--s-5);
-  width: var(--rail-w);
-  z-index: 70;              /* under the header (100) and contact bar (90) */
-  pointer-events: none;     /* never intercepts a tap or a text selection  */
-  transition: opacity var(--dur) var(--ease);
-}
-/* Hidden when the page is too short to have a journey worth showing. */
-.scroll-rail.is-hidden { opacity: 0; }
-
-.scroll-rail__track,
-.scroll-rail__fill {
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 50%;
-  width: 2px;
-  margin-left: -1px;
-  border-radius: 2px;
-}
-/* Mid-tone: readable on the near-black hero AND on the ivory sections. */
-.scroll-rail__track { background: rgba(138, 130, 113, 0.34); }
-
-.scroll-rail__fill {
-  background: var(--accent);
-  transform-origin: top center;
-  transform: scaleY(0);     /* scaleY rather than height: no layout per frame */
-}
-
-.scroll-rail__truck {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  margin-left: -14px;
-  width: 28px;
-  height: 46px;
-  /* Lifts the truck off whichever background is behind it. */
-  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
-}
-
-/* Keep clear of the sticky call/WhatsApp bar on phones. */
-body.has-contact-bar .scroll-rail { bottom: calc(54px + var(--s-4)); }
-
-/* --- Where the rail is allowed to appear -----------------------------------
-   DESKTOP ONLY, and that is a correction rather than a preference.
-
-   The rail used to show at every width, and below 1280px it had nowhere to
-   go, so the content was pushed out of its way:
-
-       .wrap { padding-left: calc(var(--rail-w) + var(--s-3)); }
-
-   On a 390px phone that is 40px of padding on the left against 16px on the
-   right. Every heading, every paragraph and every card on the site sat 24px
-   further from one edge than the other. Nobody looks at that and thinks
-   "there is a truck rail there" — it just reads as a layout that is subtly
-   broken, and it was the single most visible thing wrong on a phone.
-
-   The rail is also, by its own description in the print rule below, a
-   restatement of the scrollbar. Spending a tenth of a phone screen on a
-   decorative duplicate of a control the phone already has is a bad trade.
-
-   From 1280px up the wrap is capped at 1180px, so there are ~50px of dead
-   margin either side and the rail costs the layout nothing. That is where
-   it lives now. */
-.scroll-rail { display: none; }
-@media (min-width: 1280px) { .scroll-rail { display: block; } }
-/* A slimmer rail on small phones, where every pixel of text width counts. */
-@media (max-width: 480px) {
-  :root { --rail-w: 28px; }
-  .scroll-rail__truck { width: 24px; height: 39px; margin-left: -12px; }
-}
-
-/* The rail is a restatement of the scrollbar; it is not worth printing. */
-@media print { .scroll-rail { display: none !important; } }
-
+/* The side scroll-truck rail (section 17b) was removed on 17 Oct 2026,
+   together with the journey section it belonged to. It was decorative, it
+   restated the scrollbar, and below 1280px it had to push every heading,
+   paragraph and card 24px out of true to make room for itself. */
 
 /* ===========================================================================
    17. BREADCRUMBS AND MISC
    =========================================================================== */
 .crumbs { padding-block: var(--s-4); font-size: var(--fs-xs); color: var(--text-on-light-faint); }
 .crumbs ol { display: flex; flex-wrap: wrap; gap: var(--s-2); list-style: none; padding: 0; margin: 0; }
-.crumbs li:not(:last-child)::after { content: "/"; margin-left: var(--s-2); color: #c4b6a6; }
+.crumbs li:not(:last-child)::after { content: "/"; margin-left: var(--s-2); color: #c9b896; }
 .crumbs a { color: var(--text-on-light-soft); text-decoration: none; }
 .crumbs a:hover { color: var(--accent-deep); text-decoration: underline; }
 .crumbs [aria-current="page"] { color: var(--text-on-light); font-weight: 500; }
@@ -1987,30 +1741,41 @@ body.has-contact-bar .scroll-rail { bottom: calc(54px + var(--s-4)); }
 .page-head .crumbs a { color: var(--text-on-dark-soft); }
 .page-head .crumbs [aria-current="page"] { color: var(--text-on-dark); }
 
-/* Final call-to-action band. */
-/* A dark band with a single pool of warm light, rather than a saturated
-   colour sweep. A full-width gradient in the brand colour is the loudest
-   thing a page can do and it cheapens everything around it. */
+/* Final call-to-action band.
+
+   SOLID Wine Red, and it is the only full-width block of brand colour on
+   the site. With a light hero and light sections throughout, the page needs
+   one place where the colour carries the whole width, and the last ask
+   before the footer is the right place for it. Everywhere else the wine is
+   a button, a rule or a heading.
+
+   The primary button inside it cannot also be wine — it would vanish. It
+   inverts to Light Sand with wine text, which measures 9.17:1. */
 .cta-band {
   position: relative;
   isolation: isolate;
-  background: var(--ink-900);
-  color: var(--text-on-dark);
-  border-top: 1px solid rgba(244, 117, 107, 0.26);
-  border-bottom: 1px solid rgba(244, 117, 107, 0.26);
+  background: var(--accent);
+  color: #fff;
   overflow: hidden;
 }
+/* One soft highlight from the top, so the block is not a flat slab. */
 .cta-band::before {
   content: "";
   position: absolute; inset: 0; z-index: -1;
-  background: radial-gradient(60% 120% at 50% 0%, rgba(176, 0, 32, 0.30), transparent 70%);
+  background: radial-gradient(70% 120% at 50% 0%, rgba(255, 255, 255, 0.10), transparent 70%);
 }
-.cta-band h2 { color: var(--text-on-dark); }
-.cta-band .lead, .cta-band p { color: var(--text-on-dark-soft); }
-.cta-band .btn--primary { --btn-bg: var(--accent); --btn-fg: var(--on-accent); }
-.cta-band .btn--primary:hover { background: var(--accent-hover); color: var(--on-accent); }
-.cta-band .btn--ghost { --btn-fg: var(--text-on-dark); --btn-bd: rgba(255,255,255,0.26); }
-.cta-band .btn--ghost:hover { background: rgba(255,255,255,0.08); color: var(--text-on-dark); border-color: rgba(255,255,255,0.45); }
+.cta-band h2 { color: #fff; }
+.cta-band .lead, .cta-band p { color: rgba(255, 255, 255, 0.86); }
+
+.cta-band .btn--primary {
+  --btn-bg: var(--paper-sunk);
+  --btn-fg: var(--accent-deep);
+  box-shadow: none;
+}
+.cta-band .btn--primary:hover { background: #fff; color: var(--accent-deep); }
+
+.cta-band .btn--ghost { --btn-fg: #fff; --btn-bd: rgba(255,255,255,0.45); }
+.cta-band .btn--ghost:hover { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.7); }
 
 /* 404. */
 .notfound { display: grid; place-items: center; min-height: 68vh; text-align: center; }
@@ -2163,16 +1928,15 @@ body.has-contact-bar .scroll-rail { bottom: calc(54px + var(--s-4)); }
   }
 
   .js .reveal, .js .reveal-group > * { opacity: 1 !important; transform: none !important; }
-  .stage { opacity: 1 !important; }
   .hero__cue .ic { animation: none; }
   @media (hover: hover) { .card:hover { transform: none; } }
 }
 
 @media print {
-  .header, .nav-drawer, .contact-bar, .wa-float, .modal, .hero__stage,
-  .journey__visual, .hero__cue { display: none !important; }
+  .header, .nav-drawer, .contact-bar, .wa-float, .modal,
+  .hero__stage, .hero__cue, .review-pop { display: none !important; }
   body { background: #fff; color: #000; }
-  .on-dark, .hero, .journey, .footer, .cta-band { background: #fff !important; color: #000 !important; }
+  .on-dark, .hero, .footer, .cta-band { background: #fff !important; color: #000 !important; }
   .on-dark h1, .on-dark h2, .on-dark h3, .footer a { color: #000 !important; }
   a { text-decoration: underline; }
   /* Print the destination of a link, since the reader cannot click it. */

@@ -30,7 +30,7 @@
 <meta name="twitter:description" content="Home shifting, office relocation, packing and car transport in Kanpur. Our office is on Swaroop Nagar — surveyed first, quoted in writing, moved by our own crew.">
 <meta name="twitter:image" content="https://akashmovers.com/assets/images/og-image.png">
 
-<meta name="theme-color" content="#b00020">
+<meta name="theme-color" content="#7f011f">
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
@@ -137,7 +137,7 @@
       <nav class="nav" aria-label="Primary">
         <a href="/services.html">Services</a>
         <a href="/locations.html">Service areas</a>
-        <a href="/#how-it-works">How it works</a>
+        <a href="/gallery.html">Gallery</a>
         <a href="/about.html">About</a>
         <a href="/faq.html">FAQ</a>
         <a href="/contact.html">Contact</a>
@@ -165,7 +165,7 @@
         <nav aria-label="Mobile">
           <a href="/services.html">Services</a>
           <a href="/locations.html">Service areas</a>
-          <a href="/#how-it-works">How it works</a>
+          <a href="/gallery.html">Gallery</a>
           <a href="/about.html">About</a>
           <a href="/faq.html">FAQ</a>
           <a href="/contact.html">Contact</a>
@@ -184,13 +184,14 @@
        beside them can never overlap or obscure them. The canvas container
        has a reserved aspect ratio, so loading it shifts nothing.
        ==================================================================== -->
-  <!-- `on-dark` is not decoration. It is the class that flips the text, lead,
-     eyebrow, link and ghost-button colours to their dark-background values.
-     This section sets its own background and text colour, but without the
-     class none of its CHILDREN were flipped — the WhatsApp ghost button was
-     rendering near-black text on near-black at 1.06:1, and the eyebrow used
-     the light-background amber at 3.52:1. Do not remove it. -->
-<section class="hero on-dark" aria-labelledby="hero-title">
+  <!-- The `on-dark` class that used to be here is gone with the dark hero.
+       It flipped every child to its dark-background colour; on Light Sand
+       the light-background values are the correct ones, which is what the
+       rest of the stylesheet already gives them.
+       If this section is ever made dark again, `on-dark` must come back
+       with it — without it the WhatsApp ghost button rendered near-black on
+       near-black at 1.06:1, which is how it was found in the first place. -->
+<section class="hero" aria-labelledby="hero-title">
     <div class="wrap">
       <div class="hero__inner">
 
@@ -303,228 +304,14 @@
     </div>
   </section>
 
-  <!-- =======================================================================
-       SCROLL JOURNEY — the signature feature
-       Six stages. On desktop the visual column is pinned by GSAP while this
-       text scrolls; on phones pinning is disabled and the stages simply
-       reveal in order. The markup is complete and readable either way, so
-       the story survives with JavaScript switched off.
-       ==================================================================== -->
-  <!-- `on-dark` for the same reason as the hero above: this section's own lead
-       paragraph was using the light-background grey at 2.52:1, and its inline
-       `.link-cta` links the light-background amber at 3.52:1. -->
-  <section class="journey on-dark" id="how-it-works" aria-labelledby="journey-title" data-journey>
-    <div class="wrap">
-      <div class="journey__head">
-        <div class="section-head">
-          <span class="eyebrow">How your move works</span>
-          <h2 id="journey-title">Six stages, one truck, nothing left to chance</h2>
-          <p class="lead">
-            Every move we run follows the same sequence. Here is exactly what happens,
-            in the order it happens, so you know what to expect on the day.
-          </p>
-        </div>
-      </div>
+  <!-- The "How it works" scroll-journey section was removed on 17 Oct 2026.
+       It was never a separate route -- only a `#how-it-works` anchor into
+       this page -- so there is no URL to redirect and no 404 to create.
 
-      <div class="journey__layout">
-
-        <!-- The pinned visual: road, progress and the travelling truck. -->
-        <div class="journey__visual" aria-hidden="true">
-
-          <!-- Two slow-drifting pools of warm light, so the panel is never a
-               flat black rectangle. Pure CSS, composited, no JS. -->
-          <span class="journey__glow journey__glow--a"></span>
-          <span class="journey__glow journey__glow--b"></span>
-
-          <svg class="journey__road" viewBox="0 0 400 400" preserveAspectRatio="none" data-road>
-            <defs>
-              <!-- The travelled road runs from deep brand red up to
-                   near-white, so the freshest part of the trail is the
-                   brightest. -->
-              <linearGradient id="roadGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#6b0014"/>
-                <stop offset="0.55" stop-color="#f4756b"/>
-                <stop offset="1" stop-color="#ffe9e5"/>
-              </linearGradient>
-            </defs>
-
-            <!-- The road still to travel. -->
-            <path class="road-line" data-road-path
-                  d="M58 34 C 58 96, 342 104, 342 158 S 58 206, 58 252 S 236 296, 334 286"/>
-
-            <!-- Bloom under the trail. A fat, faint stroke rather than an SVG
-                 blur filter: it reads almost identically and costs a fraction
-                 as much on a phone GPU. -->
-            <path class="road-bloom" data-road-bloom
-                  d="M58 34 C 58 96, 342 104, 342 158 S 58 206, 58 252 S 236 296, 334 286"/>
-
-            <!-- The travelled road. -->
-            <path class="road-done" data-road-progress
-                  d="M58 34 C 58 96, 342 104, 342 158 S 58 206, 58 252 S 236 296, 334 286"/>
-          </svg>
-
-          <!-- One pin per stage, placed along the road by journey.js and lit
-               as the truck passes each one. -->
-          <div class="journey__pins" data-journey-pins></div>
-
-          <svg class="journey__truck" viewBox="0 0 92 46" width="92" height="46" data-journey-truck>
-            <!-- Dust kicked up behind the rear wheels while moving. -->
-            <g class="jt-dust">
-              <circle class="jt-dust__p jt-dust__p--1" cx="6" cy="38" r="3"/>
-              <circle class="jt-dust__p jt-dust__p--2" cx="6" cy="38" r="2.4"/>
-              <circle class="jt-dust__p jt-dust__p--3" cx="6" cy="38" r="1.8"/>
-            </g>
-
-            <!-- Headlight beam, ahead of the cab. -->
-            <path class="jt-beam" d="M74 30 L92 22 L92 38 Z"/>
-
-            <!-- Cargo body. -->
-            <rect x="4" y="10" width="46" height="24" rx="3" fill="#2b2420"/>
-            <rect x="4" y="10" width="46" height="24" rx="3" fill="none" stroke="#544940" stroke-width="1"/>
-            <path class="jt-ribs" d="M12 13v18M20 13v18M28 13v18M36 13v18M44 13v18"/>
-            <rect x="4" y="31" width="46" height="2.4" rx="1" fill="#b00020"/>
-
-            <!-- Cab, in the brand red. -->
-            <rect x="50" y="16" width="21" height="18" rx="3" fill="#b00020"/>
-            <rect x="54" y="19" width="11" height="8" rx="2" fill="#140f0c" opacity="0.85"/>
-            <rect x="69" y="27" width="4" height="4" rx="1" fill="#fff4e0"/>
-
-            <!-- Wheels. Rotated by journey.js in proportion to distance
-                 travelled, so they only turn when the page actually moves. -->
-            <g class="jt-wheel" data-wheel>
-              <circle cx="17" cy="37" r="5.6" fill="#140f0c"/>
-              <circle cx="17" cy="37" r="2.1" fill="#c9bdb2"/>
-              <path d="M17 32.4v9.2M12.4 37h9.2" stroke="#544940" stroke-width="1.1"/>
-            </g>
-            <g class="jt-wheel" data-wheel>
-              <circle cx="41" cy="37" r="5.6" fill="#140f0c"/>
-              <circle cx="41" cy="37" r="2.1" fill="#c9bdb2"/>
-              <path d="M41 32.4v9.2M36.4 37h9.2" stroke="#544940" stroke-width="1.1"/>
-            </g>
-            <g class="jt-wheel" data-wheel>
-              <circle cx="62" cy="37" r="5.6" fill="#140f0c"/>
-              <circle cx="62" cy="37" r="2.1" fill="#c9bdb2"/>
-              <path d="M62 32.4v9.2M57.4 37h9.2" stroke="#544940" stroke-width="1.1"/>
-            </g>
-          </svg>
-
-          <div class="journey__meter">
-            <span data-journey-label>Plan</span>
-            <span class="journey__meter-track"><span class="journey__meter-fill" data-journey-fill></span></span>
-            <span class="num" data-journey-pct>0%</span>
-          </div>
-        </div>
-
-        <!-- The six stages. -->
-        <ol class="journey__stages" data-journey-stages>
-          <li class="stage" data-stage="Plan">
-            <span class="stage__num" aria-hidden="true">01</span>
-            <div>
-              <h3>Plan your move</h3>
-              <p>
-                We survey your home — in person or over a video call — and list every
-                item that is going. That list becomes your quote, so nothing is
-                priced on guesswork.
-              </p>
-              <ul class="stage__list">
-                <li>Room-by-room inventory</li>
-                <li>Access, lift and parking checked in advance</li>
-                <li>Written quote, itemised</li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="stage" data-stage="Pack">
-            <span class="stage__num" aria-hidden="true">02</span>
-            <div>
-              <h3>Professional packing</h3>
-              <p>
-                Crockery, glass and electronics are wrapped in layers and boxed by
-                room. Every carton is labelled with its room and contents before it
-                leaves the floor.
-              </p>
-              <ul class="stage__list">
-                <li>Bubble wrap, corrugated sheets and stretch film</li>
-                <li>Furniture dismantled and hardware bagged to its own item</li>
-                <li>Cartons labelled by room and contents</li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="stage" data-stage="Load">
-            <span class="stage__num" aria-hidden="true">03</span>
-            <div>
-              <h3>Loading</h3>
-              <p>
-                Heavy items go in first and low, fragile cartons ride on top, and the
-                load is strapped so nothing shifts in transit. Stairs and buildings
-                without a lift are planned for, not improvised.
-              </p>
-              <ul class="stage__list">
-                <li>Weight distributed low and strapped</li>
-                <li>Trolleys and lifting straps for heavy furniture</li>
-                <li>Loading sheet signed off with you</li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="stage" data-stage="Transit">
-            <span class="stage__num" aria-hidden="true">04</span>
-            <div>
-              <h3>Transportation</h3>
-              <p>
-                Your consignment travels in a dedicated vehicle sized to your
-                inventory. You get the driver's number and your coordinator stays
-                reachable for the whole journey.
-              </p>
-              <ul class="stage__list">
-                <li>Dedicated vehicle, not a shared part-load unless you choose it</li>
-                <li>Driver contact shared with you on dispatch</li>
-                <li>Progress updates on WhatsApp</li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="stage" data-stage="Deliver">
-            <span class="stage__num" aria-hidden="true">05</span>
-            <div>
-              <h3>Safe delivery</h3>
-              <p>
-                We unload by room against the same inventory list, rebuild the
-                furniture we dismantled, and take the empty cartons and packing
-                material away with us.
-              </p>
-              <ul class="stage__list">
-                <li>Checked back against the original inventory</li>
-                <li>Furniture reassembled and placed where you want it</li>
-                <li>Packing waste removed</li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="stage" data-stage="Quote">
-            <span class="stage__num" aria-hidden="true">06</span>
-            <div>
-              <h3>Get your estimate</h3>
-              <p>
-                Tell us what is moving and where it is going. You will get a written
-                quote with the work itemised, and no obligation to book.
-              </p>
-              <div class="btn-row mt-5">
-                <a class="btn btn--primary" href="/contact.html" data-open-callback>Request a callback</a>
-                <a class="link-cta" href="/faq.html">
-                  How pricing works
-                  <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-                </a>
-              </div>
-            </div>
-          </li>
-        </ol>
-
-      </div>
-    </div>
-  </section>
-
+       Removing it also removed its only dependency: GSAP and ScrollTrigger
+       were loaded on EVERY page of the site and used by exactly one module,
+       js/journey.js, which drove this section. 114 KB of vendor JavaScript
+       left with it. See README, "What was removed, and why". -->
   <!-- =======================================================================
        SERVICES
        ==================================================================== -->
@@ -879,7 +666,7 @@
         <ul>
           <li><a href="/about.html">About us</a></li>
           <li><a href="/locations.html">Service areas</a></li>
-          <li><a href="/#how-it-works">How it works</a></li>
+          <li><a href="/gallery.html">Gallery</a></li>
           <li><a href="/faq.html">FAQ</a></li>
           <li><a href="/guides/moving-checklist.html">Moving checklist</a></li>
           <li><a href="/contact.html">Contact</a></li>
@@ -915,14 +702,16 @@
 
 <!-- =========================================================================
      SCRIPTS
-     GSAP loads first as a classic script (it defines the globals the journey
-     module expects). Everything written for this site is an ES module, so it
-     is deferred automatically and never blocks rendering. Three.js is NOT
-     loaded here — truck3d.js imports it dynamically, and only on devices
-     that can run it, so phones never download 670 KB they cannot use.
+     One line. Everything written for this site is an ES module, so it is
+     deferred automatically and never blocks rendering; main.js then imports
+     the handful of optional modules only on the pages that use them.
+
+     There is no vendor JavaScript left. GSAP and ScrollTrigger used to load
+     here on every page — 114 KB — for one module driving one section, and
+     they went with it. Three.js and its loaders (833 KB) went earlier with
+     the 3D hero. Nothing on this site now downloads a library it does not
+     use on the page the visitor is actually looking at.
      ====================================================================== -->
-<script src="/vendor/gsap.min.js" defer></script>
-<script src="/vendor/ScrollTrigger.min.js" defer></script>
 <script type="module" src="/js/main.js"></script>
 </body>
 </html>

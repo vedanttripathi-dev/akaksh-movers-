@@ -7,8 +7,8 @@
      2. Render the lists that come from configuration (services, areas,
         testimonials, footer links) so they can never drift from the schema.
      3. Header, mobile navigation, scroll reveals.
-     4. Hand off to the optional feature modules — callback form, scroll
-        journey, reviews, own content — each loaded only when it is needed.
+     4. Hand off to the optional feature modules — callback form, reviews,
+        own content, gallery lightbox — each loaded only when it is needed.
      5. Inject the structured data.
 
    LOADING STRATEGY
@@ -16,10 +16,10 @@
    This file is an ES module, so it is deferred and never blocks the first
    paint. The optional modules are deliberately NOT imported at the top:
 
-     journey.js       waits for GSAP and is skipped on reduced-motion.
      lead-form.js     only on a page with a CTA that opens the form.
      reviews.js       makes a network call; nothing above the fold needs it.
      own-content.js   same, for the business's own photos and testimonials.
+     lightbox.js      only on the gallery page.
 
    Largest Contentful Paint is the hero headline and the office photograph,
    both plain HTML, so none of the above can delay it.
@@ -31,7 +31,6 @@ import {
 } from './config.js';
 import { el, icon, fill, q, qa, safeUrl, prefersReducedMotion } from './dom.js';
 import { injectSchema, exposeSchemaDebug } from './schema.js';
-import { initScrollTruck } from './scroll-truck.js';
 
 /* ==========================================================================
    1. CONFIGURATION → MARKUP
@@ -681,17 +680,13 @@ function initFeatureModules() {
       .catch((error) => console.warn('[reviews] failed to load', error));
   }
 
-  // --- Scroll journey. Needs GSAP, which is a classic deferred script, so
-  //     it may not have executed yet when this module runs. ---
-  const journeyRoot = q('[data-journey]');
-  if (journeyRoot && SITE_CONFIG.features.scrollJourney) {
-    const start = () => {
-      import('./journey.js')
-        .then((module) => module.initJourney(journeyRoot))
-        .catch((error) => console.error('[journey] failed to load', error));
-    };
-    if (window.gsap) start();
-    else window.addEventListener('load', start, { once: true });
+  /* --- Gallery lightbox. The thumbnails are plain links to the full-size
+         photograph and work without this; the module upgrades them into an
+         in-page viewer. Loaded only where there is a gallery. --- */
+  if (q('[data-lightbox-group]')) {
+    import('./lightbox.js')
+      .then((module) => module.initLightbox())
+      .catch((error) => console.warn('[lightbox] failed to load', error));
   }
 
   /* --- The business's own testimonials and job photographs. Separate from
@@ -726,10 +721,9 @@ function boot() {
   initReveals();
   initStickyContact();
 
-  // The side truck that guides the visitor down the whole page. Imported
-  // statically rather than lazily: it is tiny, it has no dependencies, and
-  // it should be on screen from the first frame on every page.
-  initScrollTruck();
+  /* The side scroll-rail truck went with the journey section it belonged to.
+     It was decorative, it restated the scrollbar, and on anything narrower
+     than a laptop it had to push the page content sideways to make room. */
 
   initFeatureModules();
 

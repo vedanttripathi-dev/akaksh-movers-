@@ -1,0 +1,322 @@
+SLUG: gallery.html
+TITLE: Our work in photographs | Akash Movers, Kanpur
+DESC: Photographs of real jobs by Akash Movers in Kanpur - furniture wrapped in corrugated sheet and stretch film, labelled cartons, and consignments staged for loading.
+HEADING: Our work, photographed
+LEAD: Every photograph on this page is from a job we actually did. Nothing here is stock photography, and nothing has been staged for the website.
+CRUMBS: Home|/ ; Gallery|
+---
+
+  <section class="section on-paper" aria-labelledby="gallery-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Packed by us</span>
+        <h2 id="gallery-title">What careful packing actually looks like</h2>
+        <p class="lead">
+          Corrugated sheet on the corners and edges, stretch film over the top,
+          and a label on every piece before it leaves the floor. These are the
+          jobs our crews packed in Kanpur.
+        </p>
+      </div>
+
+      <div class="split is-wide-left mb-8">
+        <div>
+          <h3>What to look for in these photographs</h3>
+          <p>
+            Packing is mostly invisible work. Once a wardrobe is wrapped it looks
+            like every other wrapped wardrobe, and the difference between a job
+            that arrives intact and one that does not is in details you only
+            notice if someone points them out. So here they are.
+          </p>
+          <p>
+            <strong>Corrugated sheet goes on first, and it goes on the edges.</strong>
+            A corner is where a knock lands when a piece is carried down a
+            staircase or sits against the side of a vehicle. Several of the
+            photographs below show studded edge protection taped along the full
+            length of a panel for exactly that reason.
+          </p>
+          <p>
+            <strong>Stretch film goes over the top, by hand.</strong> It holds the
+            sheet in place, keeps dust and rain off, and stops drawers and doors
+            opening in transit. It is not a substitute for the layer underneath
+            it, which is why you can see both in almost every frame.
+          </p>
+        </div>
+        <div>
+          <p>
+            <strong>Soft and loose items are strapped into blocks.</strong> Cushions
+            and bedding are compressed and banded so they stack squarely instead
+            of filling the vehicle with air. A tidier load is a load that moves
+            less on the road.
+          </p>
+          <p>
+            <strong>Things get labelled before they leave the floor.</strong> You
+            will see handwriting on several of these: which room a piece came
+            from, which way up it stands, what is inside. That writing is what
+            makes unpacking at the far end take an afternoon rather than a week.
+          </p>
+          <p>
+            <strong>Everything is staged before anything is carried.</strong> The
+            shots taken outdoors and in parking areas are consignments gathered
+            in loading order, so the vehicle is packed once, properly, instead
+            of being repacked three times in the street.
+          </p>
+        </div>
+      </div>
+
+      <div class="gallery" data-lightbox-group>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/wrapped-sofa-and-armchairs-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/wrapped-sofa-and-armchairs-400.jpg" alt="A sofa and two armchairs wrapped in corrugated sheet and stretch film, stacked ready to move." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+          <figcaption>Seating wrapped and stacked</figcaption>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/wrapped-table-top-panel-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/wrapped-table-top-panel-400.jpg" alt="A large flat panel wrapped in corrugated sheet, standing on edge against a wall." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+          <figcaption>Flat panels travel on edge</figcaption>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/packed-consignment-in-room-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/packed-consignment-in-room-400.jpg" alt="Wrapped furniture and taped cartons stacked together in a room, ready for loading." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+          <figcaption>A room packed and ready</figcaption>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/wrapped-mattress-on-floor-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/wrapped-mattress-on-floor-400.jpg" alt="A mattress wrapped in plastic sheeting, laid flat on a carpeted floor." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/tall-carton-marked-for-handling-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/tall-carton-marked-for-handling-400.jpg" alt="A tall carton wrapped and taped, hand-marked on the side to show which way it stands." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+          <figcaption>Marked so the crew knows which way up</figcaption>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/wrapped-items-ready-outdoors-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/wrapped-items-ready-outdoors-400.jpg" alt="Four tall wrapped items standing on paving outside a building, waiting to be loaded." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+          <figcaption>Staged outside, waiting for the vehicle</figcaption>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/wrapped-sofa-outdoors-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/wrapped-sofa-outdoors-400.jpg" alt="A wrapped sofa and other packed furniture standing outside on a driveway." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/wrapped-wardrobe-panels-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/wrapped-wardrobe-panels-400.jpg" alt="Two tall wrapped panels standing side by side on paving." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/strapped-large-item-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/strapped-large-item-400.jpg" alt="A large item wrapped in sheeting and bound with tape across its width." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/wrapped-sofa-and-ottoman-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/wrapped-sofa-and-ottoman-400.jpg" alt="A wrapped sofa and matching ottoman standing in a covered parking area." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/packed-cartons-and-furniture-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/packed-cartons-and-furniture-400.jpg" alt="Taped cartons and wrapped furniture stacked beside a houseplant in a living room." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/panel-with-edge-protection-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/panel-with-edge-protection-400.jpg" alt="A wrapped panel with reinforced edging taped along its length, standing in a room." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+          <figcaption>Edges take the knocks, so edges get the protection</figcaption>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/wrapped-table-and-round-top-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/wrapped-table-and-round-top-400.jpg" alt="A wrapped table with a separately wrapped round top resting on it." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/trunks-with-edge-protection-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/trunks-with-edge-protection-400.jpg" alt="Trunks and boxes wrapped and finished with studded edge protection, stacked indoors." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/strapped-cartons-on-trolley-1000.jpg" data-full-w="1000" data-full-h="752">
+            <img src="/assets/images/gallery/strapped-cartons-on-trolley-400.jpg" alt="Cartons strapped in stacks on a flat trolley outside a building." width="400" height="301" loading="lazy" decoding="async">
+          </a>
+          <figcaption>Strapped in stacks, moved on a trolley</figcaption>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/cartons-loaded-at-doorway-1000.jpg" data-full-w="1000" data-full-h="752">
+            <img src="/assets/images/gallery/cartons-loaded-at-doorway-400.jpg" alt="Strapped cartons on a trolley being moved through a doorway." width="400" height="301" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/packed-items-beside-vehicle-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/packed-items-beside-vehicle-400.jpg" alt="Two tall wrapped items standing beside the open tailgate of a transport vehicle." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+          <figcaption>At the tailgate, ready to load</figcaption>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/large-wrapped-panel-indoors-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/large-wrapped-panel-indoors-400.jpg" alt="A large panel wrapped in corrugated sheet, standing against a doorway indoors." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/wrapped-mattress-upright-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/wrapped-mattress-upright-400.jpg" alt="A mattress wrapped in plastic and stood upright against a wall outside." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/crew-wrapping-furniture-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/crew-wrapping-furniture-400.jpg" alt="A crew member drawing stretch film around a large piece of furniture indoors." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+          <figcaption>Stretch film goes on by hand, layer by layer</figcaption>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/rolled-mattress-and-panels-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/rolled-mattress-and-panels-400.jpg" alt="A rolled mattress beside wrapped flat panels, prepared together." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/wrapped-items-against-railing-1000.jpg" data-full-w="1000" data-full-h="752">
+            <img src="/assets/images/gallery/wrapped-items-against-railing-400.jpg" alt="Several tall wrapped items lined up against a railing outside a house." width="400" height="301" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/armchair-in-stretch-film-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/armchair-in-stretch-film-400.jpg" alt="An armchair completely enclosed in clear stretch film." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/wrapped-chair-by-cabinet-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/wrapped-chair-by-cabinet-400.jpg" alt="A wrapped chair standing in front of a carved wooden cabinet." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/crew-moving-wrapped-panel-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/crew-moving-wrapped-panel-400.jpg" alt="A crew member carrying a large wrapped flat item through a doorway." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/round-table-top-wrapped-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/round-table-top-wrapped-400.jpg" alt="A round table top wrapped in corrugated sheet and stood on its edge." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/wrapped-panel-by-gate-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/wrapped-panel-by-gate-400.jpg" alt="A wrapped panel standing beside a metal gate, labelled by hand." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/wrapped-centre-table-1000.jpg" data-full-w="1000" data-full-h="752">
+            <img src="/assets/images/gallery/wrapped-centre-table-400.jpg" alt="A low table wrapped in sheeting and labelled by hand on the top face." width="400" height="301" loading="lazy" decoding="async">
+          </a>
+          <figcaption>Labelled by room and by item</figcaption>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/crew-with-wrapped-armchair-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/crew-with-wrapped-armchair-400.jpg" alt="A crew member standing beside a wrapped armchair in a furnished living room." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/wrapped-armchair-on-tiles-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/wrapped-armchair-on-tiles-400.jpg" alt="A single armchair wrapped in film, standing on a tiled floor." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/strapped-soft-items-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/strapped-soft-items-400.jpg" alt="Soft items wrapped and strapped into blocks, stacked beside a window." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/tall-item-strapped-upright-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/tall-item-strapped-upright-400.jpg" alt="A tall item wrapped and strapped, standing upright in a living room." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/wrapped-sideboard-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/wrapped-sideboard-400.jpg" alt="A long sideboard wrapped in stretch film in a furnished room." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/tall-wrapped-item-indoors-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/tall-wrapped-item-indoors-400.jpg" alt="A tall item fully wrapped in film, standing against a wall indoors." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/packed-goods-in-room-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/packed-goods-in-room-400.jpg" alt="Wrapped boxes and furniture filling a room during a pack." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+          <figcaption>Mid-pack: everything labelled before it leaves the floor</figcaption>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/large-item-wrapped-close-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/large-item-wrapped-close-400.jpg" alt="A close view of a large item wrapped in overlapping layers of film." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/crew-with-wrapped-panels-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/crew-with-wrapped-panels-400.jpg" alt="A crew member beside several tall wrapped panels lined up indoors." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/long-sideboard-wrapped-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/long-sideboard-wrapped-400.jpg" alt="A long low sideboard wrapped and taped, resting on a tiled floor." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/stack-with-edge-protection-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/stack-with-edge-protection-400.jpg" alt="A tall stack wrapped in corrugated sheet and finished with studded edging." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/wrapped-stack-in-hallway-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/wrapped-stack-in-hallway-400.jpg" alt="A wrapped and taped stack standing in a hallway, ready to be carried out." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/mattress-and-ottoman-wrapped-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/mattress-and-ottoman-wrapped-400.jpg" alt="A wrapped mattress and a wrapped ottoman standing beside a doorway." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/wrapped-item-with-bagged-goods-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/wrapped-item-with-bagged-goods-400.jpg" alt="A wrapped item standing next to goods packed into a woven bag." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/packed-goods-in-garage-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/packed-goods-in-garage-400.jpg" alt="Cartons and wrapped goods gathered in a garage beside a parked car." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+          <figcaption>Gathered at the door, in loading order</figcaption>
+        </figure>
+        <figure class="shot">
+          <a class="shot__link" href="/assets/images/gallery/packed-goods-stacked-indoors-1000.jpg" data-full-w="752" data-full-h="1000">
+            <img src="/assets/images/gallery/packed-goods-stacked-indoors-400.jpg" alt="Cartons, wrapped furniture and a storage crate stacked together indoors." width="301" height="400" loading="lazy" decoding="async">
+          </a>
+        </figure>
+      </div>
+
+      <p class="form-note mt-6">
+        Photographs are of our own work. They show goods packed and ready to
+        move; no customer, address or job detail is identified in any of them.
+      </p>
+    </div>
+  </section>
+
+  <section class="section is-tight cta-band" aria-labelledby="gallery-cta">
+    <div class="wrap">
+      <div class="wrap-narrow text-centre">
+        <h2 id="gallery-cta">Want your move packed like this?</h2>
+        <p class="lead">Leave your name and number and we will call you back.</p>
+        <div class="btn-row mt-6 btn-row--centre">
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-callback>Request a callback</a>
+          <a class="btn btn--ghost btn--lg" data-wa-link hidden>
+            <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+            Chat on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>

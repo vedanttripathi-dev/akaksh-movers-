@@ -181,9 +181,93 @@ served to visitors or explicitly excluded; there is nothing left over.
 | Gone | Reason |
 |---|---|
 | `js/truck3d.js` + `vendor/three.module.min.js`, `GLTFLoader.js`, `BufferGeometryUtils.js`, `RoomEnvironment.js` | **833 KB.** The hero held a generic 3D truck that belonged to no one and told a customer nothing. It is now a photograph of the company's own shopfront — lighter, and actual evidence that there is a real office at a real address. |
+| The "How it works" section, `js/journey.js`, `vendor/gsap.min.js`, `vendor/ScrollTrigger.min.js` | **114 KB on every page of the site**, for one module driving one section. Removed at the client's request on 17 Oct 2026. **It was never a separate route** — only a `#how-it-works` anchor into the homepage — so no URL was redirected and no 404 was created. The nav slot now holds the Gallery. |
+| `js/scroll-truck.js` and the side rail | Decorative, a restatement of the scrollbar, and below 1280px it forced `padding-left: 40px` against `padding-right: 16px` — every heading and card on the site sat 24px off-centre on a phone. |
 | `js/quote-modal.js` | Replaced by `callback-form.js`. The five-step estimate form asked twenty-odd questions before it would take a phone call. |
 | `assets/images/hero-truck.svg` | The poster image behind the 3D scene. Nothing references it. |
 | `assets/icons/icon.svg` | A generic amber truck that was never this company's mark. Leaving it in place would have meant browsers *preferring* the SVG and showing the wrong logo. |
+
+**`vendor/` is now empty and gone. The site loads no third-party JavaScript
+at all** — which is also what lets the Content-Security-Policy stay at
+`script-src 'self'`.
+
+---
+
+## The palette is the client's
+
+Two colours were supplied on 17 October 2026 and they are the source of
+truth. They are defined once, in `:root` in `css/style.css`:
+
+| | |
+|---|---|
+| **Wine Red** | `#7F011F` — buttons, CTAs, headings, rules, icons on light |
+| **Light Sand** | `#F5EBD0` — the hero and alternating section backgrounds |
+
+Everything else is a neutral or a tint derived from those two. No third hue
+is introduced anywhere.
+
+Two things about it are worth knowing before anyone changes them:
+
+- **The hero is light, and that follows from the palette rather than taste.**
+  Wine Red is a dark colour. On a near-black hero the wine CTA was a dark
+  shape on a dark field — the white label still measured 10.9:1, so it was
+  readable, but the *button* did not read as a button until you looked for
+  it. On Light Sand it is the darkest thing on the screen.
+- **`--accent-bright` is not a red.** It is the on-dark accent, and every
+  light tint of this wine turns pink, which is off the supplied palette. The
+  brand's own second colour does the job instead: Light Sand on wine-black
+  measures 16.8:1.
+
+An earlier build used `#b00020`, measured off 31,692 pixels of a photograph
+of the signboard. That was the best evidence available at the time; a
+supplied palette beats a sampled one.
+
+---
+
+## The gallery
+
+44 photographs of real jobs, supplied by the client.
+
+- **`tools/pages/gallery.part` is GENERATED**, not hand-written. To change
+  anything about the gallery:
+
+  ```powershell
+  # 1. edit the descriptions
+  tools\gallery\gallery-data.ps1     # one entry per photo: slug, alt, caption
+
+  # 2. re-process the photographs and rewrite the image pack
+  powershell -ExecutionPolicy Bypass -File .\tools\gallery\build-gallery.ps1
+
+  # 3. regenerate the page fragment, then the page itself
+  powershell -ExecutionPolicy Bypass -File .\tools\gallery\write-gallery-part.ps1
+  powershell -ExecutionPolicy Bypass -File .\tools\assemble.ps1
+  powershell -ExecutionPolicy Bypass -File .\tools\build-sitemap.ps1
+  ```
+
+  `build-gallery.ps1` refuses to run if the number of photographs and the
+  number of descriptions disagree, so the two cannot silently drift.
+- **Static HTML on purpose.** An image search engine reads the `<img>`, its
+  alt text, its filename and the copy around it. A grid assembled at runtime
+  gives it none of those.
+- **CSS columns, not a grid.** The photographs are a mix of portrait and
+  landscape; equal tiles would have to crop them, and cropping a photograph
+  of packed goods throws away the part that shows the work — the taped edge,
+  the label, the corner protection.
+- **Every alt text is different.** They were written by looking at the
+  photographs. Where an object could not be identified with confidence the
+  text describes the wrapping rather than guessing at the contents.
+- `js/lightbox.js` is progressive enhancement. Each tile is already a plain
+  link to the full-size photograph, so it works with JavaScript off — and
+  the full images are real, crawlable URLs rather than strings in a script.
+
+A copy of the optimised photographs and their metadata is written to the
+client's own PC at
+`C:\Users\VEDANT TIWARI\OneDrive\Pictures\akash-movers-image-pack`.
+
+**There is no WebP.** This machine has no WebP encoder — `cwebp`, the WIC
+encoder registry and `System.Drawing`'s encoder list were all checked, and
+none of the three has one. The optimised files are JPEG, roughly 25–30%
+larger than WebP would be. Install `cwebp` and the build can be re-run.
 
 ---
 

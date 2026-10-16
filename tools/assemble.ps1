@@ -55,7 +55,9 @@ function Slice {
 $sprite = Slice $index '<svg class="sprite"' '</svg>\s*'
 $header = Slice $index '<header class="header"' '</header>'
 $footer = Slice $index '<footer class="footer"' '</footer>'
-$scripts = Slice $index '<script src="/vendor/gsap' '</body>'
+# The scripts block used to start at the GSAP tag. GSAP went with the journey
+# section, so the marker is now the one module every page loads.
+$scripts = Slice $index '<script type="module" src="/js/main.js"' '</body>'
 $scripts = $scripts -replace '</body>\s*$', ''
 
 Write-Host ("chrome extracted: sprite {0}B, header {1}B, footer {2}B" -f `
@@ -152,7 +154,7 @@ $lead
 <meta name="twitter:description" content="$($meta['DESC'])">
 <meta name="twitter:image" content="$origin/assets/images/og-image.png">
 
-<meta name="theme-color" content="#b00020">
+<meta name="theme-color" content="#7f011f">
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
