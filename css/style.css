@@ -203,17 +203,24 @@
   --s-5: 1.5rem;   --s-6: 2rem;     --s-7: 2.75rem;  --s-8: 3.5rem;
   --s-9: 5rem;     --s-10: 7rem;    --s-11: 9rem;
 
-  /* Section rhythm, tighter on phones. */
-  --section-y: clamp(3.5rem, 2rem + 7vw, 7.5rem);
+  /* Section rhythm, tighter on phones.
+
+     The lower bound was 3.5rem, which put 56px above and below every one of
+     the eleven sections on the homepage — about 1,200px of a 12,000px phone
+     page spent on nothing. 2.5rem still reads as deliberate separation and
+     gives roughly a screen and a half back. The upper bound is untouched:
+     on a desktop the generous rhythm is most of what makes the layout look
+     expensive, and there is room for it there. */
+  --section-y: clamp(2.5rem, 1.5rem + 6vw, 7.5rem);
 
   /* --- Shape ------------------------------------------------------------ */
   --r-sm: 6px;  --r-md: 10px;  --r-lg: 16px;  --r-xl: 24px;  --r-pill: 999px;
 
   /* --- Elevation: layered, low-contrast, never a single heavy blur ------ */
-  --sh-1: 0 1px 2px rgba(10, 20, 40, 0.05), 0 1px 3px rgba(10, 20, 40, 0.04);
-  --sh-2: 0 2px 4px rgba(10, 20, 40, 0.05), 0 6px 14px rgba(10, 20, 40, 0.06);
-  --sh-3: 0 4px 8px rgba(10, 20, 40, 0.06), 0 14px 34px rgba(10, 20, 40, 0.09);
-  --sh-4: 0 8px 18px rgba(10, 20, 40, 0.09), 0 30px 64px rgba(10, 20, 40, 0.14);
+  --sh-1: 0 1px 2px rgba(40, 28, 22, 0.06), 0 1px 3px rgba(40, 28, 22, 0.05);
+  --sh-2: 0 2px 4px rgba(40, 28, 22, 0.06), 0 6px 14px rgba(40, 28, 22, 0.07);
+  --sh-3: 0 4px 8px rgba(40, 28, 22, 0.07), 0 14px 34px rgba(40, 28, 22, 0.10);
+  --sh-4: 0 8px 18px rgba(40, 28, 22, 0.10), 0 30px 64px rgba(40, 28, 22, 0.15);
   --sh-dark: 0 20px 50px rgba(0, 0, 0, 0.5);
 
   /* --- Motion ----------------------------------------------------------- */
@@ -548,6 +555,24 @@ p:last-child { margin-bottom: 0; }
   font-size: var(--fs-sm); font-weight: 600; text-decoration: none;
   padding-bottom: 2px;
   border-bottom: 1px solid currentColor;
+}
+
+/* --- Touch targets ---------------------------------------------------------
+   Measured on a 390px viewport: the brand link came out 38px tall, the
+   "How pricing works" style links 27px, and the footer's legal links 24px.
+   Buttons and form fields were already comfortable (48px minimum) and the
+   consent tick-box is fine because its whole 309x43 label toggles it, so
+   this is only about the handful that were not.
+
+   Width-based rather than `pointer: coarse`, to match how the rest of this
+   stylesheet makes decisions, and because a touch laptop reporting a fine
+   pointer would otherwise miss out. The extra padding costs nothing on a
+   phone, where there is vertical room and none of these sit in a tight row. */
+@media (max-width: 759px) {
+  .brand { min-height: 44px; }
+  .link-cta { padding-block: var(--s-2); }
+  .footer__legal nav a { display: inline-block; padding-block: var(--s-2); }
+  .crumbs a { display: inline-block; padding-block: var(--s-1); }
 }
 .link-cta .ic { transition: transform var(--dur) var(--ease); }
 .link-cta:hover .ic { transform: translateX(3px); }
@@ -932,12 +957,20 @@ p:last-child { margin-bottom: 0; }
   z-index: 2;
   border-radius: var(--r-xl);
   overflow: hidden;
-  background: linear-gradient(180deg, #122b44 0%, #050f1c 100%);
+  /* Warm charcoal, not navy. This panel was missed when the palette moved
+     from blue to the company's red, and a cold blue rectangle in the middle
+     of a warm charcoal page is the kind of thing that reads as "unfinished"
+     without anyone being able to say why. */
+  background: linear-gradient(180deg, #33231e 0%, #140f0c 100%);
   aspect-ratio: 4 / 3;
   /* Capped so the stage text below it still has room on a short phone
      screen. The road SVG uses preserveAspectRatio="none" and journey.js
-     scales each axis separately, so a non-4:3 box is handled correctly. */
-  max-height: 42vh;
+     scales each axis separately, so a non-4:3 box is handled correctly.
+
+     32vh, down from 42vh. This panel is sticky, so whatever it occupies it
+     occupies for the whole section — the visitor reads six stages through
+     the remaining slot. At 42vh that slot was barely half a phone screen. */
+  max-height: 32vh;
 }
 @media (min-width: 980px) {
   .journey__visual {
@@ -961,12 +994,12 @@ p:last-child { margin-bottom: 0; }
 }
 .journey__glow--a {
   top: -12%; left: -10%;
-  background: radial-gradient(circle, rgba(245,165,36,0.55), transparent 68%);
+  background: radial-gradient(circle, rgba(176, 0, 32, 0.60), transparent 68%);
   animation: glowDriftA 17s ease-in-out infinite;
 }
 .journey__glow--b {
   bottom: -14%; right: -12%;
-  background: radial-gradient(circle, rgba(255,193,94,0.38), transparent 68%);
+  background: radial-gradient(circle, rgba(244, 117, 107, 0.34), transparent 68%);
   animation: glowDriftB 21s ease-in-out infinite;
 }
 @keyframes glowDriftA {
@@ -1021,7 +1054,9 @@ p:last-child { margin-bottom: 0; }
   width: 11px; height: 11px;
   margin: -5.5px 0 0 -5.5px;
   border-radius: 50%;
-  background: #1d3550;
+  /* The unlit pin, in the charcoal scale. It was `#1d3550`, the old navy,
+     which left a row of blue dots down a red road. */
+  background: #3c332c;
   border: 1.5px solid rgba(245, 241, 234, 0.28);
   transition: background-color var(--dur) var(--ease),
               border-color var(--dur) var(--ease),
@@ -1030,9 +1065,9 @@ p:last-child { margin-bottom: 0; }
 }
 .journey__pin.is-lit {
   background: var(--accent-bright);
-  border-color: #fff1d4;
+  border-color: #ffe9e5;
   transform: scale(1.5);
-  box-shadow: 0 0 0 4px rgba(245, 165, 36, 0.22), 0 0 14px 2px rgba(255, 193, 94, 0.6);
+  box-shadow: 0 0 0 4px rgba(176, 0, 32, 0.30), 0 0 14px 2px rgba(244, 117, 107, 0.6);
 }
 
 /* --- The travelling truck ------------------------------------------------- */
@@ -1047,7 +1082,7 @@ p:last-child { margin-bottom: 0; }
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.55));
 }
 
-.jt-ribs { stroke: #3d5873; stroke-width: 1; opacity: 0.6; }
+.jt-ribs { stroke: #544940; stroke-width: 1; opacity: 0.6; }
 
 /* Wheels. journey.js rotates these in proportion to distance travelled, so
    they turn only while the page is actually moving. */
@@ -1080,7 +1115,7 @@ p:last-child { margin-bottom: 0; }
   content: "";
   position: absolute; left: calc(var(--s-4) * -1); right: calc(var(--s-4) * -1);
   bottom: calc(var(--s-4) * -1); top: calc(var(--s-3) * -1);
-  background: linear-gradient(to top, rgba(5, 16, 31, 0.92), rgba(5, 16, 31, 0));
+  background: linear-gradient(to top, rgba(20, 15, 12, 0.92), rgba(20, 15, 12, 0));
   pointer-events: none;
   z-index: -1;
 }
@@ -1124,7 +1159,7 @@ p:last-child { margin-bottom: 0; }
 
 .stage.is-active {
   opacity: 1;
-  background: rgba(245, 165, 36, 0.055);
+  background: rgba(176, 0, 32, 0.05);
   transform: translateX(4px);
 }
 .stage.is-active::before { transform: scaleY(1); }
@@ -1545,7 +1580,7 @@ p:last-child { margin-bottom: 0; }
 .input:hover, .select:hover, .textarea:hover { border-color: #c4d0e0; }
 .input:focus, .select:focus, .textarea:focus {
   outline: none; border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(245, 165, 36, 0.22);
+  box-shadow: 0 0 0 3px rgba(176, 0, 32, 0.22);
 }
 .input::placeholder, .textarea::placeholder { color: var(--text-on-light-faint); }
 
@@ -1625,7 +1660,7 @@ p:last-child { margin-bottom: 0; }
 
 .modal__backdrop {
   position: fixed; inset: 0;
-  background: rgba(5, 8, 15, 0.62);
+  background: rgba(16, 11, 9, 0.62);
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
 }
@@ -1751,6 +1786,20 @@ p:last-child { margin-bottom: 0; }
    =========================================================================== */
 .footer { background: var(--ink-900); color: var(--text-on-dark-soft); }
 .footer__top { display: grid; gap: var(--s-7); padding-block: var(--s-8); }
+
+/* On phones the four blocks used to stack into a single column: eight
+   service links, then six company links, then the contact details, one
+   under the other. That is most of a screen of footer before the legal
+   line. The two link lists sit side by side instead — they are short labels
+   and they read fine in half a phone width — while the blurb at the top and
+   the contact details at the bottom keep the full width, because an address
+   broken across 170px does not. */
+@media (max-width: 759px) {
+  .footer__top { grid-template-columns: 1fr 1fr; gap: var(--s-6) var(--s-5); }
+  .footer__about,
+  .footer__top > div:last-child { grid-column: 1 / -1; }
+}
+
 @media (min-width: 760px) { .footer__top { grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: var(--s-6); } }
 
 .footer h3 {
@@ -1790,7 +1839,7 @@ p:last-child { margin-bottom: 0; }
   gap: 1px;
   background: var(--paper-line);
   border-top: 1px solid var(--paper-line);
-  box-shadow: 0 -4px 20px rgba(10, 20, 40, 0.1);
+  box-shadow: 0 -4px 20px rgba(40, 28, 22, 0.12);
   /* Clears the iOS home indicator. */
   padding-bottom: env(safe-area-inset-bottom);
 }
@@ -1887,10 +1936,29 @@ p:last-child { margin-bottom: 0; }
 /* Keep clear of the sticky call/WhatsApp bar on phones. */
 body.has-contact-bar .scroll-rail { bottom: calc(54px + var(--s-4)); }
 
-/* Reserve the strip so the rail never covers content. */
-@media (max-width: 1279px) {
-  .wrap { padding-left: calc(var(--rail-w) + var(--s-3)); }
-}
+/* --- Where the rail is allowed to appear -----------------------------------
+   DESKTOP ONLY, and that is a correction rather than a preference.
+
+   The rail used to show at every width, and below 1280px it had nowhere to
+   go, so the content was pushed out of its way:
+
+       .wrap { padding-left: calc(var(--rail-w) + var(--s-3)); }
+
+   On a 390px phone that is 40px of padding on the left against 16px on the
+   right. Every heading, every paragraph and every card on the site sat 24px
+   further from one edge than the other. Nobody looks at that and thinks
+   "there is a truck rail there" — it just reads as a layout that is subtly
+   broken, and it was the single most visible thing wrong on a phone.
+
+   The rail is also, by its own description in the print rule below, a
+   restatement of the scrollbar. Spending a tenth of a phone screen on a
+   decorative duplicate of a control the phone already has is a bad trade.
+
+   From 1280px up the wrap is capped at 1180px, so there are ~50px of dead
+   margin either side and the rail costs the layout nothing. That is where
+   it lives now. */
+.scroll-rail { display: none; }
+@media (min-width: 1280px) { .scroll-rail { display: block; } }
 /* A slimmer rail on small phones, where every pixel of text width counts. */
 @media (max-width: 480px) {
   :root { --rail-w: 28px; }
