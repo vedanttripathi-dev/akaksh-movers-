@@ -26,6 +26,11 @@
 exclude:
   - README.md          # internal handover: unverified claims, copy awaiting sign-off
   - AUDIT.md           # audit and implementation report; internal, same reasons
+  - LOCAL-SEO.md       # indexing and citation plan. Internal for a specific
+                       # reason: it lists which listings are unclaimed and
+                       # which business details are still unconfirmed, which
+                       # is a map for a competitor and reads like an admission
+                       # to a customer.
   - tools/             # authoring scripts and the page fragments they build from
   - serve.ps1          # local development server
   - migrations/        # D1 schema, only meaningful on Cloudflare

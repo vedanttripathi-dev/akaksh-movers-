@@ -23,11 +23,21 @@ what is still outstanding. Where something was *not* verified, it says so.
 | Package manager | None. No `package.json`, no `node_modules`. |
 
 **The brief asked whether server-side rendering was needed. It is not.** Every
-page already ships its title, description, canonical, H1, body copy,
-navigation, image alt attributes and JSON-LD in the initial HTML response.
-There is no client-side routing and no content that appears only after
-JavaScript runs. Replacing the architecture would have added a build step
-and a dependency tree in exchange for nothing.
+page ships its title, description, canonical, H1, body copy, navigation and
+image alt attributes in the initial HTML response. There is no client-side
+routing and no body content that appears only after JavaScript runs.
+Replacing the architecture would have added a build step and a dependency
+tree in exchange for nothing.
+
+> **Correction, 17 October 2026.** An earlier version of this paragraph also
+> listed JSON-LD as shipping in the initial response. **It does not.** Probed
+> against the static files, `index.html` contained zero
+> `application/ld+json` blocks; the structured data is built by `js/schema.js`
+> and injected at runtime. The same probe found no phone number, no email and
+> no postal code in the static `index.html` either. See C6 and H8 below. The
+> contact details are now fixed; the JSON-LD is recorded as open rather than
+> quietly reworded, because it is the kind of thing a hosting decision gets
+> made on.
 
 JavaScript is used for progressive enhancement only: contact details written
 from one config file, the callback dialog, the review section, the gallery
@@ -45,6 +55,7 @@ the phone, WhatsApp and contact links still work.
 | C3 | **The callback form cannot deliver a lead.** `/api/lead` returns 405 on GitHub Pages, which runs no server code. | **Open, and failing honestly** — the visitor is told it did not send and handed a WhatsApp link with their details filled in. Never reports success. |
 | C4 | **`www.akashmovers.com` serves a certificate for `*.github.io`**, so it shows a browser security warning. The apex domain is fine. | **Open — one DNS edit.** See §6. |
 | C5 | **The site and the Google Business Profile disagree about the address.** The Profile says Arya Nagar; the shopfront photograph and the Sulekha listing both say 113/186, Swaroop Nagar. | **Site fixed. Profile is the owner's to change** and is the single highest-value item left. |
+| C6 | **Not one page of this site is in Google's index.** `site:akashmovers.com` returns zero results. Everything else about ranking is downstream of this. Cause is not a fault: the domain is days old, Search Console has never been verified, and **no link to it exists anywhere on the web**, so Google has had no discovery path. | **Open — needs a Google login, which I cannot do.** `robots.txt`, `noindex`, canonicals, sitemap and redirects were all checked first and are all correct. Full plan in `LOCAL-SEO.md`. |
 
 #### High
 
@@ -57,6 +68,9 @@ the phone, WhatsApp and contact links still work.
 | H5 | **Four contrast failures** introduced by the earlier palette change, down to 1.33:1. | **Fixed and re-measured.** See §4. |
 | H6 | **No photographs of the company's work anywhere on the site.** | **Fixed** — 44 supplied photographs, a gallery page, alt text and captions. |
 | H7 | **`og-image.png` did not exist** although every page's meta tags pointed at it, so shared links showed no preview. | **Fixed.** |
+| H8 | **The name, address and phone number were not in the HTML.** The footer's phone, WhatsApp, email and postal address were empty elements marked `hidden`, filled by `main.js` at runtime. Probing the static files found no phone number, no email and no postal code in `index.html`; only `contact.html` carried the address in its own markup. Googlebot renders JavaScript, but Bing's renderer is far weaker and most of the fourteen AI crawlers `robots.txt` deliberately invites do not render at all — so to all of them, 19 of 20 pages offered no way to contact the business. For a local business this is the signal local search leans on hardest. | **Fixed** — written into the markup on all 19 indexable pages by `tools/seo/fill-static-nap.ps1`, with `main.js` writing the same strings over the top so `config.js` stays the one source. `check.ps1` re-reads the config and fails on drift; **verified by injecting a wrong address and a re-hidden phone number — it caught both** (exit 2). |
+| H9 | **The service pages were dead ends.** Each of the seven deeper service pages had exactly **one** inbound internal link, from the services hub, and linked to no other service page. `/locations/kanpur.html` — the only page with the city in its H1 — also had one. | **Fixed** by `tools/seo/add-related-services.ps1`: three hand-picked related services per page with a line written for that pairing, plus a route to the Kanpur page. Kanpur **1 → 9** inbound links; the seven service pages **1 → 4–8** each. Pairings are hand-written, not "the other seven". |
+| H10 | **`sameAs` was empty**, so nothing connected this new domain to the business's existing listings. Under the former trading name, with no inbound links, the site reads as a different company that shares a phone number. | **Partly fixed** — the IndiaMART profile is published after being opened and checked against four fields (trading name, owner, founding year, locality). Sulekha, Justdial, Bing Places and Apple Maps are left `PLACEHOLDER` and omitted; a `sameAs` pointing at the wrong business is a false machine-readable claim about this one. |
 
 #### Medium
 
@@ -72,6 +86,7 @@ the phone, WhatsApp and contact links still work.
 | M8 | Thin content on the new gallery page (290 words) | **Fixed** — real copy explaining what is visible in the photographs. |
 | M9 | **`terms.html` carried six `[TO BE SUPPLIED]` blanks and a banner reading "Template — not ready to publish"**, live, linked from every footer. | **Fixed.** The banner was written for the developer and was being shown to customers. The blanks were **not** filled with invented policy — each now states what this site says everywhere else, that the figures for a job are confirmed in writing with the quotation. The real deposit, notice, cancellation scale, cover, claim window, payment terms and complaint acknowledgement time **still need the owner and a legal review**. |
 | M10 | No photographs on any page except the homepage hero | **Fixed** — photo strips on the services hub, seven service pages, About, the Kanpur page, the locations hub and the homepage. `vehicle-transport` deliberately has none: not one of the 44 photographs shows a vehicle being carried. |
+| M11 | **The JSON-LD is injected by JavaScript, not served in the HTML.** `index.html` contains zero `application/ld+json` blocks; `js/schema.js` builds and inserts the graph on load. | **Open, and a judgement call rather than a bug.** Googlebot renders JavaScript, so Google does see it, with a delay. Bing and most AI crawlers largely do not. The fix that does *not* create a second source of truth: render the graph once, write it into each `<head>` as a static block, change `injectSchema()` to replace that node instead of appending, and have `check.ps1` compare the static copy against the rendered one. That is a real change to the schema module's contract, so it is recorded here for a decision rather than half-done. |
 
 ---
 
@@ -165,10 +180,19 @@ README explaining the WebP position.
 
 ### Needs you, not code
 
+**The indexing and citation plan is a document of its own: `LOCAL-SEO.md`.**
+It starts from the measured fact that `site:akashmovers.com` returns nothing,
+and puts Search Console and the Business Profile ahead of any link building,
+because a site that is not indexed cannot rank no matter what points at it.
+
+0. **Verify Google Search Console and request indexing.** Nothing else on this
+   list can show a result until this happens. Needs a Google login.
 1. **Change the address on the Google Business Profile** to 113/186, Swaroop
-   Nagar. The site and the Profile currently disagree, and Google weighs
-   name/address/phone consistency heavily for local results. Highest value
-   item on this list.
+   Nagar, and **add the website URL to the Profile**. The site and the Profile
+   currently disagree, and Google weighs name/address/phone consistency
+   heavily for local results. Highest value item on this list.
+1b. **Paste the website URL into the existing IndiaMART listing**, whose
+   website field is empty. It is the one real inbound link available today.
 2. **Fix the `www` DNS record.** GoDaddy → DNS → the `CNAME` row named
    `www` → Data: `vedanttripathi-dev.github.io`. Verified against GoDaddy's
    own nameservers (`ns15`), it still points at `akashmovers.com`.

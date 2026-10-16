@@ -110,9 +110,25 @@ function openingHoursSpecification() {
   return out;
 }
 
-/** Social profiles, as `sameAs`. */
+/**
+ * Social and directory profiles, as `sameAs`.
+ *
+ * `sameAs` is an identity claim, not a link list: it says "the thing at this
+ * URL is this same business". That is exactly what is needed here, because
+ * the domain is new and every existing listing is under the former trading
+ * name, so without this the site reads as a different company that happens
+ * to share a phone number.
+ *
+ * Only URLs that are actually set survive the filter, so an unclaimed or
+ * unverified profile is omitted rather than guessed at. See the note in
+ * config.js: a URL in here must have been opened and checked against the
+ * business, because a wrong one is a false machine-readable statement.
+ */
 function sameAs() {
   const links = Object.values(SITE_CONFIG.social || {}).filter((u) => isSet(u));
+  for (const url of Object.values(SITE_CONFIG.directories || {})) {
+    if (isSet(url)) links.push(url);
+  }
   const gbp = val(SITE_CONFIG.contact.googleBusinessProfile);
   if (gbp) links.push(gbp);
   return links;

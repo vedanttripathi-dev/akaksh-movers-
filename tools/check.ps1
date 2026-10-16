@@ -170,6 +170,52 @@ if (Test-Path (Join-Path $root '.env')) { Fail 'secrets' '.env exists in the pro
 Write-Host "  no live-looking credentials found"
 
 # ---------------------------------------------------------------------------
+# 3b. Static name/address/phone
+# ---------------------------------------------------------------------------
+# The footer's contact details used to be empty elements filled by main.js at
+# runtime, which meant that anything not executing JavaScript -- Bing's
+# renderer, and most of the fourteen AI crawlers robots.txt deliberately
+# invites -- saw a footer with no phone number and no address on 19 of the 20
+# pages. They are now written into the markup, and main.js writes the same
+# strings over the top.
+#
+# That is two copies of the same fact, so it gets a guard rather than good
+# intentions: this reads js/config.js through the same parser the filler uses
+# and fails if the markup has drifted from it. Re-run
+# tools/seo/fill-static-nap.ps1 and then tools/assemble.ps1 to fix a failure.
+Section 'Static name/address/phone'
+
+. (Join-Path $PSScriptRoot 'seo\nap.ps1')
+$nap = Read-Nap $root
+
+$napPages = Get-ChildItem -Path $root -Recurse -Filter *.html |
+    Where-Object { $_.FullName -notmatch '\\tools\\' -and $_.Name -ne '404.html' }
+
+$napOk = 0
+foreach ($file in $napPages) {
+    $text = [IO.File]::ReadAllText($file.FullName)
+    $rel = $file.FullName.Substring($root.Length + 1).Replace('\', '/')
+    $missing = @()
+    if ($text -notmatch [regex]::Escape($nap['addressLine']))  { $missing += 'address' }
+    if ($text -notmatch [regex]::Escape($nap['phoneDisplay'])) { $missing += 'phone' }
+    if ($text -notmatch [regex]::Escape($nap['email']))        { $missing += 'email' }
+    if ($text -notmatch [regex]::Escape($nap['name']))         { $missing += 'business name' }
+    if ($missing.Count) {
+        Fail 'nap' "$rel : static markup is missing $($missing -join ', ') — re-run tools/seo/fill-static-nap.ps1 then tools/assemble.ps1"
+    } else { $napOk++ }
+}
+# A hidden attribute on these would make the details invisible to a reader
+# while still being in the markup, which is cloaking-shaped. Catch it.
+$homeText = [IO.File]::ReadAllText((Join-Path $root 'index.html'))
+foreach ($attr in @('data-footer-phone', 'data-footer-email', 'data-footer-address')) {
+    if ($homeText -match ($attr + '\s+hidden')) {
+        Fail 'nap' "index.html: $attr is still marked hidden — the details would be in the markup but not on the page"
+    }
+}
+Write-Host ("  name, address, phone and email present in the markup of {0} of {1} pages" -f $napOk, $napPages.Count)
+Write-Host ("  address line matches config.js: {0}" -f $nap['addressLine'])
+
+# ---------------------------------------------------------------------------
 # 4. HTTP checks
 # ---------------------------------------------------------------------------
 if ($SkipHttp) {

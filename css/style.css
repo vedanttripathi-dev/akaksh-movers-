@@ -1890,6 +1890,11 @@ p:last-child { margin-bottom: 0; }
 
 /* Small faint note in the footer, e.g. the postal address. */
 .footer__note { font-size: var(--fs-xs); color: var(--text-on-dark-faint); }
+/* The footer address is an <address> element, which every browser defaults to
+   italic. It is the right element -- it tells a parser and a screen reader
+   what that block of text is -- but the italic is a browser default, not a
+   decision anyone made here, and nothing else on this site is set in it. */
+address.footer__note { font-style: normal; }
 
 /* --- Reveal on scroll ------------------------------------------------------
    Elements start hidden ONLY when JavaScript is available (the `js` class is

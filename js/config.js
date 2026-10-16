@@ -387,6 +387,45 @@ export const SITE_CONFIG = {
   },
 
   /* ------------------------------------------------------------------
+     6b. DIRECTORY PROFILES  —  published in `sameAs`
+     ------------------------------------------------------------------
+     These are not backlinks and they are not here to pass "SEO juice".
+     They do one specific job: tell a search engine that this website and
+     those listings are the SAME business entity. The business has been
+     listed under the old name for years, those listings carry its phone
+     number and address, and this domain is days old with nothing pointing
+     at it. Declaring the match is how the age and the reviews already
+     sitting on those profiles get attached to this site instead of looking
+     like a separate, unknown company with a similar name.
+
+     ONLY ADD A URL YOU HAVE OPENED AND CHECKED. A sameAs pointing at the
+     wrong business is a false statement about this one, in machine-readable
+     form, and it is worse than an empty list. Anything left as PLACEHOLDER
+     is simply omitted.
+
+     The reverse direction matters more than this does, and it is not
+     something code can do: each of those listings has a "website" field
+     that is currently EMPTY. Filling it in is the one real inbound link
+     this domain can get today. See LOCAL-SEO.md. */
+  directories: {
+    /* Verified 17 Oct 2026 by opening the page: trading name "Akash Movers",
+       owner "Vikas Grover", established 1983, Swaroop Nagar / Kanpur Nagar,
+       GSTIN displayed. Matches this business on four independent fields. */
+    indiamart: 'https://www.indiamart.com/akash-packersmovers/',
+
+    /* A Sulekha listing is referenced in the testimonials note below as the
+       source of ten genuine reviews, but its URL has NOT been opened and
+       confirmed in this session, so it is not published. Open the listing,
+       check the phone number against `contact.phoneDisplay`, then paste it. */
+    sulekha: PLACEHOLDER,
+    justdial: PLACEHOLDER,
+    /* Bing Places and Apple Business Connect both expose a public profile
+       once claimed. Neither is claimed yet. */
+    bingPlaces: PLACEHOLDER,
+    appleMaps: PLACEHOLDER,
+  },
+
+  /* ------------------------------------------------------------------
      7. FEATURE SWITCHES
      ------------------------------------------------------------------ */
   features: {
