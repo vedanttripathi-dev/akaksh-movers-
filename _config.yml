@@ -32,6 +32,10 @@ exclude:
   - .editorconfig
   - .gitignore
   - .env.example       # placeholder names only, but still not site content
+  - assets/brand/      # the client's master logo artwork, kept in the repo
+                       # so the delivered assets can be rebuilt from it. The
+                       # site never references it; publishing it would add
+                       # ~180 KB of files nothing links to.
 
 # Jekyll would otherwise skip the vendored libraries and the fonts, because
 # their folders are fine but some filenames look like Jekyll internals.

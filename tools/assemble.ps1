@@ -67,7 +67,10 @@ Write-Host ("chrome extracted: sprite {0}B, header {1}B, footer {2}B" -f `
 $pagesDir = Join-Path $PSScriptRoot 'pages'
 if (-not (Test-Path $pagesDir)) { throw "No fragments found at $pagesDir" }
 
-$origin = 'https://movers.pages.dev'
+# The live domain. This is ALSO in js/config.js (web.origin) and in the <head>
+# of index.html, because a crawler must see it without running JavaScript.
+# Change it in all three or the canonical tags will disagree with each other.
+$origin = 'https://akashmovers.com'
 $written = 0
 
 foreach ($file in Get-ChildItem $pagesDir -Filter '*.part' | Sort-Object Name) {
@@ -141,14 +144,17 @@ $lead
 <meta property="og:description" content="$($meta['DESC'])">
 <meta property="og:url" content="$canonical">
 <meta property="og:image" content="$origin/assets/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_IN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="$($meta['TITLE'])">
 <meta name="twitter:description" content="$($meta['DESC'])">
+<meta name="twitter:image" content="$origin/assets/images/og-image.png">
 
-<meta name="theme-color" content="#05101f">
-<link rel="icon" href="/favicon.ico" sizes="32x32">
-<link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#b00020">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 
 <link rel="preload" href="/assets/fonts/playfair-500.woff2" as="font" type="font/woff2" crossorigin>

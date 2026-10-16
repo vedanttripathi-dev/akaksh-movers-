@@ -1,6 +1,6 @@
 SLUG: about.html
 TITLE: About Akash Movers, Kanpur — how we run a move
-DESC: A Kanpur packers and movers run from Arya Nagar. How we survey, quote in writing, and move with one coordinator responsible for your shifting end to end.
+DESC: A Kanpur packers and movers run from Swaroop Nagar. How we survey, quote in writing, and move with one coordinator responsible for your shifting end to end.
 HEADING: How we run a move
 LEAD: Most complaints about movers are not about the truck. They are about a quote that changed on the day, a crew that turned up without the right material, or nobody answering the phone. This is how we organise around those three things.
 CRUMBS: Home|/ ; About|
@@ -23,8 +23,7 @@ CRUMBS: Home|/ ; About|
           <span class="eyebrow">Who we are</span>
           <h2>A Kanpur firm, run from Kanpur</h2>
           <p class="lead">
-            Akash Movers is a proprietorship based at 8/102, Allenganj, Arya
-            Nagar, near Khalasi Line, Kanpur 208002, trading since 1983. The
+            Akash Movers is a proprietorship based at 113/186, Swaroop Nagar, Kanpur 208002, trading since 1983. The
             business is run by its proprietor, Vikas Grover — which in practice
             means the person responsible for your move is reachable, not a
             call-centre layer in front of a subcontractor.
@@ -54,7 +53,7 @@ CRUMBS: Home|/ ; About|
             useful twenty minutes than any amount of reading a website.
           </p>
           <div class="btn-row mt-6">
-            <a class="btn btn--primary" href="/contact.html" data-open-quote>Get a written quote</a>
+            <a class="btn btn--primary" href="/contact.html" data-open-callback>Get a written quote</a>
             <a class="btn btn--ghost" href="/locations/kanpur.html">Areas we cover in Kanpur</a>
           </div>
         </div>
@@ -63,7 +62,7 @@ CRUMBS: Home|/ ; About|
           <span class="card__icon"><svg class="ic" aria-hidden="true"><use href="#i-building"/></svg></span>
           <h3>The basics, plainly</h3>
           <ul class="ticks">
-            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Based in</strong> Arya Nagar, Kanpur &mdash; Uttar Pradesh</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Based in</strong> Swaroop Nagar, Kanpur &mdash; Uttar Pradesh</span></li>
             <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Trading since</strong> 1983</span></li>
             <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Structure</strong> sole proprietorship</span></li>
             <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><strong>Proprietor</strong> Vikas Grover</span></li>
@@ -242,11 +241,11 @@ CRUMBS: Home|/ ; About|
           </p>
           <ul class="ticks mt-5">
             <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>Owns and runs the business directly</span></li>
-            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>One office, in Arya Nagar, Kanpur</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>One office, on Swaroop Nagar, Kanpur</span></li>
             <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span>No franchise, no aggregator, no sub-brand</span></li>
           </ul>
           <div class="btn-row mt-6">
-            <a class="btn btn--primary btn--block" href="/contact.html" data-open-quote>Talk to us</a>
+            <a class="btn btn--primary btn--block" href="/contact.html" data-open-callback>Talk to us</a>
           </div>
         </div>
       </div>
@@ -331,8 +330,7 @@ CRUMBS: Home|/ ; About|
         <article class="card">
           <h3>Kanpur first</h3>
           <p>
-            We work across India on intercity routes, but the office is in
-            Arya Nagar and the crews are from here. Local knowledge is not a
+            We work across India on intercity routes, but the office is on Swaroop Nagar and the crews are from here. Local knowledge is not a
             marketing line in this city — it is knowing which lanes a truck
             cannot turn in before you send one down them.
           </p>
@@ -370,7 +368,7 @@ CRUMBS: Home|/ ; About|
         <h2>Tell us what is moving</h2>
         <p class="lead">A written, itemised quote with no obligation.</p>
         <div class="btn-row mt-6 btn-row--centre">
-          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-callback>Request a callback</a>
           <a class="btn btn--ghost btn--lg" href="/services.html">See all services</a>
         </div>
       </div>

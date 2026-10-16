@@ -64,25 +64,25 @@ function buildTruck() {
   });
 
   // Rear wheels (top of the sprite, since the truck points downwards).
-  svg.append(s('rect', { x: 1.5, y: 8, width: 3, height: 7, rx: 1.5, fill: '#06121f' }));
-  svg.append(s('rect', { x: 23.5, y: 8, width: 3, height: 7, rx: 1.5, fill: '#06121f' }));
+  svg.append(s('rect', { x: 1.5, y: 8, width: 3, height: 7, rx: 1.5, fill: '#140f0c' }));
+  svg.append(s('rect', { x: 23.5, y: 8, width: 3, height: 7, rx: 1.5, fill: '#140f0c' }));
   // Front wheels.
-  svg.append(s('rect', { x: 1.5, y: 29, width: 3, height: 7, rx: 1.5, fill: '#06121f' }));
-  svg.append(s('rect', { x: 23.5, y: 29, width: 3, height: 7, rx: 1.5, fill: '#06121f' }));
+  svg.append(s('rect', { x: 1.5, y: 29, width: 3, height: 7, rx: 1.5, fill: '#140f0c' }));
+  svg.append(s('rect', { x: 23.5, y: 29, width: 3, height: 7, rx: 1.5, fill: '#140f0c' }));
 
   // Cargo body.
-  svg.append(s('rect', { x: 3.5, y: 2, width: 21, height: 25, rx: 3, fill: '#45402f' }));
-  svg.append(s('rect', { x: 3.5, y: 2, width: 21, height: 25, rx: 3, fill: 'none', stroke: '#3d5873', 'stroke-width': 1 }));
+  svg.append(s('rect', { x: 3.5, y: 2, width: 21, height: 25, rx: 3, fill: '#2b2420' }));
+  svg.append(s('rect', { x: 3.5, y: 2, width: 21, height: 25, rx: 3, fill: 'none', stroke: '#544940', 'stroke-width': 1 }));
   // Roller-shutter lines, so it is not a plain slab.
-  svg.append(s('path', { d: 'M6 8h16M6 13h16M6 18h16', stroke: '#3d5873', 'stroke-width': 1, opacity: 0.55 }));
+  svg.append(s('path', { d: 'M6 8h16M6 13h16M6 18h16', stroke: '#544940', 'stroke-width': 1, opacity: 0.55 }));
 
   // Gold band between body and cab.
-  svg.append(s('rect', { x: 3.5, y: 26, width: 21, height: 2.2, rx: 1, fill: '#f5a524' }));
+  svg.append(s('rect', { x: 3.5, y: 26, width: 21, height: 2.2, rx: 1, fill: '#b00020' }));
 
   // Cab.
-  svg.append(s('rect', { x: 4.5, y: 29, width: 19, height: 12, rx: 3, fill: '#f5a524' }));
+  svg.append(s('rect', { x: 4.5, y: 29, width: 19, height: 12, rx: 3, fill: '#b00020' }));
   // Windscreen.
-  svg.append(s('rect', { x: 7.5, y: 31.5, width: 13, height: 5.5, rx: 1.6, fill: '#1a1203', opacity: 0.85 }));
+  svg.append(s('rect', { x: 7.5, y: 31.5, width: 13, height: 5.5, rx: 1.6, fill: '#140f0c', opacity: 0.85 }));
   // Headlights at the very front.
   svg.append(s('rect', { x: 6.5, y: 38.5, width: 4, height: 2, rx: 1, fill: '#fff4e0' }));
   svg.append(s('rect', { x: 17.5, y: 38.5, width: 4, height: 2, rx: 1, fill: '#fff4e0' }));

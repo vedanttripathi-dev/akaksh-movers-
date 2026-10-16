@@ -1,0 +1,51 @@
+{
+  "_readme": [
+    "PHOTOGRAPHS OF REAL JOBS.",
+    "",
+    "These appear under 'Our customers, our work' next to the testimonials.",
+    "",
+    "HOW TO ADD ONE",
+    "  1. Put the image file in  assets/images/work/  in the repository.",
+    "  2. Copy the block in \"example\" below into the \"photos\" list.",
+    "  3. Fill in src, caption, alt, width and height.",
+    "  4. Set \"published\" to true.",
+    "  5. Commit both the image and this file together.",
+    "",
+    "BEFORE THE PHOTO GOES UP",
+    "  - If a customer's face, name, door number or vehicle number is in the",
+    "    frame, either get their permission or use a different shot.",
+    "  - The inside of someone's home is their private space. 'We were there",
+    "    doing the job' is not the same as 'we may publish it'.",
+    "",
+    "SIZE MATTERS MORE THAN YOU THINK",
+    "A photo straight off a phone is 3-6 MB and will be the slowest thing on",
+    "the page by a wide margin. Resize to about 1200px on the long side and",
+    "save as JPEG at around 80% quality before committing it; that is",
+    "typically 150-250 KB for the same picture on screen.",
+    "",
+    "FIELDS",
+    "  src        path from the site root, e.g. '/assets/images/work/move-01.jpg'",
+    "  caption    the line printed under the photo. Optional.",
+    "  alt        description for someone who cannot see it. Say what is",
+    "             happening, not 'packers and movers in Kanpur'. Required in",
+    "             practice: without it the caption is used, and if there is",
+    "             no caption either the image is announced as a generic one.",
+    "  width      the image's real pixel width.",
+    "  height     the image's real pixel height. Both are needed so the page",
+    "             reserves the space and does not jump while loading.",
+    "  published  true to show it.",
+    "",
+    "The \"example\" block below is ignored by the website."
+  ],
+
+  "example": {
+    "src": "/assets/images/work/example.jpg",
+    "caption": "",
+    "alt": "",
+    "width": 1200,
+    "height": 900,
+    "published": false
+  },
+
+  "photos": []
+}

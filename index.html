@@ -12,32 +12,34 @@
      find-and-replace documented in README.md.
      ====================================================================== -->
 <title>Packers &amp; Movers in Kanpur | Akash Movers</title>
-<meta name="description" content="Home shifting, office relocation, packing and car transport in Kanpur. Based in Arya Nagar — surveyed first, quoted in writing, moved by our own crew.">
-<link rel="canonical" href="https://movers.pages.dev/">
+<meta name="description" content="Home shifting, office relocation, packing and car transport in Kanpur. Our office is on Swaroop Nagar — surveyed first, quoted in writing, moved by our own crew.">
+<link rel="canonical" href="https://akashmovers.com/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Akash Movers">
 <meta property="og:title" content="Packers &amp; Movers in Kanpur | Akash Movers">
-<meta property="og:description" content="Home shifting, office relocation, packing and car transport in Kanpur. Based in Arya Nagar — surveyed first, quoted in writing, moved by our own crew.">
-<meta property="og:url" content="https://movers.pages.dev/">
-<meta property="og:image" content="https://movers.pages.dev/assets/images/og-image.png">
+<meta property="og:description" content="Home shifting, office relocation, packing and car transport in Kanpur. Our office is on Swaroop Nagar — surveyed first, quoted in writing, moved by our own crew.">
+<meta property="og:url" content="https://akashmovers.com/">
+<meta property="og:image" content="https://akashmovers.com/assets/images/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_IN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Packers &amp; Movers in Kanpur | Akash Movers">
-<meta name="twitter:description" content="Home shifting, office relocation, packing and car transport in Kanpur. Based in Arya Nagar — surveyed first, quoted in writing, moved by our own crew.">
-<meta name="twitter:image" content="https://movers.pages.dev/assets/images/og-image.png">
+<meta name="twitter:description" content="Home shifting, office relocation, packing and car transport in Kanpur. Our office is on Swaroop Nagar — surveyed first, quoted in writing, moved by our own crew.">
+<meta name="twitter:image" content="https://akashmovers.com/assets/images/og-image.png">
 
-<meta name="theme-color" content="#05101f">
-<link rel="icon" href="/favicon.ico" sizes="32x32">
-<link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#b00020">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<!-- Still to add before launch, once the logo exists: /favicon.ico,
-     /assets/icons/apple-touch-icon.png (180×180) and the og:image above.
-     They are listed in README.md § Assets still required. Links to them are
-     deliberately absent until the files exist, so nothing 404s. -->
+<!-- The icons are the truck from the company's own logo on the brand red.
+     Rendered and compared at true size, the full oval lockup turns to mud
+     below about 48px — the arched lettering is unreadable and all that
+     survives is a grey blob — so the square icons use the mark alone.
+     There is no SVG icon: the logo is a photograph of a printed sign, and
+     redrawing it as vector would mean inventing letterforms. -->
 
 <!-- The two faces used above the fold. Preloaded so the headline and body
      paint in the real typefaces rather than flashing a fallback first.
@@ -45,6 +47,14 @@
      without it the browser fetches the file twice. -->
 <link rel="preload" href="/assets/fonts/playfair-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- The hero photograph is the largest thing above the fold and therefore
+     almost certainly the Largest Contentful Paint. Preloading the exact
+     candidate the browser would pick anyway moves its request to the front
+     of the queue instead of behind the stylesheet. -->
+<link rel="preload" as="image" href="/assets/images/office-front-800.jpg"
+      imagesrcset="/assets/images/office-front-480.jpg 480w, /assets/images/office-front-800.jpg 800w, /assets/images/office-front-1200.jpg 1200w"
+      imagesizes="(min-width: 60rem) 46vw, 100vw">
 
 <link rel="stylesheet" href="/css/style.css">
 
@@ -106,12 +116,14 @@
   <div class="wrap">
     <div class="header__bar">
       <a class="brand" href="/">
-        <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
-          <rect x="1" y="1" width="38" height="38" rx="9" fill="#f5a524"/>
-          <path d="M8 24.5V14h12v4h4.6L30 22.2v2.3h-3" stroke="#1a1203" stroke-width="2" fill="none" stroke-linejoin="round"/>
-          <circle cx="13" cy="26.5" r="2.2" fill="#1a1203"/>
-          <circle cx="25" cy="26.5" r="2.2" fill="#1a1203"/>
-        </svg>
+        <!-- The company's own logo, supplied by the client as artwork. The
+             background was removed and nothing else was changed: the oval,
+             the truck and the lettering are exactly as drawn.
+             `alt` is empty on purpose — the business name sits next to it in
+             real text, so describing the image as well would make a screen
+             reader announce the name twice. -->
+        <img class="brand__mark" src="/assets/images/logo-sm.png" alt=""
+             width="240" height="171" decoding="async">
         <!-- The real name is written in here as well as being injected from
              config, so a crawler or a visitor with JavaScript off still sees
              it. js/main.js overwrites it from business.name, so the two can
@@ -132,11 +144,13 @@
       </nav>
 
       <div class="header__actions">
-        <a class="btn btn--ghost-dark btn--sm" data-tel-link hidden>
+        <!-- `btn--ghost`, not `btn--ghost-dark`: the header bar is white now,
+             so the dark-surface variant would put near-white text on it. -->
+        <a class="btn btn--ghost btn--sm" data-tel-link hidden>
           <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
           <span data-config="contact.phoneDisplay">Call</span>
         </a>
-        <a class="btn btn--primary btn--sm" href="/contact.html" data-open-quote>Get free estimate</a>
+        <a class="btn btn--primary btn--sm" href="/contact.html" data-open-callback>Request a callback</a>
         <button class="nav-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="navDrawer" aria-label="Open menu">
           <svg class="ic ic--lg" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         </button>
@@ -156,7 +170,7 @@
           <a href="/faq.html">FAQ</a>
           <a href="/contact.html">Contact</a>
         </nav>
-        <a class="btn btn--primary btn--block" href="/contact.html" data-open-quote>Get free estimate</a>
+        <a class="btn btn--primary btn--block" href="/contact.html" data-open-callback>Request a callback</a>
       </div>
     </div>
   </div>
@@ -200,8 +214,8 @@
           </p>
 
           <div class="btn-row">
-            <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>
-              Get free moving estimate
+            <a class="btn btn--primary btn--lg" href="/contact.html" data-open-callback>
+              Request a callback
             </a>
             <a class="btn btn--ghost btn--lg" data-wa-link hidden>
               <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
@@ -220,14 +234,23 @@
           </ul>
         </div>
 
-        <!-- The 3D stage. js/truck3d.js replaces the poster with a live
-             WebGL scene only when the device can comfortably run it. -->
-        <div class="hero__stage" id="heroStage">
-          <img class="hero__fallback" src="/assets/images/hero-truck.svg"
-               alt="A packing-and-moving truck loaded and ready to depart."
-               width="800" height="600" fetchpriority="high" decoding="async">
-          <p class="stage-loading" aria-hidden="true">Preparing 3D view</p>
-        </div>
+        <!-- The company's own shopfront. This replaced a 3D truck that was
+             not theirs and told a customer nothing. The address and both
+             numbers are legible on the fascia in the full-size image, which
+             is the point: it is evidence, not decoration.
+             `fetchpriority="high"` and no `loading="lazy"` — this is above
+             the fold and is the Largest Contentful Paint. -->
+        <figure class="hero__stage">
+          <img class="hero__photo"
+               src="/assets/images/office-front-800.jpg"
+               srcset="/assets/images/office-front-480.jpg 480w,
+                       /assets/images/office-front-800.jpg 800w,
+                       /assets/images/office-front-1200.jpg 1200w"
+               sizes="(min-width: 60rem) 46vw, 100vw"
+               alt="The Akash Movers office on Swaroop Nagar in Kanpur, with the company's red signboard above the shopfront."
+               width="1200" height="896" fetchpriority="high" decoding="async">
+          <figcaption class="hero__caption">Our office on Swaroop Nagar, Kanpur</figcaption>
+        </figure>
 
       </div>
     </div>
@@ -315,12 +338,13 @@
 
           <svg class="journey__road" viewBox="0 0 400 400" preserveAspectRatio="none" data-road>
             <defs>
-              <!-- The travelled road runs from deep bronze up to near-white,
-                   so the freshest part of the trail is the brightest. -->
+              <!-- The travelled road runs from deep brand red up to
+                   near-white, so the freshest part of the trail is the
+                   brightest. -->
               <linearGradient id="roadGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#9a5b06"/>
-                <stop offset="0.55" stop-color="#ffc15e"/>
-                <stop offset="1" stop-color="#fff1d4"/>
+                <stop offset="0" stop-color="#6b0014"/>
+                <stop offset="0.55" stop-color="#f4756b"/>
+                <stop offset="1" stop-color="#ffe9e5"/>
               </linearGradient>
             </defs>
 
@@ -355,32 +379,32 @@
             <path class="jt-beam" d="M74 30 L92 22 L92 38 Z"/>
 
             <!-- Cargo body. -->
-            <rect x="4" y="10" width="46" height="24" rx="3" fill="#12263c"/>
-            <rect x="4" y="10" width="46" height="24" rx="3" fill="none" stroke="#3d5873" stroke-width="1"/>
+            <rect x="4" y="10" width="46" height="24" rx="3" fill="#2b2420"/>
+            <rect x="4" y="10" width="46" height="24" rx="3" fill="none" stroke="#544940" stroke-width="1"/>
             <path class="jt-ribs" d="M12 13v18M20 13v18M28 13v18M36 13v18M44 13v18"/>
-            <rect x="4" y="31" width="46" height="2.4" rx="1" fill="#f5a524"/>
+            <rect x="4" y="31" width="46" height="2.4" rx="1" fill="#b00020"/>
 
-            <!-- Cab. -->
-            <rect x="50" y="16" width="21" height="18" rx="3" fill="#f5a524"/>
-            <rect x="54" y="19" width="11" height="8" rx="2" fill="#1a1203" opacity="0.85"/>
+            <!-- Cab, in the brand red. -->
+            <rect x="50" y="16" width="21" height="18" rx="3" fill="#b00020"/>
+            <rect x="54" y="19" width="11" height="8" rx="2" fill="#140f0c" opacity="0.85"/>
             <rect x="69" y="27" width="4" height="4" rx="1" fill="#fff4e0"/>
 
             <!-- Wheels. Rotated by journey.js in proportion to distance
                  travelled, so they only turn when the page actually moves. -->
             <g class="jt-wheel" data-wheel>
-              <circle cx="17" cy="37" r="5.6" fill="#040d19"/>
-              <circle cx="17" cy="37" r="2.1" fill="#a3b6ca"/>
-              <path d="M17 32.4v9.2M12.4 37h9.2" stroke="#3d5873" stroke-width="1.1"/>
+              <circle cx="17" cy="37" r="5.6" fill="#140f0c"/>
+              <circle cx="17" cy="37" r="2.1" fill="#c9bdb2"/>
+              <path d="M17 32.4v9.2M12.4 37h9.2" stroke="#544940" stroke-width="1.1"/>
             </g>
             <g class="jt-wheel" data-wheel>
-              <circle cx="41" cy="37" r="5.6" fill="#040d19"/>
-              <circle cx="41" cy="37" r="2.1" fill="#a3b6ca"/>
-              <path d="M41 32.4v9.2M36.4 37h9.2" stroke="#3d5873" stroke-width="1.1"/>
+              <circle cx="41" cy="37" r="5.6" fill="#140f0c"/>
+              <circle cx="41" cy="37" r="2.1" fill="#c9bdb2"/>
+              <path d="M41 32.4v9.2M36.4 37h9.2" stroke="#544940" stroke-width="1.1"/>
             </g>
             <g class="jt-wheel" data-wheel>
-              <circle cx="62" cy="37" r="5.6" fill="#040d19"/>
-              <circle cx="62" cy="37" r="2.1" fill="#a3b6ca"/>
-              <path d="M62 32.4v9.2M57.4 37h9.2" stroke="#3d5873" stroke-width="1.1"/>
+              <circle cx="62" cy="37" r="5.6" fill="#140f0c"/>
+              <circle cx="62" cy="37" r="2.1" fill="#c9bdb2"/>
+              <path d="M62 32.4v9.2M57.4 37h9.2" stroke="#544940" stroke-width="1.1"/>
             </g>
           </svg>
 
@@ -487,7 +511,7 @@
                 quote with the work itemised, and no obligation to book.
               </p>
               <div class="btn-row mt-5">
-                <a class="btn btn--primary" href="/contact.html" data-open-quote>Get free estimate</a>
+                <a class="btn btn--primary" href="/contact.html" data-open-callback>Request a callback</a>
                 <a class="link-cta" href="/faq.html">
                   How pricing works
                   <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
@@ -558,7 +582,7 @@
             answering the phone on the day. That is what we organise around.
           </p>
           <div class="btn-row mt-6">
-            <a class="btn btn--primary" href="/contact.html" data-open-quote>Get free estimate</a>
+            <a class="btn btn--primary" href="/contact.html" data-open-callback>Request a callback</a>
             <a class="btn btn--ghost" href="/about.html">About us</a>
           </div>
         </div>
@@ -598,17 +622,87 @@
   </section>
 
   <!-- =======================================================================
-       TESTIMONIALS
-       The demo entries carry a visible notice and are excluded from all
-       structured data. See SITE_CONFIG.testimonials.
+       GOOGLE REVIEWS
+       Filled by js/reviews.js from /api/reviews, or from review text pasted
+       into SITE_CONFIG.testimonials.verified. Nothing is ever invented to
+       fill it, and no Review structured data is emitted — see schema.js.
+       The section hides itself only if there is neither a review to quote
+       nor a profile to link to.
        ==================================================================== -->
   <section class="section on-sunk" id="reviews" aria-labelledby="reviews-title">
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Customer feedback</span>
-        <h2 id="reviews-title">What customers say</h2>
+        <h2 id="reviews-title">What our customers say</h2>
       </div>
       <div data-testimonials></div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       OUR CUSTOMERS, OUR WORK
+       The business's OWN testimonials and job photographs, kept separate
+       from the Google section above so a visitor can see where each one
+       came from. Filled by js/own-content.js from /content/*.json.
+
+       `hidden` is the starting state on purpose: the section appears only
+       once there is something real in those files. An empty gallery under a
+       confident heading is worse than no gallery.
+       ==================================================================== -->
+  <section class="section on-paper" id="our-work" aria-labelledby="work-title"
+           data-own-content hidden>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">From our own customers</span>
+        <h2 id="work-title">Our customers, our work</h2>
+        <p class="lead">
+          Photographs from real jobs, and feedback customers sent us directly.
+          Our Google reviews are in the section above.
+        </p>
+      </div>
+      <div data-own-photos hidden></div>
+      <div class="mt-8" data-own-testimonials hidden></div>
+    </div>
+  </section>
+
+  <!-- =======================================================================
+       CALLBACK FORM
+       The inline card is built by js/callback-form.js and mounted into the
+       host below, so the form and the dialog can never drift apart.
+
+       The <noscript> fallback is not a formality: without JavaScript the
+       card is never mounted, and a visitor would otherwise be looking at a
+       heading above an empty box.
+       ==================================================================== -->
+  <section class="section on-sunk" id="callback" aria-labelledby="callback-title">
+    <div class="wrap">
+      <div class="split is-wide-left">
+        <div>
+          <span class="eyebrow">Request a callback</span>
+          <h2 id="callback-title">Tell us your name and number</h2>
+          <p class="lead">
+            That is all we need to start. We will call you back, talk through what
+            is moving and where it is going, and arrange a survey if you want one.
+          </p>
+          <!-- `point-list`, NOT `hero__points`. The hero version colours its
+               text for a dark background; on this white section it measured
+               1.64:1. Same layout, light-surface colours. -->
+          <ul class="point-list mt-6">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-receipt"/></svg> Itemised written quote</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-wrap"/></svg> Multi-layer packing</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-headset"/></svg> One named coordinator</li>
+          </ul>
+        </div>
+
+        <div data-callback-form>
+          <noscript>
+            <p class="form-note">
+              This form needs JavaScript. Please call or message us instead — the
+              number is in the header and at the foot of this page.
+            </p>
+          </noscript>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -743,7 +837,7 @@
           obligation. It takes about two minutes.
         </p>
         <div class="btn-row mt-6 btn-row--centre">
-          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-callback>Request a callback</a>
           <a class="btn btn--ghost btn--lg" data-wa-link hidden>
             <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
             Chat on WhatsApp
@@ -763,13 +857,12 @@
     <div class="footer__top">
 
       <div class="footer__about">
-        <a class="brand mb-4" href="/">
-          <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
-            <rect x="1" y="1" width="38" height="38" rx="9" fill="#f5a524"/>
-            <path d="M8 24.5V14h12v4h4.6L30 22.2v2.3h-3" stroke="#1a1203" stroke-width="2" fill="none" stroke-linejoin="round"/>
-            <circle cx="13" cy="26.5" r="2.2" fill="#1a1203"/>
-            <circle cx="25" cy="26.5" r="2.2" fill="#1a1203"/>
-          </svg>
+        <a class="brand brand--footer mb-4" href="/">
+          <!-- `brand--footer` swaps in the knocked-out copy: the footer is
+               near-black, and the logo's black ring and black truck vanish
+               into it otherwise. -->
+          <img class="brand__mark" src="/assets/images/logo-sm.png" alt=""
+               width="240" height="171" loading="lazy" decoding="async">
           <span class="brand__name" data-config="business.name">Akash Movers</span>
         </a>
         <p>Packing, loading, transport and unpacking for homes and offices in Kanpur and across India. Surveyed first, quoted in writing, moved by our own crews.</p>

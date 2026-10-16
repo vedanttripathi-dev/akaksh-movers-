@@ -6,23 +6,26 @@
 
 <title>Local Shifting in Kanpur — same-city moves</title>
 <meta name="description" content="Same-city shifting within Kanpur, usually finished in a single day. One crew end to end, a vehicle sized to your inventory, early starts to suit society timings.">
-<link rel="canonical" href="https://movers.pages.dev/services/local-shifting.html">
+<link rel="canonical" href="https://akashmovers.com/services/local-shifting.html">
 <meta name="robots" content="index, follow, max-image-preview:large">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Akash Movers">
 <meta property="og:title" content="Local Shifting in Kanpur — same-city moves">
 <meta property="og:description" content="Same-city shifting within Kanpur, usually finished in a single day. One crew end to end, a vehicle sized to your inventory, early starts to suit society timings.">
-<meta property="og:url" content="https://movers.pages.dev/services/local-shifting.html">
-<meta property="og:image" content="https://movers.pages.dev/assets/images/og-image.png">
+<meta property="og:url" content="https://akashmovers.com/services/local-shifting.html">
+<meta property="og:image" content="https://akashmovers.com/assets/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_IN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Local Shifting in Kanpur — same-city moves">
 <meta name="twitter:description" content="Same-city shifting within Kanpur, usually finished in a single day. One crew end to end, a vehicle sized to your inventory, early starts to suit society timings.">
+<meta name="twitter:image" content="https://akashmovers.com/assets/images/og-image.png">
 
-<meta name="theme-color" content="#05101f">
-<link rel="icon" href="/favicon.ico" sizes="32x32">
-<link rel="icon" href="/assets/icons/icon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#b00020">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 
 <link rel="preload" href="/assets/fonts/playfair-500.woff2" as="font" type="font/woff2" crossorigin>
@@ -54,6 +57,11 @@
     <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12.4 2.6 2.6L16 9.5"/></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 5.8v5.4c0 4.4 3 8.1 7 9.8 4-1.7 7-5.4 7-9.8V5.8Z"/><path d="m9 12.2 2.1 2.1L15.2 10"/></symbol>
     <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4.5 12h15M14 6.5 19.5 12 14 17.5"/></symbol>
+    <!-- One star shape for both states. A filled star is the same outline
+         with `fill: currentColor`, applied by `.stars__star.is-on` in the
+         stylesheet — two symbols would be two chances to draw them slightly
+         differently. -->
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.2l2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.9-5.4 2.9 1-6-4.4-4.3 6.1-.9Z"/></symbol>
     <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 4.5v15M6.5 14 12 19.5 17.5 14"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
     <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4 2.8 20h18.4Z"/><path d="M12 10v4.2M12 17.2v.1"/></symbol>
@@ -71,12 +79,14 @@
   <div class="wrap">
     <div class="header__bar">
       <a class="brand" href="/">
-        <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
-          <rect x="1" y="1" width="38" height="38" rx="9" fill="#f5a524"/>
-          <path d="M8 24.5V14h12v4h4.6L30 22.2v2.3h-3" stroke="#1a1203" stroke-width="2" fill="none" stroke-linejoin="round"/>
-          <circle cx="13" cy="26.5" r="2.2" fill="#1a1203"/>
-          <circle cx="25" cy="26.5" r="2.2" fill="#1a1203"/>
-        </svg>
+        <!-- The company's own logo, supplied by the client as artwork. The
+             background was removed and nothing else was changed: the oval,
+             the truck and the lettering are exactly as drawn.
+             `alt` is empty on purpose — the business name sits next to it in
+             real text, so describing the image as well would make a screen
+             reader announce the name twice. -->
+        <img class="brand__mark" src="/assets/images/logo-sm.png" alt=""
+             width="240" height="171" decoding="async">
         <!-- The real name is written in here as well as being injected from
              config, so a crawler or a visitor with JavaScript off still sees
              it. js/main.js overwrites it from business.name, so the two can
@@ -97,11 +107,13 @@
       </nav>
 
       <div class="header__actions">
-        <a class="btn btn--ghost-dark btn--sm" data-tel-link hidden>
+        <!-- `btn--ghost`, not `btn--ghost-dark`: the header bar is white now,
+             so the dark-surface variant would put near-white text on it. -->
+        <a class="btn btn--ghost btn--sm" data-tel-link hidden>
           <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
           <span data-config="contact.phoneDisplay">Call</span>
         </a>
-        <a class="btn btn--primary btn--sm" href="/contact.html" data-open-quote>Get free estimate</a>
+        <a class="btn btn--primary btn--sm" href="/contact.html" data-open-callback>Request a callback</a>
         <button class="nav-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="navDrawer" aria-label="Open menu">
           <svg class="ic ic--lg" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         </button>
@@ -121,7 +133,7 @@
           <a href="/faq.html">FAQ</a>
           <a href="/contact.html">Contact</a>
         </nav>
-        <a class="btn btn--primary btn--block" href="/contact.html" data-open-quote>Get free estimate</a>
+        <a class="btn btn--primary btn--block" href="/contact.html" data-open-callback>Request a callback</a>
       </div>
     </div>
   </div>
@@ -288,7 +300,7 @@
         <h2>Moving across town?</h2>
         <p class="lead">Send both addresses and the floor numbers and we will quote it.</p>
         <div class="btn-row mt-6 btn-row--centre">
-          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-callback>Request a callback</a>
           <a class="btn btn--ghost btn--lg" href="/services.html">All services</a>
         </div>
       </div>
@@ -301,13 +313,12 @@
     <div class="footer__top">
 
       <div class="footer__about">
-        <a class="brand mb-4" href="/">
-          <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
-            <rect x="1" y="1" width="38" height="38" rx="9" fill="#f5a524"/>
-            <path d="M8 24.5V14h12v4h4.6L30 22.2v2.3h-3" stroke="#1a1203" stroke-width="2" fill="none" stroke-linejoin="round"/>
-            <circle cx="13" cy="26.5" r="2.2" fill="#1a1203"/>
-            <circle cx="25" cy="26.5" r="2.2" fill="#1a1203"/>
-          </svg>
+        <a class="brand brand--footer mb-4" href="/">
+          <!-- `brand--footer` swaps in the knocked-out copy: the footer is
+               near-black, and the logo's black ring and black truck vanish
+               into it otherwise. -->
+          <img class="brand__mark" src="/assets/images/logo-sm.png" alt=""
+               width="240" height="171" loading="lazy" decoding="async">
           <span class="brand__name" data-config="business.name">Akash Movers</span>
         </a>
         <p>Packing, loading, transport and unpacking for homes and offices in Kanpur and across India. Surveyed first, quoted in writing, moved by our own crews.</p>

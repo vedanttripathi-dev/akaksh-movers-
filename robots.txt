@@ -82,4 +82,4 @@ User-agent: meta-externalagent
 Allow: /
 
 # --- Sitemap ---------------------------------------------------------------
-Sitemap: https://movers.pages.dev/sitemap.xml
+Sitemap: https://akashmovers.com/sitemap.xml

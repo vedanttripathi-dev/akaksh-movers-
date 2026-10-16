@@ -1,8 +1,8 @@
 SLUG: contact.html
-TITLE: Contact Akash Movers, Kanpur — free moving quote
-DESC: Call or WhatsApp +91 98391 00644 for a free, itemised moving quote in Kanpur. Our office is at 8/102 Allenganj, Arya Nagar, Kanpur 208002.
+TITLE: Contact Akash Movers, Kanpur — request a callback
+DESC: Call or WhatsApp +91 98391 00644 to arrange a move in Kanpur. Our office is at 113/186, Swaroop Nagar, Kanpur 208002.
 HEADING: Talk to us about your move
-LEAD: Tell us what is moving and where it is going. You will get a written, itemised quote with no obligation — and a straight answer about what we can and cannot do on your date.
+LEAD: Leave your name and number and we will call you back. Tell us what is moving and where it is going, and you will get a written, itemised quote with no obligation.
 CRUMBS: Home|/ ; Contact|
 ---
 
@@ -23,6 +23,17 @@ CRUMBS: Home|/ ; Contact|
               <div>
                 <span class="label">Phone</span>
                 <a data-tel-link><span data-config="contact.phoneDisplay"></span></a>
+              </div>
+            </li>
+
+            <!-- Any additional numbers from `contact.secondaryContacts`.
+                 Rendered by renderSecondaryContacts() in js/main.js, and
+                 removed entirely when that list is empty. -->
+            <li data-contact-second hidden>
+              <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
+              <div>
+                <span class="label">Also</span>
+                <span data-second-contacts></span>
               </div>
             </li>
 
@@ -73,7 +84,7 @@ CRUMBS: Home|/ ; Contact|
           </div>
 
           <div class="btn-row mt-7">
-            <a class="btn btn--primary btn--lg" href="#quote" data-open-quote>Get a free estimate</a>
+            <a class="btn btn--primary btn--lg" href="#callback">Request a callback</a>
           </div>
         </div>
 
@@ -150,10 +161,24 @@ CRUMBS: Home|/ ; Contact|
         <span class="eyebrow">Find us</span>
         <h2>Where we are based</h2>
         <p class="lead">
-          Our office is in Arya Nagar, near Khalasi Line. You are welcome to
+          Our office is on Swaroop Nagar. You are welcome to
           come and talk a move through in person before booking anything.
         </p>
       </div>
+
+      <!-- The board over the door, so a visitor knows what to look for when
+           they get there. Not decoration: the GSTIN and both numbers on it
+           are the same ones printed on this page, which is the point. -->
+      <figure class="board-shot">
+        <img src="/assets/images/signboard-640.jpg"
+             srcset="/assets/images/signboard-640.jpg 640w,
+                     /assets/images/signboard-1000.jpg 1000w"
+             sizes="(min-width: 60rem) 30rem, 100vw"
+             alt="The Akash Movers signboard, showing the GSTIN, both contact numbers and the address at 113/186, Swaroop Nagar."
+             width="1000" height="747" loading="lazy" decoding="async">
+        <figcaption>Look for this board at 113/186, Swaroop Nagar.</figcaption>
+      </figure>
+
       <div class="map" data-map>
         <p class="map__empty">Map loads once the office address is configured.</p>
       </div>
@@ -167,20 +192,36 @@ CRUMBS: Home|/ ; Contact|
     </div>
   </section>
 
-  <section class="section is-tight cta-band">
+  <!-- The callback form itself, in the page rather than behind a button.
+       This is the contact page: a visitor who reached it has already decided
+       to get in touch, and asking them to click once more to see a form is
+       a step that only loses people. js/callback-form.js mounts it. -->
+  <section class="section on-sunk" id="callback" aria-labelledby="callback-title">
     <div class="wrap">
-      <div class="wrap-narrow text-centre">
-        <h2 id="quote">Ready when you are</h2>
-        <p class="lead">
-          Share a few details and you will get a written, itemised quote.
-          It takes about two minutes.
-        </p>
-        <div class="btn-row mt-6 btn-row--centre">
-          <a class="btn btn--primary btn--lg" href="#quote" data-open-quote>Get free moving estimate</a>
-          <a class="btn btn--ghost btn--lg" data-wa-link hidden>
-            <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
-            Chat on WhatsApp
-          </a>
+      <div class="split is-wide-left">
+        <div>
+          <span class="eyebrow">Request a callback</span>
+          <h2 id="callback-title">Ready when you are</h2>
+          <p class="lead">
+            Your name and number is all we need to start. We will call you back,
+            talk through what is moving and where it is going, and arrange a
+            survey if you want one.
+          </p>
+          <div class="btn-row mt-6">
+            <a class="btn btn--ghost btn--lg" data-wa-link hidden>
+              <svg class="ic" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              Chat on WhatsApp instead
+            </a>
+          </div>
+        </div>
+
+        <div data-callback-form>
+          <noscript>
+            <p class="form-note">
+              This form needs JavaScript. Please call or message us instead — the
+              number is at the top of this page.
+            </p>
+          </noscript>
         </div>
       </div>
     </div>

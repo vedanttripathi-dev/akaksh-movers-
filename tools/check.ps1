@@ -110,6 +110,49 @@ foreach ($page in Get-ChildItem -Path $root -Recurse -Filter *.html) {
 Write-Host "  $(@(Get-ChildItem -Path $root -Recurse -Filter *.html).Count) pages scanned for unverifiable claims"
 
 # ---------------------------------------------------------------------------
+# 2b. Review honesty
+# ---------------------------------------------------------------------------
+# The site shows reviews from two different places, and the whole arrangement
+# rests on a visitor being able to tell which is which. These are the
+# invariants that keep that true. They are cheap to check and expensive to
+# notice the loss of.
+Section 'Review honesty'
+
+$ownContent = Join-Path $root 'js\own-content.js'
+if (Test-Path $ownContent) {
+    $text = [IO.File]::ReadAllText($ownContent)
+    if ($text -notmatch 'Shared with us directly') {
+        Fail 'reviews' 'own-content.js no longer badges testimonials "Shared with us directly" — a testimonial the office collected would be indistinguishable from a Google review'
+    }
+    if ($text -match "'Google review'" -or $text -match '"Google review"') {
+        Fail 'reviews' 'own-content.js can emit a "Google review" label — it renders the business''s OWN testimonials and must never claim Google as the source'
+    }
+}
+
+# Nothing in the editable content files may claim Google as its source.
+foreach ($name in @('content\testimonials.json', 'content\photos.json')) {
+    $path = Join-Path $root $name
+    if (-not (Test-Path $path)) { Fail 'reviews' "$name is missing — the 'Our customers, our work' section reads it at runtime"; continue }
+    $text = [IO.File]::ReadAllText($path)
+    if ($text -match '(?i)"source"\s*:\s*"google"') {
+        Fail 'reviews' "$name marks an entry as a Google review. This file is for testimonials the business collected itself; Google's own reviews come from the Business Profile."
+    }
+    try { $null = ConvertFrom-Json $text } catch { Fail 'reviews' "$name is not valid JSON — the section will silently render nothing" }
+}
+
+# schema.js must not emit review markup. Every review on this site is a review
+# of this business on this business's own site, which is what Google's
+# guidelines call self-serving and exclude from rich results.
+$schema = Join-Path $root 'js\schema.js'
+if (Test-Path $schema) {
+    $text = [IO.File]::ReadAllText($schema)
+    if ($text -match "'@type'\s*:\s*'Review'") {
+        Fail 'reviews' 'schema.js emits Review structured data. Self-serving reviews are excluded by Google''s guidelines; marking them up risks a manual action for a star rating that would not be shown anyway.'
+    }
+}
+Write-Host "  review source labelling and structured-data rules intact"
+
+# ---------------------------------------------------------------------------
 # 3. Secrets
 # ---------------------------------------------------------------------------
 Section 'Secrets'

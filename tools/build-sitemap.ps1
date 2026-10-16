@@ -25,7 +25,7 @@
 #>
 
 [CmdletBinding()]
-param([string]$Origin = 'https://movers.pages.dev')
+param([string]$Origin = 'https://akashmovers.com')
 
 $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent

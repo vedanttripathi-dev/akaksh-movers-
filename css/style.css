@@ -92,69 +92,83 @@
    1. DESIGN TOKENS
    =========================================================================== */
 :root {
-  /* --- Brand surfaces: deep navy through slate --------------------------
-     The international relocation palette. Allied, Atlas, Crown, Santa Fe,
-     Graebel, AGS — almost every cross-border mover sits on deep blue, and
-     it is not fashion: blue is the colour the freight and logistics trade
-     has used for trust and distance for fifty years, and customers read it
-     that way without being told.
+  /* --- Brand surfaces: warm charcoal ------------------------------------
+     The dark surface is charcoal rather than black, and warm rather than
+     neutral, so it sits with the beige below instead of fighting it. A
+     pure black next to a cream beige reads as two unrelated palettes.
 
-     The important part is the DEPTH. A saturated mid-blue is what makes a
-     logistics site look like a free template; this is a near-black navy
-     that happens to be blue, so it still behaves like the premium dark
-     surface the layout was designed against. */
-  --ink-900: #05101f;   /* deepest, page background behind the hero        */
-  --ink-800: #0b1b2e;   /* hero / dark section background                  */
-  --ink-700: #12263c;   /* raised dark card                                */
-  --ink-600: #1d3550;   /* dark card hover, hairline on dark               */
-  --ink-500: #2c4762;   /* lightest ink, for hairlines and dividers        */
+     The important part is still the DEPTH. These are near-black values
+     that happen to be warm, so the layout keeps the premium dark surface
+     it was designed against. */
+  --ink-900: #140f0c;   /* deepest, page background behind the hero        */
+  --ink-800: #1f1915;   /* hero / dark section background                  */
+  --ink-700: #2b2420;   /* raised dark card                                */
+  --ink-600: #3c332c;   /* dark card hover, hairline on dark               */
+  --ink-500: #544940;   /* lightest ink, for hairlines and dividers        */
 
   /* --- Light surfaces ---------------------------------------------------
-     Cool, clean paper to match. Kept a long way off pure grey so sections
-     still separate from each other without a border. */
+     White for cards, beige for the page beneath them. The beige is what
+     stops the site reading as a white template: it is the cheapest single
+     change that makes a layout look considered. Kept pale enough that
+     black body text still clears AAA on it. */
   --paper:      #ffffff;
-  --paper-sunk: #f3f7fb;  /* page background for light sections            */
+  --paper-sunk: #f6f1ea;  /* beige page background for light sections      */
   --paper-card: #ffffff;
-  --paper-line: #dce5ee;  /* cool hairline on light                        */
+  --paper-line: #e6dcd0;  /* warm hairline on light                        */
 
   /* --- Text ------------------------------------------------------------- */
-  --text-on-dark:        #eef4fa;
-  --text-on-dark-soft:   #a3b6ca;
-  --text-on-dark-faint:  #71869c;
-  --text-on-light:       #0a1726;
-  --text-on-light-soft:  #42566a;
-  /* Darkened to clear WCAG AA. The lighter grey this replaced measured
-     4.19:1 on white and 3.89:1 on the sunk paper — under the 4.5:1 that
-     normal-size body text needs, everywhere this token is used (map notes,
-     footer notes, form hints). It now measures 5.05:1 and 4.69:1. */
-  --text-on-light-faint: #5c7187;
+  --text-on-dark:        #f7f2ec;
+  --text-on-dark-soft:   #c9bdb2;
+  --text-on-dark-faint:  #9c8f84;
+  --text-on-light:       #1a1512;
+  --text-on-light-soft:  #4c423b;
+  /* Measured, not guessed: 6.28:1 on white and 5.59:1 on the beige. Both
+     clear the 4.5:1 that normal-size body text needs. This token is used
+     for map notes, footer notes and form hints — all of them real copy, so
+     it cannot be treated as decorative. */
+  --text-on-light-faint: #6a5e55;
 
-  /* --- Accent: signal amber ---------------------------------------------
-     The second half of the relocation palette. Navy alone is cold and
-     every call to action disappears into it; the trade pairs it with a
-     warm amber or orange — the colour of a hazard vest, a strap, a
-     container seal — which is why it reads as "this is the thing to press"
-     before anyone has read the label.
+  /* --- Accent: the company's own red -------------------------------------
+     Sampled from the client's own signage rather than chosen. The close-up
+     photograph of the board, which is the one shot in direct light, has a
+     median red of #af0215 across 31,692 sampled pixels; the logo plaque in
+     shade reads #97131e and the sun-washed shopfront #c6595f. #b00020 is
+     the cleaned-up value of the first, and it is what the buttons, rules
+     and icons use.
 
-     --accent is the surface amber, used on fills and on dark backgrounds.
-     --accent-deep is the TEXT amber: darkened specifically so amber-on-white
-     body copy and links clear WCAG AA (4.5:1 — this one measures 5.4:1).
-     Never set link text to --accent on a light background; at 2.1:1 it
-     fails badly. */
-  --accent:        #f5a524;
-  --accent-bright: #ffc15e;
-  --accent-deep:   #9a5b06;
-  --accent-wash:   #fef4e3;   /* pale tint for light backgrounds           */
-  --accent-glow:   rgba(245, 165, 36, 0.32);
-  --on-accent:     #1a1203;   /* text that sits ON an amber fill (9.1:1)   */
+     The three jobs the red has to do need three different values, and this
+     is the part that bites when a palette moves from a light accent to a
+     dark one:
 
-  /* --- Semantic --------------------------------------------------------- */
-  --ok:     #15803d;
-  --ok-bg:  #e9f7ee;
-  --warn:   #a35a06;
-  --warn-bg:#fdf3e4;
-  --err:    #c0272d;
-  --err-bg: #fdeced;
+     --accent        the fill. White on it measures 7.33:1.
+     --accent-hover  the DARKER fill for hover. Red cannot go lighter on
+                     hover the way amber could — a lighter red takes white
+                     text down to 2.8:1 — so it goes deeper instead.
+     --accent-bright the tint for DARK backgrounds. A saturated red on
+                     charcoal measures 2.4:1 and is unreadable, so this is
+                     lifted to a warm coral that holds 6.3:1 there. Use it
+                     only on dark; on white it is far too pale.
+     --accent-deep   the text red for LIGHT backgrounds: 9.7:1 on white.
+                     Never set link text to --accent on white — it fails.  */
+  --accent:        #b00020;
+  --accent-hover:  #8e0018;
+  --accent-bright: #f4756b;
+  --accent-deep:   #8e0018;
+  --accent-wash:   #fbefef;   /* pale blush tint for light backgrounds     */
+  --accent-glow:   rgba(176, 0, 32, 0.30);
+  --on-accent:     #ffffff;   /* text that sits ON a red fill (7.33:1)     */
+
+  /* --- Semantic ---------------------------------------------------------
+     The error red deliberately stays its own colour. It sits next to the
+     brand red often enough that they are hard to tell apart, which is why
+     every error on this site also carries the alert icon and a text
+     message rather than relying on colour alone. */
+  --ok:     #2e7d32;
+  --ok-bg:  #edf7ee;
+  --warn:   #8a5a00;
+  --warn-bg:#fbf3e3;
+  --err:    #b3261e;
+  --err-bg: #fdecea;
 
   /* --- Type -------------------------------------------------------------
      Inter for everything functional: it was drawn for screen UI and stays
@@ -444,8 +458,9 @@ p:last-child { margin-bottom: 0; }
    =========================================================================== */
 .btn {
   --btn-bg: var(--accent);
-  /* Near-black on gold, not white. White on a mid-gold fails contrast and is
-     the detail that makes a gold palette look cheap rather than expensive. */
+  /* White on the brand red, measured at 7.33:1. This is the one place the
+     palette change actually flipped: on the old amber fill the text had to
+     be near-black, and white would have failed. */
   --btn-fg: var(--on-accent);
   --btn-bd: transparent;
   display: inline-flex;
@@ -468,7 +483,9 @@ p:last-child { margin-bottom: 0; }
               box-shadow var(--dur) var(--ease),
               border-color var(--dur) var(--ease);
 }
-.btn:hover { background: var(--accent-bright); color: var(--on-accent); }
+/* Hover goes DARKER, not lighter. --accent-bright is the on-dark tint; using
+   it as a fill here would put white text on a pale coral at 2.8:1. */
+.btn:hover { background: var(--accent-hover); color: var(--on-accent); }
 .btn:active { transform: translateY(1px); }
 
 .btn--primary { box-shadow: 0 2px 10px var(--accent-glow); }
@@ -479,7 +496,7 @@ p:last-child { margin-bottom: 0; }
   --btn-fg: var(--text-on-light);
   --btn-bd: var(--paper-line);
 }
-.btn--ghost:hover { --btn-bg: var(--paper-sunk); color: var(--text-on-light); background: var(--paper-sunk); border-color: #cfd8e4; }
+.btn--ghost:hover { --btn-bg: var(--paper-sunk); color: var(--text-on-light); background: var(--paper-sunk); border-color: #d7c9b8; }
 
 .on-dark .btn--ghost, .btn--ghost-dark {
   /* `--btn-bg: transparent` is load-bearing. Without it this rule sets only
@@ -497,9 +514,13 @@ p:last-child { margin-bottom: 0; }
   border-color: rgba(255, 255, 255, 0.38);
 }
 
-/* WhatsApp green, used only on genuine WhatsApp actions. */
-.btn--wa { --btn-bg: #1faa54; }
-.btn--wa:hover { background: #189347; }
+/* WhatsApp green, used only on genuine WhatsApp actions.
+   Darkened from the bright #1faa54 brand green, which measured 3.03:1
+   against the white label on it and failed AA for 14px text. This is the
+   same hue taken down until white clears 4.5:1 (it measures 5.0:1), which
+   is what most accessible implementations of a WhatsApp button do. */
+.btn--wa { --btn-bg: #17803f; }
+.btn--wa:hover { background: #125f2f; }
 
 .btn--lg { min-height: 56px; padding-inline: var(--s-6); font-size: var(--fs-body); }
 .btn--sm { min-height: 40px; padding-inline: var(--s-4); font-size: var(--fs-xs); }
@@ -538,17 +559,32 @@ p:last-child { margin-bottom: 0; }
 /* ===========================================================================
    6. HEADER AND NAVIGATION
    =========================================================================== */
+/* The header is LIGHT, and that is a consequence of the logo rather than a
+   style preference. The company's mark is black line art on a transparent
+   field — a thin black ellipse, a black ring, and a black truck. On the dark
+   glass bar this used to be, every one of those strokes disappears and all
+   that survives is the white lettering and the white inner field: the logo
+   reads as a pale smear. The alternatives were to sit it on a white plate,
+   which looks like a sticker stuck on the page, or to invert the artwork,
+   which is altering a logo we were asked not to alter. A white bar is the
+   one option that shows the mark as drawn. */
 .header {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(10, 15, 26, 0.72);
+  background: rgba(255, 255, 255, 0.86);
   /* The one place glass is used. Degrades to the solid colour above. */
   -webkit-backdrop-filter: saturate(160%) blur(14px);
   backdrop-filter: saturate(160%) blur(14px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  border-bottom: 1px solid var(--paper-line);
+  transition: background-color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease);
 }
 /* Firms up once the page scrolls. Toggled by main.js. */
-.header.is-stuck { background: rgba(5, 8, 15, 0.92); border-bottom-color: rgba(255, 255, 255, 0.12); }
+.header.is-stuck {
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom-color: var(--paper-line);
+  box-shadow: var(--sh-1);
+}
 
 .header__bar {
   display: flex; align-items: center; gap: var(--s-4);
@@ -557,38 +593,60 @@ p:last-child { margin-bottom: 0; }
 
 .brand {
   display: inline-flex; align-items: center; gap: var(--s-3);
-  color: var(--text-on-dark); text-decoration: none; font-weight: 600;
+  color: var(--text-on-light); text-decoration: none; font-weight: 600;
   letter-spacing: -0.015em; margin-right: auto;
 }
-.brand__mark { width: 34px; height: 34px; flex: none; }
+/* The lockup is a wide oval (1442 x 1028), so it is sized by HEIGHT and the
+   width follows. Fixing both would squash it. */
+.brand__mark { height: 38px; width: auto; flex: none; }
+
+/* In the footer the surface is near-black, so the same problem the white
+   header solves comes back. Here a plate IS the right answer: a logo on a
+   light chip at the foot of a dark page reads as a deliberate badge, which
+   is not true of the same trick in the top bar. */
+.brand--footer .brand__mark {
+  height: 48px;
+  padding: 5px 9px;
+  background: var(--paper);
+  border-radius: var(--r-md);
+}
 .brand__name { font-size: 1.02rem; line-height: 1.1; }
 .brand__sub {
   display: block; font-size: var(--fs-micro); font-weight: 500;
   letter-spacing: var(--track-caps); text-transform: uppercase;
-  color: var(--text-on-dark-faint);
+  color: var(--text-on-light-faint);
 }
 
 .nav { display: none; }
 @media (min-width: 1000px) {
   .nav { display: flex; align-items: center; gap: var(--s-5); }
   .nav a {
-    position: relative; color: var(--text-on-dark-soft); text-decoration: none;
+    position: relative; color: var(--text-on-light-soft); text-decoration: none;
     font-size: var(--fs-sm); font-weight: 500; padding-block: var(--s-2);
     transition: color var(--dur) var(--ease);
   }
-  .nav a:hover, .nav a[aria-current="page"] { color: var(--text-on-dark); }
+  .nav a:hover, .nav a[aria-current="page"] { color: var(--text-on-light); }
   /* Underline grows from the centre on hover. */
   .nav a::after {
     content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
-    background: var(--accent-bright); border-radius: 2px;
+    background: var(--accent); border-radius: 2px;
     transform: scaleX(0); transition: transform var(--dur) var(--ease);
   }
   .nav a:hover::after, .nav a[aria-current="page"]::after { transform: scaleX(1); }
 }
 
 .header__actions { display: flex; align-items: center; gap: var(--s-3); flex: none; }
-.header__actions .btn--ghost-dark { display: none; }
-@media (min-width: 560px) { .header__actions .btn--ghost-dark { display: inline-flex; } }
+/* The call button carries the full number, which is wide. Below 560px there
+   is not room for it next to the brand and the menu toggle, and squeezing it
+   in collapses the brand name to one letter per line. Nothing is lost by
+   hiding it: the same number is in the sticky bar at the foot of the screen
+   on exactly those widths.
+
+   This selector follows the class the markup actually uses. It said
+   `.btn--ghost-dark` until the header turned white, at which point it
+   stopped matching anything and the button reappeared at 320px. */
+.header__actions .btn--ghost { display: none; }
+@media (min-width: 560px) { .header__actions .btn--ghost { display: inline-flex; } }
 
 /* Very narrow phones (360px and below is still common in India).
    At that width the brand, the quote button and the menu toggle together
@@ -609,26 +667,32 @@ p:last-child { margin-bottom: 0; }
 .nav-toggle {
   display: inline-flex; align-items: center; justify-content: center;
   width: 44px; height: 44px; flex: none;
-  background: transparent; border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--r-md); color: var(--text-on-dark);
+  background: transparent; border: 1px solid var(--paper-line);
+  border-radius: var(--r-md); color: var(--text-on-light);
 }
 @media (min-width: 1000px) { .nav-toggle { display: none; } }
 
-/* Mobile drawer. Height animates via max-height so nothing jumps. */
+/* Mobile drawer. Height animates via max-height so nothing jumps.
+   It opens INSIDE the header, so it inherits the white bar. */
 .nav-drawer {
   display: grid; overflow: hidden;
   max-height: 0;
+  background: var(--paper);
   transition: max-height var(--dur-slow) var(--ease);
   border-top: 1px solid transparent;
 }
-.nav-drawer.is-open { max-height: 70vh; overflow-y: auto; border-top-color: rgba(255, 255, 255, 0.1); }
+.nav-drawer.is-open { max-height: 70vh; overflow-y: auto; border-top-color: var(--paper-line); }
 .nav-drawer__inner { padding: var(--s-4) 0 var(--s-6); }
-.nav-drawer a {
-  display: block; padding: var(--s-3) 0; color: var(--text-on-dark-soft);
+/* `:not(.btn)` is load-bearing. `.nav-drawer a` is more specific than
+   `.btn`, so without it this rule repaints the "Request a callback" button
+   inside the drawer: dark body text on the solid red fill, at 1.33:1. The
+   same trap caught `.on-dark a` earlier in this stylesheet. */
+.nav-drawer a:not(.btn) {
+  display: block; padding: var(--s-3) 0; color: var(--text-on-light-soft);
   text-decoration: none; font-weight: 500;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid var(--paper-line);
 }
-.nav-drawer a:hover { color: var(--text-on-dark); }
+.nav-drawer a:not(.btn):hover { color: var(--text-on-light); }
 .nav-drawer .btn { margin-top: var(--s-4); }
 @media (min-width: 1000px) { .nav-drawer { display: none; } }
 
@@ -649,7 +713,7 @@ p:last-child { margin-bottom: 0; }
   content: "";
   position: absolute; inset: 0; z-index: -2;
   background:
-    radial-gradient(110% 80% at 72% 12%, #143050 0%, #0a1c30 52%, #05101f 100%);
+    radial-gradient(110% 80% at 72% 12%, #4a2f28 0%, #281f1a 52%, #140f0c 100%);
 }
 /* A very faint grid, for structure rather than decoration. */
 .hero::after {
@@ -731,54 +795,65 @@ p:last-child { margin-bottom: 0; }
 }
 .hero__points .ic { color: var(--accent-bright); }
 
-/* --- The 3D stage ----------------------------------------------------------
-   The canvas sits in its own grid cell on desktop, so it can never overlap
-   the headline or the CTAs. On phones it sits above the copy at a fixed
-   aspect ratio. Height is reserved up front, so adding the canvas causes
-   no layout shift (CLS). */
+/* The same row of commitments, for a LIGHT section. `.hero__points` sets
+   its colours for the dark hero; dropping that class onto a white panel put
+   #c9bdb2 text on white at 1.64:1, which is invisible rather than subtle. */
+.point-list {
+  display: flex; flex-wrap: wrap; gap: var(--s-3) var(--s-5);
+  padding: 0; margin: 0; list-style: none;
+}
+.point-list li {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  font-size: var(--fs-sm); color: var(--text-on-light-soft);
+}
+.point-list .ic { color: var(--accent-deep); }
+
+/* --- The hero photograph ---------------------------------------------------
+   This cell used to hold a WebGL canvas with a generic 3D truck in it. The
+   truck belonged to no one; it cost 813 KB of Three.js and three loaders to
+   render, and a visitor deciding whether to trust a mover learned nothing
+   from it. It is now a photograph of the company's own shopfront, which is
+   both a fraction of the weight and the thing a customer actually wants to
+   see: that there is a real office, with a real sign, at a real address.
+
+   The aspect ratio is declared so the space is reserved before the image
+   arrives and nothing shifts underneath it (CLS). */
 .hero__stage {
   position: relative;
+  /* `margin: 0` is load-bearing. This is a <figure>, and the browser default
+     for one is `margin: 1em 40px`. With it left in, the stage sat 40px to
+     the right of its grid cell and the hero's `overflow: hidden` quietly
+     clipped the far edge of the photograph — visible only as a slightly
+     cropped image, with no horizontal scrollbar to give it away. */
+  margin: 0;
   aspect-ratio: 16 / 11;
   width: 100%;
   border-radius: var(--r-xl);
   overflow: hidden;
-  /* Visible while WebGL boots, and the permanent backdrop behind the model. */
-  /* A touch lighter at the centre than the hero behind it, so the stage
-     reads as a lit space and the dark vehicle has something to sit against. */
-  background: radial-gradient(85% 75% at 50% 52%, #17354f 0%, #0b1d31 62%, #061320 100%);
+  background: var(--ink-700);
+  box-shadow: var(--sh-dark);
 }
 @media (min-width: 980px) {
   .hero__stage { aspect-ratio: 4 / 3; }
 }
 
-.hero__stage canvas { width: 100% !important; height: 100% !important; }
-
-/* The still image shown instead of 3D on low-power devices, when WebGL is
-   unavailable, or when the visitor asks for reduced motion. */
-.hero__fallback {
+.hero__photo {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
 }
-/* Hidden once the 3D scene reports it is running. */
-.hero__stage.is-3d .hero__fallback { opacity: 0; pointer-events: none; transition: opacity var(--dur-cine) var(--ease); }
 
-/* Floor reflection under the truck, drawn in CSS so the GPU does less. */
-.hero__stage::after {
-  content: "";
-  position: absolute; left: 8%; right: 8%; bottom: 8%; height: 14%;
-  background: radial-gradient(60% 100% at 50% 0%, rgba(245,165,36,0.20), transparent 72%);
-  pointer-events: none;
+/* A short caption strip over the foot of the photograph, saying what is in
+   it. The gradient keeps the text legible whatever the photo does behind it. */
+.hero__caption {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  margin: 0;
+  padding: var(--s-7) var(--s-4) var(--s-3);
+  font-size: var(--fs-xs);
+  line-height: 1.4;
+  color: #fff;
+  background: linear-gradient(to top, rgba(10, 7, 5, 0.86) 0%, rgba(10, 7, 5, 0.6) 45%, transparent 100%);
 }
-
-/* Loading shimmer while the 3D module streams in. */
-.stage-loading {
-  position: absolute; inset: auto 0 var(--s-4) 0;
-  display: flex; align-items: center; justify-content: center; gap: var(--s-2);
-  font-size: var(--fs-micro); letter-spacing: var(--track-caps);
-  text-transform: uppercase; color: var(--text-on-dark-faint);
-}
-.hero__stage.is-3d .stage-loading, .hero__stage.is-static .stage-loading { display: none; }
 
 /* Scroll cue. */
 .hero__cue {
@@ -1081,12 +1156,12 @@ p:last-child { margin-bottom: 0; }
   border-color: var(--accent-bright);
   color: var(--on-accent);
   transform: scale(1.12);
-  box-shadow: 0 0 0 5px rgba(245, 165, 36, 0.16), 0 6px 18px rgba(245, 165, 36, 0.3);
+  box-shadow: 0 0 0 5px rgba(176, 0, 32, 0.22), 0 6px 18px rgba(176, 0, 32, 0.38);
   animation: badgePulse 2.6s var(--ease) infinite;
 }
 @keyframes badgePulse {
-  0%, 100% { box-shadow: 0 0 0 5px rgba(245,165,36,0.16), 0 6px 18px rgba(245,165,36,0.30); }
-  50%      { box-shadow: 0 0 0 9px rgba(245,165,36,0.05), 0 6px 22px rgba(245,165,36,0.42); }
+  0%, 100% { box-shadow: 0 0 0 5px rgba(176, 0, 32, 0.22), 0 6px 18px rgba(176, 0, 32, 0.38); }
+  50%      { box-shadow: 0 0 0 9px rgba(176, 0, 32, 0.07), 0 6px 22px rgba(176, 0, 32, 0.50); }
 }
 
 .stage h3 { margin-bottom: var(--s-2); transition: color var(--dur) var(--ease); }
@@ -1100,7 +1175,9 @@ p:last-child { margin-bottom: 0; }
   transform: translateX(-4px);
   transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
 }
-.stage__list li::marker { color: var(--accent); }
+/* --accent-bright, not --accent: these markers sit on the dark journey
+   panel, where the solid brand red measures 2.4:1 and disappears. */
+.stage__list li::marker { color: var(--accent-bright); }
 /* The detail points fade in one after another once the stage is reached. */
 .stage.is-active .stage__list li { opacity: 1; transform: none; }
 .stage.is-active .stage__list li:nth-child(2) { transition-delay: 90ms; }
@@ -1243,12 +1320,171 @@ p:last-child { margin-bottom: 0; }
 
 .demo-banner {
   display: flex; align-items: flex-start; gap: var(--s-3);
-  background: var(--warn-bg); border: 1px solid #f4ddb0;
+  background: var(--warn-bg); border: 1px solid #f0dcb6;
   border-radius: var(--r-md); padding: var(--s-4);
   font-size: var(--fs-sm); color: var(--warn);
   margin-bottom: var(--s-5);
 }
 .demo-banner .ic { flex: none; margin-top: 2px; }
+
+
+/* ===========================================================================
+   11b. OUR CUSTOMERS, OUR WORK
+   ---------------------------------------------------------------------------
+   The business's own testimonials and job photographs. Kept visually
+   distinct from the Google cards above: those are somebody else's platform,
+   these are the company's own material, and a visitor is entitled to see
+   which is which at a glance.
+   =========================================================================== */
+
+.quote--own { gap: var(--s-3); border-left: 3px solid var(--accent); }
+
+/* The source badge. Not decoration, and not optional — it is the thing that
+   stops a testimonial the office collected being mistaken for a Google
+   review. js/own-content.js always renders it. */
+.quote__source-tag {
+  align-self: flex-start;
+  margin-top: var(--s-2);
+  padding: 2px var(--s-2);
+  border-radius: var(--r-sm);
+  background: var(--accent-wash);
+  color: var(--accent-deep);
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Job photographs. `auto-fill` rather than a fixed column count, so one
+   photo does not stretch across the whole page and twelve do not shrink to
+   postage stamps. */
+.workshots {
+  display: grid;
+  gap: var(--s-4);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+}
+.workshot {
+  margin: 0;
+  background: var(--paper-card);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--sh-1);
+}
+.workshot__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--paper-sunk);
+}
+.workshot__cap {
+  padding: var(--s-3) var(--s-4);
+  font-size: var(--fs-sm);
+  color: var(--text-on-light-soft);
+}
+
+
+/* ===========================================================================
+   11c. REVIEW POPUP
+   ---------------------------------------------------------------------------
+   One genuine review, bottom LEFT. The side matters: the floating WhatsApp
+   button is bottom right and the sticky call bar is along the bottom on
+   phones. A card over either of those costs the business the enquiry it was
+   supposed to encourage.
+   =========================================================================== */
+.review-pop {
+  position: fixed;
+  left: var(--s-4);
+  bottom: var(--s-4);
+  z-index: 90;
+  width: min(330px, calc(100vw - 2 * var(--s-4)));
+  padding: var(--s-4) var(--s-5) var(--s-4) var(--s-4);
+  background: var(--paper-card);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-3);
+
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease-out);
+}
+.review-pop.is-in { opacity: 1; transform: none; }
+
+/* On phones the sticky contact bar owns the bottom of the screen, so the
+   card is lifted clear of it rather than overlapping. */
+@media (max-width: 720px) {
+  .review-pop { bottom: calc(var(--s-4) + 64px); }
+}
+
+.review-pop__close {
+  position: absolute; top: 6px; right: 6px;
+  display: grid; place-items: center;
+  width: 32px; height: 32px;
+  background: transparent; border: 0; border-radius: var(--r-sm);
+  color: var(--text-on-light-faint);
+  cursor: pointer;
+}
+.review-pop__close:hover { background: var(--paper-sunk); color: var(--text-on-light); }
+.review-pop__close .ic { width: 1rem; height: 1rem; }
+
+.stars--sm { font-size: 0.85rem; }
+
+.review-pop__text {
+  margin: var(--s-2) 0 var(--s-3);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  color: var(--text-on-light);
+}
+.review-pop__who { display: flex; align-items: baseline; gap: var(--s-2); margin: 0; flex-wrap: wrap; }
+.review-pop__name { font-size: var(--fs-xs); font-weight: 600; }
+.review-pop__src { font-size: var(--fs-micro); color: var(--text-on-light-faint); }
+.review-pop__link {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  margin-top: var(--s-3);
+  font-size: var(--fs-xs); font-weight: 600;
+  color: var(--accent-deep); text-decoration: none;
+}
+.review-pop__link:hover { text-decoration: underline; }
+.review-pop__link .ic { width: 1em; height: 1em; }
+
+
+/* ===========================================================================
+   11d. INLINE CALLBACK CARD
+   ---------------------------------------------------------------------------
+   The same form as the dialog, mounted in the page flow on the homepage.
+   Built by js/callback-form.js.
+   =========================================================================== */
+.callback-card {
+  background: var(--paper-card);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-2);
+  padding: var(--s-5);
+}
+@media (min-width: 560px) { .callback-card { padding: var(--s-6); } }
+
+.callback-card .field:last-of-type { margin-bottom: var(--s-5); }
+.callback-card .form-note { margin-top: var(--s-3); }
+
+
+/* The shopfront board on the contact page, above the map. */
+.board-shot {
+  /* A <figure> carries `margin: 1em 40px` by default; that 40px pushed the
+     hero photo out of its own grid cell before it was caught. */
+  margin: 0 0 var(--s-6);
+  max-width: 32rem;
+  background: var(--paper-card);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--sh-1);
+}
+.board-shot img { display: block; width: 100%; height: auto; }
+.board-shot figcaption {
+  padding: var(--s-3) var(--s-4);
+  font-size: var(--fs-sm);
+  color: var(--text-on-light-soft);
+}
 
 
 /* ===========================================================================
@@ -1406,6 +1642,10 @@ p:last-child { margin-bottom: 0; }
 }
 @media (min-width: 720px) { .modal__panel { border-radius: var(--r-xl); max-height: 88vh; } }
 
+/* The callback dialog is four fields. 640px made it look like a form with
+   something missing. */
+.modal__panel--compact { max-width: 480px; }
+
 .modal__head {
   display: grid; gap: var(--s-3);
   padding: var(--s-5) var(--s-5) var(--s-4);
@@ -1421,13 +1661,11 @@ p:last-child { margin-bottom: 0; }
   background: var(--paper-sunk); border: 1px solid var(--paper-line);
   border-radius: var(--r-md); color: var(--text-on-light-soft);
 }
-.modal__close:hover { background: #eef2f7; color: var(--text-on-light); }
+.modal__close:hover { background: var(--paper-sunk); color: var(--text-on-light); }
 
-/* Step meter. */
-.steps-meter { display: flex; align-items: center; gap: var(--s-2); }
-.steps-meter__seg { flex: 1; height: 4px; border-radius: 2px; background: var(--paper-line); overflow: hidden; }
-.steps-meter__seg.is-done, .steps-meter__seg.is-current { background: var(--accent); }
-.steps-meter__label { font-size: var(--fs-micro); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-on-light-faint); white-space: nowrap; }
+/* The step meter and the review table that used to live here went with the
+   five-step estimate form. The callback form has one step and four fields,
+   so there is no progress to report and nothing to review before sending. */
 
 .modal__body { padding: var(--s-5); overflow-y: auto; -webkit-overflow-scrolling: touch; }
 .modal__foot {
@@ -1436,19 +1674,15 @@ p:last-child { margin-bottom: 0; }
   border-top: 1px solid var(--paper-line);
   background: var(--paper-sunk);
 }
-.modal__foot .btn:last-child { margin-left: auto; }
+
+/* One full-width button with the response-time line beneath it. */
+.modal__foot--stack { display: grid; gap: var(--s-2); }
+.modal__foot--stack .form-note { margin: 0; }
 
 .fstep { display: grid; gap: var(--s-5); }
 .fstep[hidden] { display: none; }
 .fstep__pair { display: grid; gap: var(--s-4); }
 @media (min-width: 560px) { .fstep__pair { grid-template-columns: 1fr 1fr; } }
-
-/* Review table on the last step. */
-.review { display: grid; gap: 0; font-size: var(--fs-sm); }
-.review__row { display: grid; grid-template-columns: 11rem 1fr; gap: var(--s-4); padding-block: var(--s-3); border-bottom: 1px solid var(--paper-line); }
-.review__row dt { color: var(--text-on-light-faint); margin: 0; }
-.review__row dd { margin: 0; font-weight: 500; }
-@media (max-width: 520px) { .review__row { grid-template-columns: 1fr; gap: 2px; } }
 
 /* Submission states. */
 .form-state { display: grid; gap: var(--s-4); place-items: center; text-align: center; padding-block: var(--s-6); }
@@ -1578,14 +1812,16 @@ p:last-child { margin-bottom: 0; }
   display: none;
   align-items: center; gap: var(--s-3);
   min-height: 52px; padding: 0 var(--s-5);
-  background: #1faa54; color: #fff;
+  /* Same darkened green as `.btn--wa` — the bright brand green put this
+     label at 3.03:1 against its own background. */
+  background: #17803f; color: #fff;
   border-radius: var(--r-pill);
-  box-shadow: 0 6px 20px rgba(31, 170, 84, 0.34);
+  box-shadow: 0 6px 20px rgba(23, 128, 63, 0.34);
   font-size: var(--fs-sm); font-weight: 600; text-decoration: none;
   transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 @media (min-width: 860px) { .wa-float { display: inline-flex; } }
-.wa-float:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(31, 170, 84, 0.42); color: #fff; }
+.wa-float:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(23, 128, 63, 0.42); color: #fff; }
 
 
 /* ===========================================================================
@@ -1670,7 +1906,7 @@ body.has-contact-bar .scroll-rail { bottom: calc(54px + var(--s-4)); }
    =========================================================================== */
 .crumbs { padding-block: var(--s-4); font-size: var(--fs-xs); color: var(--text-on-light-faint); }
 .crumbs ol { display: flex; flex-wrap: wrap; gap: var(--s-2); list-style: none; padding: 0; margin: 0; }
-.crumbs li:not(:last-child)::after { content: "/"; margin-left: var(--s-2); color: #c0cad8; }
+.crumbs li:not(:last-child)::after { content: "/"; margin-left: var(--s-2); color: #c4b6a6; }
 .crumbs a { color: var(--text-on-light-soft); text-decoration: none; }
 .crumbs a:hover { color: var(--accent-deep); text-decoration: underline; }
 .crumbs [aria-current="page"] { color: var(--text-on-light); font-weight: 500; }
@@ -1692,19 +1928,19 @@ body.has-contact-bar .scroll-rail { bottom: calc(54px + var(--s-4)); }
   isolation: isolate;
   background: var(--ink-900);
   color: var(--text-on-dark);
-  border-top: 1px solid rgba(245, 165, 36, 0.22);
-  border-bottom: 1px solid rgba(245, 165, 36, 0.22);
+  border-top: 1px solid rgba(244, 117, 107, 0.26);
+  border-bottom: 1px solid rgba(244, 117, 107, 0.26);
   overflow: hidden;
 }
 .cta-band::before {
   content: "";
   position: absolute; inset: 0; z-index: -1;
-  background: radial-gradient(60% 120% at 50% 0%, rgba(245, 165, 36, 0.16), transparent 70%);
+  background: radial-gradient(60% 120% at 50% 0%, rgba(176, 0, 32, 0.30), transparent 70%);
 }
 .cta-band h2 { color: var(--text-on-dark); }
 .cta-band .lead, .cta-band p { color: var(--text-on-dark-soft); }
 .cta-band .btn--primary { --btn-bg: var(--accent); --btn-fg: var(--on-accent); }
-.cta-band .btn--primary:hover { background: var(--accent-bright); color: var(--on-accent); }
+.cta-band .btn--primary:hover { background: var(--accent-hover); color: var(--on-accent); }
 .cta-band .btn--ghost { --btn-fg: var(--text-on-dark); --btn-bd: rgba(255,255,255,0.26); }
 .cta-band .btn--ghost:hover { background: rgba(255,255,255,0.08); color: var(--text-on-dark); border-color: rgba(255,255,255,0.45); }
 

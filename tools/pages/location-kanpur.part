@@ -1,6 +1,6 @@
 SLUG: locations/kanpur.html
 TITLE: Packers & Movers in Kanpur — home & office shifting
-DESC: Shifting within Kanpur and out of it, run from our own office in Arya Nagar. The localities we cover, what Kanpur buildings and lanes actually require, and how a move here is priced.
+DESC: Shifting within Kanpur and out of it, run from our own office on Swaroop Nagar. The localities we cover, what Kanpur buildings and lanes actually require, and how a move here is priced.
 HEADING: Packers &amp; movers in Kanpur
 LEAD: This is the city we are based in, not one we cover from somewhere else. The survey, the crew and the coordinator are all local.
 CRUMBS: Home|/ ; Areas we cover|/locations.html ; Kanpur|
@@ -32,7 +32,7 @@ CRUMBS: Home|/ ; Areas we cover|/locations.html ; Kanpur|
           </p>
 
           <div class="btn-row mt-6">
-            <a class="btn btn--primary" href="/contact.html" data-open-quote>Get a Kanpur quote</a>
+            <a class="btn btn--primary" href="/contact.html" data-open-callback>Get a Kanpur quote</a>
             <a class="btn btn--ghost" href="/services.html">All services</a>
           </div>
         </div>
@@ -183,7 +183,7 @@ CRUMBS: Home|/ ; Areas we cover|/locations.html ; Kanpur|
               <summary>Do you cover the whole of Kanpur?</summary>
               <div class="faq__body"><p>
                 Yes — the city and its immediate outskirts, on both sides of
-                the canal. Our office is in Arya Nagar, so nothing in Kanpur is
+                the canal. Our office is on Swaroop Nagar, so nothing in Kanpur is
                 far enough away to need a different crew. The areas listed
                 above are the ones we work in most; if yours is not named, ask
                 rather than assuming.
@@ -233,8 +233,7 @@ CRUMBS: Home|/ ; Areas we cover|/locations.html ; Kanpur|
             <details>
               <summary>Where exactly is your office?</summary>
               <div class="faq__body"><p>
-                8/102, Allenganj, Arya Nagar, near Khalasi Line, Kanpur
-                208002. You are welcome to come and talk it through in person
+                113/186, Swaroop Nagar, Kanpur 208002. You are welcome to come and talk it through in person
                 before booking anything.
                 <a href="/contact.html">Contact details and hours</a>.
               </p></div>
@@ -253,7 +252,7 @@ CRUMBS: Home|/ ; Areas we cover|/locations.html ; Kanpur|
         <span class="eyebrow">Find us</span>
         <h2>Our office in Kanpur</h2>
         <p class="lead">
-          8/102, Allenganj, Arya Nagar, near Khalasi Line, Kanpur 208002.
+          113/186, Swaroop Nagar, Kanpur 208002.
           Come in and talk a move through — it is usually a more useful twenty
           minutes than any amount of reading a website.
         </p>
@@ -280,7 +279,7 @@ CRUMBS: Home|/ ; Areas we cover|/locations.html ; Kanpur|
           come back with an itemised written quote.
         </p>
         <div class="btn-row mt-6 btn-row--centre">
-          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-callback>Request a callback</a>
           <a class="btn btn--ghost btn--lg" href="/faq.html">Read the FAQ</a>
         </div>
       </div>

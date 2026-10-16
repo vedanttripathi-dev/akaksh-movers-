@@ -25,20 +25,29 @@ CRUMBS: Home|/ ; Privacy|
 
         <h2>What we collect</h2>
         <p>
-          We collect personal information in one place only: the moving
-          estimate form. Nothing on this site tracks you around the web, and
-          there are no advertising cookies.
+          We collect personal information in one place only: the callback
+          form. Nothing on this site tracks you around the web, and there are
+          no advertising cookies.
         </p>
-        <p>When you submit the form, we receive the fields you filled in:</p>
+        <p>The form asks for four things, two of them optional:</p>
         <ul>
-          <li>Your name, mobile number, and WhatsApp number</li>
-          <li>Your email address, if you chose to give one</li>
-          <li>The cities, localities and PIN codes you are moving between</li>
-          <li>Your property type, approximate move date, and the services you need</li>
-          <li>Access details — floor numbers, lift availability, large or fragile items</li>
-          <li>Any notes you wrote, and your preferred way to be contacted</li>
-          <li>Whether you consented to being contacted, and separately, to marketing</li>
+          <li>Your name</li>
+          <li>Your mobile number</li>
+          <li>Where you are moving from, if you choose to tell us</li>
+          <li>Where you are moving to, if you choose to tell us</li>
         </ul>
+        <p>
+          We also record that you ticked the consent box, the page you were on
+          when you sent it, and the time it arrived.
+        </p>
+        <p>
+          That is deliberately short. The form used to ask for an email
+          address, a WhatsApp number, PIN codes, property type, move date,
+          floor numbers, lift availability and free-text notes. It no longer
+          does: everything beyond a name and a number is a question for the
+          phone call, and information that is never collected cannot be lost,
+          leaked or misused.
+        </p>
 
         <h2>What we deliberately do not collect</h2>
         <p>
@@ -61,8 +70,9 @@ CRUMBS: Home|/ ; Privacy|
           at any time using the contact details below.
         </p>
         <p>
-          Marketing consent is separate, optional, and never pre-ticked. If
-          you did not tick it, you will not be added to any promotional list.
+          There is no marketing opt-in on the form, and no promotional list.
+          The only consent we ask for is consent to contact you about the
+          enquiry you sent.
         </p>
 
         <h2>Who it is shared with</h2>
@@ -93,7 +103,7 @@ CRUMBS: Home|/ ; Privacy|
           <li>Tell you what we hold about you</li>
           <li>Correct anything that is wrong</li>
           <li>Delete your enquiry entirely</li>
-          <li>Stop contacting you, for marketing or at all</li>
+          <li>Stop contacting you</li>
         </ul>
         <p>
           Use the contact details on our <a href="/contact.html">contact page</a>.

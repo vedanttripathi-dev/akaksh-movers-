@@ -1,0 +1,47 @@
+{
+  "_readme": [
+    "TESTIMONIALS THE BUSINESS COLLECTED ITSELF.",
+    "",
+    "These are NOT Google reviews. They appear under 'Our customers, our work'",
+    "and every card is badged 'Shared with us directly'. Google's own reviews",
+    "come from the Business Profile and are shown in a separate section.",
+    "",
+    "HOW TO ADD ONE",
+    "  1. Copy the block in \"example\" below into the \"testimonials\" list.",
+    "  2. Fill it in with the customer's ACTUAL words. Do not tidy them up,",
+    "     do not translate them, do not shorten them to the flattering half.",
+    "  3. Set \"published\" to true. Anything without it stays off the site.",
+    "  4. Commit the file. The change is live as soon as it deploys.",
+    "",
+    "BEFORE YOU PUBLISH ONE, YOU NEED THE CUSTOMER'S PERMISSION.",
+    "A WhatsApp message saying 'yes, you can put this on your website' is",
+    "enough, and it is worth keeping. Publishing someone's name and words",
+    "without asking is the kind of thing that only goes wrong once.",
+    "",
+    "DO NOT write a testimonial for a customer, however true you believe it",
+    "to be. An invented testimonial under a real person's name is a problem",
+    "no amount of extra traffic is worth.",
+    "",
+    "FIELDS",
+    "  name       as the customer is happy to be named. 'Rohit S.' is fine.",
+    "  text       their words, unedited.",
+    "  rating     1-5, optional. Leave it out if they did not give one.",
+    "  date       'YYYY-MM', optional. Shown as 'March 2026'.",
+    "  area       optional, e.g. 'Swaroop Nagar to Lucknow'.",
+    "  published  true to show it. Set false to take it down without deleting.",
+    "",
+    "The \"example\" block below is ignored by the website. It is only here so",
+    "there is something to copy."
+  ],
+
+  "example": {
+    "name": "",
+    "text": "",
+    "rating": 5,
+    "date": "2026-01",
+    "area": "",
+    "published": false
+  },
+
+  "testimonials": []
+}

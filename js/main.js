@@ -7,24 +7,22 @@
      2. Render the lists that come from configuration (services, areas,
         testimonials, footer links) so they can never drift from the schema.
      3. Header, mobile navigation, scroll reveals.
-     4. Hand off to the optional feature modules — quote form, scroll
-        journey, 3D hero — each loaded only when it is needed.
+     4. Hand off to the optional feature modules — callback form, scroll
+        journey, reviews, own content — each loaded only when it is needed.
      5. Inject the structured data.
 
    LOADING STRATEGY
    ----------------
    This file is an ES module, so it is deferred and never blocks the first
-   paint. The two heavy modules are deliberately NOT imported at the top:
+   paint. The optional modules are deliberately NOT imported at the top:
 
-     journey.js  waits for GSAP and is skipped entirely on reduced-motion.
-     truck3d.js  pulls in Three.js (~670 KB) and is only imported after the
-                 page has loaded AND the device has passed a capability
-                 check, so a mid-range phone on a 3G connection never
-                 downloads it.
+     journey.js       waits for GSAP and is skipped on reduced-motion.
+     lead-form.js     only on a page with a CTA that opens the form.
+     reviews.js       makes a network call; nothing above the fold needs it.
+     own-content.js   same, for the business's own photos and testimonials.
 
-   This is what keeps Largest Contentful Paint independent of the 3D scene:
-   the hero's LCP element is the headline and the poster image, both of which
-   are plain HTML.
+   Largest Contentful Paint is the hero headline and the office photograph,
+   both plain HTML, so none of the above can delay it.
    ========================================================================== */
 
 import {
@@ -120,6 +118,37 @@ function applyContactLinks() {
       reveal(node);
     });
   }
+
+  renderSecondaryContacts(reveal);
+}
+
+/**
+ * Additional names and numbers from `contact.secondaryContacts`.
+ *
+ * These are printed as plain tel: links next to the proprietor's number, not
+ * instead of it — the first number stays the one every button on the site
+ * dials. When the list is empty the whole row stays hidden rather than
+ * printing an "Also" label with nothing after it.
+ */
+function renderSecondaryContacts(reveal) {
+  const host = q('[data-second-contacts]');
+  if (!host) return;
+
+  const people = (SITE_CONFIG.contact.secondaryContacts || [])
+    .filter((p) => p && isSet(p.name) && isSet(p.phoneDial) && isSet(p.phoneDisplay));
+  if (!people.length) return;
+
+  const nodes = [];
+  people.forEach((person, index) => {
+    if (index) nodes.push(document.createTextNode(' · '));
+    nodes.push(el('a', {
+      href: 'tel:' + person.phoneDial.replace(/[^\d+]/g, ''),
+      text: person.name + ' — ' + person.phoneDisplay,
+    }));
+  });
+
+  fill(host, nodes);
+  reveal(host);
 }
 
 /** Social icons in the footer. Unset profiles are simply absent. */
@@ -625,77 +654,17 @@ function initStickyContact() {
    4. OPTIONAL FEATURE MODULES
    ========================================================================== */
 
-/**
- * Can this device run the 3D hero comfortably?
- *
- * The answer is no far more often than a desktop developer expects, and
- * getting it wrong means a janky hero on exactly the mid-range Android
- * phones most of this site's visitors will use. When in doubt, say no — the
- * poster image is a perfectly good hero.
- */
-function can3D() {
-  if (!SITE_CONFIG.features.hero3D) return false;
-  if (prefersReducedMotion()) return false;
-
-  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-  if (connection) {
-    // An explicit request to save data is honoured without argument.
-    if (connection.saveData) return false;
-
-    // Only genuinely unusable connections are blocked.
-    //
-    // It is tempting to add '3g' here, and that was the first version of
-    // this check — but measuring it showed the cost. `effectiveType` is a
-    // rolling estimate of round-trip time, not a description of the
-    // hardware, and it reports '3g' on plenty of capable desktop machines
-    // (this was observed during testing on a 16 GB, 8-core desktop with a
-    // discrete GPU on a working connection). Blocking on '3g' therefore
-    // denies the 3D hero to a large share of perfectly capable visitors.
-    //
-    // It is also unnecessary. Three.js is imported only after the `load`
-    // event, during idle time, so a slow download delays the 3D scene and
-    // nothing else — Largest Contentful Paint is the headline and the
-    // poster image, both plain HTML that have already rendered.
-    if (/^(slow-2g|2g)$/.test(connection.effectiveType || '')) return false;
-  }
-
-  // Chrome-only hints. Absent on Safari and Firefox, so a missing value is
-  // never treated as a failure.
-  if (typeof navigator.deviceMemory === 'number' && navigator.deviceMemory < 4) return false;
-  if (typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency < 4) return false;
-
-  // Finally, is WebGL actually available? A context is created and thrown
-  // away: cheaper than discovering the failure after loading Three.js.
-  try {
-    const canvas = document.createElement('canvas');
-    const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
-    if (!gl) return false;
-    // Software renderers report themselves; they cannot keep a frame budget.
-    const info = gl.getExtension('WEBGL_debug_renderer_info');
-    if (info) {
-      const renderer = String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL) || '');
-      if (/swiftshader|software|basic render/i.test(renderer)) return false;
-    }
-    gl.getExtension('WEBGL_lose_context')?.loseContext();
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-/** Run a callback when the browser is next idle, with a timeout fallback. */
-function whenIdle(callback, timeout = 2500) {
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(callback, { timeout });
-  } else {
-    setTimeout(callback, 400);
-  }
-}
+/* The WebGL capability test that used to live here has gone with the 3D
+   hero. It decided whether a device could run a Three.js scene; there is no
+   Three.js scene any more, so the test, the module and the 813 KB of
+   vendored library behind it were all removed together. The hero is a
+   photograph of the company's own office. */
 
 function initFeatureModules() {
-  // --- Quote form. Loaded wherever a CTA exists; the dialog markup itself
-  //     is built by quote-modal.js rather than repeated in every page. ---
-  if (q('[data-open-quote]')) {
+  /* --- Callback form. Loaded wherever a CTA can open it, or wherever the
+         inline card is mounted. The markup for both shapes is built by
+         callback-form.js rather than repeated in every page. --- */
+  if (q('[data-open-callback]') || q('[data-callback-form]')) {
     import('./lead-form.js')
       .then((module) => module.initLeadForm())
       .catch((error) => console.error('[lead-form] failed to load', error));
@@ -725,24 +694,14 @@ function initFeatureModules() {
     else window.addEventListener('load', start, { once: true });
   }
 
-  // --- 3D hero. Last, lowest priority, and only when the device can take it. ---
-  const stage = q('#heroStage');
-  if (stage) {
-    if (!can3D()) {
-      // Settle on the poster permanently and stop the "preparing" label.
-      stage.classList.add('is-static');
-    } else {
-      window.addEventListener('load', () => {
-        whenIdle(() => {
-          import('./truck3d.js')
-            .then((module) => module.initTruck3D(stage))
-            .catch((error) => {
-              console.warn('[truck3d] not started, keeping the poster image', error);
-              stage.classList.add('is-static');
-            });
-        });
-      }, { once: true });
-    }
+  /* --- The business's own testimonials and job photographs. Separate from
+         the Google reviews above, loaded from /content/*.json so that adding
+         one does not mean editing JavaScript. Hides itself when both files
+         are empty or missing. --- */
+  if (q('[data-own-content]')) {
+    import('./own-content.js')
+      .then((module) => module.initOwnContent())
+      .catch((error) => console.warn('[own-content] failed to load', error));
   }
 }
 

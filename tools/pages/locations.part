@@ -42,7 +42,7 @@ CRUMBS: Home|/ ; Service areas|
             booking and subcontracting it to whoever is available.
           </p>
           <div class="btn-row mt-6">
-            <a class="btn btn--primary" href="/contact.html" data-open-quote>Ask about your route</a>
+            <a class="btn btn--primary" href="/contact.html" data-open-callback>Ask about your route</a>
           </div>
         </div>
 
@@ -71,7 +71,7 @@ CRUMBS: Home|/ ; Service areas|
         <h2>Tell us where you are moving</h2>
         <p class="lead">We will confirm whether we cover the route, and what it involves.</p>
         <div class="btn-row mt-6 btn-row--centre">
-          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-quote>Get free moving estimate</a>
+          <a class="btn btn--primary btn--lg" href="/contact.html" data-open-callback>Request a callback</a>
         </div>
       </div>
     </div>

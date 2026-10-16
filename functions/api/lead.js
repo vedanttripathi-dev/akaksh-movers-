@@ -114,8 +114,6 @@ function digits(value, maxLength = 15) {
 }
 
 const isPhone = (value) => /^[6-9]\d{9}$/.test(value);
-const isPin = (value) => value === '' || /^\d{6}$/.test(value);
-const isEmail = (value) => value === '' || /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(value);
 
 /** A short, readable, non-guessable reference. */
 function makeLeadId() {
@@ -133,71 +131,43 @@ async function hash(input) {
   return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, '0')).join('');
 }
 
-/** The services list, filtered to values this form actually offers. */
-const ALLOWED_SERVICES = new Set([
-  'Packing', 'Loading and unloading', 'Transportation', 'Unpacking',
-  'Furniture dismantling and assembly', 'Vehicle transportation',
-  'Storage', 'Full-service relocation',
-]);
-
 /* ==========================================================================
    Validation
    ========================================================================== */
 
+/*
+ * The payload shrank with the form. The five-step estimate form sent twenty
+ * fields; the callback form sends four, two of them optional.
+ *
+ * Only `name` and `phone` are required, and that is the whole point of the
+ * change: the business needs a name and a number to ring back. Everything
+ * the old form insisted on — two cities, two PIN codes, property type, at
+ * least one service — is now a question for the call.
+ *
+ * `movingFrom` and `movingTo` are free text, not city names, because the
+ * form asks "Moving from" and a visitor answers "Swaroop Nagar" as readily
+ * as "Kanpur". They are stored in the from_city / to_city columns, which are
+ * nullable and wide enough; renaming the columns would mean a migration for
+ * no gain.
+ */
 function validate(raw) {
   const errors = [];
 
   const lead = {
     name: clean(raw.name, 80),
     phone: digits(raw.phone, 10),
-    whatsapp: raw.whatsappSameAsPhone ? digits(raw.phone, 10) : digits(raw.whatsapp, 10),
-    email: clean(raw.email, 120),
-    contactPreference: clean(raw.contactPreference, 20),
-
-    fromCity: clean(raw.fromCity, 60),
-    fromLocality: clean(raw.fromLocality, 80),
-    fromPin: digits(raw.fromPin, 6),
-    toCity: clean(raw.toCity, 60),
-    toLocality: clean(raw.toLocality, 80),
-    toPin: digits(raw.toPin, 6),
-
-    propertyType: clean(raw.propertyType, 20),
-    moveDate: clean(raw.moveDate, 10),
-    dateFlexible: Boolean(raw.dateFlexible),
-
-    services: Array.isArray(raw.services)
-      ? raw.services.map((s) => clean(s, 60)).filter((s) => ALLOWED_SERVICES.has(s)).slice(0, 10)
-      : [],
-    otherService: clean(raw.otherService, 160),
-
-    inventorySize: clean(raw.inventorySize, 60),
-    pickupFloor: clean(raw.pickupFloor, 30),
-    destinationFloor: clean(raw.destinationFloor, 30),
-    liftAvailability: clean(raw.liftAvailability, 40),
-    largeItems: clean(raw.largeItems, 200),
-    notes: clean(raw.notes, 800),
+    movingFrom: clean(raw.movingFrom, 80),
+    movingTo: clean(raw.movingTo, 80),
 
     consent: raw.consent === true,
-    marketingConsent: raw.marketingConsent === true,
     pageUrl: clean(raw.pageUrl, 300),
   };
 
   if (lead.name.length < 2) errors.push('name');
   if (!isPhone(lead.phone)) errors.push('phone');
-  if (lead.whatsapp && !isPhone(lead.whatsapp)) errors.push('whatsapp');
-  if (!isEmail(lead.email)) errors.push('email');
-  if (!lead.fromCity) errors.push('fromCity');
-  if (!lead.toCity) errors.push('toCity');
-  if (!isPin(lead.fromPin)) errors.push('fromPin');
-  if (!isPin(lead.toPin)) errors.push('toPin');
-  if (!lead.propertyType) errors.push('propertyType');
-  if (!lead.services.length) errors.push('services');
 
   // Consent is not a formality: without it we have no basis to contact them.
   if (!lead.consent) errors.push('consent');
-
-  // A date in the past is a typo, not a booking.
-  if (lead.moveDate && !/^\d{4}-\d{2}-\d{2}$/.test(lead.moveDate)) errors.push('moveDate');
 
   return { lead, errors };
 }
@@ -215,24 +185,19 @@ async function store(env, record) {
 
   if (env.DB) {
     try {
+      /* Only the columns the callback form actually fills. The rest of the
+         table is left alone: every other column is nullable or has a
+         default, so the shorter form needs no migration. The columns the old
+         estimate form used are kept rather than dropped, so historical leads
+         stay readable. */
       await env.DB.prepare(
         `INSERT INTO leads (
-           lead_id, created_at, name, phone, whatsapp, email, contact_preference,
-           from_city, from_locality, from_pin, to_city, to_locality, to_pin,
-           property_type, move_date, date_flexible, services, other_service,
-           inventory_size, pickup_floor, destination_floor, lift_availability,
-           large_items, notes, marketing_consent, source_url, country, user_agent
-         ) VALUES (?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14,?15,?16,?17,?18,?19,?20,?21,?22,?23,?24,?25,?26,?27,?28)`
+           lead_id, created_at, name, phone,
+           from_city, to_city, source_url, country, user_agent
+         ) VALUES (?1,?2,?3,?4,?5,?6,?7,?8,?9)`
       ).bind(
         record.leadId, record.createdAt, record.lead.name, record.lead.phone,
-        record.lead.whatsapp, record.lead.email, record.lead.contactPreference,
-        record.lead.fromCity, record.lead.fromLocality, record.lead.fromPin,
-        record.lead.toCity, record.lead.toLocality, record.lead.toPin,
-        record.lead.propertyType, record.lead.moveDate, record.lead.dateFlexible ? 1 : 0,
-        record.lead.services.join(', '), record.lead.otherService,
-        record.lead.inventorySize, record.lead.pickupFloor, record.lead.destinationFloor,
-        record.lead.liftAvailability, record.lead.largeItems, record.lead.notes,
-        record.lead.marketingConsent ? 1 : 0, record.lead.pageUrl,
+        record.lead.movingFrom, record.lead.movingTo, record.lead.pageUrl,
         record.meta.country, record.meta.userAgent
       ).run();
       stored.d1 = true;
@@ -283,7 +248,7 @@ async function rateLimited(env, ip) {
 async function duplicateOf(env, lead) {
   if (!env.LEADS) return null;
   try {
-    const key = 'dup:' + (await hash([lead.phone, lead.fromCity, lead.toCity, lead.propertyType].join('|')));
+    const key = 'dup:' + (await hash([lead.phone, lead.movingFrom, lead.movingTo].join('|')));
     const existing = await env.LEADS.get(key);
     if (existing) return existing;
     return key;                        // caller writes the lead ID into it
@@ -314,18 +279,23 @@ async function notifyWhatsApp(env, record) {
   const url = 'https://graph.facebook.com/' + version + '/' + phoneNumberId + '/messages';
 
   const { lead, leadId } = record;
-  const route = [lead.fromCity, lead.toCity].filter(Boolean).join(' to ') || 'Not stated';
+  const route = [lead.movingFrom, lead.movingTo].filter(Boolean).join(' to ') || 'Not stated';
 
   let payload;
 
   if (env.WHATSAPP_TEMPLATE_NAME) {
-    // Template parameters must be single-line; clean() has already ensured that.
+    /* Template parameters must be single-line; clean() has already ensured
+       that. SIX parameters, because that is what the template documented in
+       .env.example declares — a template is rejected outright if the count
+       does not match, so the two the callback form no longer collects are
+       sent as "Not stated" rather than dropped. If you create a fresh
+       four-parameter template, shorten this list and .env.example together. */
     const params = [
       lead.name,
       '+91 ' + lead.phone,
       route,
-      lead.propertyType || 'Not stated',
-      lead.moveDate || (lead.dateFlexible ? 'Flexible' : 'Not stated'),
+      'Not stated',
+      'Not stated',
       leadId,
     ].map((text) => ({ type: 'text', text: String(text).slice(0, 180) }));
 
@@ -343,30 +313,13 @@ async function notifyWhatsApp(env, record) {
     // Plain text. Only delivers inside an open 24-hour window — see the
     // note at the top of this file.
     const lines = [
-      'NEW PACKERS & MOVERS LEAD',
+      'NEW CALLBACK REQUEST',
       '',
       'Customer Name: ' + lead.name,
       'Phone: +91 ' + lead.phone,
-      lead.whatsapp ? 'WhatsApp: +91 ' + lead.whatsapp : null,
-      lead.email ? 'Email: ' + lead.email : null,
-      'Pickup City: ' + (lead.fromCity || '-'),
-      lead.fromLocality ? 'Pickup Locality: ' + lead.fromLocality : null,
-      lead.fromPin ? 'Pickup PIN: ' + lead.fromPin : null,
-      'Destination City: ' + (lead.toCity || '-'),
-      lead.toLocality ? 'Destination Locality: ' + lead.toLocality : null,
-      lead.toPin ? 'Destination PIN: ' + lead.toPin : null,
-      'Move Date: ' + (lead.moveDate || (lead.dateFlexible ? 'Flexible' : '-')),
-      'Property Type: ' + (lead.propertyType || '-'),
-      'Services Required: ' + (lead.services.join(', ') || '-'),
-      lead.otherService ? 'Other: ' + lead.otherService : null,
-      lead.inventorySize ? 'Estimated Inventory: ' + lead.inventorySize : null,
-      lead.pickupFloor ? 'Pickup Floor: ' + lead.pickupFloor : null,
-      lead.destinationFloor ? 'Destination Floor: ' + lead.destinationFloor : null,
-      lead.liftAvailability ? 'Lift Availability: ' + lead.liftAvailability : null,
-      lead.largeItems ? 'Large/Fragile: ' + lead.largeItems : null,
-      lead.notes ? 'Special Requirements: ' + lead.notes : null,
-      'Preferred Contact: ' + (lead.contactPreference || '-'),
-      'Lead Submission Time: ' + record.createdAt,
+      lead.movingFrom ? 'Moving From: ' + lead.movingFrom : null,
+      lead.movingTo ? 'Moving To: ' + lead.movingTo : null,
+      'Received: ' + record.createdAt,
       'Lead ID: ' + leadId,
     ].filter(Boolean);
 

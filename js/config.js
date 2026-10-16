@@ -133,6 +133,17 @@ export const SITE_CONFIG = {
     /** Dial form for tel: links. Digits and a leading + only. */
     phoneDial: '+919839100644',
 
+    /* The second number on the signboard. Printed on the contact page beside
+       the first; NOT used for WhatsApp or as the primary tel: link, so a
+       visitor always gets the proprietor first.
+
+       Both names and numbers are lettered on the shopfront in the client's
+       own photograph: "Vikas Grover - 9839100644 | Akash Grover -
+       9839158558". Leave `name` as supplied; nothing here was inferred. */
+    secondaryContacts: [
+      { name: 'Akash Grover', phoneDisplay: '+91 98391 58558', phoneDial: '+919839158558' },
+    ],
+
     /* Same mobile number, assumed to be on WhatsApp because every button on
        this site opens a chat to it. That assumption has NOT been tested.
        Send one message to it before launch; if the number has no WhatsApp
@@ -151,23 +162,36 @@ export const SITE_CONFIG = {
     email: 'akashmovers@rediffmail.com',
 
     /* Office address. Printed in the footer and used in LocalBusiness schema.
+       CHANGED on 16 Oct 2026, and the reason matters.
 
-       Three different addresses are in circulation:
-         8/102, Allenganj, Arya Nagar, near Khalasi Line — Google Business Profile
-         8/96, Arya Nagar                                — ExportersIndia
+       Four addresses have been in circulation for this business:
+         113/186, Swaroop Nagar                          — the shopfront sign
          Flat 16, Classic Apartment Phase-1, 113/4,
            Swaroop Nagar                                 — Sulekha
-       The first two are the same street with a different house number; the
-       third is a residential flat in a different locality. The Google
-       Business Profile is used here because it is the one the business
-       controls and the one Google matches against. Confirm the house number
-       (8/102 vs 8/96) with the owner — a wrong number in LocalBusiness
-       schema damages local ranking. */
+         8/102, Allenganj, Arya Nagar, near Khalasi Line — Google Business Profile
+         8/96, Arya Nagar                                — ExportersIndia
+
+       This now carries the first, because the client sent a photograph of
+       the office frontage with "113/186, Swaroop Nagar" lettered across the
+       fascia and repeated on the projecting side board. That is the premises
+       itself, which beats any directory entry, and the "113/..." numbering
+       independently matches the Swaroop Nagar entry on Sulekha. Two sources
+       agree; the Arya Nagar pair look like an older address.
+
+       >>> THE GOOGLE BUSINESS PROFILE STILL SAYS ARYA NAGAR. <<<
+       Until the owner changes it there, the site and the Profile disagree
+       about where the company is. Google matches a local business on name,
+       address and phone being consistent across the web, so a mismatch is
+       not cosmetic — it actively suppresses local ranking, and it is the
+       single highest-value thing left on the list. Fix it at
+       business.google.com, then re-check `googleMapsQuery` below. */
     address: {
-      street: '8/102, Allenganj',
-      locality: 'Arya Nagar, near Khalasi Line',
+      street: '113/186',
+      locality: 'Swaroop Nagar',
       city: 'Kanpur',
       state: 'Uttar Pradesh',
+      /* 208002 covers Swaroop Nagar as well as Arya Nagar, so this stays
+         correct across the change. Still worth confirming with the owner. */
       postalCode: '208002',
       country: 'IN',
     },
@@ -180,6 +204,22 @@ export const SITE_CONFIG = {
 
     /** Public Google Business Profile / Maps link. */
     googleBusinessProfile: PLACEHOLDER,
+
+    /* The "write a review" link for THIS profile, used by the
+       "Share your experience on Google" button. Until it is set, that
+       button does not render at all — sending a happy customer to the wrong
+       company's review form is worse than not asking.
+
+       To get it: Google Business Profile dashboard -> Ask for reviews, and
+       copy the short g.page/r/... link it gives you. Do not hand-build one
+       from a Place ID; the short link is the supported form.
+
+       A reminder that belongs next to this field rather than in a document
+       nobody opens: it is against Google's policies to offer a discount or
+       any other incentive for a review, to ask only the customers you
+       expect to be happy, or to put up a form that filters the unhappy ones
+       out before they reach Google. Ask everyone, or do not ask. */
+    googleWriteReviewUrl: PLACEHOLDER,
 
     /* The name the map embed searches for, when it is NOT the trading name.
        The Google Business Profile is still listed as "Akash Packers & Movers"
@@ -213,7 +253,7 @@ export const SITE_CONFIG = {
      ------------------------------------------------------------------ */
   web: {
     /** Canonical origin, no trailing slash. */
-    origin: 'https://movers.pages.dev',   // replace with the real domain
+    origin: 'https://akashmovers.com',
     /** Where the browser sends the lead form. Served by functions/api/lead.js. */
     leadEndpoint: '/api/lead',
     /** Search Console / Bing verification tokens. Printed only when set. */
@@ -330,7 +370,7 @@ export const SITE_CONFIG = {
         'Vikas Nagar', 'Rawatpur', 'Naubasta', 'Gumti No. 5',
       ],
       /** Written for this city specifically. Never reuse between cities. */
-      intro: 'Our office is in Arya Nagar, which means a Kanpur move is run by the same people who surveyed it — no sub-contracting to a crew you have not met. We know which societies in Swaroop Nagar and Civil Lines restrict lift use to certain hours, where a truck can and cannot be parked in the older Gumti and Naubasta lanes, and how long the run across the Ganga bridge really takes at four in the afternoon.',
+      intro: 'Our office is on Swaroop Nagar, which means a Kanpur move is run by the same people who surveyed it — no sub-contracting to a crew you have not met. We know which societies in Civil Lines and Arya Nagar restrict lift use to certain hours, where a truck can and cannot be parked in the older Gumti and Naubasta lanes, and how long the run across the Ganga bridge really takes at four in the afternoon.',
     },
   ],
 
@@ -350,16 +390,44 @@ export const SITE_CONFIG = {
      7. FEATURE SWITCHES
      ------------------------------------------------------------------ */
   features: {
-    /** 3D truck in the hero. Falls back to a still image automatically on
-        low-power devices, when WebGL is missing, or on reduced-motion. */
-    hero3D: true,
+    /* The 3D hero truck is GONE. It was a generic model with no connection
+       to this company, and it cost 813 KB of Three.js and three loaders to
+       show it. The hero now carries a photograph of the actual office
+       frontage with the company's own sign on it, which is both lighter and
+       a far better trust signal. Nothing switches it back on; the module and
+       the vendored library were deleted. */
+
     /** The scroll-linked truck journey through the six stages. */
     scrollJourney: true,
-    /** A single, dismissible prompt offering the quote form. Never repeats
+    /** A single, dismissible prompt offering the callback form. Never repeats
         in the same session once dismissed. Set false to remove entirely. */
     timedQuotePrompt: false,
     /** Floating WhatsApp + call bar on mobile. */
     stickyContactBar: true,
+    /** The small, occasional card that surfaces one genuine review.
+        Shows nothing at all when there are no real reviews to show. */
+    reviewPopup: true,
+  },
+
+  /* ------------------------------------------------------------------
+     7b. CALLBACK FORM
+     ------------------------------------------------------------------ */
+  callback: {
+    /* >>> THIS IS A PROMISE THE BUSINESS HAS TO KEEP. <<<
+       It is printed under the submit button and repeated in the
+       confirmation dialog. One hour is what the brief asked for, but it has
+       not been confirmed with the owner, and a promise the office cannot
+       meet on a Sunday afternoon does more damage than no promise at all.
+
+       If an hour is not realistic, change it here and both places follow.
+       Safe alternatives that are still specific:
+         'We will call you back the same working day.'
+         'We will call you back within two working hours.' */
+    responseText: 'Our team will contact you within one hour.',
+
+    /* Set false and the line above disappears everywhere, rather than
+       being quietly reworded into something vaguer. */
+    promiseResponseTime: true,
   },
 
   /* ------------------------------------------------------------------
@@ -436,10 +504,52 @@ export const SITE_CONFIG = {
   },
 
   /* ------------------------------------------------------------------
+     8b. OWN CONTENT  —  testimonials and job photos
+     ------------------------------------------------------------------
+     Section 8 above is about GOOGLE's reviews. This is about the business's
+     own material: testimonials collected directly, and photographs of real
+     jobs. They are kept apart on purpose and labelled differently on the
+     page, because presenting a testimonial the office typed up as a Google
+     review is a misrepresentation, and only one of the two may ever carry
+     Review structured data.
+
+     Both are loaded from JSON files under /content/ rather than from this
+     file, so that adding a testimonial or a photo does not mean editing
+     JavaScript. See content/README.md for how to add one.
+
+     WHAT THIS IS NOT: it is not an admin dashboard. This site is static
+     files on GitHub Pages — there is no server, no login and nowhere to
+     store an upload, so a protected editing screen cannot exist here
+     without moving the hosting. That trade-off is written up in
+     README.md under "Managing reviews and photos". Editing the JSON is the
+     honest version of the feature, not a stand-in for one that works.
+     ------------------------------------------------------------------ */
+  ownContent: {
+    /** Fetched at runtime. Missing or malformed: the section hides itself. */
+    testimonialsUrl: '/content/testimonials.json',
+    photosUrl: '/content/photos.json',
+  },
+
+  /* ------------------------------------------------------------------
      9. CONSENT & PRIVACY
      ------------------------------------------------------------------ */
   privacy: {
-    /** Shown beside the submit button on the lead form. */
+    /* How consent is taken on the callback form.
+
+       true   a tick-box the visitor must check. The most defensible
+              reading of the DPDP Act 2023, and what privacy.html currently
+              describes.
+       false  the same sentence as a notice line above the button, with no
+              box to tick. Lower friction, and the pattern most Indian
+              service sites use for a callback request.
+
+       This is a decision for the business and its adviser, not for whoever
+       wrote the form, which is why it is a switch rather than a choice baked
+       into the markup. If it is set to false, change privacy.html to match —
+       the policy currently says a box is ticked. */
+    requireConsentTick: true,
+
+    /** Shown beside the submit button on the callback form. */
     consentText: 'I agree to be contacted about this enquiry by phone, WhatsApp or email.',
     /** Separate, optional, and never pre-ticked. */
     marketingConsentText: 'Occasionally send me moving tips and offers.',

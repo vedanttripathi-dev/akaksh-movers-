@@ -101,8 +101,11 @@ function sourceLabel() {
  * The line above the cards: the profile's REAL overall rating, and an honest
  * statement that the cards are a selection. Rendered only when a genuine
  * overall figure exists — never computed from the cards.
+ *
+ * The link to the profile is NOT here. It sits with the other buttons below
+ * the cards, so there is one place that decides where a visitor is sent.
  */
-function summary(rating, total, profileUrl) {
+function summary(rating, total) {
   if (typeof rating !== 'number') return null;
 
   const parts = [
@@ -125,48 +128,80 @@ function summary(rating, total, profileUrl) {
         + 'The ones below are a selection — read them all on our profile.',
   }));
 
-  const link = safeUrl(profileUrl);
-  if (link) {
-    children.push(el('a', {
-      class: 'btn btn--ghost btn--sm',
-      href: link,
-      target: '_blank',
-      rel: 'noopener noreferrer nofollow',
-    }, ['View all Google reviews', icon('arrow-right')]));
-  }
-
   return el('div', { class: 'rating-summary' }, children);
 }
 
-/** The "View all" button on its own, when there is no overall rating to show. */
-function profileLinkOnly(profileUrl) {
-  const link = safeUrl(profileUrl);
-  if (!link) return null;
-  return el('div', { class: 'btn-row btn-row--centre mt-6' }, [
-    el('a', {
+/**
+ * The two buttons under the cards.
+ *
+ * "Read more reviews on Google" goes to the profile. "Share your experience
+ * on Google" goes to the profile's own review form, and renders ONLY when
+ * `contact.googleWriteReviewUrl` is set — sending a satisfied customer to
+ * the wrong company's review form is worse than not asking at all.
+ *
+ * Neither link is ever built by hand from a Place ID or a search query. If
+ * the configured value is not an absolute http(s) URL, safeUrl returns null
+ * and the button does not appear.
+ */
+function actions(profileUrl, writeUrl) {
+  const read = safeUrl(profileUrl);
+  const write = safeUrl(writeUrl);
+  if (!read && !write) return null;
+
+  return el('div', { class: 'btn-row btn-row--centre mt-7' }, [
+    read ? el('a', {
       class: 'btn btn--ghost',
-      href: link,
+      href: read,
       target: '_blank',
       rel: 'noopener noreferrer nofollow',
-    }, ['View all Google reviews', icon('arrow-right')]),
+    }, ['Read more reviews on Google', icon('arrow-right')]) : null,
+
+    write ? el('a', {
+      class: 'btn btn--primary',
+      href: write,
+      target: '_blank',
+      rel: 'noopener noreferrer nofollow',
+    }, [icon('star'), 'Share your experience on Google']) : null,
   ]);
 }
 
-function render(host, { reviews, rating, total, profileUrl }) {
-  const section = host.closest('section');
+/**
+ * Shown in place of the cards when there is review data to point at but none
+ * to quote. It says what is true and nothing more: the reviews are on
+ * Google, here is the link.
+ *
+ * There is deliberately no third state. A section that says "reviews coming
+ * soon" or shows a greyed-out placeholder card is telling a visitor that the
+ * business has no reviews, in more words and less honestly than saying so.
+ */
+function emptyState() {
+  return el('p', { class: 'lead text-centre', text:
+    'Our customers leave their feedback on our Google Business Profile. '
+    + 'Read what they have said, or add your own.' });
+}
 
-  if (!reviews.length) {
+function render(host, { reviews, rating, total, profileUrl, writeUrl }) {
+  const section = host.closest('section');
+  const buttons = actions(profileUrl, writeUrl);
+
+  /* Nothing to quote AND nowhere to send anyone: hide the section. A
+     heading with a void under it is not an "empty state", it is a bug the
+     visitor can see. The moment `contact.googleBusinessProfile` is filled
+     in, this branch stops being reachable and the section is permanent. */
+  if (!reviews.length && !buttons) {
     if (section) section.hidden = true;
     host.hidden = true;
     return;
   }
 
-  const head = summary(rating, total, profileUrl);
+  const head = reviews.length ? summary(rating, total) : null;
 
   fill(host, [
     head,
-    el('div', { class: 'grid grid-3 reveal-group' }, reviews.map(reviewCard)),
-    head ? null : profileLinkOnly(profileUrl),
+    reviews.length
+      ? el('div', { class: 'grid grid-3 reveal-group' }, reviews.map(reviewCard))
+      : emptyState(),
+    buttons,
   ]);
 
   host.hidden = false;
@@ -176,13 +211,13 @@ function render(host, { reviews, rating, total, profileUrl }) {
 /** Reviews pasted into config by hand, used when the API is not configured. */
 function fromConfig() {
   const t = SITE_CONFIG.testimonials;
+  const c = SITE_CONFIG.contact;
   return {
     reviews: (t.verified || []).filter((r) => r && r.name && r.text),
     rating: typeof t.googleOverallRating === 'number' ? t.googleOverallRating : null,
     total: typeof t.googleTotalReviews === 'number' ? t.googleTotalReviews : null,
-    profileUrl: isSet(SITE_CONFIG.contact.googleBusinessProfile)
-      ? SITE_CONFIG.contact.googleBusinessProfile
-      : null,
+    profileUrl: isSet(c.googleBusinessProfile) ? c.googleBusinessProfile : null,
+    writeUrl: isSet(c.googleWriteReviewUrl) ? c.googleWriteReviewUrl : null,
   };
 }
 
@@ -209,9 +244,27 @@ export async function initReviews() {
       rating: typeof data.rating === 'number' ? data.rating : configured.rating,
       total: typeof data.total === 'number' ? data.total : configured.total,
       profileUrl: data.profileUrl || configured.profileUrl,
+      writeUrl: configured.writeUrl,
     });
+
+    /* The popup reads from whatever is on the page, so it is started only
+       after a render that actually produced cards. It shows one real review
+       or nothing at all. */
+    if (SITE_CONFIG.features.reviewPopup) {
+      import('./review-popup.js')
+        .then((m) => m.initReviewPopup(data.reviews, configured.profileUrl))
+        .catch(() => { /* a popup is not worth an error in the console */ });
+    }
   } catch {
     // Offline, blocked, or the endpoint is not deployed. The config-backed
     // render above already ran; leave it alone.
+  }
+
+  /* Same again for the config-backed path, when the API never answered but
+     real review text has been pasted into config by hand. */
+  if (SITE_CONFIG.features.reviewPopup && configured.reviews.length) {
+    import('./review-popup.js')
+      .then((m) => m.initReviewPopup(configured.reviews, configured.profileUrl))
+      .catch(() => { /* ignore */ });
   }
 }

@@ -1,9 +1,10 @@
 # Akash Movers — website
 
-A premium, animated marketing site for **Akash Movers, Kanpur** (formerly
-*Akash Packers & Movers*), with a 3D hero, a scroll-linked moving journey, a
-multi-step quote form, and a server-side lead endpoint that notifies the
-business on WhatsApp.
+A premium marketing site for **Akash Movers, Kanpur** (formerly *Akash
+Packers & Movers*), built around the company's own red-and-white branding:
+a photograph of the real shopfront in the hero, a scroll-linked moving
+journey, a four-field callback form, Google reviews, and a server-side lead
+endpoint that notifies the business on WhatsApp.
 
 Plain static files. **There is no build step and no Node requirement.**
 
@@ -27,9 +28,28 @@ and the bucket is written next to it in `js/config.js`.
 | Proprietor | Vikas Grover | proprietor, plus three independent directories |
 | Legal structure | sole proprietorship | proprietor, plus the GSTIN's embedded PAN (`P` = Individual) |
 | Phone / WhatsApp | +91 98391 00644 | proprietor, Google Business Profile, trade directory |
+| Second contact | Akash Grover, +91 98391 58558 | lettered on the shopfront in the client's own photograph |
 | City | Kanpur, Uttar Pradesh | all sources |
-| Address | 8/102, Allenganj, Arya Nagar, near Khalasi Line, 208002 | Google Business Profile |
+| Address | 113/186, Swaroop Nagar, Kanpur 208002 | the shopfront sign, photographed by the client — see below |
+| Logo | the oval truck mark | artwork supplied by the client |
 | Services | the eight listed | consistent across all sources |
+
+**The address changed on 16 October 2026, and the Google Business Profile has
+not caught up.** The site used to carry `8/102, Allenganj, Arya Nagar, near
+Khalasi Line`, taken from the Business Profile. The client then sent a
+photograph of the office frontage with **`113/186, Swaroop Nagar`** lettered
+across the fascia and repeated on the projecting side board, and the Sulekha
+listing independently puts the business in Swaroop Nagar under the same
+`113/...` numbering. Two sources agree, and one of them is the building; the
+Arya Nagar pair look like an older address.
+
+> **This is the highest-value job left on the list.** Google ranks a local
+> business partly on its name, address and phone being consistent everywhere
+> they appear. Right now the website and the Business Profile disagree about
+> where the company is, which actively suppresses local ranking. Fix it at
+> <https://business.google.com>, then revisit `contact.googleMapsQuery` in
+> `js/config.js` — the map deliberately searches the OLD trading name,
+> because that is still what the profile is called.
 
 **On the two numbers that matter most.** 1983 and the GSTIN are the business's
 own assertions, not documents anyone has seen. Publishing them is normal and
@@ -53,7 +73,8 @@ challenge first, so two small jobs are worth doing once:
 | `contact.email` — `akashmovers@rediffmail.com` | single directory listing, never confirmed. Send a test mail. If it bounces, set it to `PLACEHOLDER` and every email link disappears. |
 | `contact.whatsappNumber` | assumed to be the same mobile. **Nobody has sent it a WhatsApp message.** Test it; if there is no WhatsApp account, set it to `PLACEHOLDER` and the buttons hide themselves. |
 | `contact.openingHours` | these are the template's generic 9–7 hours, **not the client's**. They are published in LocalBusiness schema, so Google may show them and a customer may arrive to a closed office. |
-| House number `8/102` | one directory says `8/96`. A wrong number in LocalBusiness schema hurts local ranking. |
+| House number `113/186` | read off the photographed signboard. Worth one glance from the owner to confirm the site has it right, along with the `208002` PIN. |
+| The response-time promise | the callback form and its confirmation both say **"Our team will contact you within one hour."** Nobody has confirmed the business can keep that on a Sunday afternoon. It is one string — `callback.responseText` in `js/config.js` — and `callback.promiseResponseTime: false` removes it everywhere. A promise the office cannot meet costs more than no promise. |
 | The service-process copy | "our own crews", "material loaded the night before", "one named coordinator", "checked at both ends". These describe how a move *ought* to be run and were written before the client was known. **Vikas ji must confirm each one is how the business actually works**, or the copy must change. This is the biggest remaining honesty risk on the site. |
 
 ### Deliberately NOT published
@@ -83,7 +104,6 @@ repeats the absence rather than filling the gap from a stale directory.
 | Markup | Hand-written HTML5, 18 pages |
 | Styling | One CSS file with design tokens in `:root`. No framework |
 | Scripting | ES modules, no framework |
-| 3D | Three.js, vendored locally |
 | Scroll animation | GSAP + ScrollTrigger, vendored locally |
 | Fonts | Playfair Display + Inter, self-hosted, latin subset, 138 KB |
 | Server | One Cloudflare Pages Function for the lead endpoint |
@@ -118,15 +138,25 @@ movers/
 │   ├── main.js                 boot: config → markup, nav, reveals
 │   ├── scroll-truck.js         the side truck that follows the page scroll
 │   ├── journey.js              the six-stage road animation
-│   ├── truck3d.js              the WebGL hero truck
-│   ├── lead-form.js            quote dialog behaviour and submission
-│   ├── quote-modal.js          quote dialog markup
+│   ├── callback-form.js        callback form markup (dialog + inline card)
+│   ├── lead-form.js            callback form behaviour and submission
+│   ├── reviews.js              the Google review section
+│   ├── review-popup.js         the small one-review card, bottom left
+│   ├── own-content.js          "Our customers, our work" from /content
 │   └── schema.js               JSON-LD generation
 │
+├── content/                    EDIT THESE, not the JavaScript
+│   ├── testimonials.json       the business's own testimonials
+│   └── photos.json             photographs of real jobs
+│
 ├── functions/api/lead.js       SERVER: validation, storage, WhatsApp
+├── functions/api/reviews.js    SERVER: Google Places, cached 6h
 ├── migrations/0001_leads.sql   D1 schema
-├── vendor/                     Three.js, GSAP, GLTFLoader
-├── assets/fonts, images, icons
+├── vendor/                     GSAP + ScrollTrigger
+├── assets/
+│   ├── brand/                  the client's master logo artwork (not served)
+│   ├── fonts/  icons/
+│   └── images/                 logo, icons, office + signboard photographs
 │
 ├── tools/                      NOT part of the site — see "Keeping
 │   ├── check.ps1               the test suite; run before every deploy
@@ -142,9 +172,45 @@ movers/
 └── .env.example                variable NAMES only, no secrets
 ```
 
-Nine JavaScript modules, one stylesheet, one server function. No framework,
+Ten JavaScript modules, one stylesheet, two server functions. No framework,
 no bundler, no `package.json`, no `node_modules`. Every file above is either
 served to visitors or explicitly excluded; there is nothing left over.
+
+### What was removed, and why
+
+| Gone | Reason |
+|---|---|
+| `js/truck3d.js` + `vendor/three.module.min.js`, `GLTFLoader.js`, `BufferGeometryUtils.js`, `RoomEnvironment.js` | **833 KB.** The hero held a generic 3D truck that belonged to no one and told a customer nothing. It is now a photograph of the company's own shopfront — lighter, and actual evidence that there is a real office at a real address. |
+| `js/quote-modal.js` | Replaced by `callback-form.js`. The five-step estimate form asked twenty-odd questions before it would take a phone call. |
+| `assets/images/hero-truck.svg` | The poster image behind the 3D scene. Nothing references it. |
+| `assets/icons/icon.svg` | A generic amber truck that was never this company's mark. Leaving it in place would have meant browsers *preferring* the SVG and showing the wrong logo. |
+
+---
+
+## Brand assets
+
+Everything under `assets/images/logo*.png` and `assets/icons/` was built from
+the artwork the client supplied, by `scratchpad` scripts that key out the
+background and crop. **The logo is never redrawn.** The master file is kept at
+`assets/brand/logo-master.jpg` so the delivered sizes can be rebuilt from it.
+
+Two things worth knowing before anyone "improves" them:
+
+- **The icons are the truck, not the whole oval.** Rendered and compared at
+  true size, the full lockup collapses into a grey blob below about 48px — the
+  arched lettering is unreadable and nothing survives. The truck inside the
+  logo still reads as a truck at 16px. The icons sit on the brand red so the
+  black artwork never lands on a dark browser theme.
+- **There is no SVG icon.** The logo is supplied as raster artwork; drawing a
+  vector version would mean inventing letterforms for the arched text, which
+  is altering a logo rather than using it.
+
+An earlier pass built these from a photograph of the printed signboard, which
+reads **"Excelllence Through Seruice"** — three L's, and a `u` for the `v`.
+The client supplied corrected artwork and everything was rebuilt from it. The
+*physical* sign still has the typo; that is the client's to fix, and the
+photographs of the shopfront on the site show it at a size where it is not
+legible.
 
 ---
 
@@ -274,10 +340,21 @@ is invented to fill a gap.
 ### Values that also live in the HTML
 
 The domain is baked into each page's `<head>` (canonical, Open Graph) so
-crawlers see it without running JavaScript. When you connect a real domain:
+crawlers see it without running JavaScript. It is currently
+**`akashmovers.com`**, and it lives in four places that must agree:
+
+| Where | What |
+|---|---|
+| `js/config.js` | `web.origin` |
+| `index.html` | canonical, `og:url`, `og:image`, `twitter:image` |
+| `tools/assemble.ps1` | `$origin` — regenerates every inner page's `<head>` |
+| `robots.txt` | the `Sitemap:` line |
+
+`tools/build-sitemap.ps1` takes the origin as a parameter and defaults to the
+same value. If the domain ever changes:
 
 ```powershell
-$old = "movers.pages.dev"
+$old = "akashmovers.com"
 $new = "yourdomain.com"
 Get-ChildItem -Path . -Recurse -File -Include *.html,*.xml,*.txt,*.webmanifest,*.ps1 |
   ForEach-Object {
@@ -286,8 +363,10 @@ Get-ChildItem -Path . -Recurse -File -Include *.html,*.xml,*.txt,*.webmanifest,*
   }
 ```
 
-Then update `web.origin` in `js/config.js`, and search the folder for the old
-address to confirm nothing is left.
+Then update `web.origin` in `js/config.js` and `$origin` in
+`tools/assemble.ps1` (the find-and-replace above covers `.ps1` files, but
+check it), and search the folder for the old address to confirm nothing is
+left.
 
 ---
 
@@ -365,6 +444,83 @@ project are saved **with** a BOM for exactly this reason.
 If you write a throwaway script that touches page text, save it with a BOM too,
 or keep it to pure ASCII. The failure is silent: you only notice when `—` has
 become `â€”` on a live page.
+
+---
+
+## Managing reviews and photos
+
+The brief asked for a protected admin screen where the office could add
+testimonials and upload photographs without touching code. **That cannot
+exist on the current hosting, and this is the honest version of it rather
+than a stand-in for one that works.**
+
+The site is static files on GitHub Pages. There is no server, no session, no
+database and nowhere to put an upload, so there is nothing for a login to
+protect and nothing for an upload to write to. The only way to build the
+screen that was asked for is to move the hosting (see *Deployment* below);
+building an unprotected one would be worse than not building it.
+
+What exists instead:
+
+| | |
+|---|---|
+| **Google reviews** | `js/reviews.js` reads `/api/reviews`, which reads the Places API server-side. Until that is configured it falls back to review text pasted into `testimonials.verified` in `js/config.js`. |
+| **Own testimonials** | `content/testimonials.json` |
+| **Job photographs** | `content/photos.json` + image files in `assets/images/work/` |
+
+Both JSON files carry their own instructions in a `_readme` key that the
+website ignores, including an `example` block to copy. Editing them needs no
+JavaScript knowledge and can be done in GitHub's web editor: open the file,
+click the pencil, change it, commit. The site picks it up on the next deploy.
+
+**The one rule that is not negotiable:** testimonials collected by the office
+are rendered in a separate section from the Google reviews, and every card
+carries a "Shared with us directly" badge. There is no code path that can put
+a Google badge on one. Presenting a testimonial the office typed up as a
+Google review is a misrepresentation, and a customer can catch it in one tap
+by opening the profile and not finding it.
+
+### If a real admin screen is wanted
+
+It needs a backend. On Cloudflare Pages the pieces already half-exist:
+`functions/` is there, D1 and KV bindings are documented in `.env.example`,
+and `functions/api/lead.js` is a working example of a protected endpoint.
+What would still have to be built is authentication, an upload path to R2 or
+similar, and the editing UI itself. That is a project, not an afternoon, and
+it should be quoted as one.
+
+---
+
+## Why the callback form cannot deliver leads yet
+
+**Submitting the form on the live site fails, and it fails honestly.** This is
+expected on the current hosting and is not a bug to go hunting for.
+
+GitHub Pages serves static files and runs no server code, so `/api/lead`
+returns 405. `js/lead-form.js` therefore takes its failure path: the visitor
+is told the request could not be sent, and is handed a WhatsApp link with
+their name, number and route already filled in, so the enquiry is not lost.
+
+What it deliberately does **not** do:
+
+- show a success message because the request was sent;
+- show a success message because WhatsApp opened;
+- claim the business was notified when nothing reached it.
+
+A `wa.me` link hands someone a draft message. Whether they press send is
+unknowable from the browser, so it is never reported as a delivered lead.
+
+This stops being the behaviour the moment the site is hosted somewhere that
+can run `functions/api/lead.js`. Nothing in the front end changes.
+
+To see the working path locally, `serve.ps1` mocks the endpoint:
+
+```bash
+powershell -ExecutionPolicy Bypass -File .\serve.ps1 -Port 8788
+```
+
+then submit the form at <http://localhost:8788/> — the confirmation panel,
+the reference number and the WhatsApp follow-up all render.
 
 ---
 
@@ -547,23 +703,26 @@ change that adds a third-party script.
 
 ## Performance notes (please keep these)
 
-- Three.js (~670 KB) is **not** loaded on page load. It is dynamically
-  imported after the `load` event, during idle time, and only after a
-  capability check — so a mid-range phone never downloads it.
-- The hero's LCP element is the headline and the poster SVG, both plain
-  HTML, so 3D cannot affect Largest Contentful Paint.
+- **833 KB of Three.js and its loaders are gone**, along with the 3D hero
+  they existed for. That is by far the largest performance change this site
+  has had, and it cost nothing a visitor valued.
+- The hero photograph is served at three widths through `srcset` and
+  preloaded with matching `imagesrcset`/`imagesizes`, so the browser fetches
+  the one candidate it was going to pick anyway, earlier.
+- The hero's LCP element is the headline and that photograph, both plain
+  HTML.
 - Only `transform` and `opacity` are animated.
-- The 3D scene stops rendering when it scrolls out of view and when the tab
-  is hidden.
 - Fonts are `font-display: swap` and the two above-the-fold faces are
   preloaded.
-- Every image and the 3D stage have reserved dimensions, so nothing shifts.
+- Every image and the hero stage have reserved dimensions, so nothing shifts.
+- `reviews.js`, `own-content.js` and `lead-form.js` are dynamic imports,
+  loaded only on pages that use them and only after first paint.
 
-**The capability gate deliberately does not block on `effectiveType: '3g'`.**
-That was the first version, and measurement showed it denied 3D to a 16 GB,
-8-core desktop with a discrete GPU on a working connection — `effectiveType`
-describes round-trip time, not hardware. Only `2g`, `slow-2g` and Data Saver
-block it now.
+**Keep photographs small.** The job photographs in `content/photos.json` are
+the one thing that can undo all of the above. A picture straight off a phone
+is 3–6 MB; resized to 1200px and saved at ~80% quality it is 150–250 KB and
+looks identical on screen. `content/photos.json` says so in its own
+instructions, where whoever adds one will actually read it.
 
 ---
 
@@ -577,14 +736,39 @@ Run against the local server, in a real browser:
 - [x] Zero duplicate titles or meta descriptions
 - [x] Every canonical URL correct
 - [x] No page under 300 words
-- [x] No horizontal overflow at 360px, 375px or desktop
-- [x] Quote form: validation, five steps, review, consent, submission
+- [x] No horizontal overflow at **320px** (measured `scrollWidth === clientWidth`)
+- [x] Callback form: validation, submission, confirmation, reference number
 - [x] Honest reporting when WhatsApp delivery fails (stored-but-not-notified)
 - [x] WhatsApp fallback link carries the full enquiry, correctly encoded
 - [x] Duplicate submission blocked
 - [x] Scroll journey synchronised with stages on mobile and desktop
-- [x] Three.js correctly **not** downloaded on mobile
 - [x] Zero CSP violations with the production policy applied
+- [x] Every declared subresource returns 200 (27 checked on the homepage);
+      the only 404 is `/api/reviews`, which the page handles
+- [x] **Contrast measured, not eyeballed**: a script walked every visible
+      text node, resolved the real background by climbing the tree, and
+      checked it against the WCAG AA threshold for its size and weight.
+      395 text nodes across the home, contact and about pages, 0 failures
+- [x] Review section renders its cards, the Google links and the honest
+      empty state; hides itself when there is neither a review nor a profile
+- [x] "Our customers, our work" renders photographs and testimonials from
+      `content/*.json`, excludes `published: false` entries, badges every
+      card "Shared with us directly", and hides itself when both are empty
+
+**Four real bugs this testing caught, all of them invisible to a glance:**
+
+1. The header's call button lost its hiding rule when the bar turned white
+   (the selector still named `.btn--ghost-dark`), so at 320px it squeezed
+   the brand name down to **one letter per line**.
+2. The hero `<figure>` kept the browser's default `margin: 1em 40px`, which
+   pushed the photograph 40px out of its grid cell. `.hero { overflow:
+   hidden }` clipped the overhang, so there was no scrollbar to notice —
+   just a slightly cropped picture.
+3. The commitments row under the callback form reused `.hero__points`, whose
+   colours are for a dark background. On white it measured **1.64:1**.
+4. `.nav-drawer a` is more specific than `.btn`, so it repainted the "Request
+   a callback" button inside the mobile drawer with dark body text on the
+   solid red fill: **1.33:1**.
 
 **Not yet tested, because it needs credentials or a deployment:**
 
@@ -647,22 +831,22 @@ city specifically, add the entry to `serviceAreas`, then re-run
 for places the business does not cover is the doorway-page pattern Google acts
 against.
 
-Assets still required:
+Assets: **supplied and in place.** The client provided the logo artwork and
+photographs of the office on 16 October 2026, and everything that was
+outstanding was built from them — `favicon.ico` (16/32/48), the apple-touch
+and manifest icons, `og-image.png` at 1200×630 (so a shared link finally
+shows a preview instead of nothing), the header and footer logo, the hero
+shopfront photograph and the signboard shot on the contact page.
 
-- `assets/images/og-image.png` (1200×630) — the link-preview image. The meta
-  tags already point at it.
-- `assets/icons/apple-touch-icon.png` (180×180)
-- A real logo, to replace the generated mark in the header and `favicon.ico`
-- Photography of actual crews, vehicles and completed moves. **There is no
-  stock photography in this build and none was invented.** The design works
-  without photos; it will work better with real ones.
+Still worth having:
 
-Optional:
-
-- A licensed `.glb` truck model. Drop it at `assets/3d/truck.glb` and set
-  `MODEL_URL` in `js/truck3d.js` — the loader, lighting, shadows and every
-  fallback already handle it. The current truck is built procedurally
-  because no licensed model was supplied.
+- **Photographs of actual crews, vehicles and completed moves.** There is
+  still no stock photography in this build and none was invented. Add them
+  through `content/photos.json`; the "Our customers, our work" section
+  appears by itself once there is something in it.
+- **The physical signboard has a typo** — "Excelllence Through Seruice".
+  The website uses the corrected artwork the client sent, so nothing on the
+  site repeats it, but the board itself is worth fixing.
 
 ---
 
