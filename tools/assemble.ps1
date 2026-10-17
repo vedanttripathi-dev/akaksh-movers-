@@ -95,9 +95,18 @@ foreach ($file in Get-ChildItem $pagesDir -Filter '*.part' | Sort-Object Name) {
     $canonical = "$origin/$slug"
 
     # Breadcrumbs: "Label|href ; Label|"  (empty href = current page)
+    #
+    # The separator requires WHITESPACE BEFORE the semicolon, and that is not
+    # fussiness. The old pattern was '\s*;\s*', which also split on the
+    # semicolon that ends an HTML entity: "Loading &amp; unloading" became two
+    # crumbs, "Loading &amp" and "unloading", both marked aria-current="page".
+    # It shipped that way on the loading-unloading and packing-unpacking
+    # pages, in the visible trail and in the BreadcrumbList structured data.
+    # An entity's semicolon never has a space in front of it; the separator
+    # always does.
     $crumbHtml = ''
     if ($meta.ContainsKey('CRUMBS') -and $meta['CRUMBS']) {
-        $items = foreach ($crumb in ($meta['CRUMBS'] -split '\s*;\s*')) {
+        $items = foreach ($crumb in ($meta['CRUMBS'] -split '\s+;\s*')) {
             $parts = $crumb -split '\|', 2
             $label = $parts[0].Trim()
             $href = if ($parts.Count -gt 1) { $parts[1].Trim() } else { '' }
@@ -202,3 +211,16 @@ Write-Host ""
 Write-Host ("$written page(s) written.") -ForegroundColor Cyan
 Write-Host "Reminder: these are plain static files. You can edit them directly;" -ForegroundColor DarkGray
 Write-Host "re-running this script will overwrite those edits." -ForegroundColor DarkGray
+
+# This script rebuilds each page from its fragment, which discards the baked
+# JSON-LD block along with everything else that was not in the fragment. It
+# is NOT re-baked automatically, and that is deliberate: if the fragment's
+# content changed, the existing capture is stale, and re-stamping it would
+# quietly publish structured data that no longer matches the visible page.
+# Re-capture first when the content changed; see the header of
+# tools/seo/bake-schema.ps1. tools/check.ps1 fails until this is done.
+Write-Host ""
+Write-Host "NEXT: the structured data was removed from these pages." -ForegroundColor Yellow
+Write-Host "      Run  tools\seo\bake-schema.ps1  to put it back." -ForegroundColor Yellow
+Write-Host "      If you changed page CONTENT (titles, descriptions, FAQs), re-capture" -ForegroundColor Yellow
+Write-Host "      first -- see the header of that script. check.ps1 will tell you." -ForegroundColor Yellow

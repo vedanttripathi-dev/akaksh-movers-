@@ -2,8 +2,26 @@
    JSON-LD STRUCTURED DATA
    ============================================================================
    Builds the structured data from SITE_CONFIG, so the schema can never drift
-   away from what the pages actually say. One `<script type="application/ld+json">`
-   is injected per page, containing an `@graph`.
+   away from what the pages actually say. There is exactly one
+   `<script type="application/ld+json" data-schema>` per page, containing an
+   `@graph`.
+
+   SERVED STATICALLY, REBUILT AT RUNTIME
+   -------------------------------------
+   That block is baked into each page's <head> by tools/seo/bake-schema.ps1,
+   so a crawler that does not execute JavaScript still gets the graph —
+   Googlebot renders, but Bing's renderer is weak and most of the fourteen AI
+   crawlers robots.txt deliberately welcomes do not render at all.
+
+   This module is still the only thing that BUILDS the graph; the bake step
+   runs the real pages in a browser and copies out what this code produced.
+   There is no second implementation to keep in step. injectSchema() then
+   REPLACES that block on load rather than appending to it, so the page never
+   carries two graphs with the same @ids.
+
+   tools/check.ps1 guards the copy: it re-reads js/config.js, compares the
+   baked JSON against it, and fails if js/config.js or this file has changed
+   since the last bake.
 
    RULES THIS MODULE ENFORCES — they are not style preferences, they are what
    keeps the markup inside Google's structured-data guidelines:
@@ -32,8 +50,9 @@
    Deploy, then run the live URL through:
      - Google Rich Results Test — https://search.google.com/test/rich-results
      - Schema Markup Validator  — https://validator.schema.org/
-   Both execute JavaScript, so they see what this module injects.
-   See README.md § Validating structured data.
+   Both execute JavaScript, and the graph is now in the served HTML as well,
+   so they agree either way. "View source" shows it too, which it did not
+   before. See README.md § Validating structured data.
    ========================================================================== */
 
 import {
@@ -285,7 +304,7 @@ function pageType(path) {
   return 'WebPage';
 }
 
-function webPageNode({ path, title, description }) {
+function webPageNode({ path, title, description, hasBreadcrumb }) {
   return compact({
     '@type': pageType(path),
     '@id': ID.page(path),
@@ -297,7 +316,10 @@ function webPageNode({ path, title, description }) {
     isPartOf: { '@id': ID.site() },
     about: { '@id': ID.org() },
     inLanguage: 'en-IN',
-    breadcrumb: { '@id': ID.crumbs(path) },
+    /* Only when a BreadcrumbList is actually in the graph. The homepage has
+       no breadcrumb trail, and this used to point at a `#breadcrumbs` @id
+       that nothing defined — a dangling reference a parser cannot resolve. */
+    breadcrumb: hasBreadcrumb ? { '@id': ID.crumbs(path) } : null,
   });
 }
 
@@ -384,10 +406,64 @@ function faqNode() {
  * @param {Array}   [options.breadcrumbs] [{ name, url }], else read from the DOM
  * @param {object}  [options.extra]       an additional node, e.g. Article
  */
-export function injectSchema(options = {}) {
+export function buildSchema(options = {}) {
   // Without a business name there is nothing to describe, and publishing a
   // nameless LocalBusiness is worse than publishing none. Stay silent.
-  if (!isSet(SITE_CONFIG.business.name)) {
+  if (!isSet(SITE_CONFIG.business.name)) return null;
+
+  /* `/index.html` and `/` are the same page, and every <link rel="canonical">
+     on this site says `/`. Without this, loading the homepage by its filename
+     produced a WebPage node whose @id and url were
+     https://akashmovers.com/index.html while the canonical beside it said
+     https://akashmovers.com/ — two different URLs for one page, in the same
+     <head>. It also meant the baked copy and the runtime copy disagreed
+     depending on how the page was reached. */
+  const path = (options.path || window.location.pathname || '/')
+    .replace(/(^|\/)index\.html$/, '$1');
+
+  // Built first, so the WebPage node only claims a breadcrumb that exists.
+  const crumbs = breadcrumbNode(path, options.breadcrumbs);
+
+  const graph = [
+    organizationNode(),
+    websiteNode(),
+    webPageNode({
+      path,
+      title: options.title,
+      description: options.description,
+      hasBreadcrumb: Boolean(crumbs),
+    }),
+    crumbs,
+    options.faq === false ? null : faqNode(),
+    options.extra || null,
+  ].filter(Boolean);
+
+  if (options.services) graph.push(...serviceNodes());
+
+  return { '@context': 'https://schema.org', '@graph': graph };
+}
+
+/**
+ * Build the structured data for the current page and put it in the document.
+ *
+ * REPLACES rather than appends. Each page is now served with a static copy of
+ * this graph in its <head>, baked by tools/seo/bake-schema.ps1, so that a
+ * crawler which does not execute JavaScript still gets it — Bing's renderer
+ * is weak and most of the AI crawlers robots.txt welcomes do not render at
+ * all. Appending a second block would leave two `@graph`s on the page with
+ * the same `@id`s in both, which is the duplicate, conflicting markup this
+ * module exists to avoid.
+ *
+ * So why run at all, if the graph is already in the HTML? Because this copy
+ * is built from the page as it actually rendered. The static copy can be out
+ * of date in a cache, and `faqNode()` reads the questions out of the live DOM
+ * precisely so that the marked-up answer and the visible answer cannot
+ * disagree. The static block is the floor; this is the current truth.
+ */
+export function injectSchema(options = {}) {
+  const payload = buildSchema(options);
+
+  if (!payload) {
     if (!/^(localhost|127\.0\.0\.1)$/.test(window.location.hostname)) return;
     // On localhost, say so in the console so the omission is not a mystery.
     console.info(
@@ -397,26 +473,17 @@ export function injectSchema(options = {}) {
     return;
   }
 
-  const path = options.path || window.location.pathname || '/';
-
-  const graph = [
-    organizationNode(),
-    websiteNode(),
-    webPageNode({ path, title: options.title, description: options.description }),
-    breadcrumbNode(path, options.breadcrumbs),
-    options.faq === false ? null : faqNode(),
-    options.extra || null,
-  ].filter(Boolean);
-
-  if (options.services) graph.push(...serviceNodes());
-
-  const payload = { '@context': 'https://schema.org', '@graph': graph };
-
-  const script = document.createElement('script');
-  script.type = 'application/ld+json';
+  // The baked block carries data-schema. Anything else of this type was put
+  // there by hand and is left alone rather than silently overwritten.
+  let script = document.querySelector('script[type="application/ld+json"][data-schema]');
+  if (!script) {
+    script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.setAttribute('data-schema', '');
+    document.head.append(script);
+  }
   // textContent, not innerHTML: this is data, and it is never parsed as markup.
   script.textContent = JSON.stringify(payload);
-  document.head.append(script);
 }
 
 /**

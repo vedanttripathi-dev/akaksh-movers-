@@ -216,6 +216,153 @@ Write-Host ("  name, address, phone and email present in the markup of {0} of {1
 Write-Host ("  address line matches config.js: {0}" -f $nap['addressLine'])
 
 # ---------------------------------------------------------------------------
+# 3c. Structured data served in the HTML
+# ---------------------------------------------------------------------------
+# The JSON-LD used to be built by js/schema.js and appended at runtime, so
+# index.html contained zero application/ld+json blocks. It is now baked into
+# each page by tools/seo/bake-schema.ps1 from a capture of what schema.js
+# actually produced, and injectSchema() replaces that block rather than
+# appending to it.
+#
+# Three things can go wrong, and all three are silent, so all three are
+# checked here rather than left to a validator somebody remembers to run:
+#
+#   1. A page loses its block, or ends up with two (duplicate conflicting
+#      markup is what earns a structured-data manual action).
+#   2. The baked JSON stops agreeing with js/config.js -- the phone number
+#      changes in config and twenty pages keep publishing the old one.
+#   3. js/config.js or js/schema.js changes and nobody re-bakes, so every
+#      page serves a stale graph that still parses perfectly.
+Section 'Structured data'
+
+$schemaPages = Get-ChildItem -Path $root -Recurse -Filter *.html |
+    Where-Object { $_.FullName -notmatch '\\tools\\' -and $_.Name -ne '404.html' }
+
+$schemaOk = 0
+$faqNodeCounts = @{}
+foreach ($file in $schemaPages) {
+    $text = [IO.File]::ReadAllText($file.FullName)
+    $rel = $file.FullName.Substring($root.Length + 1).Replace('\', '/')
+
+    $blocks = [regex]::Matches($text, '<script type="application/ld\+json"[^>]*>(.*?)</script>', 'Singleline')
+    if ($blocks.Count -ne 1) {
+        Fail 'schema' "$rel : $($blocks.Count) JSON-LD blocks in the markup, expected exactly 1 — run tools/seo/bake-schema.ps1"
+        continue
+    }
+
+    $json = $blocks[0].Groups[1].Value
+    try { $graph = ($json | ConvertFrom-Json).'@graph' }
+    catch { Fail 'schema' "$rel : the baked JSON-LD does not parse"; continue }
+
+    $biz = $graph | Where-Object { $_.'@type' -eq 'MovingCompany' -or $_.'@type' -eq 'Organization' } | Select-Object -First 1
+    if (-not $biz) { Fail 'schema' "$rel : no MovingCompany/Organization node"; continue }
+
+    # Agreement with config.js, through the same reader fill-static-nap uses.
+    if ($biz.telephone -ne $nap['phoneDial']) {
+        Fail 'schema' "$rel : baked telephone '$($biz.telephone)' does not match config.js '$($nap['phoneDial'])' — re-bake"
+    }
+    if ($biz.email -ne $nap['email']) {
+        Fail 'schema' "$rel : baked email '$($biz.email)' does not match config.js '$($nap['email'])' — re-bake"
+    }
+    if ($biz.name -ne $nap['name']) {
+        Fail 'schema' "$rel : baked business name '$($biz.name)' does not match config.js '$($nap['name'])' — re-bake"
+    }
+
+    # Review markup stays absent. See the note above verifiedReviews() in
+    # js/schema.js: every review on this site is self-serving by Google's
+    # definition, so marking any of it up risks a manual action.
+    if ($json -match '"aggregateRating"' -or $json -match '"review"\s*:') {
+        Fail 'schema' "$rel : review or aggregateRating markup is present — self-serving reviews must never be marked up"
+    }
+
+    # The baked graph must still describe THIS page. The manifest below
+    # catches js/config.js and js/schema.js changing, but not the page's own
+    # content changing: edit a fragment, re-run assemble.ps1 without
+    # re-baking, and the block would keep the old title and the old FAQ while
+    # parsing perfectly.
+    #
+    # The FAQ half is not housekeeping. Google requires that the answer in
+    # FAQPage markup is visible on the page, which faqNode() guarantees by
+    # reading the questions out of the DOM. Baking a copy breaks that
+    # guarantee unless something re-checks it, so this does.
+    $page = $graph | Where-Object { $_.'@id' -like '*#webpage' } | Select-Object -First 1
+    if ($page) {
+        $title = [regex]::Match($text, '<title>(.*?)</title>', 'Singleline').Groups[1].Value
+        $title = [System.Net.WebUtility]::HtmlDecode($title).Trim()
+        if ($title -and $page.name -ne $title) {
+            Fail 'schema' "$rel : baked WebPage name does not match the page's <title> — re-bake"
+        }
+        $desc = [regex]::Match($text, '<meta name="description" content="(.*?)">', 'Singleline').Groups[1].Value
+        $desc = [System.Net.WebUtility]::HtmlDecode($desc).Trim()
+        if ($desc -and $page.description -ne $desc) {
+            Fail 'schema' "$rel : baked WebPage description does not match the page's meta description — re-bake"
+        }
+    }
+
+    $faqNode = $graph | Where-Object { $_.'@type' -eq 'FAQPage' } | Select-Object -First 1
+    if ($faqNode) {
+        # The JSON-LD block has to come out first. It is part of the page's
+        # HTML, so searching the whole file for a marked-up question finds it
+        # in the markup that is being checked and the test passes no matter
+        # what. Caught by deliberately renaming a baked question and watching
+        # this say nothing.
+        $visible = [regex]::Replace($text, '<script type="application/ld\+json".*?</script>', '', 'Singleline')
+        $visible = [System.Net.WebUtility]::HtmlDecode($visible)
+        foreach ($entry in $faqNode.mainEntity) {
+            if ($visible -notmatch [regex]::Escape($entry.name)) {
+                Fail 'schema' "$rel : the baked FAQ asks `"$($entry.name)`" but that question is not on the page — re-bake (marked-up answers must be visible)"
+            }
+        }
+    }
+
+    # @() matters. A Where-Object that matches exactly one PSCustomObject
+    # returns the object itself, and .Count on it is $null, not 1 — so
+    # without this the duplicate-FAQPage guard below compared $null -gt 1 and
+    # could never fire, while the summary reported 0 nodes on pages that
+    # plainly had one.
+    $faqNodeCounts[$rel] = @($graph | Where-Object { $_.'@type' -eq 'FAQPage' }).Count
+    $schemaOk++
+}
+
+# One FAQPage per page at most. /faq.html is the one worth naming: faqNode()
+# emits a FAQPage built from the visible questions, and pageType() deliberately
+# does NOT also type the WebPage node as FAQPage, because two FAQPage nodes
+# with different @ids in one graph is the duplicate markup to avoid.
+foreach ($entry in $faqNodeCounts.GetEnumerator()) {
+    if ($entry.Value -gt 1) {
+        Fail 'schema' "$($entry.Key) : $($entry.Value) FAQPage nodes in one graph, expected at most 1"
+    }
+}
+
+# Staleness. A baked graph that no longer reflects the files it came from
+# still parses, still validates, and is still wrong.
+$manifestPath = Join-Path $PSScriptRoot 'seo\schema-manifest.json'
+if (-not (Test-Path $manifestPath)) {
+    Fail 'schema' 'tools/seo/schema-manifest.json is missing — run tools/seo/bake-schema.ps1'
+} else {
+    $manifest = [IO.File]::ReadAllText($manifestPath) | ConvertFrom-Json
+    function Get-FileSha([string]$p) {
+        $sha = [Security.Cryptography.SHA256]::Create()
+        try { return (($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes([IO.File]::ReadAllText($p))) |
+                       ForEach-Object { $_.ToString('x2') }) -join '') }
+        finally { $sha.Dispose() }
+    }
+    if ((Get-FileSha (Join-Path $root 'js\config.js')) -ne $manifest.configSha) {
+        Fail 'schema' 'js/config.js has changed since the structured data was baked — re-capture and re-run tools/seo/bake-schema.ps1 (see its header)'
+    }
+    if ((Get-FileSha (Join-Path $root 'js\schema.js')) -ne $manifest.schemaSha) {
+        Fail 'schema' 'js/schema.js has changed since the structured data was baked — re-capture and re-run tools/seo/bake-schema.ps1 (see its header)'
+    }
+}
+
+$faqTotal = ($faqNodeCounts.Values | Measure-Object -Sum).Sum
+Write-Host ("  JSON-LD served in the markup of {0} of {1} pages, one block each" -f $schemaOk, $schemaPages.Count)
+Write-Host ("  business name, telephone and email agree with js/config.js")
+Write-Host ("  page titles and descriptions agree with the baked WebPage nodes")
+Write-Host ("  every marked-up FAQ question is visible on its page ({0} FAQPage nodes)" -f $faqTotal)
+Write-Host ("  no aggregateRating or review markup; at most one FAQPage per graph")
+
+# ---------------------------------------------------------------------------
 # 4. HTTP checks
 # ---------------------------------------------------------------------------
 if ($SkipHttp) {

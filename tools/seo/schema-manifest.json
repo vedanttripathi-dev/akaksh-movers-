@@ -1,0 +1,7 @@
+{
+  "bakedAt": "2026-10-18 02:22:13",
+  "pages": "19",
+  "configSha": "fc98e42610a6b141fd6e660d64dbe522dabbddb4e28c7747d65e5e6188a9447a",
+  "schemaSha": "0bf8502bda661b3bc5fb6a6461e14f90eb786b86b469e724877079330dc003b5",
+  "note": "If either hash no longer matches the file, the capture in schema-data.json is stale. Re-capture per the header of bake-schema.ps1, then re-run it."
+}

@@ -30,14 +30,17 @@ Replacing the architecture would have added a build step and a dependency
 tree in exchange for nothing.
 
 > **Correction, 17 October 2026.** An earlier version of this paragraph also
-> listed JSON-LD as shipping in the initial response. **It does not.** Probed
+> listed JSON-LD as shipping in the initial response. **It did not.** Probed
 > against the static files, `index.html` contained zero
-> `application/ld+json` blocks; the structured data is built by `js/schema.js`
-> and injected at runtime. The same probe found no phone number, no email and
-> no postal code in the static `index.html` either. See C6 and H8 below. The
-> contact details are now fixed; the JSON-LD is recorded as open rather than
-> quietly reworded, because it is the kind of thing a hosting decision gets
-> made on.
+> `application/ld+json` blocks; the structured data was built by
+> `js/schema.js` and injected at runtime. The same probe found no phone
+> number, no email and no postal code in the static `index.html` either. See
+> C6 and H8 below.
+>
+> **Both are now fixed** (18 October 2026) — the contact details by H8, the
+> structured data by M11 and §7 — so the paragraph above is true as written
+> today. The correction stays because the claim was wrong when it was made,
+> and it is the kind of thing a hosting decision gets made on.
 
 JavaScript is used for progressive enhancement only: contact details written
 from one config file, the callback dialog, the review section, the gallery
@@ -86,7 +89,9 @@ the phone, WhatsApp and contact links still work.
 | M8 | Thin content on the new gallery page (290 words) | **Fixed** — real copy explaining what is visible in the photographs. |
 | M9 | **`terms.html` carried six `[TO BE SUPPLIED]` blanks and a banner reading "Template — not ready to publish"**, live, linked from every footer. | **Fixed.** The banner was written for the developer and was being shown to customers. The blanks were **not** filled with invented policy — each now states what this site says everywhere else, that the figures for a job are confirmed in writing with the quotation. The real deposit, notice, cancellation scale, cover, claim window, payment terms and complaint acknowledgement time **still need the owner and a legal review**. |
 | M10 | No photographs on any page except the homepage hero | **Fixed** — photo strips on the services hub, seven service pages, About, the Kanpur page, the locations hub and the homepage. `vehicle-transport` deliberately has none: not one of the 44 photographs shows a vehicle being carried. |
-| M11 | **The JSON-LD is injected by JavaScript, not served in the HTML.** `index.html` contains zero `application/ld+json` blocks; `js/schema.js` builds and inserts the graph on load. | **Open, and a judgement call rather than a bug.** Googlebot renders JavaScript, so Google does see it, with a delay. Bing and most AI crawlers largely do not. The fix that does *not* create a second source of truth: render the graph once, write it into each `<head>` as a static block, change `injectSchema()` to replace that node instead of appending, and have `check.ps1` compare the static copy against the rendered one. That is a real change to the schema module's contract, so it is recorded here for a decision rather than half-done. |
+| M11 | **The JSON-LD was injected by JavaScript, not served in the HTML.** `index.html` contained zero `application/ld+json` blocks; `js/schema.js` built and inserted the graph on load. Googlebot renders JavaScript, so Google saw it with a delay; Bing and most AI crawlers largely do not. | **Fixed.** The graph is now in the `<head>` of all 19 indexable pages, baked by `tools/seo/bake-schema.ps1`, and `injectSchema()` replaces that block rather than appending. **No second implementation was created** — the bake works from a capture of what `schema.js` itself produced in a browser, and refuses to write a page whose reassembled graph does not hash to what the browser emitted. All 19 matched. See §7. |
+| M12 | **Breadcrumbs split on the `;` inside `&amp;`.** `assemble.ps1` separated crumbs on `\s*;\s*`, so `Loading &amp; unloading` became two crumbs, `Loading &amp` and `unloading`, both carrying `aria-current="page"`. Live on `/services/loading-unloading.html` and `/services/packing-unpacking.html`, in the visible trail **and** in the `BreadcrumbList` structured data, which showed 4 items instead of 3. | **Fixed** — the separator now requires whitespace before the semicolon, which an HTML entity never has. Found by reading the rendered graph before baking it. |
+| M13 | **The homepage's WebPage node disagreed with its own canonical.** Loaded as `/index.html` it produced `@id`/`url` of `https://akashmovers.com/index.html` while the `<link rel="canonical">` beside it said `https://akashmovers.com/` — two URLs for one page in one `<head>`. It also referenced a `#breadcrumbs` node that nothing defined, since the homepage has no breadcrumb trail. | **Both fixed in `js/schema.js`**: the path is normalised so `/index.html` resolves to `/`, and the `breadcrumb` property is emitted only when a `BreadcrumbList` is actually in the graph. |
 
 ---
 
@@ -217,7 +222,65 @@ change that turns the callback form into something that delivers leads.
 
 ---
 
-## 7. Things deliberately not done
+## 7. Structured data: served, not just rendered
+
+The graph is now in the HTML of all 19 indexable pages. What matters is how,
+because the obvious way to do this is also the way it rots.
+
+**There is still exactly one thing that builds the graph.** `js/schema.js`
+does. Re-deriving it in PowerShell would have been a second source of truth
+that silently diverges the first time someone edits the JavaScript.
+`tools/seo/schema-data.json` is a *capture* — the real pages were loaded in a
+browser against the dev server and the output of `schema.js` was copied out
+of the DOM. `tools/seo/bake-schema.ps1` only reassembles each page's graph
+from that capture, in `buildSchema()`'s node order.
+
+**The reassembly is not trusted either.** The capture records the SHA-256 of
+the exact JSON string the browser produced for each page, and a page is
+skipped with an error if the reassembled string does not hash to it. All 19
+matched on the first run.
+
+**`injectSchema()` now replaces that block instead of appending**, so a page
+never carries two graphs with the same `@id`s. It still runs, because
+`faqNode()` reads the questions out of the live DOM — that is what keeps the
+marked-up answer and the visible answer identical. The static block is the
+floor; the runtime copy is the current truth. Verified under the production
+CSP: one block after boot, byte-identical to the served copy.
+
+### What `check.ps1` now fails on
+
+Every one of these was proved to fail by injecting the fault and watching the
+exit code, then reverting:
+
+| Fault injected | Caught |
+|---|---|
+| A page's JSON-LD block removed, or a second one added | yes |
+| Baked `telephone` no longer matching `js/config.js` | yes |
+| `aggregateRating` or `review` markup appearing | yes |
+| `js/schema.js` edited without re-baking | yes |
+| Page `<title>` edited without re-baking | yes |
+| Two `FAQPage` nodes in one graph | yes |
+| A baked FAQ question that is **not visible on the page** | yes |
+
+That last one is the one worth keeping. Google requires the answer in
+`FAQPage` markup to be visible on the page, which `faqNode()` guaranteed for
+free by reading the DOM; baking a copy breaks the guarantee unless something
+re-checks it. The first version of that check passed when it should not have,
+because it searched the whole file — including the JSON-LD block it was
+checking, which of course contains the question. It strips the block first
+now.
+
+Two further guards exist because baking introduces staleness that still
+*parses*: `tools/seo/schema-manifest.json` records the SHA-256 of
+`js/config.js` and `js/schema.js` at bake time, and `assemble.ps1` — which
+rebuilds pages from fragments and therefore discards the block — prints what
+to run next. It deliberately does **not** re-bake automatically: if the
+fragment's content changed, the capture is stale, and re-stamping it would
+publish structured data that no longer matches the page.
+
+---
+
+## 8. Things deliberately not done
 
 - **No fabricated reviews, ratings, review counts, awards or credentials.**
   The reviews section hides itself rather than showing a placeholder.
