@@ -270,7 +270,7 @@ Also known as:  Akash Packers & Movers
 Address:        113/186, Swaroop Nagar, Kanpur, Uttar Pradesh 208002, India
 Phone:          +91 98391 00644
 WhatsApp:       +91 98391 00644
-Email:          akashmovers@rediffmail.com
+Email:          akashmovers@gmail.com
 Website:        https://akashmovers.com
 Established:    1983
 Proprietor:     Vikas Grover

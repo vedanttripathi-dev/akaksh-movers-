@@ -70,7 +70,7 @@ challenge first, so two small jobs are worth doing once:
 
 | Detail | Risk if wrong |
 |---|---|
-| `contact.email` — `akashmovers@rediffmail.com` | single directory listing, never confirmed. Send a test mail. If it bounces, set it to `PLACEHOLDER` and every email link disappears. |
+| `contact.email` — `akashmovers@gmail.com` | supplied in writing by the business, 21 Oct 2026. Replaced `akashmovers@rediffmail.com`, which came from a single directory listing and was never confirmed. Send a test mail. If it bounces, set it to `PLACEHOLDER` and every email link disappears. |
 | `contact.whatsappNumber` | assumed to be the same mobile. **Nobody has sent it a WhatsApp message.** Test it; if there is no WhatsApp account, set it to `PLACEHOLDER` and the buttons hide themselves. |
 | `contact.openingHours` | these are the template's generic 9–7 hours, **not the client's**. They are published in LocalBusiness schema, so Google may show them and a customer may arrive to a closed office. |
 | House number `113/186` | read off the photographed signboard. Worth one glance from the owner to confirm the site has it right, along with the `208002` PIN. |

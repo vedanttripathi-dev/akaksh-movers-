@@ -74,11 +74,21 @@ elseif ($text.Contains($new)) { Write-Output '  footer whatsapp: already filled'
 else { throw 'footer whatsapp markup not found and not already filled' }
 
 # --- email -----------------------------------------------------------------
-$old = '<li data-footer-email hidden><a data-mail-link><span data-config="contact.email"></span></a></li>'
+# Matched by ATTRIBUTE, not by the value already sitting in it. The first
+# version of this looked for either the empty placeholder or the exact
+# current address, and threw on anything else -- so the one case it could not
+# handle was the only case that matters: a STALE address, left behind when
+# contact.email changed in config.js. Rewriting whatever is there is the
+# whole job of a filler.
 $new = ('<li data-footer-email><a data-mail-link href="mailto:{0}"><span data-config="contact.email">{0}</span></a></li>' -f (Esc $nap['email']))
-if ($text.Contains($old)) { $text = $text.Replace($old, $new); Write-Output '  footer email:    filled' }
-elseif ($text.Contains($new)) { Write-Output '  footer email:    already filled' }
-else { throw 'footer email markup not found and not already filled' }
+$emailRe = '<li data-footer-email(?:\s+hidden)?>.*?</li>'
+$m = [regex]::Match($text, $emailRe, 'Singleline')
+if (-not $m.Success) { throw 'footer email markup not found -- check index.html by hand' }
+if ($m.Value -eq $new) { Write-Output '  footer email:    already current' }
+else {
+  $text = $text.Remove($m.Index, $m.Length).Insert($m.Index, $new)
+  Write-Output ('  footer email:    rewritten -> {0}' -f $nap['email'])
+}
 
 # --- postal address --------------------------------------------------------
 # A real <address> element rather than a <p>, because that is what it is, and

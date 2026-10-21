@@ -92,6 +92,10 @@ the phone, WhatsApp and contact links still work.
 | M11 | **The JSON-LD was injected by JavaScript, not served in the HTML.** `index.html` contained zero `application/ld+json` blocks; `js/schema.js` built and inserted the graph on load. Googlebot renders JavaScript, so Google saw it with a delay; Bing and most AI crawlers largely do not. | **Fixed.** The graph is now in the `<head>` of all 19 indexable pages, baked by `tools/seo/bake-schema.ps1`, and `injectSchema()` replaces that block rather than appending. **No second implementation was created** — the bake works from a capture of what `schema.js` itself produced in a browser, and refuses to write a page whose reassembled graph does not hash to what the browser emitted. All 19 matched. See §7. |
 | M12 | **Breadcrumbs split on the `;` inside `&amp;`.** `assemble.ps1` separated crumbs on `\s*;\s*`, so `Loading &amp; unloading` became two crumbs, `Loading &amp` and `unloading`, both carrying `aria-current="page"`. Live on `/services/loading-unloading.html` and `/services/packing-unpacking.html`, in the visible trail **and** in the `BreadcrumbList` structured data, which showed 4 items instead of 3. | **Fixed** — the separator now requires whitespace before the semicolon, which an HTML entity never has. Found by reading the rendered graph before baking it. |
 | M13 | **The homepage's WebPage node disagreed with its own canonical.** Loaded as `/index.html` it produced `@id`/`url` of `https://akashmovers.com/index.html` while the `<link rel="canonical">` beside it said `https://akashmovers.com/` — two URLs for one page in one `<head>`. It also referenced a `#breadcrumbs` node that nothing defined, since the homepage has no breadcrumb trail. | **Both fixed in `js/schema.js`**: the path is normalised so `/index.html` resolves to `/`, and the `breadcrumb` property is emitted only when a `BreadcrumbList` is actually in the graph. |
+| M14 | **The business email was never confirmed.** `akashmovers@rediffmail.com` came from a single directory listing and nobody at the company had verified it, so email enquiries may have been going nowhere. | **Fixed** — replaced site-wide with `akashmovers@gmail.com`, supplied in writing by the business on 21 Oct 2026. 38 references updated across 19 pages, the config, `llms.txt` and the docs. **Still to do: send one test mail**, and update the old address on the directory listings, which will keep handing customers the rediffmail address until they are changed. |
+| M15 | **`fill-static-nap.ps1` could not rewrite a stale value.** It matched either the empty placeholder or the exact current address, and threw on anything else — so the one case it could not handle was the only one that matters, a value left behind when `config.js` changed. | **Fixed** — it now matches on the attribute and rewrites whatever is there. Found by changing the email and watching it fail. |
+| M16 | **The site has no photographs of the owners.** | **Fixed** — both portraits supplied 21 Oct 2026 and published on the About page at identical rendered size (342×455 at 375px). Vikas Grover is the portrait with the tie and the laptop; Akash Grover the light-coloured shirt. Verified against the brief and not swapped. |
+| M17 | **No Google review QR code exists**, and one cannot be generated: `contact.googleWriteReviewUrl` is still `PLACEHOLDER`. | **Tool built, output blocked.** `tools/qr/make-review-qr.py` generates SVG, PNG and an A5 print sheet, and **refuses to run** without a configured URL rather than encoding a guess — a printed QR pointing at the wrong business is not recoverable. Toolchain proved end to end against a labelled test URL and **decoded back** with OpenCV at 120px, under blur, under sensor noise, at an angle and at eight rotations. One command produces the real asset the moment the URL lands. |
 
 ---
 
@@ -198,6 +202,34 @@ because a site that is not indexed cannot rank no matter what points at it.
    heavily for local results. Highest value item on this list.
 1b. **Paste the website URL into the existing IndiaMART listing**, whose
    website field is empty. It is the one real inbound link available today.
+
+1c. **Decide the trading name, and then stop changing it.** The 21 Oct brief
+   calls the business "Akash Movers and Packers". The site says **Akash
+   Movers**, with "Akash Packers & Movers" declared as the former name. The
+   site was not changed, on purpose: the supplied logo reads AKASH MOVERS,
+   and the Google Business Profile and the IndiaMART listing both use the
+   other two spellings. Name consistency across site, profile and listings is
+   one of the strongest local-search signals there is, and introducing a
+   **third** variant would weaken it rather than help. Tell me which single
+   name is correct and I will make the site, the schema and the citation
+   block match it exactly.
+
+1d. **Decide whether the 3D truck comes back.** The brief asks to preserve a
+   "scroll-following 3D truck" — there is not one. It was removed earlier at
+   the business's own request, along with 833 KB of Three.js and 114 KB of
+   GSAP, and replaced with a photograph of the actual shopfront. Nothing was
+   re-added in this pass, because putting roughly a megabyte of libraries
+   back on every page the day before delivery would undo the measured
+   performance work and is not reversible by tomorrow. Say the word and it
+   can come back as a contained, lazy-loaded section.
+
+1e. **Confirm the ownership wording.** The brief calls both Vikas Grover and
+   Akash Grover "owners". The site also states the business is a sole
+   proprietorship, which the GSTIN's embedded PAN corroborates (4th character
+   `P` = Individual). Those are compatible in a family firm, but if the legal
+   structure is actually a partnership the About page and the schema both
+   need to say so. That is a statement of legal fact and only the owners can
+   make it.
 2. **Fix the `www` DNS record.** GoDaddy → DNS → the `CNAME` row named
    `www` → Data: `vedanttripathi-dev.github.io`. Verified against GoDaddy's
    own nameservers (`ns15`), it still points at `akashmovers.com`.

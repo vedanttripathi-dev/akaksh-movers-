@@ -155,11 +155,21 @@ export const SITE_CONFIG = {
     /** Pre-filled text when a visitor taps a WhatsApp button. */
     whatsappMessage: 'Hi Akash Movers, I would like a quote for shifting my home.',
 
-    /* Found on a single directory listing only, never confirmed by the
-       business. If a reply never arrives at this inbox, enquiries sent by
-       email are being lost silently — so send a test mail before launch.
-       Setting this to PLACEHOLDER removes every email link site-wide. */
-    email: 'akashmovers@rediffmail.com',
+    /* Supplied in writing by the business on 21 October 2026, replacing
+       akashmovers@rediffmail.com — which had only ever been found on a
+       single directory listing and was never confirmed by anyone at the
+       company. This one is confirmed, so it is the better of the two.
+
+       TWO THINGS TO DO WITH THE OLD ADDRESS, and neither is this file's job:
+       anything already sent to the rediffmail inbox is still arriving there,
+       so it needs checking until the change has propagated through the
+       directory listings; and those listings need updating themselves, or
+       they will keep handing customers the old address.
+
+       Send one test mail to this address before launch. If a reply never
+       arrives, email enquiries are being lost silently. Setting this to
+       PLACEHOLDER removes every email link site-wide. */
+    email: 'akashmovers@gmail.com',
 
     /* Office address. Printed in the footer and used in LocalBusiness schema.
        CHANGED on 16 Oct 2026, and the reason matters.

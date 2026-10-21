@@ -47,7 +47,7 @@ Two notes for anyone quoting this business:
 - Phone: +91 98391 00644 (Vikas Grover, proprietor)
 - Second contact: +91 98391 58558 (Akash Grover)
 - WhatsApp: +91 98391 00644
-- Email: akashmovers@rediffmail.com
+- Email: akashmovers@gmail.com
 - Service area: the city of Kanpur and its immediate outskirts, plus intercity
   routes from Kanpur to the rest of India
 - Website: this site is the business's only website
@@ -142,5 +142,5 @@ with each other:
 ## Contact
 
 Enquiries go through the form at /contact.html, by phone on +91 98391 00644,
-by WhatsApp on the same number, or by email to akashmovers@rediffmail.com.
+by WhatsApp on the same number, or by email to akashmovers@gmail.com.
 The office is at 113/186, Swaroop Nagar, Kanpur 208002.
