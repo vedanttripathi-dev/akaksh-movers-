@@ -38,3 +38,6 @@ desktop.ini
 # Somewhere to put a throwaway script without it ending up on the live site.
 scratch/
 *.local.*
+
+# Built by tools/build-dist.sh for Cloudflare Pages. Generated, never edited.
+dist/

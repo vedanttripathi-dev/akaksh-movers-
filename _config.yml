@@ -26,6 +26,7 @@
 exclude:
   - README.md          # internal handover: unverified claims, copy awaiting sign-off
   - AUDIT.md           # audit and implementation report; internal, same reasons
+  - DO-THIS.md         # the three logins only the owner can use; internal
   - LOCAL-SEO.md       # indexing and citation plan. Internal for a specific
                        # reason: it lists which listings are unclaimed and
                        # which business details are still unconfirmed, which

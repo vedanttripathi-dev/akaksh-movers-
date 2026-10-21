@@ -46,7 +46,11 @@
 # published site into its own subfolder and point the Pages "Root directory"
 # at that. See README.md § Keeping development files off the public site.
 /tools/*              /404.html               404
+/migrations/*         /404.html               404
+/assets/brand/*       /404.html               404
 /README.md            /404.html               404
+/AUDIT.md             /404.html               404
+/LOCAL-SEO.md         /404.html               404
 /serve.ps1            /404.html               404
 /.env.example         /404.html               404
 
